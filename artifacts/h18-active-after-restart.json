@@ -1,0 +1,78 @@
+{
+  "revision": "0006_telemetry_observation",
+  "run_id": "run-83c656d2-5065-48c1-8027-c1a3965382aa",
+  "scenario_id": "demo_main_v1",
+  "mode": "paused",
+  "sim_time_s": 137,
+  "event_seq": 38,
+  "config_version": 3,
+  "committed_sha256": "697809c44d01f79376b5f124f67cacf925fd9dd6c43bcb480d909c2df6a69462",
+  "physical_sha256": "d2643375bee460f50ccc4a922131e2b9af8a713e83395ec69097be41a8d4c6ac",
+  "replay_equals_committed": true,
+  "actual_equals_recorded": true,
+  "efficiency": {
+    "mode": "actual",
+    "formula_version": "efficiency-v1",
+    "window_start_sim_s": 0,
+    "window_end_sim_s": 137,
+    "score": 100.0,
+    "category": "normal",
+    "factors": [
+      {
+        "key": "throughput",
+        "raw": null,
+        "unit": "ratio",
+        "norm_penalty": null,
+        "weight": 0.3,
+        "contribution": null,
+        "reason": "Недостаточно данных для фактора"
+      },
+      {
+        "key": "delay",
+        "raw": null,
+        "unit": "sim_seconds",
+        "norm_penalty": null,
+        "weight": 0.25,
+        "contribution": null,
+        "reason": "Недостаточно данных для фактора"
+      },
+      {
+        "key": "occupancy",
+        "raw": 0.012408759124087591,
+        "unit": "ratio",
+        "norm_penalty": 0.0,
+        "weight": 0.15,
+        "contribution": 0.0,
+        "reason": "Интеграл физической занятости R1–R4/S1–S4/C1–C2; H/D1 исключены"
+      },
+      {
+        "key": "conflicts",
+        "raw": 0.0,
+        "unit": "count",
+        "norm_penalty": 0.0,
+        "weight": 0.2,
+        "contribution": 0.0,
+        "reason": "Нерешённые предупреждения: нет"
+      },
+      {
+        "key": "resource_idle",
+        "raw": 0.0,
+        "unit": "ratio",
+        "norm_penalty": 0.0,
+        "weight": 0.1,
+        "contribution": 0.0,
+        "reason": "Интеграл незанятых доступных L1/SH1/I1/I2/CG1 при готовом спросе"
+      }
+    ]
+  },
+  "events": 38,
+  "checkpoints": 8,
+  "restart_checks": {
+    "same_run": true,
+    "same_sim_time": true,
+    "same_config": true,
+    "same_physical_state": true,
+    "historical_hash_unchanged": true,
+    "actual_unchanged": true
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "checkpoint": "H18",
+  "date_local": "2026-10-02 Asia/Almaty",
+  "pytest": {"command": "uv run pytest -q", "passed": 237, "failed": 0, "warnings": 1, "duration_s": 195.94},
+  "javascript": {"railway_tests": 9, "render_lifecycle_tests": 2, "passed": 11, "failed": 0},
+  "ruff_check": "passed",
+  "ruff_format_check": {"status": "passed", "python_files": 65},
+  "mypy": {"status": "passed", "source_files": 28},
+  "typescript_strict": {"status": "passed", "files": ["contracts/api-v1.ts", "contracts/railway-display.ts"]},
+  "clean_migration": "h18-clean-migration.json",
+  "headed_chromium_full_flow_and_measurements": "h18-acceptance.json",
+  "postfix_mcp_nominal_browser": "h18-postfix-browser.json",
+  "real_restart_state_history_config_proof": "h18-active-after-restart.json",
+  "real_restart_browser_proof": "h18-restart-browser.json",
+  "normalization_audit": "h18-normalization-proof.json",
+  "scope": {"tracks": 12, "trains": 7, "operations": 33, "core_planner_changed": false, "core_validator_changed": false, "frozen_state_contract_changed": false},
+  "open_acceptance": ["main friend's frontend and second physical machine", "paired six-scenario FCFS/heuristic quality report", "slides, fallback video and final rehearsal"],
+  "stopped_after": "H18"
+}

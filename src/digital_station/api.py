@@ -2,7 +2,7 @@ from contextlib import asynccontextmanager
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import NoReturn
-from uuid import uuid4
+from uuid import UUID, uuid4
 
 from fastapi import Depends, FastAPI, HTTPException, Query, Request, Response
 from fastapi.exceptions import RequestValidationError
@@ -25,6 +25,8 @@ from .contracts import (
     HistoryPage,
     IncidentBatchInput,
     LoginInput,
+    NewRunInput,
+    RenderTelemetry,
     ReplanDetail,
     ReplanInput,
     SimulationCommand,
@@ -75,7 +77,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             await engine.dispose()
 
     app = FastAPI(
-        title="Цифровая станция — H15",
+        title="Цифровая станция — H18",
         version="1.0",
         lifespan=lifespan,
         description="Physical digital twin, independent validator, isolated deterministic heuristic planner and SSE.",
@@ -86,6 +88,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     @app.middleware("http")
     async def origin_guard(request: Request, call_next):
         request.state.trace_id = str(uuid4())
+        request.state.received_ms = datetime.now(UTC).timestamp() * 1000
         origin = request.headers.get("origin")
         own_origin = str(request.base_url).rstrip("/")
         if request.method in {"POST", "PATCH", "PUT", "DELETE"} and origin:
@@ -124,6 +127,13 @@ def create_app(settings: Settings | None = None) -> FastAPI:
 
     @app.exception_handler(RequestValidationError)
     async def validation_error(request, exc):
+        if request.url.path == "/api/v1/telemetry/ui-render":
+            try:
+                body = await request.json()
+                client_id = UUID(body.get("client_id", ""))
+                app.state.actor.measurements.schema_invalid(client_id)
+            except (ValueError, AttributeError, TypeError):
+                pass
         fields = [
             {"path": ".".join(map(str, error["loc"][1:])), "message": error["msg"]} for error in exc.errors()
         ]
@@ -188,14 +198,14 @@ def create_app(settings: Settings | None = None) -> FastAPI:
 
     @app.get("/health/live")
     async def live():
-        return {"status": "alive", "stage": "H15"}
+        return {"status": "alive", "stage": "H18"}
 
     @app.get("/health/ready")
     async def ready(session=Depends(db_session)):
         try:
             await session.execute(text("SELECT 1"))
             revision = await session.scalar(text("SELECT version_num FROM alembic_version"))
-            row = await session.get(RunState, app.state.run_id)
+            row = await session.get(RunState, app.state.actor.run_id)
             if (
                 revision != MIGRATION
                 or row is None
@@ -208,7 +218,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             fail(503, "SERVICE_NOT_READY", "База данных недоступна")
         return {
             "status": "ready",
-            "stage": "H15",
+            "stage": "H18",
             "checks": {
                 "database": "ok",
                 "schema": "ok",
@@ -230,6 +240,9 @@ def create_app(settings: Settings | None = None) -> FastAPI:
                 "history": True,
                 "csv": True,
                 "manual_confirmation": True,
+                "new_run": True,
+                "render_telemetry": True,
+                "noisy_progress_normalization": True,
             },
         }
 
@@ -280,7 +293,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     async def snapshot(user=Depends(current_user), session=Depends(db_session)):
         if not app.state.actor.ready:
             fail(503, "SERVICE_NOT_READY", "Симулятор остановлен")
-        row = await session.get(RunState, app.state.run_id)
+        row = await session.get(RunState, app.state.actor.run_id)
         if row is None:
             fail(503, "SERVICE_NOT_READY", "Начальное состояние отсутствует")
         state = State.model_validate(row.payload)
@@ -292,7 +305,12 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         response_class=StreamingResponse,
         responses={200: {"content": {"text/event-stream": {}}}},
     )
-    async def stream(request: Request, after: str | None = None, user=Depends(current_user)):
+    async def stream(
+        request: Request, after: str | None = None, client_id: UUID | None = None, user=Depends(current_user)
+    ):
+        import time
+
+        subscribed_at = time.monotonic()
         queue = await app.state.actor.subscribe(request.headers.get("last-event-id") or after)
         token = request.cookies.get(COOKIE_NAME)
         assert token is not None  # current_user dependency already requires an authenticated cookie.
@@ -311,6 +329,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
                             or auth.expires_at <= datetime.now(UTC)
                         ):
                             return
+                    app.state.actor.measurements.delivered(client_id, item, subscribed_at)
                     yield item.wire
             except SQLAlchemyError:
                 app.state.actor.abort()
@@ -325,7 +344,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
 
     @app.get("/api/v1/config", response_model=Config)
     async def config(user=Depends(current_user), session=Depends(db_session)):
-        current = await session.get(RunState, app.state.run_id)
+        current = await session.get(RunState, app.state.actor.run_id)
         row = await session.get(ConfigRevision, current.config_version)
         if row is None:
             fail(503, "SERVICE_NOT_READY", "Начальная конфигурация отсутствует")
@@ -399,7 +418,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     @app.get("/api/v1/replans/{job_id}", response_model=ReplanDetail)
     async def replan_detail(job_id: str, user=Depends(current_user), session=Depends(db_session)):
         job = await session.get(OptimizationRun, job_id)
-        if job is None or job.run_id != app.state.run_id:
+        if job is None or job.run_id != app.state.actor.run_id:
             fail(404, "NOT_FOUND", "Расчёт не найден")
         records = list(
             await session.scalars(select(PlanRecord).where(PlanRecord.optimization_run_id == job_id))
@@ -419,7 +438,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     )
     async def replan_explanation(job_id: str, user=Depends(current_user), session=Depends(db_session)):
         job = await session.get(OptimizationRun, job_id)
-        if job is None or job.run_id != app.state.run_id:
+        if job is None or job.run_id != app.state.actor.run_id:
             fail(404, "NOT_FOUND", "Расчёт не найден")
         detail = await replan_detail(job_id, user, session)
         return explain_plans(job.payload, detail["plans"])
@@ -430,6 +449,29 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     ):
         request.state.command_id = body.request_id
         return await app.state.actor.call("apply", (user.id, body, plan_id, utc_now()))
+
+    @app.get("/api/v1/time")
+    async def clock_probe(request: Request, user=Depends(current_user)):
+        return {
+            "server_received_ms": request.state.received_ms,
+            "server_sent_ms": datetime.now(UTC).timestamp() * 1000,
+        }
+
+    @app.post("/api/v1/telemetry/ui-render", status_code=204)
+    async def ui_render(body: RenderTelemetry, user=Depends(current_user)):
+        app.state.actor.measurements.report(body)
+        return Response(status_code=204)
+
+    @app.get("/api/v1/metrics")
+    async def metrics(user=Depends(current_user)):
+        return await app.state.actor.measurements.metrics(app.state.actor)
+
+    @app.post("/api/v1/runs", status_code=201, response_model=CommandReceiptResponse)
+    async def create_run(body: NewRunInput, request: Request, user=Depends(admin_only)):
+        request.state.command_id = body.request_id
+        receipt = await app.state.actor.call("new_run", (user.id, body, utc_now()))
+        app.state.run_id = app.state.actor.run_id
+        return receipt
 
     @app.get("/api/v1/scenarios")
     async def scenarios(user=Depends(current_user)):
@@ -473,6 +515,10 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     @app.get("/tech/railway.js", include_in_schema=False)
     async def railway_js():
         return FileResponse(STATIC / "railway.js", media_type="application/javascript")
+
+    @app.get("/tech/render-telemetry.js", include_in_schema=False)
+    async def render_telemetry_js():
+        return FileResponse(STATIC / "render-telemetry.js", media_type="application/javascript")
 
     @app.get("/tech/station.css", include_in_schema=False)
     async def station_css():

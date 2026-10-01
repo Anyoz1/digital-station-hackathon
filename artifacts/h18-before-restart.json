@@ -1,0 +1,70 @@
+{
+  "revision": "0006_telemetry_observation",
+  "run_id": "run-83c656d2-5065-48c1-8027-c1a3965382aa",
+  "scenario_id": "demo_main_v1",
+  "mode": "paused",
+  "sim_time_s": 0,
+  "event_seq": 6,
+  "config_version": 3,
+  "committed_sha256": "3517c922f29258dee0cbf460384e5b68dc8369a741638a6303a3f09a4f430d0e",
+  "physical_sha256": "15d57e8d0bb8bb4543527a6045d163156525fbb09dcaa10cf59a9e774beeaf10",
+  "replay_equals_committed": true,
+  "actual_equals_recorded": true,
+  "efficiency": {
+    "mode": "actual",
+    "formula_version": "efficiency-v1",
+    "window_start_sim_s": 0,
+    "window_end_sim_s": 0,
+    "score": null,
+    "category": null,
+    "factors": [
+      {
+        "key": "throughput",
+        "raw": null,
+        "unit": "ratio",
+        "norm_penalty": null,
+        "weight": 0.3,
+        "contribution": null,
+        "reason": "Недостаточно данных для фактора"
+      },
+      {
+        "key": "delay",
+        "raw": null,
+        "unit": "sim_seconds",
+        "norm_penalty": null,
+        "weight": 0.25,
+        "contribution": null,
+        "reason": "Недостаточно данных для фактора"
+      },
+      {
+        "key": "occupancy",
+        "raw": null,
+        "unit": "ratio",
+        "norm_penalty": null,
+        "weight": 0.15,
+        "contribution": null,
+        "reason": "Недостаточно данных для фактора"
+      },
+      {
+        "key": "conflicts",
+        "raw": null,
+        "unit": "count",
+        "norm_penalty": null,
+        "weight": 0.2,
+        "contribution": null,
+        "reason": "Недостаточно данных для фактора"
+      },
+      {
+        "key": "resource_idle",
+        "raw": null,
+        "unit": "ratio",
+        "norm_penalty": null,
+        "weight": 0.1,
+        "contribution": null,
+        "reason": "Недостаточно данных для фактора"
+      }
+    ]
+  },
+  "events": 6,
+  "checkpoints": 3
+}

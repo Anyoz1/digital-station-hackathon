@@ -20,6 +20,17 @@ class DTO(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
 
+class RenderTelemetry(DTO):
+    run_id: str = Field(min_length=1, max_length=100)
+    event_seq: int = Field(ge=1, strict=True)
+    client_id: UUID
+    received_client_ms: float = Field(ge=0, allow_inf_nan=False)
+    rendered_client_ms: float = Field(ge=0, allow_inf_nan=False)
+    offset_ms: float = Field(allow_inf_nan=False)
+    uncertainty_ms: float = Field(ge=0, allow_inf_nan=False)
+    visible: bool = Field(strict=True)
+
+
 class ErrorPayload(DTO):
     code: str
     message: str
@@ -465,6 +476,11 @@ class CommandEnvelope(DTO):
     def valid_uuid(self):
         UUID(self.request_id)
         return self
+
+
+class NewRunInput(CommandEnvelope):
+    scenario_id: str = Field(min_length=1, max_length=100)
+    seed: int = Field(ge=0, le=2147483647, strict=True)
 
 
 class ReplanInput(CommandEnvelope):

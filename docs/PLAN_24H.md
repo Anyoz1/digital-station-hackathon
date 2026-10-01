@@ -249,3 +249,42 @@ Manual confirmation остаётся MUST по новому уточнению, 
 Сумма B **5,5–8,25ч** включая резерв; фактическая оценка **около6–8ч до полной защиты при готовых заготовках frontend друга и параллельной F-дорожке**. Если frontend отсутствует или численная SLA-проверка выявит дефект, оценка увеличится; нет гарантии по неизвестному состоянию чужого UI. Наличие217тестов и короткого receiveHz sample не закрывает paint SLA. Рабочий reference позволяет продолжать интеграцию, но не объявляет основную UI-часть выполненной автоматически.
 
 SHOULD/ONLY IF TIME сейчас отложены: Gemini и derived demo signals. DROP неизменен: новая topology/поезда/СЦБ/CV/RFID/OR-Tools/микросервисы/production scaling. После отчёта H15 агент останавливается и ждёт следующей команды.
+
+## Контрольная точка H18 — интеграционная приёмка
+
+Последняя команда разрешила **только H15–H18**, включая формальный foreground
+SLA-прогон, ранее расположенный в H18–H20. Исходные строки v1.0 выше маркера
+сохранены. После отчёта H18 — **STOP**, H18–H20 автоматически не начинается.
+
+Завершены обязательные runtime endpoints/нормализация: admin POST/runs с durable
+receipt/seed/старой историей/reset; time/render telemetry/metrics; validation,
+source dedup/out-of-order/median3 отдельного observed progress; единый API/reference
+и настоящий Vite proxy/LAN-URL smoke. Небольшой Operation timeline использует
+существующие33операции; нового frontend/planner/validator/станции нет.
+
+[H15_H18_REPORT.md](H15_H18_REPORT.md) и raw artifacts фиксируют:
+237pytest +11JS; миграции0→14таблиц; два Chromium/120wall-с при1× и10×;
+SSE1,278/1,449Hz; foreground UI maxupper367,511ms, missing/invalid/exceedances0;
+80короткихreplans (20delay/closure/resource_loss/burst10), max1369,717ms,
+80succeeded/0deadline exceedances. Настоящий PostgreSQL/API restart сохраняет
+состав T1/R1/занятую I1, actual, config3 и hash историческогоseq33;
+браузер показывает offline/stale и без reload восстанавливает stream.
+Background-проверка сохранена отдельно: max≈2,09с, это **не** выполненный SLA.
+Проверка одного host через LAN-интерфейс — **не** приёмка второй физической машины.
+
+### Оставшееся до полной защиты — только оценка, не начало следующего этапа
+
+| Приоритет | Работа после отдельного разрешения | Оценка | Что нельзя объявить выполненным заранее |
+|---|---|---:|---|
+| MUST | Подключить настоящий frontend друга и проверить второй ноутбук/точный Origin/firewall/cookie/SSE, replay/CSV/RBAC |0,5–1ч B +0,5–1,5ч F, параллельно | Сейчас проверены reference, Vite probe и два браузера на одном host, не чужой UI |
+| MUST | Paired FCFS/heuristic quality report по шести одинаковым сценариям/seed/incident timeline с raw factors/J/validator |0,75–1,25ч B |80live timing repeats не доказывают улучшение качества; unit equal-input regression не заменяет итоговый отчёт |
+| MUST | Комплект защиты:10–12слайдов, README/manual-final, ограничения/архитектура,6–8мин репетиция и резервное видео |0,75–1,25ч B +1–1,5ч F параллельно | README/runtime уже готовы, но презентация/видео/полная репетиция ещё нет |
+| MUST | Проверить LAN SLA на защите при другой сети/машине, прогреть выбранный run15wall-мин; финальные исправления/резерв |0,5–1ч | Измерения относятся к указанному host/foreground reference, не любому hardware/hidden tab |
+| DROP сейчас | Gemini, virtual signals, новые поезда/пути/станция, СЦБ, OR-Tools, CV/RFID, инфраструктура/scaling |0 | Не начинаем даже при наличии code-ready core |
+
+Условный остаток **3–5ч до полной защиты при уже готовом основном frontend и
+параллельной F-дорожке**. Если он не готов — ориентир5–8ч, резервный `/tech/station`
+позволяет защищать настоящий работающий контур, но не превращает отсутствующий
+frontend/материалы в выполненные требования. Это оценка работ, не сведения о
+реальном времени начала защиты. H18 закрывает ограниченный backend/reference
+scope; A16 на двух физических машинах и A18/paired quality/R23 остаются открытыми.

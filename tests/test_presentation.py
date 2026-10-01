@@ -115,7 +115,13 @@ def wait_for_job(client, job_id):
         reply = client.get(f"/api/v1/replans/{job_id}")
         assert reply.status_code == 200, reply.text
         detail = reply.json()
-        if detail["job"]["status"] not in {"queued", "running"}:
+        # Completion status is first published with the plan, then the measured
+        # post-publication timing is committed. Await both before asserting that
+        # subsequent read-only requests cannot modify a paused State.
+        if (
+            detail["job"]["status"] not in {"queued", "running"}
+            and client.app.state.actor.coordinator.owner is None
+        ):
             return detail
         time.sleep(0.025)
     pytest.fail("Explanation integration fixture: planner did not finish")

@@ -1,0 +1,122 @@
+{
+  "url": "http://10.63.52.9:5173/tech/station",
+  "roles": [
+    "Наблюдатель",
+    "Администратор системы",
+    "Дежурный по станции",
+    "Администратор системы"
+  ],
+  "errors": [],
+  "bad_responses": [],
+  "request_failures": [
+    {
+      "url": "http://10.63.52.9:5173/api/v1/stream?after=run-83c656d2-5065-48c1-8027-c1a3965382aa%3A11&client_id=8b1df97c-376b-4b30-b960-19d81bc2632a",
+      "reason": "net::ERR_ABORTED",
+      "status": 200
+    },
+    {
+      "url": "http://10.63.52.9:5173/api/v1/stream?after=run-83c656d2-5065-48c1-8027-c1a3965382aa%3A11&client_id=8b1df97c-376b-4b30-b960-19d81bc2632a",
+      "reason": "net::ERR_ABORTED",
+      "status": 200
+    },
+    {
+      "url": "http://10.63.52.9:5173/api/v1/stream?after=run-83c656d2-5065-48c1-8027-c1a3965382aa%3A11&client_id=8b1df97c-376b-4b30-b960-19d81bc2632a",
+      "reason": "net::ERR_ABORTED",
+      "status": 200
+    },
+    {
+      "url": "http://10.63.52.9:5173/api/v1/stream?after=run-83c656d2-5065-48c1-8027-c1a3965382aa%3A11&client_id=8b1df97c-376b-4b30-b960-19d81bc2632a",
+      "reason": "net::ERR_ABORTED",
+      "status": 200
+    }
+  ],
+  "chromium_204_diagnostic_count": 0,
+  "state": {
+    "run_id": "run-83c656d2-5065-48c1-8027-c1a3965382aa",
+    "seq": 33,
+    "config": 3,
+    "sim": 137,
+    "received_frames": 25,
+    "occupied": [
+      {
+        "id": "R1",
+        "name": "R1",
+        "park_id": "reception",
+        "kind": "receiving_departure",
+        "length_m": 350,
+        "availability": "open",
+        "occupied_length_m": 188,
+        "train_ids": [
+          "T1"
+        ],
+        "group_ids": [
+          "G1"
+        ],
+        "locomotive_ids": [
+          "TL1"
+        ],
+        "assigned_train_id": "T1",
+        "active_operation_ids": [
+          "op-T1-inspection"
+        ]
+      }
+    ],
+    "actual": {
+      "mode": "actual",
+      "formula_version": "efficiency-v1",
+      "window_start_sim_s": 0,
+      "window_end_sim_s": 137,
+      "score": 100,
+      "category": "normal",
+      "factors": [
+        {
+          "key": "throughput",
+          "raw": null,
+          "unit": "ratio",
+          "norm_penalty": null,
+          "weight": 0.3,
+          "contribution": null,
+          "reason": "Недостаточно данных для фактора"
+        },
+        {
+          "key": "delay",
+          "raw": null,
+          "unit": "sim_seconds",
+          "norm_penalty": null,
+          "weight": 0.25,
+          "contribution": null,
+          "reason": "Недостаточно данных для фактора"
+        },
+        {
+          "key": "occupancy",
+          "raw": 0.012408759124087591,
+          "unit": "ratio",
+          "norm_penalty": 0,
+          "weight": 0.15,
+          "contribution": 0,
+          "reason": "Интеграл физической занятости R1–R4/S1–S4/C1–C2; H/D1 исключены"
+        },
+        {
+          "key": "conflicts",
+          "raw": 0,
+          "unit": "count",
+          "norm_penalty": 0,
+          "weight": 0.2,
+          "contribution": 0,
+          "reason": "Нерешённые предупреждения: нет"
+        },
+        {
+          "key": "resource_idle",
+          "raw": 0,
+          "unit": "ratio",
+          "norm_penalty": 0,
+          "weight": 0.1,
+          "contribution": 0,
+          "reason": "Интеграл незанятых доступных L1/SH1/I1/I2/CG1 при готовом спросе"
+        }
+      ]
+    },
+    "telemetry_errors": 0,
+    "accepted_reports": 22
+  }
+}

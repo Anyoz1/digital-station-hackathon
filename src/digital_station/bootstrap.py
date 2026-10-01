@@ -52,20 +52,22 @@ async def bootstrap(sessions, settings) -> str:
         return await create_initial_run(session)
 
 
-async def create_initial_run(session, scenario_id="demo_main_v1"):
+async def create_initial_run(session, scenario_id="demo_main_v1", seed=42, config_version=None):
     """Create a new initial run without deleting existing runs (also used by isolated tests)."""
     now = datetime.now(UTC)
     run_id = f"run-{uuid4()}"
     scenario = await session.get(Scenario, (scenario_id, 1))
     template = State.model_validate(scenario.payload["initial_state"])
     template.run_id, template.server_time = run_id, utc_now()
+    if config_version is not None:
+        template.config_version = config_version
     state = template.model_dump(mode="json")
     session.add(
         Run(
             id=run_id,
             scenario_id=scenario_id,
             scenario_version=1,
-            seed=42,
+            seed=seed,
             status="paused",
             started_at=now,
             closed_at=None,

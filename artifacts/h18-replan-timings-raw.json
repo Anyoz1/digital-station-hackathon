@@ -1,0 +1,2082 @@
+[
+  {
+    "run_id": "run-a1b94228-9edf-4db8-a026-ee5e4ceedc9b",
+    "old_run_id": "run-1298df06-930a-4907-a661-71aaf257f1da",
+    "case": "delay",
+    "repeat": 1,
+    "job": {
+      "id": "rp-c99fedf0-ac4d-4e04-b8df-19f39d63bb81",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:41:41.995Z",
+      "started_at": "2026-10-01T18:41:42.299Z",
+      "finished_at": "2026-10-01T18:41:43.241Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-c99fedf0-ac4d-4e04-b8df-19f39d63bb81-0",
+        "plan-rp-c99fedf0-ac4d-4e04-b8df-19f39d63bb81-1"
+      ],
+      "applied_plan_id": "plan-rp-c99fedf0-ac4d-4e04-b8df-19f39d63bb81-0",
+      "elapsed_ms": 1246.3448369962862,
+      "compute_ms": 588.7442259991076,
+      "validation_ms": 179.39346600178396,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-ae4f4c2f-ee46-4ac8-8282-d8d7b0f6a26b",
+    "old_run_id": "run-a1b94228-9edf-4db8-a026-ee5e4ceedc9b",
+    "case": "delay",
+    "repeat": 2,
+    "job": {
+      "id": "rp-ffed6d45-a21b-4585-b997-49794f1c1be0",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:41:45.855Z",
+      "started_at": "2026-10-01T18:41:46.205Z",
+      "finished_at": "2026-10-01T18:41:47.119Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-ffed6d45-a21b-4585-b997-49794f1c1be0-0",
+        "plan-rp-ffed6d45-a21b-4585-b997-49794f1c1be0-1"
+      ],
+      "applied_plan_id": "plan-rp-ffed6d45-a21b-4585-b997-49794f1c1be0-0",
+      "elapsed_ms": 1264.2276260012295,
+      "compute_ms": 569.4339590045274,
+      "validation_ms": 178.07099899073364,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-1f595725-48d7-4d83-8379-752267d994ea",
+    "old_run_id": "run-ae4f4c2f-ee46-4ac8-8282-d8d7b0f6a26b",
+    "case": "delay",
+    "repeat": 3,
+    "job": {
+      "id": "rp-c61636af-0bc8-4ab4-9681-89c90259e5d2",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:41:49.587Z",
+      "started_at": "2026-10-01T18:41:49.887Z",
+      "finished_at": "2026-10-01T18:41:50.835Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-c61636af-0bc8-4ab4-9681-89c90259e5d2-0",
+        "plan-rp-c61636af-0bc8-4ab4-9681-89c90259e5d2-1"
+      ],
+      "applied_plan_id": "plan-rp-c61636af-0bc8-4ab4-9681-89c90259e5d2-0",
+      "elapsed_ms": 1248.354167000798,
+      "compute_ms": 593.7733779792325,
+      "validation_ms": 185.2604750165483,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-bc647c35-c895-424e-9aa7-715407b168cc",
+    "old_run_id": "run-1f595725-48d7-4d83-8379-752267d994ea",
+    "case": "delay",
+    "repeat": 4,
+    "job": {
+      "id": "rp-43dc3490-3307-4e3e-abe7-e5f9a0f85135",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:41:53.314Z",
+      "started_at": "2026-10-01T18:41:53.618Z",
+      "finished_at": "2026-10-01T18:41:54.560Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-43dc3490-3307-4e3e-abe7-e5f9a0f85135-0",
+        "plan-rp-43dc3490-3307-4e3e-abe7-e5f9a0f85135-1"
+      ],
+      "applied_plan_id": "plan-rp-43dc3490-3307-4e3e-abe7-e5f9a0f85135-0",
+      "elapsed_ms": 1246.861865001847,
+      "compute_ms": 578.0866170025547,
+      "validation_ms": 180.95744099991862,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-76433ebc-6a63-499a-8b58-59558c29a9dc",
+    "old_run_id": "run-bc647c35-c895-424e-9aa7-715407b168cc",
+    "case": "delay",
+    "repeat": 5,
+    "job": {
+      "id": "rp-69bed466-b913-451d-9a21-eedbb70054e3",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:41:57.012Z",
+      "started_at": "2026-10-01T18:41:57.302Z",
+      "finished_at": "2026-10-01T18:41:58.278Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-69bed466-b913-451d-9a21-eedbb70054e3-0",
+        "plan-rp-69bed466-b913-451d-9a21-eedbb70054e3-1"
+      ],
+      "applied_plan_id": "plan-rp-69bed466-b913-451d-9a21-eedbb70054e3-0",
+      "elapsed_ms": 1266.271541993774,
+      "compute_ms": 572.6896660053171,
+      "validation_ms": 181.2107469959301,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-9e883be5-d1e2-425e-8695-d32c9b3449c8",
+    "old_run_id": "run-76433ebc-6a63-499a-8b58-59558c29a9dc",
+    "case": "delay",
+    "repeat": 6,
+    "job": {
+      "id": "rp-c57bf862-1f6d-4f38-9687-2d4d3dd481cd",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:42:00.874Z",
+      "started_at": "2026-10-01T18:42:01.178Z",
+      "finished_at": "2026-10-01T18:42:02.098Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-c57bf862-1f6d-4f38-9687-2d4d3dd481cd-0",
+        "plan-rp-c57bf862-1f6d-4f38-9687-2d4d3dd481cd-1"
+      ],
+      "applied_plan_id": "plan-rp-c57bf862-1f6d-4f38-9687-2d4d3dd481cd-0",
+      "elapsed_ms": 1224.4594160001725,
+      "compute_ms": 571.2716989946784,
+      "validation_ms": 179.91362700558966,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-90ebb47d-ed16-42d8-b461-f0bd6d05324d",
+    "old_run_id": "run-9e883be5-d1e2-425e-8695-d32c9b3449c8",
+    "case": "delay",
+    "repeat": 7,
+    "job": {
+      "id": "rp-6c02d25e-dd53-4069-93a2-4295b117a285",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:42:04.613Z",
+      "started_at": "2026-10-01T18:42:04.910Z",
+      "finished_at": "2026-10-01T18:42:05.869Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-6c02d25e-dd53-4069-93a2-4295b117a285-0",
+        "plan-rp-6c02d25e-dd53-4069-93a2-4295b117a285-1"
+      ],
+      "applied_plan_id": "plan-rp-6c02d25e-dd53-4069-93a2-4295b117a285-0",
+      "elapsed_ms": 1256.3870750018395,
+      "compute_ms": 605.520199991588,
+      "validation_ms": 179.4521690098918,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-06073f0d-6bee-426f-9366-00357760be61",
+    "old_run_id": "run-90ebb47d-ed16-42d8-b461-f0bd6d05324d",
+    "case": "delay",
+    "repeat": 8,
+    "job": {
+      "id": "rp-0eba3ff9-6fd8-4342-9218-b86739d821b1",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:42:08.332Z",
+      "started_at": "2026-10-01T18:42:08.638Z",
+      "finished_at": "2026-10-01T18:42:09.568Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-0eba3ff9-6fd8-4342-9218-b86739d821b1-0",
+        "plan-rp-0eba3ff9-6fd8-4342-9218-b86739d821b1-1"
+      ],
+      "applied_plan_id": "plan-rp-0eba3ff9-6fd8-4342-9218-b86739d821b1-0",
+      "elapsed_ms": 1236.6920319982455,
+      "compute_ms": 575.266952997481,
+      "validation_ms": 187.26633300684625,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-62b0a525-4fe4-4263-8ab7-23471c909e8d",
+    "old_run_id": "run-06073f0d-6bee-426f-9366-00357760be61",
+    "case": "delay",
+    "repeat": 9,
+    "job": {
+      "id": "rp-a548b593-de12-40f6-bb3b-5b8fbdb2db2e",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:42:12.109Z",
+      "started_at": "2026-10-01T18:42:12.467Z",
+      "finished_at": "2026-10-01T18:42:13.396Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-a548b593-de12-40f6-bb3b-5b8fbdb2db2e-0",
+        "plan-rp-a548b593-de12-40f6-bb3b-5b8fbdb2db2e-1"
+      ],
+      "applied_plan_id": "plan-rp-a548b593-de12-40f6-bb3b-5b8fbdb2db2e-0",
+      "elapsed_ms": 1287.390029996459,
+      "compute_ms": 572.6691899835714,
+      "validation_ms": 184.22153201390756,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-ed3b0310-dd90-4f97-93b8-8710952089b2",
+    "old_run_id": "run-62b0a525-4fe4-4263-8ab7-23471c909e8d",
+    "case": "delay",
+    "repeat": 10,
+    "job": {
+      "id": "rp-78b36bff-d5e6-4546-99e8-e0d0a0417c26",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:42:15.939Z",
+      "started_at": "2026-10-01T18:42:16.245Z",
+      "finished_at": "2026-10-01T18:42:17.169Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-78b36bff-d5e6-4546-99e8-e0d0a0417c26-0",
+        "plan-rp-78b36bff-d5e6-4546-99e8-e0d0a0417c26-1"
+      ],
+      "applied_plan_id": "plan-rp-78b36bff-d5e6-4546-99e8-e0d0a0417c26-0",
+      "elapsed_ms": 1230.1499569948646,
+      "compute_ms": 580.237707021297,
+      "validation_ms": 181.02482998074265,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-50b9ff91-fae7-4a9c-ad87-fb999dc5244a",
+    "old_run_id": "run-ed3b0310-dd90-4f97-93b8-8710952089b2",
+    "case": "delay",
+    "repeat": 11,
+    "job": {
+      "id": "rp-37fcc25b-15ab-4f86-a712-b3b79694cc46",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:42:19.709Z",
+      "started_at": "2026-10-01T18:42:20.060Z",
+      "finished_at": "2026-10-01T18:42:20.993Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-37fcc25b-15ab-4f86-a712-b3b79694cc46-0",
+        "plan-rp-37fcc25b-15ab-4f86-a712-b3b79694cc46-1"
+      ],
+      "applied_plan_id": "plan-rp-37fcc25b-15ab-4f86-a712-b3b79694cc46-0",
+      "elapsed_ms": 1284.2984379967675,
+      "compute_ms": 583.0797100061318,
+      "validation_ms": 180.81349799467716,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-4835d3b4-8a6d-4be5-b7eb-8d06aa7202c2",
+    "old_run_id": "run-50b9ff91-fae7-4a9c-ad87-fb999dc5244a",
+    "case": "delay",
+    "repeat": 12,
+    "job": {
+      "id": "rp-19ee16e8-6dc2-4526-ae4c-91cbdfb26c04",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:42:23.481Z",
+      "started_at": "2026-10-01T18:42:23.771Z",
+      "finished_at": "2026-10-01T18:42:24.742Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-19ee16e8-6dc2-4526-ae4c-91cbdfb26c04-0",
+        "plan-rp-19ee16e8-6dc2-4526-ae4c-91cbdfb26c04-1"
+      ],
+      "applied_plan_id": "plan-rp-19ee16e8-6dc2-4526-ae4c-91cbdfb26c04-0",
+      "elapsed_ms": 1261.9608440072625,
+      "compute_ms": 565.6764279992785,
+      "validation_ms": 180.09254400385544,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-b2040afc-c684-4739-90ec-5541862561fb",
+    "old_run_id": "run-4835d3b4-8a6d-4be5-b7eb-8d06aa7202c2",
+    "case": "delay",
+    "repeat": 13,
+    "job": {
+      "id": "rp-3ded74e5-784a-4e9c-9de3-9b74b9cbe6d4",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:42:27.281Z",
+      "started_at": "2026-10-01T18:42:27.578Z",
+      "finished_at": "2026-10-01T18:42:28.504Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-3ded74e5-784a-4e9c-9de3-9b74b9cbe6d4-0",
+        "plan-rp-3ded74e5-784a-4e9c-9de3-9b74b9cbe6d4-1"
+      ],
+      "applied_plan_id": "plan-rp-3ded74e5-784a-4e9c-9de3-9b74b9cbe6d4-0",
+      "elapsed_ms": 1223.5740960022667,
+      "compute_ms": 579.0765470010228,
+      "validation_ms": 181.2265490007121,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-0f5858cc-46c0-455a-8d43-b009f7aa37b7",
+    "old_run_id": "run-b2040afc-c684-4739-90ec-5541862561fb",
+    "case": "delay",
+    "repeat": 14,
+    "job": {
+      "id": "rp-c434389a-b6a9-4875-8a15-18384c1fa349",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:42:31.076Z",
+      "started_at": "2026-10-01T18:42:31.372Z",
+      "finished_at": "2026-10-01T18:42:32.389Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-c434389a-b6a9-4875-8a15-18384c1fa349-0",
+        "plan-rp-c434389a-b6a9-4875-8a15-18384c1fa349-1"
+      ],
+      "applied_plan_id": "plan-rp-c434389a-b6a9-4875-8a15-18384c1fa349-0",
+      "elapsed_ms": 1313.0964350057184,
+      "compute_ms": 606.2827410059981,
+      "validation_ms": 181.37468698841985,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-91a892e7-882f-4ce0-995c-f63d76fdb707",
+    "old_run_id": "run-0f5858cc-46c0-455a-8d43-b009f7aa37b7",
+    "case": "delay",
+    "repeat": 15,
+    "job": {
+      "id": "rp-c03e1c6d-377b-4469-b17d-2ebf8cee65ab",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:42:35.000Z",
+      "started_at": "2026-10-01T18:42:35.295Z",
+      "finished_at": "2026-10-01T18:42:36.212Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-c03e1c6d-377b-4469-b17d-2ebf8cee65ab-0",
+        "plan-rp-c03e1c6d-377b-4469-b17d-2ebf8cee65ab-1"
+      ],
+      "applied_plan_id": "plan-rp-c03e1c6d-377b-4469-b17d-2ebf8cee65ab-0",
+      "elapsed_ms": 1212.8227549983421,
+      "compute_ms": 564.552936994005,
+      "validation_ms": 188.60077100544004,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-b6a6c107-fce6-442b-bce5-be7421ef435b",
+    "old_run_id": "run-91a892e7-882f-4ce0-995c-f63d76fdb707",
+    "case": "delay",
+    "repeat": 16,
+    "job": {
+      "id": "rp-34c48afe-2de6-4c15-9c89-214fb52e044c",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:42:38.733Z",
+      "started_at": "2026-10-01T18:42:39.031Z",
+      "finished_at": "2026-10-01T18:42:39.983Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-34c48afe-2de6-4c15-9c89-214fb52e044c-0",
+        "plan-rp-34c48afe-2de6-4c15-9c89-214fb52e044c-1"
+      ],
+      "applied_plan_id": "plan-rp-34c48afe-2de6-4c15-9c89-214fb52e044c-0",
+      "elapsed_ms": 1250.091098001576,
+      "compute_ms": 593.9084909987287,
+      "validation_ms": 190.63984000240453,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-f33a2766-154c-4c5b-9b79-10a25ce2babe",
+    "old_run_id": "run-b6a6c107-fce6-442b-bce5-be7421ef435b",
+    "case": "delay",
+    "repeat": 17,
+    "job": {
+      "id": "rp-a0f0c41b-8734-4f4a-839a-db51b803bfbb",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:42:42.543Z",
+      "started_at": "2026-10-01T18:42:42.840Z",
+      "finished_at": "2026-10-01T18:42:43.778Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-a0f0c41b-8734-4f4a-839a-db51b803bfbb-0",
+        "plan-rp-a0f0c41b-8734-4f4a-839a-db51b803bfbb-1"
+      ],
+      "applied_plan_id": "plan-rp-a0f0c41b-8734-4f4a-839a-db51b803bfbb-0",
+      "elapsed_ms": 1235.9338050009683,
+      "compute_ms": 581.2021059828112,
+      "validation_ms": 188.99164101458155,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-39183066-54f0-4954-a0b2-4f9b792512db",
+    "old_run_id": "run-f33a2766-154c-4c5b-9b79-10a25ce2babe",
+    "case": "delay",
+    "repeat": 18,
+    "job": {
+      "id": "rp-1a8754b5-67f7-43f4-9718-1ce0e3010992",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:42:46.352Z",
+      "started_at": "2026-10-01T18:42:46.663Z",
+      "finished_at": "2026-10-01T18:42:47.639Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-1a8754b5-67f7-43f4-9718-1ce0e3010992-0",
+        "plan-rp-1a8754b5-67f7-43f4-9718-1ce0e3010992-1"
+      ],
+      "applied_plan_id": "plan-rp-1a8754b5-67f7-43f4-9718-1ce0e3010992-0",
+      "elapsed_ms": 1287.4936730004265,
+      "compute_ms": 575.911977008218,
+      "validation_ms": 183.08252199494746,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-36816c98-8105-479c-b05e-ca9d5d1ad7c6",
+    "old_run_id": "run-39183066-54f0-4954-a0b2-4f9b792512db",
+    "case": "delay",
+    "repeat": 19,
+    "job": {
+      "id": "rp-310a604f-7125-466f-bddc-f1b7a710d276",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:42:50.205Z",
+      "started_at": "2026-10-01T18:42:50.509Z",
+      "finished_at": "2026-10-01T18:42:51.447Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-310a604f-7125-466f-bddc-f1b7a710d276-0",
+        "plan-rp-310a604f-7125-466f-bddc-f1b7a710d276-1"
+      ],
+      "applied_plan_id": "plan-rp-310a604f-7125-466f-bddc-f1b7a710d276-0",
+      "elapsed_ms": 1242.754895996768,
+      "compute_ms": 575.7556760072475,
+      "validation_ms": 183.14517798717134,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-49937f8d-6566-4bb9-97af-1010e2e90930",
+    "old_run_id": "run-36816c98-8105-479c-b05e-ca9d5d1ad7c6",
+    "case": "delay",
+    "repeat": 20,
+    "job": {
+      "id": "rp-bec9b871-b8ba-4609-86cd-6018091a821a",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:42:53.928Z",
+      "started_at": "2026-10-01T18:42:54.273Z",
+      "finished_at": "2026-10-01T18:42:55.225Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-bec9b871-b8ba-4609-86cd-6018091a821a-0",
+        "plan-rp-bec9b871-b8ba-4609-86cd-6018091a821a-1"
+      ],
+      "applied_plan_id": "plan-rp-bec9b871-b8ba-4609-86cd-6018091a821a-0",
+      "elapsed_ms": 1297.6088720024563,
+      "compute_ms": 590.1837790006539,
+      "validation_ms": 193.84562999766786,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-4348e0fb-4bae-41b6-b5e0-9fcfdc3bc9cf",
+    "old_run_id": "run-49937f8d-6566-4bb9-97af-1010e2e90930",
+    "case": "closure",
+    "repeat": 1,
+    "job": {
+      "id": "rp-92d7d6d2-1bae-4ddf-b69b-479d0594f58f",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:42:57.680Z",
+      "started_at": "2026-10-01T18:42:57.975Z",
+      "finished_at": "2026-10-01T18:42:58.862Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-92d7d6d2-1bae-4ddf-b69b-479d0594f58f-0",
+        "plan-rp-92d7d6d2-1bae-4ddf-b69b-479d0594f58f-1"
+      ],
+      "applied_plan_id": "plan-rp-92d7d6d2-1bae-4ddf-b69b-479d0594f58f-0",
+      "elapsed_ms": 1182.1907449993887,
+      "compute_ms": 549.2473079866613,
+      "validation_ms": 176.5191320082522,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-ca23025f-fb9a-4fd1-84dc-8e3b9033490e",
+    "old_run_id": "run-4348e0fb-4bae-41b6-b5e0-9fcfdc3bc9cf",
+    "case": "closure",
+    "repeat": 2,
+    "job": {
+      "id": "rp-363ce6bb-bd4a-44f7-b438-9d9bda9b9481",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:43:01.332Z",
+      "started_at": "2026-10-01T18:43:01.622Z",
+      "finished_at": "2026-10-01T18:43:02.551Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-363ce6bb-bd4a-44f7-b438-9d9bda9b9481-0",
+        "plan-rp-363ce6bb-bd4a-44f7-b438-9d9bda9b9481-1"
+      ],
+      "applied_plan_id": "plan-rp-363ce6bb-bd4a-44f7-b438-9d9bda9b9481-0",
+      "elapsed_ms": 1219.3722310039448,
+      "compute_ms": 566.3374099967768,
+      "validation_ms": 188.82499400206143,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-52c6710d-634c-4039-9ef3-671a301014b8",
+    "old_run_id": "run-ca23025f-fb9a-4fd1-84dc-8e3b9033490e",
+    "case": "closure",
+    "repeat": 3,
+    "job": {
+      "id": "rp-857d1de9-dc92-4b38-ab00-23ec684f92ef",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:43:04.989Z",
+      "started_at": "2026-10-01T18:43:05.296Z",
+      "finished_at": "2026-10-01T18:43:06.254Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-857d1de9-dc92-4b38-ab00-23ec684f92ef-0",
+        "plan-rp-857d1de9-dc92-4b38-ab00-23ec684f92ef-1"
+      ],
+      "applied_plan_id": "plan-rp-857d1de9-dc92-4b38-ab00-23ec684f92ef-0",
+      "elapsed_ms": 1265.844075998757,
+      "compute_ms": 560.870844994497,
+      "validation_ms": 182.16836200735997,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-c284efdf-9fbe-4c07-a25d-5135c23f7182",
+    "old_run_id": "run-52c6710d-634c-4039-9ef3-671a301014b8",
+    "case": "closure",
+    "repeat": 4,
+    "job": {
+      "id": "rp-46657deb-2d07-49bb-9331-0bdc00cb45ca",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:43:08.691Z",
+      "started_at": "2026-10-01T18:43:08.979Z",
+      "finished_at": "2026-10-01T18:43:09.890Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-46657deb-2d07-49bb-9331-0bdc00cb45ca-0",
+        "plan-rp-46657deb-2d07-49bb-9331-0bdc00cb45ca-1"
+      ],
+      "applied_plan_id": "plan-rp-46657deb-2d07-49bb-9331-0bdc00cb45ca-0",
+      "elapsed_ms": 1199.022408996825,
+      "compute_ms": 568.4231740087853,
+      "validation_ms": 178.30876099469606,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-35d10dff-8bb0-4cee-b6e3-03e795787d8d",
+    "old_run_id": "run-c284efdf-9fbe-4c07-a25d-5135c23f7182",
+    "case": "closure",
+    "repeat": 5,
+    "job": {
+      "id": "rp-53f7c6ae-d144-4642-bfe1-6e9e8ea43f26",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:43:12.379Z",
+      "started_at": "2026-10-01T18:43:12.663Z",
+      "finished_at": "2026-10-01T18:43:13.585Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-53f7c6ae-d144-4642-bfe1-6e9e8ea43f26-0",
+        "plan-rp-53f7c6ae-d144-4642-bfe1-6e9e8ea43f26-1"
+      ],
+      "applied_plan_id": "plan-rp-53f7c6ae-d144-4642-bfe1-6e9e8ea43f26-0",
+      "elapsed_ms": 1206.2157089967513,
+      "compute_ms": 562.3903360174154,
+      "validation_ms": 183.26712898124242,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-e3207593-39c2-4b29-9d86-d22eed3ca472",
+    "old_run_id": "run-35d10dff-8bb0-4cee-b6e3-03e795787d8d",
+    "case": "closure",
+    "repeat": 6,
+    "job": {
+      "id": "rp-aac7d646-0138-440d-917d-736acb5abe9a",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:43:16.066Z",
+      "started_at": "2026-10-01T18:43:16.364Z",
+      "finished_at": "2026-10-01T18:43:17.297Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-aac7d646-0138-440d-917d-736acb5abe9a-0",
+        "plan-rp-aac7d646-0138-440d-917d-736acb5abe9a-1"
+      ],
+      "applied_plan_id": "plan-rp-aac7d646-0138-440d-917d-736acb5abe9a-0",
+      "elapsed_ms": 1231.3959210005123,
+      "compute_ms": 579.1883359997883,
+      "validation_ms": 180.17098699783674,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-9d8e617d-baed-4eee-b48e-e335591b773a",
+    "old_run_id": "run-e3207593-39c2-4b29-9d86-d22eed3ca472",
+    "case": "closure",
+    "repeat": 7,
+    "job": {
+      "id": "rp-8c8b448f-966d-4c2f-8029-f080b027bb37",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:43:19.855Z",
+      "started_at": "2026-10-01T18:43:20.139Z",
+      "finished_at": "2026-10-01T18:43:21.043Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-8c8b448f-966d-4c2f-8029-f080b027bb37-0",
+        "plan-rp-8c8b448f-966d-4c2f-8029-f080b027bb37-1"
+      ],
+      "applied_plan_id": "plan-rp-8c8b448f-966d-4c2f-8029-f080b027bb37-0",
+      "elapsed_ms": 1188.9756150048925,
+      "compute_ms": 552.8972470056033,
+      "validation_ms": 178.71380399446934,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-612866a9-34e7-4e58-b066-b1be6138379c",
+    "old_run_id": "run-9d8e617d-baed-4eee-b48e-e335591b773a",
+    "case": "closure",
+    "repeat": 8,
+    "job": {
+      "id": "rp-e155d490-5684-4c17-8966-3e9bf3da731b",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:43:23.519Z",
+      "started_at": "2026-10-01T18:43:23.806Z",
+      "finished_at": "2026-10-01T18:43:24.726Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-e155d490-5684-4c17-8966-3e9bf3da731b-0",
+        "plan-rp-e155d490-5684-4c17-8966-3e9bf3da731b-1"
+      ],
+      "applied_plan_id": "plan-rp-e155d490-5684-4c17-8966-3e9bf3da731b-0",
+      "elapsed_ms": 1207.4131300032604,
+      "compute_ms": 567.6494319923222,
+      "validation_ms": 182.13529000786366,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-68dc3843-77f6-4076-83da-04efbb7d15b4",
+    "old_run_id": "run-612866a9-34e7-4e58-b066-b1be6138379c",
+    "case": "closure",
+    "repeat": 9,
+    "job": {
+      "id": "rp-c76d37c6-18ff-4d2a-bd60-d643e1fa90d8",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:43:27.326Z",
+      "started_at": "2026-10-01T18:43:27.672Z",
+      "finished_at": "2026-10-01T18:43:28.567Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-c76d37c6-18ff-4d2a-bd60-d643e1fa90d8-0",
+        "plan-rp-c76d37c6-18ff-4d2a-bd60-d643e1fa90d8-1"
+      ],
+      "applied_plan_id": "plan-rp-c76d37c6-18ff-4d2a-bd60-d643e1fa90d8-0",
+      "elapsed_ms": 1241.049390999251,
+      "compute_ms": 553.6507249926217,
+      "validation_ms": 178.9026710030157,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-1a2ab270-31b1-4813-a6be-34577ee0ff52",
+    "old_run_id": "run-68dc3843-77f6-4076-83da-04efbb7d15b4",
+    "case": "closure",
+    "repeat": 10,
+    "job": {
+      "id": "rp-991703f4-d478-4ba2-a69d-1f542577c4df",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:43:30.989Z",
+      "started_at": "2026-10-01T18:43:31.270Z",
+      "finished_at": "2026-10-01T18:43:32.190Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-991703f4-d478-4ba2-a69d-1f542577c4df-0",
+        "plan-rp-991703f4-d478-4ba2-a69d-1f542577c4df-1"
+      ],
+      "applied_plan_id": "plan-rp-991703f4-d478-4ba2-a69d-1f542577c4df-0",
+      "elapsed_ms": 1201.7383359998348,
+      "compute_ms": 571.3014709981508,
+      "validation_ms": 185.1907310046954,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-2f152ef4-d929-4abc-b848-ff9fdab75294",
+    "old_run_id": "run-1a2ab270-31b1-4813-a6be-34577ee0ff52",
+    "case": "closure",
+    "repeat": 11,
+    "job": {
+      "id": "rp-c4cf0ac0-34ff-4370-9dd5-0c796c1b61b3",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:43:34.714Z",
+      "started_at": "2026-10-01T18:43:35.048Z",
+      "finished_at": "2026-10-01T18:43:35.972Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-c4cf0ac0-34ff-4370-9dd5-0c796c1b61b3-0",
+        "plan-rp-c4cf0ac0-34ff-4370-9dd5-0c796c1b61b3-1"
+      ],
+      "applied_plan_id": "plan-rp-c4cf0ac0-34ff-4370-9dd5-0c796c1b61b3-0",
+      "elapsed_ms": 1258.5238379906514,
+      "compute_ms": 564.630524990207,
+      "validation_ms": 183.8920760055771,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-ddd25474-1905-40fa-bb9c-0fe06349f89e",
+    "old_run_id": "run-2f152ef4-d929-4abc-b848-ff9fdab75294",
+    "case": "closure",
+    "repeat": 12,
+    "job": {
+      "id": "rp-5e1a71d4-199d-4c5c-b07f-88ac2c1d6173",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:43:38.434Z",
+      "started_at": "2026-10-01T18:43:38.721Z",
+      "finished_at": "2026-10-01T18:43:39.662Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-5e1a71d4-199d-4c5c-b07f-88ac2c1d6173-0",
+        "plan-rp-5e1a71d4-199d-4c5c-b07f-88ac2c1d6173-1"
+      ],
+      "applied_plan_id": "plan-rp-5e1a71d4-199d-4c5c-b07f-88ac2c1d6173-0",
+      "elapsed_ms": 1228.337818,
+      "compute_ms": 551.5611540031387,
+      "validation_ms": 180.39643299562158,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-6688d6b1-88fb-4c97-ac31-305494eccb45",
+    "old_run_id": "run-ddd25474-1905-40fa-bb9c-0fe06349f89e",
+    "case": "closure",
+    "repeat": 13,
+    "job": {
+      "id": "rp-342e1438-4fe0-4c24-91ae-c854fafa77b9",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:43:42.279Z",
+      "started_at": "2026-10-01T18:43:42.573Z",
+      "finished_at": "2026-10-01T18:43:43.505Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-342e1438-4fe0-4c24-91ae-c854fafa77b9-0",
+        "plan-rp-342e1438-4fe0-4c24-91ae-c854fafa77b9-1"
+      ],
+      "applied_plan_id": "plan-rp-342e1438-4fe0-4c24-91ae-c854fafa77b9-0",
+      "elapsed_ms": 1226.0607219941448,
+      "compute_ms": 589.7836429940071,
+      "validation_ms": 180.5216080028913,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-73fa04e2-c8f0-4205-8ed3-da8ecef6ac83",
+    "old_run_id": "run-6688d6b1-88fb-4c97-ac31-305494eccb45",
+    "case": "closure",
+    "repeat": 14,
+    "job": {
+      "id": "rp-553c31c0-4960-4c51-ad92-ceecadab3cbf",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:43:46.069Z",
+      "started_at": "2026-10-01T18:43:46.369Z",
+      "finished_at": "2026-10-01T18:43:47.375Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-553c31c0-4960-4c51-ad92-ceecadab3cbf-0",
+        "plan-rp-553c31c0-4960-4c51-ad92-ceecadab3cbf-1"
+      ],
+      "applied_plan_id": "plan-rp-553c31c0-4960-4c51-ad92-ceecadab3cbf-0",
+      "elapsed_ms": 1306.7766690001008,
+      "compute_ms": 596.3418729879777,
+      "validation_ms": 190.14919001347153,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-8f971192-6bc4-475b-89b1-1be8f24c4d1b",
+    "old_run_id": "run-73fa04e2-c8f0-4205-8ed3-da8ecef6ac83",
+    "case": "closure",
+    "repeat": 15,
+    "job": {
+      "id": "rp-4751aded-0098-41d1-9a17-18a98485e2d9",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:43:49.886Z",
+      "started_at": "2026-10-01T18:43:50.173Z",
+      "finished_at": "2026-10-01T18:43:51.088Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-4751aded-0098-41d1-9a17-18a98485e2d9-0",
+        "plan-rp-4751aded-0098-41d1-9a17-18a98485e2d9-1"
+      ],
+      "applied_plan_id": "plan-rp-4751aded-0098-41d1-9a17-18a98485e2d9-0",
+      "elapsed_ms": 1202.2396690008463,
+      "compute_ms": 569.2533610053943,
+      "validation_ms": 178.6968049927964,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-033290d5-c25f-4a91-8246-3e20050e5cbc",
+    "old_run_id": "run-8f971192-6bc4-475b-89b1-1be8f24c4d1b",
+    "case": "closure",
+    "repeat": 16,
+    "job": {
+      "id": "rp-3bd0bf5a-ef1d-4786-9f4f-fd2dbe4e05e6",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:43:53.559Z",
+      "started_at": "2026-10-01T18:43:53.850Z",
+      "finished_at": "2026-10-01T18:43:54.779Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-3bd0bf5a-ef1d-4786-9f4f-fd2dbe4e05e6-0",
+        "plan-rp-3bd0bf5a-ef1d-4786-9f4f-fd2dbe4e05e6-1"
+      ],
+      "applied_plan_id": "plan-rp-3bd0bf5a-ef1d-4786-9f4f-fd2dbe4e05e6-0",
+      "elapsed_ms": 1220.5949290073477,
+      "compute_ms": 568.3218620033585,
+      "validation_ms": 184.30591600190382,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-2b34bcd2-527a-43e1-bf14-037f2d97a451",
+    "old_run_id": "run-033290d5-c25f-4a91-8246-3e20050e5cbc",
+    "case": "closure",
+    "repeat": 17,
+    "job": {
+      "id": "rp-7d8c2550-8873-429e-a1b8-b9860d297b97",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:43:57.239Z",
+      "started_at": "2026-10-01T18:43:57.526Z",
+      "finished_at": "2026-10-01T18:43:58.439Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-7d8c2550-8873-429e-a1b8-b9860d297b97-0",
+        "plan-rp-7d8c2550-8873-429e-a1b8-b9860d297b97-1"
+      ],
+      "applied_plan_id": "plan-rp-7d8c2550-8873-429e-a1b8-b9860d297b97-0",
+      "elapsed_ms": 1200.3565970007912,
+      "compute_ms": 560.8890979856369,
+      "validation_ms": 181.8366810111911,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-c2ffa3a7-7bdd-4310-88f4-e95a0aae0d00",
+    "old_run_id": "run-2b34bcd2-527a-43e1-bf14-037f2d97a451",
+    "case": "closure",
+    "repeat": 18,
+    "job": {
+      "id": "rp-58417e6e-1849-4f91-8224-cf86c04f6822",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:44:00.955Z",
+      "started_at": "2026-10-01T18:44:01.222Z",
+      "finished_at": "2026-10-01T18:44:02.170Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-58417e6e-1849-4f91-8224-cf86c04f6822-0",
+        "plan-rp-58417e6e-1849-4f91-8224-cf86c04f6822-1"
+      ],
+      "applied_plan_id": "plan-rp-58417e6e-1849-4f91-8224-cf86c04f6822-0",
+      "elapsed_ms": 1215.7286569999997,
+      "compute_ms": 556.0743039895897,
+      "validation_ms": 181.01477200980298,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-31ef3e69-cbf4-43f4-b0b0-b53617ba1fd3",
+    "old_run_id": "run-c2ffa3a7-7bdd-4310-88f4-e95a0aae0d00",
+    "case": "closure",
+    "repeat": 19,
+    "job": {
+      "id": "rp-65c482f6-8b9d-4e88-ad5e-642193452e77",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:44:04.662Z",
+      "started_at": "2026-10-01T18:44:04.944Z",
+      "finished_at": "2026-10-01T18:44:05.852Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-65c482f6-8b9d-4e88-ad5e-642193452e77-0",
+        "plan-rp-65c482f6-8b9d-4e88-ad5e-642193452e77-1"
+      ],
+      "applied_plan_id": "plan-rp-65c482f6-8b9d-4e88-ad5e-642193452e77-0",
+      "elapsed_ms": 1190.1199450003332,
+      "compute_ms": 549.3499420044827,
+      "validation_ms": 182.52140899858205,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-1cfaeccb-99dd-4e90-837a-d5b79e839e58",
+    "old_run_id": "run-31ef3e69-cbf4-43f4-b0b0-b53617ba1fd3",
+    "case": "closure",
+    "repeat": 20,
+    "job": {
+      "id": "rp-80c71e68-b81a-420e-a0a6-52fa261fc0be",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:44:08.369Z",
+      "started_at": "2026-10-01T18:44:08.704Z",
+      "finished_at": "2026-10-01T18:44:09.628Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-80c71e68-b81a-420e-a0a6-52fa261fc0be-0",
+        "plan-rp-80c71e68-b81a-420e-a0a6-52fa261fc0be-1"
+      ],
+      "applied_plan_id": "plan-rp-80c71e68-b81a-420e-a0a6-52fa261fc0be-0",
+      "elapsed_ms": 1259.0080769950873,
+      "compute_ms": 566.6446190152783,
+      "validation_ms": 184.6239649821655,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-837e593f-8f04-4e7b-abd1-f96390504335",
+    "old_run_id": "run-1cfaeccb-99dd-4e90-837a-d5b79e839e58",
+    "case": "resource_loss",
+    "repeat": 1,
+    "job": {
+      "id": "rp-ff278787-d267-4c86-9700-a333c0a75dea",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:44:12.095Z",
+      "started_at": "2026-10-01T18:44:12.393Z",
+      "finished_at": "2026-10-01T18:44:13.289Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-ff278787-d267-4c86-9700-a333c0a75dea-0",
+        "plan-rp-ff278787-d267-4c86-9700-a333c0a75dea-1"
+      ],
+      "applied_plan_id": "plan-rp-ff278787-d267-4c86-9700-a333c0a75dea-0",
+      "elapsed_ms": 1194.9729819971253,
+      "compute_ms": 546.2860549960169,
+      "validation_ms": 181.24945100862533,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-4d3025b7-a456-4c13-8875-51da393a7d7e",
+    "old_run_id": "run-837e593f-8f04-4e7b-abd1-f96390504335",
+    "case": "resource_loss",
+    "repeat": 2,
+    "job": {
+      "id": "rp-8a3fd08a-964d-418b-bf12-b17e504fc43f",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:44:15.768Z",
+      "started_at": "2026-10-01T18:44:16.111Z",
+      "finished_at": "2026-10-01T18:44:17.001Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-8a3fd08a-964d-418b-bf12-b17e504fc43f-0",
+        "plan-rp-8a3fd08a-964d-418b-bf12-b17e504fc43f-1"
+      ],
+      "applied_plan_id": "plan-rp-8a3fd08a-964d-418b-bf12-b17e504fc43f-0",
+      "elapsed_ms": 1233.5457660010434,
+      "compute_ms": 543.7222039909102,
+      "validation_ms": 178.4209970064694,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-65a38f51-b0a5-4a4f-9ec7-09bda061c19b",
+    "old_run_id": "run-4d3025b7-a456-4c13-8875-51da393a7d7e",
+    "case": "resource_loss",
+    "repeat": 3,
+    "job": {
+      "id": "rp-409316af-77dc-460c-b13a-b7990426c35d",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:44:19.507Z",
+      "started_at": "2026-10-01T18:44:19.814Z",
+      "finished_at": "2026-10-01T18:44:20.771Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-409316af-77dc-460c-b13a-b7990426c35d-0",
+        "plan-rp-409316af-77dc-460c-b13a-b7990426c35d-1"
+      ],
+      "applied_plan_id": "plan-rp-409316af-77dc-460c-b13a-b7990426c35d-0",
+      "elapsed_ms": 1264.1320940019796,
+      "compute_ms": 553.1644579968997,
+      "validation_ms": 182.48394100373844,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-a789fbfc-6398-44ee-9eb2-84570d2ccba3",
+    "old_run_id": "run-65a38f51-b0a5-4a4f-9ec7-09bda061c19b",
+    "case": "resource_loss",
+    "repeat": 4,
+    "job": {
+      "id": "rp-649dbfcb-d135-44b6-a49d-8bf7b499625a",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:44:23.401Z",
+      "started_at": "2026-10-01T18:44:23.702Z",
+      "finished_at": "2026-10-01T18:44:24.639Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-649dbfcb-d135-44b6-a49d-8bf7b499625a-0",
+        "plan-rp-649dbfcb-d135-44b6-a49d-8bf7b499625a-1"
+      ],
+      "applied_plan_id": "plan-rp-649dbfcb-d135-44b6-a49d-8bf7b499625a-0",
+      "elapsed_ms": 1238.4580069992808,
+      "compute_ms": 574.4415079825558,
+      "validation_ms": 191.0557470182539,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-1a52480c-f55e-44f2-9973-665a1f3e81f5",
+    "old_run_id": "run-a789fbfc-6398-44ee-9eb2-84570d2ccba3",
+    "case": "resource_loss",
+    "repeat": 5,
+    "job": {
+      "id": "rp-544032f7-c9b6-41ae-b356-f576f7d31293",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:44:27.206Z",
+      "started_at": "2026-10-01T18:44:27.511Z",
+      "finished_at": "2026-10-01T18:44:28.407Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-544032f7-c9b6-41ae-b356-f576f7d31293-0",
+        "plan-rp-544032f7-c9b6-41ae-b356-f576f7d31293-1"
+      ],
+      "applied_plan_id": "plan-rp-544032f7-c9b6-41ae-b356-f576f7d31293-0",
+      "elapsed_ms": 1201.8186889981735,
+      "compute_ms": 549.2910430111806,
+      "validation_ms": 182.05323998699896,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-c02b6d74-22b2-4b0f-af06-272fadf2bd84",
+    "old_run_id": "run-1a52480c-f55e-44f2-9973-665a1f3e81f5",
+    "case": "resource_loss",
+    "repeat": 6,
+    "job": {
+      "id": "rp-63fac361-3c01-4c86-85ec-2f894dfbe82d",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:44:30.917Z",
+      "started_at": "2026-10-01T18:44:31.213Z",
+      "finished_at": "2026-10-01T18:44:32.108Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-63fac361-3c01-4c86-85ec-2f894dfbe82d-0",
+        "plan-rp-63fac361-3c01-4c86-85ec-2f894dfbe82d-1"
+      ],
+      "applied_plan_id": "plan-rp-63fac361-3c01-4c86-85ec-2f894dfbe82d-0",
+      "elapsed_ms": 1191.9598019958357,
+      "compute_ms": 541.4128620104748,
+      "validation_ms": 177.5161649857182,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-af1e19df-cfcb-4448-929f-17b5ddcdf170",
+    "old_run_id": "run-c02b6d74-22b2-4b0f-af06-272fadf2bd84",
+    "case": "resource_loss",
+    "repeat": 7,
+    "job": {
+      "id": "rp-80b2bf0b-cf34-4f5d-af70-56742a54a81b",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:44:34.702Z",
+      "started_at": "2026-10-01T18:44:35.002Z",
+      "finished_at": "2026-10-01T18:44:35.969Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-80b2bf0b-cf34-4f5d-af70-56742a54a81b-0",
+        "plan-rp-80b2bf0b-cf34-4f5d-af70-56742a54a81b-1"
+      ],
+      "applied_plan_id": "plan-rp-80b2bf0b-cf34-4f5d-af70-56742a54a81b-0",
+      "elapsed_ms": 1267.6431270010653,
+      "compute_ms": 558.0909190248349,
+      "validation_ms": 180.12841097515775,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-7be2f620-4e72-4916-bcee-9f0b2df6fb4f",
+    "old_run_id": "run-af1e19df-cfcb-4448-929f-17b5ddcdf170",
+    "case": "resource_loss",
+    "repeat": 8,
+    "job": {
+      "id": "rp-53f2c3d8-d0c8-4270-a031-a06fed745d8b",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:44:38.561Z",
+      "started_at": "2026-10-01T18:44:38.865Z",
+      "finished_at": "2026-10-01T18:44:39.792Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-53f2c3d8-d0c8-4270-a031-a06fed745d8b-0",
+        "plan-rp-53f2c3d8-d0c8-4270-a031-a06fed745d8b-1"
+      ],
+      "applied_plan_id": "plan-rp-53f2c3d8-d0c8-4270-a031-a06fed745d8b-0",
+      "elapsed_ms": 1231.948287000705,
+      "compute_ms": 559.5675080039655,
+      "validation_ms": 205.90675799758174,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-0d3d989b-9254-4e14-aa62-c200adca764d",
+    "old_run_id": "run-7be2f620-4e72-4916-bcee-9f0b2df6fb4f",
+    "case": "resource_loss",
+    "repeat": 9,
+    "job": {
+      "id": "rp-05ff4bd7-e681-44e3-a664-323bcd8acca5",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:44:42.249Z",
+      "started_at": "2026-10-01T18:44:42.596Z",
+      "finished_at": "2026-10-01T18:44:43.500Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-05ff4bd7-e681-44e3-a664-323bcd8acca5-0",
+        "plan-rp-05ff4bd7-e681-44e3-a664-323bcd8acca5-1"
+      ],
+      "applied_plan_id": "plan-rp-05ff4bd7-e681-44e3-a664-323bcd8acca5-0",
+      "elapsed_ms": 1251.3808500007144,
+      "compute_ms": 546.5556700000889,
+      "validation_ms": 178.97149300551973,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-3629863c-96bd-4e0b-a9a2-79fd768b7ac5",
+    "old_run_id": "run-0d3d989b-9254-4e14-aa62-c200adca764d",
+    "case": "resource_loss",
+    "repeat": 10,
+    "job": {
+      "id": "rp-b36b700d-5dc7-4c2c-b121-94bf9aaa63e3",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:44:45.983Z",
+      "started_at": "2026-10-01T18:44:46.284Z",
+      "finished_at": "2026-10-01T18:44:47.180Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-b36b700d-5dc7-4c2c-b121-94bf9aaa63e3-0",
+        "plan-rp-b36b700d-5dc7-4c2c-b121-94bf9aaa63e3-1"
+      ],
+      "applied_plan_id": "plan-rp-b36b700d-5dc7-4c2c-b121-94bf9aaa63e3-0",
+      "elapsed_ms": 1197.149307001382,
+      "compute_ms": 545.5374469966046,
+      "validation_ms": 182.53348300640937,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-35564bee-dfb2-449c-ac5c-37a8bfe1d43a",
+    "old_run_id": "run-3629863c-96bd-4e0b-a9a2-79fd768b7ac5",
+    "case": "resource_loss",
+    "repeat": 11,
+    "job": {
+      "id": "rp-3e87cb4f-772c-44fc-90f0-95190dfc2deb",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:44:49.786Z",
+      "started_at": "2026-10-01T18:44:50.091Z",
+      "finished_at": "2026-10-01T18:44:50.991Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-3e87cb4f-772c-44fc-90f0-95190dfc2deb-0",
+        "plan-rp-3e87cb4f-772c-44fc-90f0-95190dfc2deb-1"
+      ],
+      "applied_plan_id": "plan-rp-3e87cb4f-772c-44fc-90f0-95190dfc2deb-0",
+      "elapsed_ms": 1205.038941996463,
+      "compute_ms": 544.0967040121905,
+      "validation_ms": 178.79896998783806,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-588a34a7-1a6c-4fe0-a7e7-8248a1c8bbea",
+    "old_run_id": "run-35564bee-dfb2-449c-ac5c-37a8bfe1d43a",
+    "case": "resource_loss",
+    "repeat": 12,
+    "job": {
+      "id": "rp-b216b7da-5083-4d9e-9d53-8d45ceafe834",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:44:53.588Z",
+      "started_at": "2026-10-01T18:44:53.903Z",
+      "finished_at": "2026-10-01T18:44:54.872Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-b216b7da-5083-4d9e-9d53-8d45ceafe834-0",
+        "plan-rp-b216b7da-5083-4d9e-9d53-8d45ceafe834-1"
+      ],
+      "applied_plan_id": "plan-rp-b216b7da-5083-4d9e-9d53-8d45ceafe834-0",
+      "elapsed_ms": 1284.77204599767,
+      "compute_ms": 566.5231739912997,
+      "validation_ms": 187.2378780026338,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-b1611a0f-a871-48a5-816d-c410c92cd44f",
+    "old_run_id": "run-588a34a7-1a6c-4fe0-a7e7-8248a1c8bbea",
+    "case": "resource_loss",
+    "repeat": 13,
+    "job": {
+      "id": "rp-cf9a7ec0-7aab-4d67-b59f-a134e0bbbc0c",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:44:57.440Z",
+      "started_at": "2026-10-01T18:44:57.734Z",
+      "finished_at": "2026-10-01T18:44:58.619Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-cf9a7ec0-7aab-4d67-b59f-a134e0bbbc0c-0",
+        "plan-rp-cf9a7ec0-7aab-4d67-b59f-a134e0bbbc0c-1"
+      ],
+      "applied_plan_id": "plan-rp-cf9a7ec0-7aab-4d67-b59f-a134e0bbbc0c-0",
+      "elapsed_ms": 1179.9495890081744,
+      "compute_ms": 546.5868490136927,
+      "validation_ms": 182.06901298981393,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-063f8de9-643d-49aa-ac52-4613d1349d82",
+    "old_run_id": "run-b1611a0f-a871-48a5-816d-c410c92cd44f",
+    "case": "resource_loss",
+    "repeat": 14,
+    "job": {
+      "id": "rp-d47aeed6-df6d-48d6-a98f-491e7a236cfb",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:45:01.234Z",
+      "started_at": "2026-10-01T18:45:01.533Z",
+      "finished_at": "2026-10-01T18:45:02.489Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-d47aeed6-df6d-48d6-a98f-491e7a236cfb-0",
+        "plan-rp-d47aeed6-df6d-48d6-a98f-491e7a236cfb-1"
+      ],
+      "applied_plan_id": "plan-rp-d47aeed6-df6d-48d6-a98f-491e7a236cfb-0",
+      "elapsed_ms": 1255.3597340011038,
+      "compute_ms": 552.5490399886621,
+      "validation_ms": 190.02809301309753,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-ae5b6326-64a0-4d20-8a7e-20a04f13cf47",
+    "old_run_id": "run-063f8de9-643d-49aa-ac52-4613d1349d82",
+    "case": "resource_loss",
+    "repeat": 15,
+    "job": {
+      "id": "rp-2cd9032c-4b9a-4ae8-b8a5-51484acbad68",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:45:04.984Z",
+      "started_at": "2026-10-01T18:45:05.286Z",
+      "finished_at": "2026-10-01T18:45:06.201Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-2cd9032c-4b9a-4ae8-b8a5-51484acbad68-0",
+        "plan-rp-2cd9032c-4b9a-4ae8-b8a5-51484acbad68-1"
+      ],
+      "applied_plan_id": "plan-rp-2cd9032c-4b9a-4ae8-b8a5-51484acbad68-0",
+      "elapsed_ms": 1217.0625900034793,
+      "compute_ms": 559.1612570060533,
+      "validation_ms": 183.32940399704967,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-72b283e2-d48e-434e-bd25-4262567b2a79",
+    "old_run_id": "run-ae5b6326-64a0-4d20-8a7e-20a04f13cf47",
+    "case": "resource_loss",
+    "repeat": 16,
+    "job": {
+      "id": "rp-48273bbc-6e52-4bb1-9540-2095aaa6de14",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:45:08.734Z",
+      "started_at": "2026-10-01T18:45:09.025Z",
+      "finished_at": "2026-10-01T18:45:09.965Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-48273bbc-6e52-4bb1-9540-2095aaa6de14-0",
+        "plan-rp-48273bbc-6e52-4bb1-9540-2095aaa6de14-1"
+      ],
+      "applied_plan_id": "plan-rp-48273bbc-6e52-4bb1-9540-2095aaa6de14-0",
+      "elapsed_ms": 1231.7213290007203,
+      "compute_ms": 569.8481330109644,
+      "validation_ms": 187.81874998967396,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-081a3d48-b78f-41d5-9114-a851ff396935",
+    "old_run_id": "run-72b283e2-d48e-434e-bd25-4262567b2a79",
+    "case": "resource_loss",
+    "repeat": 17,
+    "job": {
+      "id": "rp-fe3962cc-dd9c-4da9-b675-ce7ee7246864",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:45:12.561Z",
+      "started_at": "2026-10-01T18:45:12.867Z",
+      "finished_at": "2026-10-01T18:45:13.797Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-fe3962cc-dd9c-4da9-b675-ce7ee7246864-0",
+        "plan-rp-fe3962cc-dd9c-4da9-b675-ce7ee7246864-1"
+      ],
+      "applied_plan_id": "plan-rp-fe3962cc-dd9c-4da9-b675-ce7ee7246864-0",
+      "elapsed_ms": 1236.7412079984206,
+      "compute_ms": 564.9509299910278,
+      "validation_ms": 192.79577400448034,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-de470995-3790-4e84-8ffc-d39d12141e7f",
+    "old_run_id": "run-081a3d48-b78f-41d5-9114-a851ff396935",
+    "case": "resource_loss",
+    "repeat": 18,
+    "job": {
+      "id": "rp-94b219dc-6a79-425e-9081-ce53262fddc6",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:45:16.297Z",
+      "started_at": "2026-10-01T18:45:16.644Z",
+      "finished_at": "2026-10-01T18:45:17.543Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-94b219dc-6a79-425e-9081-ce53262fddc6-0",
+        "plan-rp-94b219dc-6a79-425e-9081-ce53262fddc6-1"
+      ],
+      "applied_plan_id": "plan-rp-94b219dc-6a79-425e-9081-ce53262fddc6-0",
+      "elapsed_ms": 1246.2967760002357,
+      "compute_ms": 552.495096999337,
+      "validation_ms": 180.13471499580191,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-ba5b0c79-ee63-44fa-b760-0599be16695f",
+    "old_run_id": "run-de470995-3790-4e84-8ffc-d39d12141e7f",
+    "case": "resource_loss",
+    "repeat": 19,
+    "job": {
+      "id": "rp-0464a74e-6ee0-4f04-8e82-0e0193b8efa8",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:45:19.991Z",
+      "started_at": "2026-10-01T18:45:20.297Z",
+      "finished_at": "2026-10-01T18:45:21.202Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-0464a74e-6ee0-4f04-8e82-0e0193b8efa8-0",
+        "plan-rp-0464a74e-6ee0-4f04-8e82-0e0193b8efa8-1"
+      ],
+      "applied_plan_id": "plan-rp-0464a74e-6ee0-4f04-8e82-0e0193b8efa8-0",
+      "elapsed_ms": 1211.972971999785,
+      "compute_ms": 556.2190149939852,
+      "validation_ms": 179.54131800070172,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-0071530a-28b8-41f6-82bc-031f675eb358",
+    "old_run_id": "run-ba5b0c79-ee63-44fa-b760-0599be16695f",
+    "case": "resource_loss",
+    "repeat": 20,
+    "job": {
+      "id": "rp-0e3940b7-f461-4600-a36c-3d4cb41fd5c1",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:45:23.614Z",
+      "started_at": "2026-10-01T18:45:23.965Z",
+      "finished_at": "2026-10-01T18:45:24.902Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-0e3940b7-f461-4600-a36c-3d4cb41fd5c1-0",
+        "plan-rp-0e3940b7-f461-4600-a36c-3d4cb41fd5c1-1"
+      ],
+      "applied_plan_id": "plan-rp-0e3940b7-f461-4600-a36c-3d4cb41fd5c1-0",
+      "elapsed_ms": 1288.0204890025198,
+      "compute_ms": 569.5562390028499,
+      "validation_ms": 190.6941179986461,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-0aa30d4d-e1e5-4128-8f10-23577961e3b0",
+    "old_run_id": "run-0071530a-28b8-41f6-82bc-031f675eb358",
+    "case": "burst10",
+    "repeat": 1,
+    "job": {
+      "id": "rp-a0c87690-a39c-4332-8396-5dd6bfa72e47",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:45:27.522Z",
+      "started_at": "2026-10-01T18:45:27.838Z",
+      "finished_at": "2026-10-01T18:45:28.847Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-a0c87690-a39c-4332-8396-5dd6bfa72e47-0",
+        "plan-rp-a0c87690-a39c-4332-8396-5dd6bfa72e47-1"
+      ],
+      "applied_plan_id": "plan-rp-a0c87690-a39c-4332-8396-5dd6bfa72e47-0",
+      "elapsed_ms": 1325.6259659974603,
+      "compute_ms": 591.1976310017053,
+      "validation_ms": 189.2778269975679,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-ee6d53b3-8577-48e0-982d-5bd03352138f",
+    "old_run_id": "run-0aa30d4d-e1e5-4128-8f10-23577961e3b0",
+    "case": "burst10",
+    "repeat": 2,
+    "job": {
+      "id": "rp-fda699b9-0045-4da5-a36e-46b129f0e91e",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:45:31.385Z",
+      "started_at": "2026-10-01T18:45:31.700Z",
+      "finished_at": "2026-10-01T18:45:32.657Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-fda699b9-0045-4da5-a36e-46b129f0e91e-0",
+        "plan-rp-fda699b9-0045-4da5-a36e-46b129f0e91e-1"
+      ],
+      "applied_plan_id": "plan-rp-fda699b9-0045-4da5-a36e-46b129f0e91e-0",
+      "elapsed_ms": 1272.6457490061875,
+      "compute_ms": 596.5158549952321,
+      "validation_ms": 197.64755500364117,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-f9dcdc2b-5b8d-42d1-a2a6-9d3dd7d9c628",
+    "old_run_id": "run-ee6d53b3-8577-48e0-982d-5bd03352138f",
+    "case": "burst10",
+    "repeat": 3,
+    "job": {
+      "id": "rp-9c3c26ef-cc19-4f49-8cd1-4e89db1f65fe",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:45:35.277Z",
+      "started_at": "2026-10-01T18:45:35.640Z",
+      "finished_at": "2026-10-01T18:45:36.600Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-9c3c26ef-cc19-4f49-8cd1-4e89db1f65fe-0",
+        "plan-rp-9c3c26ef-cc19-4f49-8cd1-4e89db1f65fe-1"
+      ],
+      "applied_plan_id": "plan-rp-9c3c26ef-cc19-4f49-8cd1-4e89db1f65fe-0",
+      "elapsed_ms": 1323.8247190020047,
+      "compute_ms": 591.3326289955876,
+      "validation_ms": 190.31670900585596,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-efc8ab23-c7f4-49b0-b772-4ae805635528",
+    "old_run_id": "run-f9dcdc2b-5b8d-42d1-a2a6-9d3dd7d9c628",
+    "case": "burst10",
+    "repeat": 4,
+    "job": {
+      "id": "rp-32d95149-8a21-448f-ad06-602c67532c99",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:45:39.218Z",
+      "started_at": "2026-10-01T18:45:39.544Z",
+      "finished_at": "2026-10-01T18:45:40.515Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-32d95149-8a21-448f-ad06-602c67532c99-0",
+        "plan-rp-32d95149-8a21-448f-ad06-602c67532c99-1"
+      ],
+      "applied_plan_id": "plan-rp-32d95149-8a21-448f-ad06-602c67532c99-0",
+      "elapsed_ms": 1297.4811870008125,
+      "compute_ms": 596.5564149955753,
+      "validation_ms": 193.8941920088837,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-1166e2e2-f499-459b-94a2-ff5fb77409b4",
+    "old_run_id": "run-efc8ab23-c7f4-49b0-b772-4ae805635528",
+    "case": "burst10",
+    "repeat": 5,
+    "job": {
+      "id": "rp-f3768e13-f325-4e54-9d2a-979d9b21aa38",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:45:43.017Z",
+      "started_at": "2026-10-01T18:45:43.347Z",
+      "finished_at": "2026-10-01T18:45:44.327Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-f3768e13-f325-4e54-9d2a-979d9b21aa38-0",
+        "plan-rp-f3768e13-f325-4e54-9d2a-979d9b21aa38-1"
+      ],
+      "applied_plan_id": "plan-rp-f3768e13-f325-4e54-9d2a-979d9b21aa38-0",
+      "elapsed_ms": 1310.1936270031729,
+      "compute_ms": 610.884571011411,
+      "validation_ms": 200.56842899066396,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-785ac955-f93b-4002-a6ea-3da9d196a7e1",
+    "old_run_id": "run-1166e2e2-f499-459b-94a2-ff5fb77409b4",
+    "case": "burst10",
+    "repeat": 6,
+    "job": {
+      "id": "rp-7d219e70-4f22-424c-990d-b6ac2e8aa2d2",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:45:46.861Z",
+      "started_at": "2026-10-01T18:45:47.223Z",
+      "finished_at": "2026-10-01T18:45:48.198Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-7d219e70-4f22-424c-990d-b6ac2e8aa2d2-0",
+        "plan-rp-7d219e70-4f22-424c-990d-b6ac2e8aa2d2-1"
+      ],
+      "applied_plan_id": "plan-rp-7d219e70-4f22-424c-990d-b6ac2e8aa2d2-0",
+      "elapsed_ms": 1337.6553909984068,
+      "compute_ms": 607.5048529964988,
+      "validation_ms": 194.41981200361624,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-1838475d-413c-4ce2-9ec8-3f2647de0357",
+    "old_run_id": "run-785ac955-f93b-4002-a6ea-3da9d196a7e1",
+    "case": "burst10",
+    "repeat": 7,
+    "job": {
+      "id": "rp-02eab16b-e3ec-44fe-97ad-aaea23c7c921",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:45:50.763Z",
+      "started_at": "2026-10-01T18:45:51.089Z",
+      "finished_at": "2026-10-01T18:45:52.055Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-02eab16b-e3ec-44fe-97ad-aaea23c7c921-0",
+        "plan-rp-02eab16b-e3ec-44fe-97ad-aaea23c7c921-1"
+      ],
+      "applied_plan_id": "plan-rp-02eab16b-e3ec-44fe-97ad-aaea23c7c921-0",
+      "elapsed_ms": 1292.7468220004812,
+      "compute_ms": 605.1058409793768,
+      "validation_ms": 186.97515501844464,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-579133ed-5aef-4bf0-8155-4152936630fd",
+    "old_run_id": "run-1838475d-413c-4ce2-9ec8-3f2647de0357",
+    "case": "burst10",
+    "repeat": 8,
+    "job": {
+      "id": "rp-25a779f0-515a-4594-af55-b0ef6b656c33",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:45:54.586Z",
+      "started_at": "2026-10-01T18:45:54.912Z",
+      "finished_at": "2026-10-01T18:45:55.853Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-25a779f0-515a-4594-af55-b0ef6b656c33-0",
+        "plan-rp-25a779f0-515a-4594-af55-b0ef6b656c33-1"
+      ],
+      "applied_plan_id": "plan-rp-25a779f0-515a-4594-af55-b0ef6b656c33-0",
+      "elapsed_ms": 1267.634364994592,
+      "compute_ms": 590.3988330028369,
+      "validation_ms": 191.07163199805655,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-9093c74f-5e02-4b20-913e-ecad885964d6",
+    "old_run_id": "run-579133ed-5aef-4bf0-8155-4152936630fd",
+    "case": "burst10",
+    "repeat": 9,
+    "job": {
+      "id": "rp-6be0ddb6-1169-48ac-83c6-521833307833",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:45:58.499Z",
+      "started_at": "2026-10-01T18:45:58.819Z",
+      "finished_at": "2026-10-01T18:45:59.795Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-6be0ddb6-1169-48ac-83c6-521833307833-0",
+        "plan-rp-6be0ddb6-1169-48ac-83c6-521833307833-1"
+      ],
+      "applied_plan_id": "plan-rp-6be0ddb6-1169-48ac-83c6-521833307833-0",
+      "elapsed_ms": 1296.8371309980284,
+      "compute_ms": 604.7489029951976,
+      "validation_ms": 190.30872500297846,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-bdaa939d-dfd2-4325-abf0-5735f69e38a2",
+    "old_run_id": "run-9093c74f-5e02-4b20-913e-ecad885964d6",
+    "case": "burst10",
+    "repeat": 10,
+    "job": {
+      "id": "rp-fe742701-f105-4f02-9fd7-90d74c35c4fe",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:46:02.440Z",
+      "started_at": "2026-10-01T18:46:02.762Z",
+      "finished_at": "2026-10-01T18:46:03.748Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-fe742701-f105-4f02-9fd7-90d74c35c4fe-0",
+        "plan-rp-fe742701-f105-4f02-9fd7-90d74c35c4fe-1"
+      ],
+      "applied_plan_id": "plan-rp-fe742701-f105-4f02-9fd7-90d74c35c4fe-0",
+      "elapsed_ms": 1308.8809039982152,
+      "compute_ms": 581.6770779929357,
+      "validation_ms": 190.33418200706365,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-a434c849-4267-45fb-836a-cada6099805c",
+    "old_run_id": "run-bdaa939d-dfd2-4325-abf0-5735f69e38a2",
+    "case": "burst10",
+    "repeat": 11,
+    "job": {
+      "id": "rp-b38a0b82-6828-429a-8da0-71cadbb5ba20",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:46:06.246Z",
+      "started_at": "2026-10-01T18:46:06.568Z",
+      "finished_at": "2026-10-01T18:46:07.612Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-b38a0b82-6828-429a-8da0-71cadbb5ba20-0",
+        "plan-rp-b38a0b82-6828-429a-8da0-71cadbb5ba20-1"
+      ],
+      "applied_plan_id": "plan-rp-b38a0b82-6828-429a-8da0-71cadbb5ba20-0",
+      "elapsed_ms": 1366.9324940055958,
+      "compute_ms": 604.2513539796346,
+      "validation_ms": 193.9503400135436,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-75a26cab-31e4-4de8-aba2-65ca4ecc9b7d",
+    "old_run_id": "run-a434c849-4267-45fb-836a-cada6099805c",
+    "case": "burst10",
+    "repeat": 12,
+    "job": {
+      "id": "rp-9a2bdf8b-8fd6-46f0-845b-869754039d48",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:46:10.254Z",
+      "started_at": "2026-10-01T18:46:10.574Z",
+      "finished_at": "2026-10-01T18:46:11.554Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-9a2bdf8b-8fd6-46f0-845b-869754039d48-0",
+        "plan-rp-9a2bdf8b-8fd6-46f0-845b-869754039d48-1"
+      ],
+      "applied_plan_id": "plan-rp-9a2bdf8b-8fd6-46f0-845b-869754039d48-0",
+      "elapsed_ms": 1300.128937997215,
+      "compute_ms": 607.9543950108928,
+      "validation_ms": 190.6093709912966,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-bb68de64-3160-4a55-a0ee-a09001abe21e",
+    "old_run_id": "run-75a26cab-31e4-4de8-aba2-65ca4ecc9b7d",
+    "case": "burst10",
+    "repeat": 13,
+    "job": {
+      "id": "rp-18048f84-e9e9-44a5-b813-0dad00ed017d",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:46:14.124Z",
+      "started_at": "2026-10-01T18:46:14.490Z",
+      "finished_at": "2026-10-01T18:46:15.493Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-18048f84-e9e9-44a5-b813-0dad00ed017d-0",
+        "plan-rp-18048f84-e9e9-44a5-b813-0dad00ed017d-1"
+      ],
+      "applied_plan_id": "plan-rp-18048f84-e9e9-44a5-b813-0dad00ed017d-0",
+      "elapsed_ms": 1369.7168030048488,
+      "compute_ms": 615.2423439925769,
+      "validation_ms": 195.57568801246816,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-e53964df-4868-4a34-afe3-9562bb8ee1aa",
+    "old_run_id": "run-bb68de64-3160-4a55-a0ee-a09001abe21e",
+    "case": "burst10",
+    "repeat": 14,
+    "job": {
+      "id": "rp-92b3973d-b423-469b-9c1b-663278dd76f4",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:46:18.008Z",
+      "started_at": "2026-10-01T18:46:18.343Z",
+      "finished_at": "2026-10-01T18:46:19.366Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-92b3973d-b423-469b-9c1b-663278dd76f4-0",
+        "plan-rp-92b3973d-b423-469b-9c1b-663278dd76f4-1"
+      ],
+      "applied_plan_id": "plan-rp-92b3973d-b423-469b-9c1b-663278dd76f4-0",
+      "elapsed_ms": 1358.690793000278,
+      "compute_ms": 614.0593200034346,
+      "validation_ms": 194.62071999441832,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-c1f87749-1962-4d9d-9c1e-bdcd66cbcdde",
+    "old_run_id": "run-e53964df-4868-4a34-afe3-9562bb8ee1aa",
+    "case": "burst10",
+    "repeat": 15,
+    "job": {
+      "id": "rp-4ff1c594-532c-4780-844b-0ca11178dd14",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:46:21.906Z",
+      "started_at": "2026-10-01T18:46:22.237Z",
+      "finished_at": "2026-10-01T18:46:23.198Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-4ff1c594-532c-4780-844b-0ca11178dd14-0",
+        "plan-rp-4ff1c594-532c-4780-844b-0ca11178dd14-1"
+      ],
+      "applied_plan_id": "plan-rp-4ff1c594-532c-4780-844b-0ca11178dd14-0",
+      "elapsed_ms": 1292.7694339959999,
+      "compute_ms": 592.5802499987185,
+      "validation_ms": 194.685272006609,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-6ce6eceb-b173-4635-a0e7-cbcf860a444e",
+    "old_run_id": "run-c1f87749-1962-4d9d-9c1e-bdcd66cbcdde",
+    "case": "burst10",
+    "repeat": 16,
+    "job": {
+      "id": "rp-93f1020e-2963-4561-af39-d8226d641f33",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:46:25.792Z",
+      "started_at": "2026-10-01T18:46:26.150Z",
+      "finished_at": "2026-10-01T18:46:27.126Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-93f1020e-2963-4561-af39-d8226d641f33-0",
+        "plan-rp-93f1020e-2963-4561-af39-d8226d641f33-1"
+      ],
+      "applied_plan_id": "plan-rp-93f1020e-2963-4561-af39-d8226d641f33-0",
+      "elapsed_ms": 1334.7990999973263,
+      "compute_ms": 598.9950970033533,
+      "validation_ms": 191.8403919917182,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-bb5a513d-daa5-4864-aeb9-78db306cb26e",
+    "old_run_id": "run-6ce6eceb-b173-4635-a0e7-cbcf860a444e",
+    "case": "burst10",
+    "repeat": 17,
+    "job": {
+      "id": "rp-0e45e4da-1cb6-4edc-8e0d-303e60c8aee4",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:46:29.796Z",
+      "started_at": "2026-10-01T18:46:30.111Z",
+      "finished_at": "2026-10-01T18:46:31.103Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-0e45e4da-1cb6-4edc-8e0d-303e60c8aee4-0",
+        "plan-rp-0e45e4da-1cb6-4edc-8e0d-303e60c8aee4-1"
+      ],
+      "applied_plan_id": "plan-rp-0e45e4da-1cb6-4edc-8e0d-303e60c8aee4-0",
+      "elapsed_ms": 1307.8554309977335,
+      "compute_ms": 610.6943839913583,
+      "validation_ms": 193.73980000818847,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-c58ec5bf-db36-46bb-8bd5-5c1811a573e9",
+    "old_run_id": "run-bb5a513d-daa5-4864-aeb9-78db306cb26e",
+    "case": "burst10",
+    "repeat": 18,
+    "job": {
+      "id": "rp-29e2b08e-0530-48d7-aa09-2d40c7b1f015",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:46:33.650Z",
+      "started_at": "2026-10-01T18:46:33.969Z",
+      "finished_at": "2026-10-01T18:46:34.936Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-29e2b08e-0530-48d7-aa09-2d40c7b1f015-0",
+        "plan-rp-29e2b08e-0530-48d7-aa09-2d40c7b1f015-1"
+      ],
+      "applied_plan_id": "plan-rp-29e2b08e-0530-48d7-aa09-2d40c7b1f015-0",
+      "elapsed_ms": 1286.2879039967083,
+      "compute_ms": 591.418864998559,
+      "validation_ms": 189.61126799695194,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-6af4561a-469b-4bee-a206-b8b6e3b74696",
+    "old_run_id": "run-c58ec5bf-db36-46bb-8bd5-5c1811a573e9",
+    "case": "burst10",
+    "repeat": 19,
+    "job": {
+      "id": "rp-0a5b935a-a5c6-4182-950d-97883d46a0a0",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:46:37.535Z",
+      "started_at": "2026-10-01T18:46:37.855Z",
+      "finished_at": "2026-10-01T18:46:38.871Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-0a5b935a-a5c6-4182-950d-97883d46a0a0-0",
+        "plan-rp-0a5b935a-a5c6-4182-950d-97883d46a0a0-1"
+      ],
+      "applied_plan_id": "plan-rp-0a5b935a-a5c6-4182-950d-97883d46a0a0-0",
+      "elapsed_ms": 1336.436744000821,
+      "compute_ms": 631.3205670085154,
+      "validation_ms": 202.42380099080037,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  },
+  {
+    "run_id": "run-17df8a62-a793-4c86-b32c-9bc66a80e758",
+    "old_run_id": "run-6af4561a-469b-4bee-a206-b8b6e3b74696",
+    "case": "burst10",
+    "repeat": 20,
+    "job": {
+      "id": "rp-f8231e2f-dcf4-411d-ae04-af7005f99376",
+      "status": "succeeded",
+      "reason": "incident_batch",
+      "created_at": "2026-10-01T18:46:41.504Z",
+      "started_at": "2026-10-01T18:46:41.840Z",
+      "finished_at": "2026-10-01T18:46:42.833Z",
+      "base_input_revision": 4,
+      "candidate_plan_ids": [
+        "plan-rp-f8231e2f-dcf4-411d-ae04-af7005f99376-0",
+        "plan-rp-f8231e2f-dcf4-411d-ae04-af7005f99376-1"
+      ],
+      "applied_plan_id": "plan-rp-f8231e2f-dcf4-411d-ae04-af7005f99376-0",
+      "elapsed_ms": 1329.397538000194,
+      "compute_ms": 622.273214001325,
+      "validation_ms": 198.33214599930216,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "validated_candidates": 2
+  }
+]

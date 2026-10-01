@@ -1,0 +1,150 @@
+{
+  "runs": [
+    {
+      "id": "run-452cf5b7-7caf-415c-ac13-8c54085bca1f",
+      "scenario_id": "manual-control-v1",
+      "seed": 42,
+      "closed_at": null
+    },
+    {
+      "id": "run-17df8a62-a793-4c86-b32c-9bc66a80e758",
+      "scenario_id": "demo_main_v1",
+      "seed": 42,
+      "closed_at": "2026-10-01T18:46:45.705893+00:00"
+    },
+    {
+      "id": "run-6af4561a-469b-4bee-a206-b8b6e3b74696",
+      "scenario_id": "demo_main_v1",
+      "seed": 42,
+      "closed_at": "2026-10-01T18:46:39.494252+00:00"
+    },
+    {
+      "id": "run-c58ec5bf-db36-46bb-8bd5-5c1811a573e9",
+      "scenario_id": "demo_main_v1",
+      "seed": 42,
+      "closed_at": "2026-10-01T18:46:35.638036+00:00"
+    },
+    {
+      "id": "run-bb5a513d-daa5-4864-aeb9-78db306cb26e",
+      "scenario_id": "demo_main_v1",
+      "seed": 42,
+      "closed_at": "2026-10-01T18:46:31.710485+00:00"
+    }
+  ],
+  "normalization_counts": {
+    "accepted": 8546
+  },
+  "recent_observations": [
+    {
+      "run_id": "run-452cf5b7-7caf-415c-ac13-8c54085bca1f",
+      "source_event_id": "run-452cf5b7-7caf-415c-ac13-8c54085bca1f:mock:78:TC1",
+      "received_at": "2026-10-01T18:47:25.017443+00:00",
+      "payload": {
+        "raw": {
+          "route_id": "departure-E-R1",
+          "source_id": "mock-progress:TC1",
+          "source_seq": 78,
+          "observed_at": "2026-10-01T18:47:25.017Z",
+          "operation_id": "op-T1-departure",
+          "source_event_id": "run-452cf5b7-7caf-415c-ac13-8c54085bca1f:mock:78:TC1",
+          "observed_progress": 0.006666666666666666
+        },
+        "result": {
+          "reason": null,
+          "status": "accepted",
+          "filtered_progress": 0.023333333333333334
+        },
+        "body_hash": "f479293c98054b2ec589b7e02f4b08e4d5307d0788de99990190379d1bb470d8"
+      }
+    },
+    {
+      "run_id": "run-452cf5b7-7caf-415c-ac13-8c54085bca1f",
+      "source_event_id": "run-452cf5b7-7caf-415c-ac13-8c54085bca1f:mock:78:TL1",
+      "received_at": "2026-10-01T18:47:25.011234+00:00",
+      "payload": {
+        "raw": {
+          "route_id": "departure-E-R1",
+          "source_id": "mock-progress:TL1",
+          "source_seq": 78,
+          "observed_at": "2026-10-01T18:47:25.011Z",
+          "operation_id": "op-T1-departure",
+          "source_event_id": "run-452cf5b7-7caf-415c-ac13-8c54085bca1f:mock:78:TL1",
+          "observed_progress": 0.006666666666666666
+        },
+        "result": {
+          "reason": null,
+          "status": "accepted",
+          "filtered_progress": 0.023333333333333334
+        },
+        "body_hash": "a51bf2453cad043e7cd3f19fe8c09539a2cf2b5f54e7cf3283def4a8fa2a8b81"
+      }
+    },
+    {
+      "run_id": "run-452cf5b7-7caf-415c-ac13-8c54085bca1f",
+      "source_event_id": "run-452cf5b7-7caf-415c-ac13-8c54085bca1f:mock:78:G1",
+      "received_at": "2026-10-01T18:47:25.005007+00:00",
+      "payload": {
+        "raw": {
+          "route_id": "departure-E-R1",
+          "source_id": "mock-progress:G1",
+          "source_seq": 78,
+          "observed_at": "2026-10-01T18:47:25.004Z",
+          "operation_id": "op-T1-departure",
+          "source_event_id": "run-452cf5b7-7caf-415c-ac13-8c54085bca1f:mock:78:G1",
+          "observed_progress": 0.006666666666666666
+        },
+        "result": {
+          "reason": null,
+          "status": "accepted",
+          "filtered_progress": 0.023333333333333334
+        },
+        "body_hash": "f19f8dbf1c5b85342225acf8db5a1d18e1be311577cc5877f36e9bd147cf9cf0"
+      }
+    },
+    {
+      "run_id": "run-452cf5b7-7caf-415c-ac13-8c54085bca1f",
+      "source_event_id": "run-452cf5b7-7caf-415c-ac13-8c54085bca1f:mock:78:T1",
+      "received_at": "2026-10-01T18:47:24.998936+00:00",
+      "payload": {
+        "raw": {
+          "route_id": "departure-E-R1",
+          "source_id": "mock-progress:T1",
+          "source_seq": 78,
+          "observed_at": "2026-10-01T18:47:24.998Z",
+          "operation_id": "op-T1-departure",
+          "source_event_id": "run-452cf5b7-7caf-415c-ac13-8c54085bca1f:mock:78:T1",
+          "observed_progress": 0.006666666666666666
+        },
+        "result": {
+          "reason": null,
+          "status": "accepted",
+          "filtered_progress": 0.023333333333333334
+        },
+        "body_hash": "aa08a1548d88516af309e1a12f19773f502733caf36224d7da1731bd77b45926"
+      }
+    },
+    {
+      "run_id": "run-452cf5b7-7caf-415c-ac13-8c54085bca1f",
+      "source_event_id": "run-452cf5b7-7caf-415c-ac13-8c54085bca1f:mock:77:TC1",
+      "received_at": "2026-10-01T18:47:24.874194+00:00",
+      "payload": {
+        "raw": {
+          "route_id": "departure-E-R1",
+          "source_id": "mock-progress:TC1",
+          "source_seq": 77,
+          "observed_at": "2026-10-01T18:47:24.874Z",
+          "operation_id": "op-T1-departure",
+          "source_event_id": "run-452cf5b7-7caf-415c-ac13-8c54085bca1f:mock:77:TC1",
+          "observed_progress": 0.04
+        },
+        "result": {
+          "reason": null,
+          "status": "accepted",
+          "filtered_progress": 0.04
+        },
+        "body_hash": "53f459b5986e0ce00ea949190d72b72bc06261d05ddfad1867bd9e2ac056770a"
+      }
+    }
+  ],
+  "source": "mock-observed-progress, separate from physical State"
+}

@@ -41,7 +41,7 @@
       <section class="panel position-panel"><div class="section-heading"><h2>Поездное положение</h2><span id="train-count">7 поездов</span></div><div id="train-list"></div></section>
     </div>
     <section class="panel"><div class="section-heading"><h2>Маневровая работа</h2><span>L1 · составительская бригада SH1 · западная горловина W · вытяжной H</span></div><p class="subtle">SH1 агрегирует составительский и локомотивный персонал манёвра. Отдельные смены работников здесь не моделируются.</p><div id="shunting"></div></section>
-    <section class="panel"><div class="section-heading"><h2>Технологические операции</h2><span>Факт и действующий план</span></div><div id="operations"></div></section>
+    <section class="panel"><div class="section-heading"><h2>Технологические операции</h2><span>Факт и действующий план</span></div><details><summary>Временная диаграмма операций</summary><p class="subtle">Учебное время. Красная линия — сейчас; времена из Operation. Для ручной работы плановый конец означает минимум, а не обещание завершения.</p><svg id="operation-timeline" role="img" aria-label="Временная диаграмма операций семи поездов"></svg></details><div id="operations"></div></section>
     <div class="bottom-grid">
       <section class="panel"><div class="section-heading"><h2>Локомотивы и бригады</h2><span>Назначения backend</span></div><div id="resources"></div><details><summary>Поездная тяга и бригады</summary><div id="train-resources"></div></details></section>
       <section class="panel"><div class="section-heading"><h2>Ограничения и конфликты</h2><button id="replan">Пересчитать план</button></div><div id="conflicts"></div><div id="incidents"></div>
@@ -57,6 +57,8 @@
     <details class="panel"><summary>Журнал событий текущего подключения</summary><p class="subtle">Не заменяет долговременную историю и replay.</p><ol id="event-log"></ol></details>
     <details class="panel"><summary>Подробности состояния для разработчика</summary><pre id="raw-state"></pre></details>
     <details id="config-panel" class="panel"><summary>Конфигурация · веса, пороги и лимиты</summary><p id="config-note" class="subtle"></p><button id="load-config">Загрузить конфигурацию</button><textarea id="config-json" rows="15" aria-label="Конфигурация JSON"></textarea><button id="save-config" hidden>Сохранить конфигурацию</button></details>
+    <details id="new-run-controls" class="panel" hidden><summary>Новый учебный прогон · администратор</summary><p class="subtle">История предыдущего прогона сохраняется. Число поездов и топология не меняются.</p><label>Сценарий <select id="run-scenario"><option value="demo_main_v1">Основное смешанное демо</option></select></label><label>Seed <input id="run-seed" type="number" min="0" max="2147483647" value="42"></label><button id="new-run">Начать новый прогон</button></details>
+    <details class="panel"><summary>Измерения SLA · технические данные</summary><p class="subtle">Double-rAF, clock probes, foreground only; heartbeat и catch-up исключены. Это не аппаратный замер пикселя. Пропуски и невалидные samples не считаются быстрым render.</p><button id="load-metrics">Получить реальные метрики</button><pre id="metrics-json"></pre></details>
   </section>
   <footer>Синтетическая станция: 12 путей, 6 грузовых и 1 пассажирский поезд. Все длительности, приоритеты и окна приёма учебные. Не система управления реальной инфраструктурой.</footer>
 </main>

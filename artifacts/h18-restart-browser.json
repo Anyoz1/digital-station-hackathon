@@ -1,0 +1,17 @@
+{
+  "connection": "● Связь есть",
+  "before": {
+    "run_id": "run-83c656d2-5065-48c1-8027-c1a3965382aa",
+    "seq": 33,
+    "config": 3,
+    "sim": 137,
+    "received_frames": 25
+  },
+  "after": {
+    "run_id": "run-83c656d2-5065-48c1-8027-c1a3965382aa",
+    "seq": 38,
+    "config": 3,
+    "sim": 137
+  },
+  "new_frames": 70
+}

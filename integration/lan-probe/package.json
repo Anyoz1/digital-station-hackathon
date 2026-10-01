@@ -1,0 +1,7 @@
+{
+  "name": "station-integration-proxy",
+  "private": true,
+  "type": "module",
+  "scripts": {"start": "vite --config vite.config.mjs"},
+  "devDependencies": {"vite": "8.2.2", "typescript": "5.9.3", "playwright-core": "1.63.0"}
+}

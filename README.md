@@ -1,4 +1,4 @@
-# Цифровая станция — H15 и railway UI reference
+# Цифровая станция — H18 integration acceptance
 
 Реальный backend-симулятор и полный State по SSE поверх H0–H2. PostgreSQL16,
 SQLAlchemy2 async/Psycopg3, Alembic, FastAPI, Python3.12. `demo_main_v1`:
@@ -6,7 +6,9 @@ SQLAlchemy2 async/Psycopg3, Alembic, FastAPI, Python3.12. `demo_main_v1`:
 Работают independent validator, безопасный FCFS и ограниченный deterministic
 multi-strategy planner в отдельном процессе, incidents/batch1..10 и automatic
 validated apply с frozen prefix/barrier/CAS. Добавлен предметный `/tech/station`;
-actual KPI/config/history/replay/CSV/manual/RBAC по последнему scope H15 реализованы.
+actual KPI/config/history/replay/CSV/manual/RBAC реализованы. H18 добавляет admin
+new-run, отдельную нормализацию noisy observations и измерения ingress→render;
+planner/validator, topology и State v1.0 не перепроектированы.
 
 Принятые документы: commit `2764a83`, tag `spec-v1.0`, [SHA-256](docs/V1.0.md).
 Исходный текст четырёх файлов v1.0 сохранён, handoff/план получили явно отделённое
@@ -18,6 +20,8 @@ post-H12 дополнение. [Отчёт H0–H2](docs/H0_H2_REPORT.md) — и
 [handoff](docs/FRONTEND_HANDOFF.md#дополнение-после-h12-railway-oriented-ui-reference).
 [Приёмка H12–H15](docs/H12_H15_REPORT.md):217pytest, реальные API/Chromium/restart,
 actual sample, CSV и manual DAG; остальные mandatory хвосты перечислены отдельно.
+[Приёмка H15–H18](docs/H15_H18_REPORT.md) — актуальные проверки, LAN/proxy,
+численные SLA-замеры и оставшиеся требования защиты.
 [Приложение P2 AI Explanation](docs/ADDENDUM_P2_AI_EXPLANATION.md) только описано:
 никакого LLM/API key/provider dependency в runtime нет.
 
@@ -56,8 +60,10 @@ raw incident batch/resolve, replan/result/validator/forecast/diff и выбор 
 Новая БД начинает paused sim0; текущая БД сохраняет уже выполненный live-прогон.
 При restart сохраняется тот же run/phase/groups/resources, clock не прибавляет
 время простоя; recovery записывает новые seq/state/input revisions и ставит paused.
-Нажать Play для продолжения. **Reset/new run API пока отсутствует** — не удаляйте
-volume для обычного перезапуска. При смене env-пароля bootstrap обновляет hash
+Нажать Play для продолжения. Admin может создать новый `demo_main_v1` через
+свёрнутые настройки `/tech/station` или `POST /api/v1/runs`: новый run_id,
+paused sim0, наследование текущей config_version, сохранение старой истории,
+SSE reset. Не удаляйте volume для обычного перезапуска. При смене env-пароля bootstrap обновляет hash
 и отзывает старые сессии. Таблицы создаёт только Alembic, не create_all.
 
 PostgreSQL: `127.0.0.1:55432`, volume `alt-digital-station_postgres_data`.
@@ -72,7 +78,7 @@ vanilla-JS reference/fallback, не замена основному frontend д�
 
 | Endpoint | Реализация |
 |---|---|
-| GET `/health/live`, `/health/ready` | DB/schema/scenario/actor/worker readiness H15; simulation/SSE/optimization и H15 capabilities |
+| GET `/health/live`, `/health/ready` | DB/schema/scenario/actor/worker readiness H18; implemented capabilities |
 | POST `/auth/login`, `/auth/logout`; GET `/auth/me` | DB users, Argon2id, HttpOnly/SameSite=Lax cookie,12ч, revoke/expiry |
 | GET `/snapshot` | Полный State v1.0 из PostgreSQL, authenticated |
 | GET `/stream?after=run_id:seq` | Полные State, nominal1.25wall-Hz, immediate transitions, paused heartbeat без DB writes, catch-up/reset |
@@ -88,6 +94,10 @@ vanilla-JS reference/fallback, не замена основному frontend д�
 | GET `/replans/{id}` | Job и сохранённые PlanDetail/validator/explanations; authenticated |
 | GET `/replans/{id}/explanation` | Read-only diff от сохранённого входа и задержки отправления; отдельный additive display endpoint, State v1.0 не меняет |
 | POST `/plans/{id}/apply` | Envelope;200 только для свежей feasible sibling-альтернативы на паузе; dispatcher/admin |
+| POST `/runs` | Admin: envelope + scenario_id/seed;201 receipt, новый run, закрытие старого без удаления, reset SSE, idempotency |
+| GET `/time` | Все авторизованные роли; server_received_ms/server_sent_ms для clock calibration |
+| POST `/telemetry/ui-render` | Все авторизованные роли;204, служебный render sample без command envelope/domain mutation |
+| GET `/metrics` | Все авторизованные роли; receive/render p50/p95/max, missing/invalid/hidden, durable planner timings |
 | `/docs`, `/openapi.json` | Реальная текущая схема |
 
 Команды имеют durable receipts: повтор одинакового user/request_id/body возвращает
@@ -99,7 +109,8 @@ State/API schema v1.0 не переименована. Init создаёт на�
 smoke timetable не выдаётся за certified optimization plan. Live actual индекс
 рассчитан по recorded engine transitions; forecast пяти факторов/J/diff — отдельно
 по проверенным rollout фактам. Пустое окно/нетactivity дают null.
-БД содержит optimization_run, plan и incident; Alembic revision0005_history_indexes.
+БД содержит optimization_run, plan, incident и отдельную telemetry_observation
+с JSONB quarantine; Alembic revision0006_telemetry_observation.
 
 ## Модель исполнения и сохранение
 
@@ -138,7 +149,9 @@ uv run python scripts/generate_smoke_plan.py
 uv run python scripts/export_openapi.py
 node --check src/digital_station/static/smoke.js
 node --check src/digital_station/static/station.js
+node --check src/digital_station/static/render-telemetry.js
 node tests/test_railway.mjs
+node tests/test_render_telemetry.mjs
 uv run python scripts/verify_railway_stories.py --pretty
 # Отдельная проверка общего TypeScript-контракта, без сборки frontend друга:
 npm exec --yes --package typescript -- tsc --noEmit --strict --target ES2022 --lib ES2022,DOM contracts/api-v1.ts contracts/railway-display.ts
@@ -181,8 +194,8 @@ worker, следующий расчёт создаёт замену. До зам
 `scripts/check_clean_h12.py` — одноразовая проверка на пустой additive тестовой БД;
 повторный запуск на уже заполненной БД откажет, а не очистит её.
 
-`contracts/api-v1.ts` — принятая полная будущая v1.0 из handoff;
-`contracts/openapi.json` — фактически реализованная часть H15 с аддитивным read-only
+`contracts/api-v1.ts` — принятая v1.0 из handoff;
+`contracts/openapi.json` — фактически реализованная часть H18 с аддитивным read-only
 explanation endpoint. Друг уже может подключать snapshot/SSE, simulation,
 incidents/replan/apply, actual/config/history/replay/CSV/manual и брать `/tech/station` как reference; основной React/Гант
 frontend остаётся отдельной дорожкой.
@@ -195,7 +208,36 @@ Backend слушает0.0.0.0:8000; `/tech/station` и `/tech/smoke` можно 
 PostgreSQL в LAN не открыт. Для HTTPS COOKIE_SECURE=true. LAN HTTP UUID fallback
 использует CSPRNG, когда [randomUUID требует secure context](https://developer.mozilla.org/en-US/docs/Web/API/Crypto/randomUUID);
 [getRandomValues доступен и без secure context](https://developer.mozilla.org/en-US/docs/Web/API/Crypto/getRandomValues).
-Фактическая проверка машины друга/LAN пока не проведена.
+H18 проверяет настоящий Vite proxy и LAN-URL этого компьютера двумя независимыми
+headed Chromium. Это **не** проверка второго физического компьютера или ещё не
+предоставленного основного frontend друга.
+
+Минимальный integration probe, не второй продуктовый frontend:
+
+```sh
+npm ci --prefix integration/lan-probe
+BACKEND_URL=http://127.0.0.1:8000 npm run start --prefix integration/lan-probe
+# Открыть http://<vite-ip>:5173/tech/station; /api и reference assets идут через proxy.
+# ALLOWED_ORIGINS должен содержать ТОЧНЫЙ http://<vite-ip>:5173.
+```
+
+Нельзя смешивать direct cross-origin fetch с этой cookie/proxy схемой. В клиенте
+только `/api/v1/...`, fetch credentials same-origin, EventSource того же origin.
+`ALLOWED_ORIGINS` — CSRF Origin allowlist, **не** разрешение CORS. Proxy для SSE
+не буферизует данные, таймаут отключён. PostgreSQL остаётся на loopback.
+
+`render-telemetry.js` можно адаптировать в основной frontend: 5 clock probes,
+повторная калибровка каждые30с, report после реального DOM update/double-rAF.
+Добавить optional `client_id` UUID к `/stream`, иначе сервер не сможет учитывать
+пропущенные ack. Метрики render — bounded15wall-мин in-memory диагностика,
+не долговременная история; после restart/new-run окно начинается заново.
+Planner timings и State/history сохраняются в PostgreSQL.
+
+Noisy input: синтетический source adapter добавляет шум только в отдельные
+observed_progress на реально исполняемых маршрутах. Durable validation/dedup,
+sequence high-water и median3/clamp0..1 не изменяют engine route_progress,
+occupancy, incidents или решения validator. Это mock telemetry source, не внешние
+датчики. Учебная freshness5wall-с/future tolerance1с не являются нормативом.
 
 Историческая приёмка H12 — Playwright MCP + системный Chromium151: реальные LIVE changes без reload, manual
 replan/sibling apply, single/pending-loss, batch5/10, два feasible варианта с validator,
@@ -218,10 +260,18 @@ Chromium подтвердил actual/history/replay/ReturnLIVE/CSV/config roles/
 При полном CSV export SSE1,292Hz/maxgap950,4ms; actual/history/config физически
 сохранены после PostgreSQL/API restart. [Факты, screenshots и ограничения](docs/H12_H15_REPORT.md).
 
+H18:237pytest +11JS, Ruff/mypy/TS strict, clean Alembic и реальный PG/API restart.
+Два foreground Chromium,120wall-с при1×/10×: SSE1,278/1,449Hz, maxupper367,511ms,
+missing/invalid/exceedances0.80реальныхreplans: p50/p95/max1248,354/1336,437/1369,717ms,
+80succeeded. Batch5/10:1306,855/1356,102ms и два validated alternatives/autoapply.
+Background desktop не удовлетворяет render SLA и сохранён как отрицательный
+результат. [Полный отчёт H18](docs/H15_H18_REPORT.md); далее STOP.
+
 Mock/учебные: сценарий, технологические длительности, next-station calendar/600s
-travel, manual smoke-bootstrap и static API samples. Не реализованы публичный new-run,
-time/render telemetry/metrics, полная noisy normalizer pipeline и AI. Основной frontend
-друга и полная измеримая SLA/benchmark/защита не объявлены готовыми.
+travel, synthetic noisy source, manual smoke-bootstrap и static API samples.
+New-run/time/render telemetry/metrics/normalization реализованы H18; AI/signals
+не добавлены. Основной frontend друга, две физические машины, paired quality
+benchmark и материалы защиты не объявлены готовыми автоматически.
 Railway-oriented UI реализован по отдельной post-H12 команде. Оставшаяся работа
 MUST/SHOULD/DROP описана в дополнении PLAN_24H; наличие UI не закрывает эти хвосты.
 

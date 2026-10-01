@@ -803,3 +803,99 @@ Manual min end — `actual_start_sim_s+duration_sim_s`; показывать ass
 ### Что подключать следующим, но не объявлять готовым
 
 Друг уже может подключать все строки таблицы H15. Основной frontend/Гант и LAN-интеграция ещё отдельно проверяются. `POST /runs`, `/time`, `/telemetry/ui-render`, `/metrics`, полная noisy source normalization и формальная paint/120s/20-repeat приёмка остаются открытыми; в этой ограниченной итерации не реализуются. Gemini/signals/P2 не добавлены.
+
+## Актуальная готовность H18: LAN, new-run и измерения
+
+Этот раздел заменяет перечисленные выше исторические статусы H15. Исходный
+contract v1.0/State/enum/топология/семь поездов сохранены; действующий OpenAPI —
+`contracts/openapi.json`. [Отчёт и raw evidence](H15_H18_REPORT.md).
+
+| Уже работает, `/api/v1` | Права и точная семантика |
+|---|---|
+| POST `/runs` | Только admin; обычный envelope текущего run + `scenario_id`, `seed` integer0..2147483647.201 receipt/result.new_run_id. Старый run закрывается, его история остаётся. Новый paused main sim0, наследует текущую config_version. Отдельный процесс формирует начальный план; до завершения показывать job status, не выдуманные alternatives |
+| GET `/time` | Все четыре роли, cookie auth; `{server_received_ms,server_sent_ms}` Unix wall-ms |
+| POST `/telemetry/ui-render` | Все роли; исходная служебная схема v1.0,204, без command envelope и изменения State |
+| GET `/metrics` | Все роли; current run, window_started_at/measured_at, queue/client/job counters, ui_render[], replans.elapsed/compute и status counts |
+| GET `/stream?after=run_id:seq&client_id=UUID` | `client_id` — **необязательный additive query**, старые клиенты работают без него. Нужен только для регистрации delivered events/missing render samples; не auth token |
+
+Неизвестный scenario422; неверные seed/schema422; чужая роль403; stale run/revision409.
+Idempotency new-run проверяется до stale guards: повтор **того же body/request_id**
+возвращает сохранённый receipt даже после переключения run. Не заменять старый
+envelope в повторе после network timeout. `reset` нового run полностью заменяет
+live State, сбрасывает выбранный объект/job/pending render acknowledgements;
+поздний ответ старого run не применяется. Старую историю можно читать по run_id.
+Seed хранится и управляет синтетическим шумом; основной timetable/поезда не
+генерируются заново случайно. Не обещать seed-зависимые новые поезда/топологию.
+
+`manual-control-v1` остаётся дополнительным fixture с теми же12/7. Если он уже
+подготовлен в БД H15, admin может выбрать его через API new-run; в UI new-run
+намеренно только основной demo. В новой пустой БД manual fixture сначала создаётся
+существующим `prepare_h15_manual.py` при остановленном API. POST/runs не загружает
+произвольные пользовательские JSON и не предоставляет редактор станций.
+
+### Подключение frontend двух машин
+
+Backend запускается `--host 0.0.0.0 --workers 1`; PostgreSQL только loopback55432.
+На машине друга Vite `/api` → `http://<backend-ip>:8000`, `changeOrigin:true`,
+`timeout:0`, `proxyTimeout:0`; все fetch/EventSource клиента имеют **относительный**
+URL. Cookie HttpOnly/SameSite=Lax остаётся cookie origin Vite; fetch
+`credentials:'same-origin'`. SSE — обычный native EventSource, без Authorization
+header и без cross-origin credentials. Нельзя одновременно использовать proxy
+для login и абсолютный backend URL для SSE: это разные cookie origins.
+
+На backend в `.env` добавить ТОЧНЫЙ origin друга, например
+`http://192.168.1.20:5173`, в `ALLOWED_ORIGINS`, затем restart API. Это CSRF allowlist,
+не CORS middleware: direct cross-origin architecture не поддерживаем и wildcard
+не включаем. Origin другого компьютера сам по себе не становится разрешённым
+от `--host 0.0.0.0`. LAN HTTP требует COOKIE_SECURE=false; публичный HTTPS — true.
+Пароли/ключи/`.env` в frontend/Git не передавать.
+
+Проверочный настоящий Vite — `integration/lan-probe/vite.config.mjs`; `npm ci`
+и `npm run start --prefix integration/lan-probe`. Он также проксирует `/tech`
+и `/health`, чтобы тестировать reference без реализации нового frontend.
+H18 проверил proxy через127.0.0.1:5173 и direct same-origin LAN URL10.63.52.9:8000
+двумя независимыми Chromium на **одной физической машине**. Фактический frontend
+друга/его origin и firewall второго ноутбука требуют совместного smoke; этот
+результат нельзя выдавать за уже выполненную двухмашинную приёмку.
+
+### Render telemetry: честная интеграция
+
+Reference `static/render-telemetry.js` выполняет исходный §10:5 clock probes,
+минимальный RTT/offset/uncertainty, refresh30с; настоящая DOM отрисовка, затем
+double-rAF и report. UUID вкладки тот же в stream и reports. Не измерять только
+receive callback, не подтверждать пропущенное состояние как показанное. Report
+не задерживает отрисовку. React отправляет ack только после commit покрывающего
+State и visible update. Heartbeat/initial/reset/catch-up не входят в event SLA.
+
+`ui_render[].latency_upper` — nearest-rank sample_count/p50_ms/p95_ms/max_ms,
+`receive_to_render` — отдельно. `invalid_samples`, `hidden_samples`,
+`unreported_events` (нет ack≥2wall-с), `latency_exceedances` (upper≥500) не скрывать.
+Окно15wall-мин/3000seq на клиента, максимум16 diagnostic clients; reset/restart
+начинает новое окно. In-memory render metrics — не durable domain history;
+сохранённые optimization_run timings остаются в БД. Raw QA сохраняется отдельно.
+Clock uncertainty>50мс/скачок часов делает sample invalid, а не успешным.
+
+Важно: `document.visibilityState='visible'` **не гарантирует** foreground на другом
+рабочем столе Linux. Невидимый desktop throttles rAF; такой прогон не доказывает
+<500мс. H18 отдельно сохранил неуспешный background и foreground замеры с проверкой
+активного workspace9. Double-rAF остаётся proxy paint, не аппаратным измерением.
+
+Reconnect reference дополнен watchdog: нет SSE/heartbeat>3wall-с — закрыть
+полуоткрытый транспорт и повторить auth/me→cursor stream с прежним backoff.
+Это нужно, поскольку proxy иногда не закрывает downstream при restart upstream.
+State остаётся последним подтверждённым, controls запрещены по stale connection;
+никакого продвижения sim-time по браузерным часам. После успешного подключения
+catch-up/reset authoritative. При logout остановить instrumentation/SSE, дождаться
+in-flight диагностических запросов, затем отозвать cookie; не отправлять ack от
+старой auth generation. В H18 это проверено настоящим PG/API restart, а не только
+`Playwright.setOffline`, который может не разорвать уже открытый SSE socket.
+
+### Reference UI и границы
+
+На `/tech/station` добавлен простой раскрываемый таймлайн операций из backend
+`start/end/actual_start/actual_end/status`; текущая sim-time линия и выбор операции.
+Это reference Operation Gantt, не новый диспетчерский frontend/редактор плана.
+Свёрнутые admin new-run и metrics используют настоящий API. Остальные H12/H15
+панели/роль/инциденты/KPI/replay/manual сохранены. Synthetic source observations
+не заменяют физический State: median3 применяется только к diagnostic progress,
+occupancy/incidents никогда не сглаживаются. Gemini/virtual signals не добавлены.

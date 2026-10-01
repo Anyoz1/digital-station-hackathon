@@ -12,7 +12,7 @@ from dataclasses import dataclass
 from datetime import UTC, datetime, timedelta
 from typing import Any
 
-from sqlalchemy import text, update
+from sqlalchemy import delete, text, update
 from sqlalchemy.exc import SQLAlchemyError
 
 from .contracts import State
@@ -25,6 +25,7 @@ from .db import (
     RunState,
     Scenario,
     StateSnapshot,
+    TelemetryObservation,
 )
 from .efficiency import actual, append_sample, metric_sample
 from .history import load_samples, prune_retention
@@ -32,8 +33,9 @@ from .planning import PlanningCoordinator
 from .scenario import utc_now
 from .simulator import Simulator
 from .smoke_plan import SCHEDULE_ID, load_smoke_plan
+from .telemetry import Measurements
 
-MIGRATION = "0005_history_indexes"
+MIGRATION = "0006_telemetry_observation"
 COLLECTIONS = (
     "tracks",
     "zones",
@@ -97,6 +99,8 @@ class Frame:
     seq: int
     emitted: float
     wire: str
+    run_id: str = ""
+    ingested_ms: float | None = None
 
 
 def frame(state, kind="heartbeat", entity_ids=None, ingested_at=None, reset=None):
@@ -111,7 +115,12 @@ def frame(state, kind="heartbeat", entity_ids=None, ingested_at=None, reset=None
         }
     )
     wire = f"id: {state.run_id}:{state.event_seq}\nevent: {'reset' if reset else 'state'}\ndata: {json.dumps(data, ensure_ascii=False, separators=(',', ':'))}\n\n"
-    return Frame(state.event_seq, time.monotonic(), wire)
+    ingress_ms = None
+    if not reset and kind != "heartbeat":
+        ingress_ms = (
+            datetime.fromisoformat(data["cause"]["ingested_at"].replace("Z", "+00:00")).timestamp() * 1000
+        )
+    return Frame(state.event_seq, time.monotonic(), wire, state.run_id, ingress_ms)
 
 
 class StationActor:
@@ -132,6 +141,7 @@ class StationActor:
         self.coordinator = None
         self.metric_samples = []
         self.maintenance_task = None
+        self.measurements = Measurements(run_id)
 
     async def start(self):
         self.lock_connection = await self.engine.connect()
@@ -152,6 +162,7 @@ class StationActor:
                 self.config = config
                 self.metric_samples = await load_samples(session, self.state)
                 initialized = run.execution_schedule_id is not None
+                self.seed = run.seed
             self.simulator = Simulator(self.state, initial)
             self.last_checkpoint = time.monotonic()
             if not initialized:
@@ -217,6 +228,11 @@ class StationActor:
             try:
                 async with self.sessions() as session, session.begin():
                     await prune_retention(session)
+                    await session.execute(
+                        delete(TelemetryObservation).where(
+                            TelemetryObservation.received_at < datetime.now(UTC) - timedelta(hours=24)
+                        )
+                    )
             except SQLAlchemyError:
                 # Retention failure cannot remove partial effects or stop the station actor.
                 LOGGER.warning("History retention transaction failed; retry next minute", exc_info=True)
@@ -255,6 +271,7 @@ class StationActor:
 
     def broadcast(self, item, durable=False):
         if durable:
+            self.measurements.published(item)
             self.ring.append(item)
             self.ring_bytes += len(item.wire.encode())
             while self.ring and (
@@ -311,6 +328,7 @@ class StationActor:
         receipt_status=200,
         receipt_result=None,
         config_record=None,
+        stream_reset=None,
     ):
         before = self.state.model_dump(mode="json")
         candidate.event_seq = self.state.event_seq + 1
@@ -461,8 +479,30 @@ class StationActor:
         ):
             setattr(self.simulator.state, name, copy.deepcopy(getattr(candidate, name)))
         entity_ids = sorted({eid for change in transitions for eid in change["entity_ids"]})
-        self.broadcast(frame(candidate, kind, entity_ids, ingress), durable=True)
+        self.broadcast(frame(candidate, kind, entity_ids, ingress, reset=stream_reset), durable=True)
         return receipt
+
+    async def observe_progress(self):
+        from .normalization import normalize
+
+        # Explicit synthetic observer, seeded noise independent from authoritative engine.
+        objects: list[Any] = [*self.state.trains, *self.state.wagon_groups, *self.state.resources]
+        for obj in objects:
+            loc = obj.location
+            if loc is None or loc.kind != "route":
+                continue
+            seq = self.state.event_seq
+            noise = ((seq * 17 + self.seed) % 11 - 5) / 100
+            raw = dict(
+                source_event_id=f"{self.run_id}:mock:{seq}:{obj.id}",
+                source_id=f"mock-progress:{obj.id}",
+                source_seq=seq,
+                operation_id=loc.operation_id,
+                route_id=loc.route_id,
+                observed_at=utc_now(),
+                observed_progress=loc.route_progress + noise,
+            )
+            await normalize(self.sessions, self.state, raw)
 
     async def advance(self, target, ingress=None):
         for batch in self.simulator.advance(
@@ -482,6 +522,7 @@ class StationActor:
                 else "tick"
             )
             await self.persist(batch.state, batch.transitions, kind, ingested=ingress)
+            await self.observe_progress()
             if self.coordinator and any(
                 t["kind"] in {"incident_resolved", "operation_blocked"} for t in batch.transitions
             ):
@@ -613,12 +654,21 @@ class StationActor:
                         "planner_result",
                         "config",
                         "complete",
+                        "new_run",
                     }:
                         await self.flush_clock(time.monotonic())
                     if kind == "subscribe":
                         result = self.register(data)
                     elif kind == "control":
                         result = await self.control(*data)
+                    elif kind == "new_run":
+                        from .runs import new_run
+
+                        result = await new_run(self, *data)
+                    elif kind == "telemetry":
+                        from .normalization import normalize
+
+                        result = await normalize(self.sessions, self.state, data)
                     elif kind == "replan":
                         assert self.coordinator is not None
                         user_id, body, ingress = data

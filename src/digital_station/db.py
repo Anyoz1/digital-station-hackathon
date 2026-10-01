@@ -197,6 +197,23 @@ class IncidentRecord(Base):
     payload: Mapped[dict] = mapped_column(JSONB)
 
 
+class TelemetryObservation(Base):
+    __tablename__ = "telemetry_observation"
+    __table_args__ = (
+        UniqueConstraint("run_id", "source_event_id", name="uq_observation_run_event"),
+        Index("ix_observation_source_order", "run_id", "source_id", "operation_id", "source_seq"),
+    )
+    id: Mapped[str] = mapped_column(String, primary_key=True)
+    run_id: Mapped[str] = mapped_column(ForeignKey("run.id"))
+    source_event_id: Mapped[str | None] = mapped_column(String)
+    source_id: Mapped[str | None] = mapped_column(String)
+    operation_id: Mapped[str | None] = mapped_column(String)
+    source_seq: Mapped[int | None] = mapped_column(BigInteger)
+    received_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), index=True)
+    status: Mapped[str] = mapped_column(String)
+    payload: Mapped[dict] = mapped_column(JSONB)
+
+
 def database(url: str):
     engine = create_async_engine(url, pool_pre_ping=True, hide_parameters=True)
     return engine, async_sessionmaker(engine, expire_on_commit=False)
