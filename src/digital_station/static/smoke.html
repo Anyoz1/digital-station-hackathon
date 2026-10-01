@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Цифровая станция · backend tech</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="/tech/smoke.css">
+  <script src="/tech/smoke.js" defer></script>
+</head>
+<body>
+<main>
+  <h1>Цифровая станция · проверка backend</h1>
+  <p>Backend digital twin: 12 путей, 7 поездов. FCFS + deterministic heuristic в отдельном процессе;
+    independent validator проверяет каждый план. Ни safety, ни State не зависят от AI.</p>
+  <section aria-labelledby="health-heading">
+    <h2 id="health-heading">Готовность</h2>
+    <button id="health-button" type="button">Проверить health</button>
+    <p id="health-status" role="status">Проверяем…</p>
+    <pre id="health-json"></pre>
+  </section>
+  <section aria-labelledby="auth-heading">
+    <h2 id="auth-heading">Пользователь</h2>
+    <form id="login-form">
+      <label>Имя пользователя <input name="username" id="username" value="dispatcher" autocomplete="username" required></label>
+      <label>Пароль <input name="password" id="password" type="password" autocomplete="current-password" required></label>
+      <button type="submit">Войти</button>
+    </form>
+    <p>Учётные записи: viewer, operator, dispatcher, admin. Пароли — в локальном .env.</p>
+    <p id="user-status" role="status">Вход не выполнен</p>
+    <button id="me-button" type="button" disabled>Текущий пользователь</button>
+    <button id="logout-button" type="button" disabled>Выйти</button>
+  </section>
+  <div id="api-error" role="alert" hidden></div>
+  <section aria-labelledby="snapshot-heading">
+    <h2 id="snapshot-heading">Backend State · snapshot + SSE</h2>
+    <button id="snapshot-button" type="button" disabled>Загрузить snapshot</button>
+    <p id="snapshot-status" role="status">Snapshot ещё не загружен</p>
+    <p id="connection-status" role="status">OFFLINE · SSE</p>
+    <p id="simulation-status" role="status">—</p>
+    <div class="controls">
+      <button id="play-button" type="button" disabled>Play</button>
+      <button id="pause-button" type="button" disabled>Pause</button>
+      <label>Speed <select id="speed-select"><option value="1">1×</option><option value="5">5×</option><option value="10">10×</option></select></label>
+      <button id="speed-button" type="button" disabled>Установить speed</button>
+    </div>
+    <dl id="summary"></dl>
+    <div class="grid">
+      <div><h3>Пути · факт отдельно от locks</h3><div id="tracks-table" class="scroll-table"></div></div>
+      <div><h3>Поезда</h3><div id="trains-table" class="scroll-table"></div></div>
+    </div>
+    <h3>Ресурсы</h3><div id="resources-table" class="scroll-table"></div>
+    <h3>Операции · статус / progress / phase</h3><div id="operations-table" class="scroll-table"></div>
+    <h3>Конфликты · backend reasons</h3><div id="conflicts-table" class="scroll-table"></div>
+    <h3>Инциденты · настоящий batch API (1..10)</h3>
+    <p>JSON-массив IncidentInput. Сервер проверяет цели, применяет ограничения и автоматически перепланирует.</p>
+    <label>Items <textarea id="incident-items" rows="6" spellcheck="false">[{"kind":"train_delay","target_id":"T5","duration_sim_s":900,"delay_sim_s":180}]</textarea></label>
+    <button id="incident-button" type="button" disabled>Создать batch</button>
+    <pre id="incident-receipt"></pre>
+    <div id="incidents-table" class="scroll-table"></div><div id="incident-actions"></div>
+    <h3>Перепланирование · реальные API</h3>
+    <button id="replan-button" type="button" disabled>Пересчитать план</button>
+    <button id="replan-detail-button" type="button" disabled>Загрузить результат расчёта</button>
+    <p id="replan-status" role="status">Расчёт ещё не загружен</p>
+    <div id="plans-table" class="scroll-table"></div><div id="plan-actions"></div>
+    <details><summary>Raw replan / validator / explanations</summary><pre id="replan-json"></pre></details>
+    <h3>SSE event log · последние 100 кадров</h3><pre id="event-log"></pre>
+    <details><summary>Raw JSON текущего snapshot</summary><pre id="snapshot-json"></pre></details>
+  </section>
+  <p><a href="/docs">Swagger</a> · <a href="/openapi.json">OpenAPI</a></p>
+</main>
+</body>
+</html>

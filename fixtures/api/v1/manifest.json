@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0",
+  "spec_tag": "spec-v1.0",
+  "stage": "H0-H2",
+  "seed": 42,
+  "source": "synthetic_static_fixture",
+  "runtime_transitions_implemented": false,
+  "solver_validated": false,
+  "performance_measured": false,
+  "description": "Только образцы для автономного frontend. Live API читает PostgreSQL.",
+  "files": {
+    "snapshot.initial.json": "a8f8adf4aa225ac5290e9c01f3faad82af7d64d1624dd2cb6fab948554547130",
+    "stream.normal.json": "f253b6c15135730d11276176323029982ce597eda776b4062d1385317f7102c5",
+    "stream.incident.json": "564deb0790c987ba29e367dc3ffd218947650e81221b3bc9e5f5eb9cb5a047ad",
+    "config.json": "6f79700ee9a5990cfdaf9056f9f92382177288974515fe6fc7dd8b7fc4070805",
+    "errors.json": "b75e5351b04100bcfcc6dafa1a587828a4d016417b96303fe512dfd61ab14bf8",
+    "auth.viewer.json": "7507216b8e4bc5ee078f473a79f69a9d86b32d9c552b5aee911f6b47e2f4ce53",
+    "auth.operator.json": "a9737068d7bdc44b98060e95855906f36d8e8905d1fc6f52d52fd187a84b50ad",
+    "auth.dispatcher.json": "8773d1eaf3032cc6153169375e9462820ee002ce0ebe8518efd01d53f3bd6c0b",
+    "auth.admin.json": "2e532da8f43a9f621db0eb9be4bf5a8bf2af4983df3037be93d3f6f3ed036876",
+    "state.schema.json": "7d427717315d9519a1521d1fa94e4a464a134aa0cab362f666f0af2d53a97501"
+  },
+  "deferred": [
+    "replan",
+    "reconnect",
+    "history",
+    "manual-service",
+    "measured-metrics",
+    "SERVICE-P2"
+  ]
+}

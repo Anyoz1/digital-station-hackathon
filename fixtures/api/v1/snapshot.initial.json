@@ -1,0 +1,3671 @@
+{
+  "schema_version": "1.0",
+  "run_id": "run-demo-1",
+  "scenario_id": "demo_main_v1",
+  "scenario_epoch": "2026-10-01T08:00:00.000Z",
+  "event_seq": 1,
+  "state_version": 1,
+  "input_revision": 1,
+  "config_version": 1,
+  "server_time": "2026-10-01T08:00:00.000Z",
+  "sim_time_s": 0,
+  "speed": 1,
+  "mode": "paused",
+  "station": {
+    "id": "station-demo-v1",
+    "name": "Учебная цифровая станция",
+    "parks": [
+      {
+        "id": "reception",
+        "name": "Приёмо-отправочный",
+        "kind": "receiving_departure"
+      },
+      {
+        "id": "sorting",
+        "name": "Сортировочный",
+        "kind": "sorting"
+      },
+      {
+        "id": "cargo",
+        "name": "Грузовой",
+        "kind": "cargo"
+      },
+      {
+        "id": "service",
+        "name": "Служебный",
+        "kind": "service"
+      }
+    ],
+    "layout": {
+      "view_box": [
+        0.0,
+        0.0,
+        1200.0,
+        900.0
+      ],
+      "nodes": [
+        {
+          "id": "BW",
+          "kind": "boundary",
+          "x": 30.0,
+          "y": 300.0,
+          "switch_ids": []
+        },
+        {
+          "id": "ZW",
+          "kind": "switch_zone",
+          "x": 230.0,
+          "y": 300.0,
+          "switch_ids": [
+            "SW-ZW"
+          ]
+        },
+        {
+          "id": "ZE",
+          "kind": "switch_zone",
+          "x": 970.0,
+          "y": 300.0,
+          "switch_ids": [
+            "SW-ZE"
+          ]
+        },
+        {
+          "id": "BE",
+          "kind": "boundary",
+          "x": 1170.0,
+          "y": 300.0,
+          "switch_ids": []
+        },
+        {
+          "id": "R1-W",
+          "kind": "track_end",
+          "x": 350.0,
+          "y": 160.0,
+          "switch_ids": []
+        },
+        {
+          "id": "R1-E",
+          "kind": "track_end",
+          "x": 900.0,
+          "y": 160.0,
+          "switch_ids": []
+        },
+        {
+          "id": "R2-W",
+          "kind": "track_end",
+          "x": 350.0,
+          "y": 220.0,
+          "switch_ids": []
+        },
+        {
+          "id": "R2-E",
+          "kind": "track_end",
+          "x": 900.0,
+          "y": 220.0,
+          "switch_ids": []
+        },
+        {
+          "id": "R3-W",
+          "kind": "track_end",
+          "x": 350.0,
+          "y": 280.0,
+          "switch_ids": []
+        },
+        {
+          "id": "R3-E",
+          "kind": "track_end",
+          "x": 900.0,
+          "y": 280.0,
+          "switch_ids": []
+        },
+        {
+          "id": "R4-W",
+          "kind": "track_end",
+          "x": 350.0,
+          "y": 340.0,
+          "switch_ids": []
+        },
+        {
+          "id": "R4-E",
+          "kind": "track_end",
+          "x": 900.0,
+          "y": 340.0,
+          "switch_ids": []
+        },
+        {
+          "id": "S1-W",
+          "kind": "track_end",
+          "x": 350.0,
+          "y": 460.0,
+          "switch_ids": []
+        },
+        {
+          "id": "S1-E",
+          "kind": "track_end",
+          "x": 670.0,
+          "y": 460.0,
+          "switch_ids": []
+        },
+        {
+          "id": "S2-W",
+          "kind": "track_end",
+          "x": 350.0,
+          "y": 500.0,
+          "switch_ids": []
+        },
+        {
+          "id": "S2-E",
+          "kind": "track_end",
+          "x": 670.0,
+          "y": 500.0,
+          "switch_ids": []
+        },
+        {
+          "id": "S3-W",
+          "kind": "track_end",
+          "x": 350.0,
+          "y": 540.0,
+          "switch_ids": []
+        },
+        {
+          "id": "S3-E",
+          "kind": "track_end",
+          "x": 670.0,
+          "y": 540.0,
+          "switch_ids": []
+        },
+        {
+          "id": "S4-W",
+          "kind": "track_end",
+          "x": 350.0,
+          "y": 580.0,
+          "switch_ids": []
+        },
+        {
+          "id": "S4-E",
+          "kind": "track_end",
+          "x": 670.0,
+          "y": 580.0,
+          "switch_ids": []
+        },
+        {
+          "id": "C1-W",
+          "kind": "track_end",
+          "x": 350.0,
+          "y": 660.0,
+          "switch_ids": []
+        },
+        {
+          "id": "C1-E",
+          "kind": "track_end",
+          "x": 670.0,
+          "y": 660.0,
+          "switch_ids": []
+        },
+        {
+          "id": "C2-W",
+          "kind": "track_end",
+          "x": 350.0,
+          "y": 720.0,
+          "switch_ids": []
+        },
+        {
+          "id": "C2-E",
+          "kind": "track_end",
+          "x": 670.0,
+          "y": 720.0,
+          "switch_ids": []
+        },
+        {
+          "id": "H-end",
+          "kind": "track_end",
+          "x": 30.0,
+          "y": 400.0,
+          "switch_ids": []
+        },
+        {
+          "id": "D1-W",
+          "kind": "track_end",
+          "x": 350.0,
+          "y": 820.0,
+          "switch_ids": []
+        },
+        {
+          "id": "D1-E",
+          "kind": "track_end",
+          "x": 670.0,
+          "y": 820.0,
+          "switch_ids": []
+        }
+      ],
+      "edges": [
+        {
+          "id": "edge-BW-ZW",
+          "from_node_id": "BW",
+          "to_node_id": "ZW",
+          "track_id": null,
+          "zone_id": "W",
+          "bidirectional": true
+        },
+        {
+          "id": "edge-ZE-BE",
+          "from_node_id": "ZE",
+          "to_node_id": "BE",
+          "track_id": null,
+          "zone_id": "E",
+          "bidirectional": true
+        },
+        {
+          "id": "edge-ZW-R1-W",
+          "from_node_id": "ZW",
+          "to_node_id": "R1-W",
+          "track_id": null,
+          "zone_id": "W",
+          "bidirectional": true
+        },
+        {
+          "id": "edge-R1-W-R1-E",
+          "from_node_id": "R1-W",
+          "to_node_id": "R1-E",
+          "track_id": "R1",
+          "zone_id": null,
+          "bidirectional": true
+        },
+        {
+          "id": "edge-R1-E-ZE",
+          "from_node_id": "R1-E",
+          "to_node_id": "ZE",
+          "track_id": null,
+          "zone_id": "E",
+          "bidirectional": true
+        },
+        {
+          "id": "edge-ZW-R2-W",
+          "from_node_id": "ZW",
+          "to_node_id": "R2-W",
+          "track_id": null,
+          "zone_id": "W",
+          "bidirectional": true
+        },
+        {
+          "id": "edge-R2-W-R2-E",
+          "from_node_id": "R2-W",
+          "to_node_id": "R2-E",
+          "track_id": "R2",
+          "zone_id": null,
+          "bidirectional": true
+        },
+        {
+          "id": "edge-R2-E-ZE",
+          "from_node_id": "R2-E",
+          "to_node_id": "ZE",
+          "track_id": null,
+          "zone_id": "E",
+          "bidirectional": true
+        },
+        {
+          "id": "edge-ZW-R3-W",
+          "from_node_id": "ZW",
+          "to_node_id": "R3-W",
+          "track_id": null,
+          "zone_id": "W",
+          "bidirectional": true
+        },
+        {
+          "id": "edge-R3-W-R3-E",
+          "from_node_id": "R3-W",
+          "to_node_id": "R3-E",
+          "track_id": "R3",
+          "zone_id": null,
+          "bidirectional": true
+        },
+        {
+          "id": "edge-R3-E-ZE",
+          "from_node_id": "R3-E",
+          "to_node_id": "ZE",
+          "track_id": null,
+          "zone_id": "E",
+          "bidirectional": true
+        },
+        {
+          "id": "edge-ZW-R4-W",
+          "from_node_id": "ZW",
+          "to_node_id": "R4-W",
+          "track_id": null,
+          "zone_id": "W",
+          "bidirectional": true
+        },
+        {
+          "id": "edge-R4-W-R4-E",
+          "from_node_id": "R4-W",
+          "to_node_id": "R4-E",
+          "track_id": "R4",
+          "zone_id": null,
+          "bidirectional": true
+        },
+        {
+          "id": "edge-R4-E-ZE",
+          "from_node_id": "R4-E",
+          "to_node_id": "ZE",
+          "track_id": null,
+          "zone_id": "E",
+          "bidirectional": true
+        },
+        {
+          "id": "edge-ZW-S1-W",
+          "from_node_id": "ZW",
+          "to_node_id": "S1-W",
+          "track_id": null,
+          "zone_id": "W",
+          "bidirectional": true
+        },
+        {
+          "id": "edge-S1-W-S1-E",
+          "from_node_id": "S1-W",
+          "to_node_id": "S1-E",
+          "track_id": "S1",
+          "zone_id": null,
+          "bidirectional": true
+        },
+        {
+          "id": "edge-ZW-S2-W",
+          "from_node_id": "ZW",
+          "to_node_id": "S2-W",
+          "track_id": null,
+          "zone_id": "W",
+          "bidirectional": true
+        },
+        {
+          "id": "edge-S2-W-S2-E",
+          "from_node_id": "S2-W",
+          "to_node_id": "S2-E",
+          "track_id": "S2",
+          "zone_id": null,
+          "bidirectional": true
+        },
+        {
+          "id": "edge-ZW-S3-W",
+          "from_node_id": "ZW",
+          "to_node_id": "S3-W",
+          "track_id": null,
+          "zone_id": "W",
+          "bidirectional": true
+        },
+        {
+          "id": "edge-S3-W-S3-E",
+          "from_node_id": "S3-W",
+          "to_node_id": "S3-E",
+          "track_id": "S3",
+          "zone_id": null,
+          "bidirectional": true
+        },
+        {
+          "id": "edge-ZW-S4-W",
+          "from_node_id": "ZW",
+          "to_node_id": "S4-W",
+          "track_id": null,
+          "zone_id": "W",
+          "bidirectional": true
+        },
+        {
+          "id": "edge-S4-W-S4-E",
+          "from_node_id": "S4-W",
+          "to_node_id": "S4-E",
+          "track_id": "S4",
+          "zone_id": null,
+          "bidirectional": true
+        },
+        {
+          "id": "edge-ZW-C1-W",
+          "from_node_id": "ZW",
+          "to_node_id": "C1-W",
+          "track_id": null,
+          "zone_id": "W",
+          "bidirectional": true
+        },
+        {
+          "id": "edge-C1-W-C1-E",
+          "from_node_id": "C1-W",
+          "to_node_id": "C1-E",
+          "track_id": "C1",
+          "zone_id": null,
+          "bidirectional": true
+        },
+        {
+          "id": "edge-ZW-C2-W",
+          "from_node_id": "ZW",
+          "to_node_id": "C2-W",
+          "track_id": null,
+          "zone_id": "W",
+          "bidirectional": true
+        },
+        {
+          "id": "edge-C2-W-C2-E",
+          "from_node_id": "C2-W",
+          "to_node_id": "C2-E",
+          "track_id": "C2",
+          "zone_id": null,
+          "bidirectional": true
+        },
+        {
+          "id": "edge-H-end-ZW",
+          "from_node_id": "H-end",
+          "to_node_id": "ZW",
+          "track_id": "H",
+          "zone_id": "W",
+          "bidirectional": true
+        },
+        {
+          "id": "edge-ZW-D1-W",
+          "from_node_id": "ZW",
+          "to_node_id": "D1-W",
+          "track_id": null,
+          "zone_id": "W",
+          "bidirectional": true
+        },
+        {
+          "id": "edge-D1-W-D1-E",
+          "from_node_id": "D1-W",
+          "to_node_id": "D1-E",
+          "track_id": "D1",
+          "zone_id": null,
+          "bidirectional": true
+        }
+      ],
+      "tracks": [
+        {
+          "track_id": "R1",
+          "points": [
+            [
+              350.0,
+              160.0
+            ],
+            [
+              900.0,
+              160.0
+            ]
+          ]
+        },
+        {
+          "track_id": "R2",
+          "points": [
+            [
+              350.0,
+              220.0
+            ],
+            [
+              900.0,
+              220.0
+            ]
+          ]
+        },
+        {
+          "track_id": "R3",
+          "points": [
+            [
+              350.0,
+              280.0
+            ],
+            [
+              900.0,
+              280.0
+            ]
+          ]
+        },
+        {
+          "track_id": "R4",
+          "points": [
+            [
+              350.0,
+              340.0
+            ],
+            [
+              900.0,
+              340.0
+            ]
+          ]
+        },
+        {
+          "track_id": "S1",
+          "points": [
+            [
+              350.0,
+              460.0
+            ],
+            [
+              670.0,
+              460.0
+            ]
+          ]
+        },
+        {
+          "track_id": "S2",
+          "points": [
+            [
+              350.0,
+              500.0
+            ],
+            [
+              670.0,
+              500.0
+            ]
+          ]
+        },
+        {
+          "track_id": "S3",
+          "points": [
+            [
+              350.0,
+              540.0
+            ],
+            [
+              670.0,
+              540.0
+            ]
+          ]
+        },
+        {
+          "track_id": "S4",
+          "points": [
+            [
+              350.0,
+              580.0
+            ],
+            [
+              670.0,
+              580.0
+            ]
+          ]
+        },
+        {
+          "track_id": "C1",
+          "points": [
+            [
+              350.0,
+              660.0
+            ],
+            [
+              670.0,
+              660.0
+            ]
+          ]
+        },
+        {
+          "track_id": "C2",
+          "points": [
+            [
+              350.0,
+              720.0
+            ],
+            [
+              670.0,
+              720.0
+            ]
+          ]
+        },
+        {
+          "track_id": "H",
+          "points": [
+            [
+              30.0,
+              400.0
+            ],
+            [
+              230.0,
+              300.0
+            ]
+          ]
+        },
+        {
+          "track_id": "D1",
+          "points": [
+            [
+              350.0,
+              820.0
+            ],
+            [
+              670.0,
+              820.0
+            ]
+          ]
+        }
+      ],
+      "routes": [
+        {
+          "id": "arrival-W-R1",
+          "from_id": "BW",
+          "to_id": "R1",
+          "track_ids": [
+            "R1"
+          ],
+          "zone_ids": [
+            "W"
+          ],
+          "points": [
+            [
+              30.0,
+              300.0
+            ],
+            [
+              230.0,
+              300.0
+            ],
+            [
+              350.0,
+              160.0
+            ],
+            [
+              625.0,
+              160.0
+            ]
+          ]
+        },
+        {
+          "id": "departure-W-R1",
+          "from_id": "R1",
+          "to_id": "BW",
+          "track_ids": [
+            "R1"
+          ],
+          "zone_ids": [
+            "W"
+          ],
+          "points": [
+            [
+              625.0,
+              160.0
+            ],
+            [
+              350.0,
+              160.0
+            ],
+            [
+              230.0,
+              300.0
+            ],
+            [
+              30.0,
+              300.0
+            ]
+          ]
+        },
+        {
+          "id": "arrival-E-R1",
+          "from_id": "BE",
+          "to_id": "R1",
+          "track_ids": [
+            "R1"
+          ],
+          "zone_ids": [
+            "E"
+          ],
+          "points": [
+            [
+              1170.0,
+              300.0
+            ],
+            [
+              970.0,
+              300.0
+            ],
+            [
+              900.0,
+              160.0
+            ],
+            [
+              625.0,
+              160.0
+            ]
+          ]
+        },
+        {
+          "id": "departure-E-R1",
+          "from_id": "R1",
+          "to_id": "BE",
+          "track_ids": [
+            "R1"
+          ],
+          "zone_ids": [
+            "E"
+          ],
+          "points": [
+            [
+              625.0,
+              160.0
+            ],
+            [
+              900.0,
+              160.0
+            ],
+            [
+              970.0,
+              300.0
+            ],
+            [
+              1170.0,
+              300.0
+            ]
+          ]
+        },
+        {
+          "id": "arrival-W-R2",
+          "from_id": "BW",
+          "to_id": "R2",
+          "track_ids": [
+            "R2"
+          ],
+          "zone_ids": [
+            "W"
+          ],
+          "points": [
+            [
+              30.0,
+              300.0
+            ],
+            [
+              230.0,
+              300.0
+            ],
+            [
+              350.0,
+              220.0
+            ],
+            [
+              625.0,
+              220.0
+            ]
+          ]
+        },
+        {
+          "id": "departure-W-R2",
+          "from_id": "R2",
+          "to_id": "BW",
+          "track_ids": [
+            "R2"
+          ],
+          "zone_ids": [
+            "W"
+          ],
+          "points": [
+            [
+              625.0,
+              220.0
+            ],
+            [
+              350.0,
+              220.0
+            ],
+            [
+              230.0,
+              300.0
+            ],
+            [
+              30.0,
+              300.0
+            ]
+          ]
+        },
+        {
+          "id": "arrival-E-R2",
+          "from_id": "BE",
+          "to_id": "R2",
+          "track_ids": [
+            "R2"
+          ],
+          "zone_ids": [
+            "E"
+          ],
+          "points": [
+            [
+              1170.0,
+              300.0
+            ],
+            [
+              970.0,
+              300.0
+            ],
+            [
+              900.0,
+              220.0
+            ],
+            [
+              625.0,
+              220.0
+            ]
+          ]
+        },
+        {
+          "id": "departure-E-R2",
+          "from_id": "R2",
+          "to_id": "BE",
+          "track_ids": [
+            "R2"
+          ],
+          "zone_ids": [
+            "E"
+          ],
+          "points": [
+            [
+              625.0,
+              220.0
+            ],
+            [
+              900.0,
+              220.0
+            ],
+            [
+              970.0,
+              300.0
+            ],
+            [
+              1170.0,
+              300.0
+            ]
+          ]
+        },
+        {
+          "id": "arrival-W-R3",
+          "from_id": "BW",
+          "to_id": "R3",
+          "track_ids": [
+            "R3"
+          ],
+          "zone_ids": [
+            "W"
+          ],
+          "points": [
+            [
+              30.0,
+              300.0
+            ],
+            [
+              230.0,
+              300.0
+            ],
+            [
+              350.0,
+              280.0
+            ],
+            [
+              625.0,
+              280.0
+            ]
+          ]
+        },
+        {
+          "id": "departure-W-R3",
+          "from_id": "R3",
+          "to_id": "BW",
+          "track_ids": [
+            "R3"
+          ],
+          "zone_ids": [
+            "W"
+          ],
+          "points": [
+            [
+              625.0,
+              280.0
+            ],
+            [
+              350.0,
+              280.0
+            ],
+            [
+              230.0,
+              300.0
+            ],
+            [
+              30.0,
+              300.0
+            ]
+          ]
+        },
+        {
+          "id": "arrival-E-R3",
+          "from_id": "BE",
+          "to_id": "R3",
+          "track_ids": [
+            "R3"
+          ],
+          "zone_ids": [
+            "E"
+          ],
+          "points": [
+            [
+              1170.0,
+              300.0
+            ],
+            [
+              970.0,
+              300.0
+            ],
+            [
+              900.0,
+              280.0
+            ],
+            [
+              625.0,
+              280.0
+            ]
+          ]
+        },
+        {
+          "id": "departure-E-R3",
+          "from_id": "R3",
+          "to_id": "BE",
+          "track_ids": [
+            "R3"
+          ],
+          "zone_ids": [
+            "E"
+          ],
+          "points": [
+            [
+              625.0,
+              280.0
+            ],
+            [
+              900.0,
+              280.0
+            ],
+            [
+              970.0,
+              300.0
+            ],
+            [
+              1170.0,
+              300.0
+            ]
+          ]
+        },
+        {
+          "id": "arrival-W-R4",
+          "from_id": "BW",
+          "to_id": "R4",
+          "track_ids": [
+            "R4"
+          ],
+          "zone_ids": [
+            "W"
+          ],
+          "points": [
+            [
+              30.0,
+              300.0
+            ],
+            [
+              230.0,
+              300.0
+            ],
+            [
+              350.0,
+              340.0
+            ],
+            [
+              625.0,
+              340.0
+            ]
+          ]
+        },
+        {
+          "id": "departure-W-R4",
+          "from_id": "R4",
+          "to_id": "BW",
+          "track_ids": [
+            "R4"
+          ],
+          "zone_ids": [
+            "W"
+          ],
+          "points": [
+            [
+              625.0,
+              340.0
+            ],
+            [
+              350.0,
+              340.0
+            ],
+            [
+              230.0,
+              300.0
+            ],
+            [
+              30.0,
+              300.0
+            ]
+          ]
+        },
+        {
+          "id": "arrival-E-R4",
+          "from_id": "BE",
+          "to_id": "R4",
+          "track_ids": [
+            "R4"
+          ],
+          "zone_ids": [
+            "E"
+          ],
+          "points": [
+            [
+              1170.0,
+              300.0
+            ],
+            [
+              970.0,
+              300.0
+            ],
+            [
+              900.0,
+              340.0
+            ],
+            [
+              625.0,
+              340.0
+            ]
+          ]
+        },
+        {
+          "id": "departure-E-R4",
+          "from_id": "R4",
+          "to_id": "BE",
+          "track_ids": [
+            "R4"
+          ],
+          "zone_ids": [
+            "E"
+          ],
+          "points": [
+            [
+              625.0,
+              340.0
+            ],
+            [
+              900.0,
+              340.0
+            ],
+            [
+              970.0,
+              300.0
+            ],
+            [
+              1170.0,
+              300.0
+            ]
+          ]
+        },
+        {
+          "id": "move-R1-H",
+          "from_id": "R1",
+          "to_id": "H",
+          "track_ids": [
+            "R1",
+            "H"
+          ],
+          "zone_ids": [
+            "W"
+          ],
+          "points": [
+            [
+              625.0,
+              160.0
+            ],
+            [
+              350.0,
+              160.0
+            ],
+            [
+              230.0,
+              300.0
+            ],
+            [
+              30.0,
+              400.0
+            ]
+          ]
+        },
+        {
+          "id": "move-H-R1",
+          "from_id": "H",
+          "to_id": "R1",
+          "track_ids": [
+            "H",
+            "R1"
+          ],
+          "zone_ids": [
+            "W"
+          ],
+          "points": [
+            [
+              30.0,
+              400.0
+            ],
+            [
+              230.0,
+              300.0
+            ],
+            [
+              350.0,
+              160.0
+            ],
+            [
+              625.0,
+              160.0
+            ]
+          ]
+        },
+        {
+          "id": "move-R2-H",
+          "from_id": "R2",
+          "to_id": "H",
+          "track_ids": [
+            "R2",
+            "H"
+          ],
+          "zone_ids": [
+            "W"
+          ],
+          "points": [
+            [
+              625.0,
+              220.0
+            ],
+            [
+              350.0,
+              220.0
+            ],
+            [
+              230.0,
+              300.0
+            ],
+            [
+              30.0,
+              400.0
+            ]
+          ]
+        },
+        {
+          "id": "move-H-R2",
+          "from_id": "H",
+          "to_id": "R2",
+          "track_ids": [
+            "H",
+            "R2"
+          ],
+          "zone_ids": [
+            "W"
+          ],
+          "points": [
+            [
+              30.0,
+              400.0
+            ],
+            [
+              230.0,
+              300.0
+            ],
+            [
+              350.0,
+              220.0
+            ],
+            [
+              625.0,
+              220.0
+            ]
+          ]
+        },
+        {
+          "id": "move-R3-H",
+          "from_id": "R3",
+          "to_id": "H",
+          "track_ids": [
+            "R3",
+            "H"
+          ],
+          "zone_ids": [
+            "W"
+          ],
+          "points": [
+            [
+              625.0,
+              280.0
+            ],
+            [
+              350.0,
+              280.0
+            ],
+            [
+              230.0,
+              300.0
+            ],
+            [
+              30.0,
+              400.0
+            ]
+          ]
+        },
+        {
+          "id": "move-H-R3",
+          "from_id": "H",
+          "to_id": "R3",
+          "track_ids": [
+            "H",
+            "R3"
+          ],
+          "zone_ids": [
+            "W"
+          ],
+          "points": [
+            [
+              30.0,
+              400.0
+            ],
+            [
+              230.0,
+              300.0
+            ],
+            [
+              350.0,
+              280.0
+            ],
+            [
+              625.0,
+              280.0
+            ]
+          ]
+        },
+        {
+          "id": "move-R4-H",
+          "from_id": "R4",
+          "to_id": "H",
+          "track_ids": [
+            "R4",
+            "H"
+          ],
+          "zone_ids": [
+            "W"
+          ],
+          "points": [
+            [
+              625.0,
+              340.0
+            ],
+            [
+              350.0,
+              340.0
+            ],
+            [
+              230.0,
+              300.0
+            ],
+            [
+              30.0,
+              400.0
+            ]
+          ]
+        },
+        {
+          "id": "move-H-R4",
+          "from_id": "H",
+          "to_id": "R4",
+          "track_ids": [
+            "H",
+            "R4"
+          ],
+          "zone_ids": [
+            "W"
+          ],
+          "points": [
+            [
+              30.0,
+              400.0
+            ],
+            [
+              230.0,
+              300.0
+            ],
+            [
+              350.0,
+              340.0
+            ],
+            [
+              625.0,
+              340.0
+            ]
+          ]
+        },
+        {
+          "id": "move-S1-H",
+          "from_id": "S1",
+          "to_id": "H",
+          "track_ids": [
+            "S1",
+            "H"
+          ],
+          "zone_ids": [
+            "W"
+          ],
+          "points": [
+            [
+              510.0,
+              460.0
+            ],
+            [
+              350.0,
+              460.0
+            ],
+            [
+              230.0,
+              300.0
+            ],
+            [
+              30.0,
+              400.0
+            ]
+          ]
+        },
+        {
+          "id": "move-H-S1",
+          "from_id": "H",
+          "to_id": "S1",
+          "track_ids": [
+            "H",
+            "S1"
+          ],
+          "zone_ids": [
+            "W"
+          ],
+          "points": [
+            [
+              30.0,
+              400.0
+            ],
+            [
+              230.0,
+              300.0
+            ],
+            [
+              350.0,
+              460.0
+            ],
+            [
+              510.0,
+              460.0
+            ]
+          ]
+        },
+        {
+          "id": "move-S2-H",
+          "from_id": "S2",
+          "to_id": "H",
+          "track_ids": [
+            "S2",
+            "H"
+          ],
+          "zone_ids": [
+            "W"
+          ],
+          "points": [
+            [
+              510.0,
+              500.0
+            ],
+            [
+              350.0,
+              500.0
+            ],
+            [
+              230.0,
+              300.0
+            ],
+            [
+              30.0,
+              400.0
+            ]
+          ]
+        },
+        {
+          "id": "move-H-S2",
+          "from_id": "H",
+          "to_id": "S2",
+          "track_ids": [
+            "H",
+            "S2"
+          ],
+          "zone_ids": [
+            "W"
+          ],
+          "points": [
+            [
+              30.0,
+              400.0
+            ],
+            [
+              230.0,
+              300.0
+            ],
+            [
+              350.0,
+              500.0
+            ],
+            [
+              510.0,
+              500.0
+            ]
+          ]
+        },
+        {
+          "id": "move-S3-H",
+          "from_id": "S3",
+          "to_id": "H",
+          "track_ids": [
+            "S3",
+            "H"
+          ],
+          "zone_ids": [
+            "W"
+          ],
+          "points": [
+            [
+              510.0,
+              540.0
+            ],
+            [
+              350.0,
+              540.0
+            ],
+            [
+              230.0,
+              300.0
+            ],
+            [
+              30.0,
+              400.0
+            ]
+          ]
+        },
+        {
+          "id": "move-H-S3",
+          "from_id": "H",
+          "to_id": "S3",
+          "track_ids": [
+            "H",
+            "S3"
+          ],
+          "zone_ids": [
+            "W"
+          ],
+          "points": [
+            [
+              30.0,
+              400.0
+            ],
+            [
+              230.0,
+              300.0
+            ],
+            [
+              350.0,
+              540.0
+            ],
+            [
+              510.0,
+              540.0
+            ]
+          ]
+        },
+        {
+          "id": "move-S4-H",
+          "from_id": "S4",
+          "to_id": "H",
+          "track_ids": [
+            "S4",
+            "H"
+          ],
+          "zone_ids": [
+            "W"
+          ],
+          "points": [
+            [
+              510.0,
+              580.0
+            ],
+            [
+              350.0,
+              580.0
+            ],
+            [
+              230.0,
+              300.0
+            ],
+            [
+              30.0,
+              400.0
+            ]
+          ]
+        },
+        {
+          "id": "move-H-S4",
+          "from_id": "H",
+          "to_id": "S4",
+          "track_ids": [
+            "H",
+            "S4"
+          ],
+          "zone_ids": [
+            "W"
+          ],
+          "points": [
+            [
+              30.0,
+              400.0
+            ],
+            [
+              230.0,
+              300.0
+            ],
+            [
+              350.0,
+              580.0
+            ],
+            [
+              510.0,
+              580.0
+            ]
+          ]
+        },
+        {
+          "id": "move-C1-H",
+          "from_id": "C1",
+          "to_id": "H",
+          "track_ids": [
+            "C1",
+            "H"
+          ],
+          "zone_ids": [
+            "W"
+          ],
+          "points": [
+            [
+              510.0,
+              660.0
+            ],
+            [
+              350.0,
+              660.0
+            ],
+            [
+              230.0,
+              300.0
+            ],
+            [
+              30.0,
+              400.0
+            ]
+          ]
+        },
+        {
+          "id": "move-H-C1",
+          "from_id": "H",
+          "to_id": "C1",
+          "track_ids": [
+            "H",
+            "C1"
+          ],
+          "zone_ids": [
+            "W"
+          ],
+          "points": [
+            [
+              30.0,
+              400.0
+            ],
+            [
+              230.0,
+              300.0
+            ],
+            [
+              350.0,
+              660.0
+            ],
+            [
+              510.0,
+              660.0
+            ]
+          ]
+        },
+        {
+          "id": "move-C2-H",
+          "from_id": "C2",
+          "to_id": "H",
+          "track_ids": [
+            "C2",
+            "H"
+          ],
+          "zone_ids": [
+            "W"
+          ],
+          "points": [
+            [
+              510.0,
+              720.0
+            ],
+            [
+              350.0,
+              720.0
+            ],
+            [
+              230.0,
+              300.0
+            ],
+            [
+              30.0,
+              400.0
+            ]
+          ]
+        },
+        {
+          "id": "move-H-C2",
+          "from_id": "H",
+          "to_id": "C2",
+          "track_ids": [
+            "H",
+            "C2"
+          ],
+          "zone_ids": [
+            "W"
+          ],
+          "points": [
+            [
+              30.0,
+              400.0
+            ],
+            [
+              230.0,
+              300.0
+            ],
+            [
+              350.0,
+              720.0
+            ],
+            [
+              510.0,
+              720.0
+            ]
+          ]
+        },
+        {
+          "id": "move-D1-H",
+          "from_id": "D1",
+          "to_id": "H",
+          "track_ids": [
+            "D1",
+            "H"
+          ],
+          "zone_ids": [
+            "W"
+          ],
+          "points": [
+            [
+              510.0,
+              820.0
+            ],
+            [
+              350.0,
+              820.0
+            ],
+            [
+              230.0,
+              300.0
+            ],
+            [
+              30.0,
+              400.0
+            ]
+          ]
+        },
+        {
+          "id": "move-H-D1",
+          "from_id": "H",
+          "to_id": "D1",
+          "track_ids": [
+            "H",
+            "D1"
+          ],
+          "zone_ids": [
+            "W"
+          ],
+          "points": [
+            [
+              30.0,
+              400.0
+            ],
+            [
+              230.0,
+              300.0
+            ],
+            [
+              350.0,
+              820.0
+            ],
+            [
+              510.0,
+              820.0
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "active_plan_id": null,
+  "tracks": [
+    {
+      "id": "R1",
+      "name": "R1",
+      "park_id": "reception",
+      "kind": "receiving_departure",
+      "length_m": 350.0,
+      "availability": "open",
+      "occupied_length_m": 0.0,
+      "train_ids": [],
+      "group_ids": [],
+      "locomotive_ids": [],
+      "assigned_train_id": null,
+      "active_operation_ids": []
+    },
+    {
+      "id": "R2",
+      "name": "R2",
+      "park_id": "reception",
+      "kind": "receiving_departure",
+      "length_m": 350.0,
+      "availability": "open",
+      "occupied_length_m": 0.0,
+      "train_ids": [],
+      "group_ids": [],
+      "locomotive_ids": [],
+      "assigned_train_id": null,
+      "active_operation_ids": []
+    },
+    {
+      "id": "R3",
+      "name": "R3",
+      "park_id": "reception",
+      "kind": "receiving_departure",
+      "length_m": 350.0,
+      "availability": "open",
+      "occupied_length_m": 0.0,
+      "train_ids": [],
+      "group_ids": [],
+      "locomotive_ids": [],
+      "assigned_train_id": null,
+      "active_operation_ids": []
+    },
+    {
+      "id": "R4",
+      "name": "R4",
+      "park_id": "reception",
+      "kind": "receiving_departure",
+      "length_m": 350.0,
+      "availability": "open",
+      "occupied_length_m": 0.0,
+      "train_ids": [],
+      "group_ids": [],
+      "locomotive_ids": [],
+      "assigned_train_id": null,
+      "active_operation_ids": []
+    },
+    {
+      "id": "S1",
+      "name": "S1",
+      "park_id": "sorting",
+      "kind": "sorting",
+      "length_m": 160.0,
+      "availability": "open",
+      "occupied_length_m": 0.0,
+      "train_ids": [],
+      "group_ids": [],
+      "locomotive_ids": [],
+      "assigned_train_id": null,
+      "active_operation_ids": []
+    },
+    {
+      "id": "S2",
+      "name": "S2",
+      "park_id": "sorting",
+      "kind": "sorting",
+      "length_m": 160.0,
+      "availability": "open",
+      "occupied_length_m": 0.0,
+      "train_ids": [],
+      "group_ids": [],
+      "locomotive_ids": [],
+      "assigned_train_id": null,
+      "active_operation_ids": []
+    },
+    {
+      "id": "S3",
+      "name": "S3",
+      "park_id": "sorting",
+      "kind": "sorting",
+      "length_m": 160.0,
+      "availability": "open",
+      "occupied_length_m": 0.0,
+      "train_ids": [],
+      "group_ids": [],
+      "locomotive_ids": [],
+      "assigned_train_id": null,
+      "active_operation_ids": []
+    },
+    {
+      "id": "S4",
+      "name": "S4",
+      "park_id": "sorting",
+      "kind": "sorting",
+      "length_m": 160.0,
+      "availability": "open",
+      "occupied_length_m": 0.0,
+      "train_ids": [],
+      "group_ids": [],
+      "locomotive_ids": [],
+      "assigned_train_id": null,
+      "active_operation_ids": []
+    },
+    {
+      "id": "C1",
+      "name": "C1",
+      "park_id": "cargo",
+      "kind": "cargo",
+      "length_m": 160.0,
+      "availability": "open",
+      "occupied_length_m": 0.0,
+      "train_ids": [],
+      "group_ids": [],
+      "locomotive_ids": [],
+      "assigned_train_id": null,
+      "active_operation_ids": []
+    },
+    {
+      "id": "C2",
+      "name": "C2",
+      "park_id": "cargo",
+      "kind": "cargo",
+      "length_m": 160.0,
+      "availability": "open",
+      "occupied_length_m": 0.0,
+      "train_ids": [],
+      "group_ids": [],
+      "locomotive_ids": [],
+      "assigned_train_id": null,
+      "active_operation_ids": []
+    },
+    {
+      "id": "H",
+      "name": "H",
+      "park_id": "service",
+      "kind": "lead",
+      "length_m": 200.0,
+      "availability": "open",
+      "occupied_length_m": 0.0,
+      "train_ids": [],
+      "group_ids": [],
+      "locomotive_ids": [],
+      "assigned_train_id": null,
+      "active_operation_ids": []
+    },
+    {
+      "id": "D1",
+      "name": "D1",
+      "park_id": "service",
+      "kind": "parking",
+      "length_m": 160.0,
+      "availability": "open",
+      "occupied_length_m": 20.0,
+      "train_ids": [],
+      "group_ids": [],
+      "locomotive_ids": [
+        "L1"
+      ],
+      "assigned_train_id": null,
+      "active_operation_ids": []
+    }
+  ],
+  "zones": [
+    {
+      "id": "W",
+      "active_operation_id": null,
+      "availability": "open"
+    },
+    {
+      "id": "E",
+      "active_operation_id": null,
+      "availability": "open"
+    }
+  ],
+  "trains": [
+    {
+      "id": "T1",
+      "number": "2001",
+      "type": "FREIGHT",
+      "service_profile_id": "freight_transit_v1",
+      "processing_kind": "transit",
+      "direction": "W_E",
+      "consist_kind": "wagon_groups",
+      "body_length_m": 168.0,
+      "total_length_m": 188.0,
+      "location": {
+        "kind": "boundary",
+        "boundary_id": "BW",
+        "track_id": null,
+        "route_id": null,
+        "operation_id": null,
+        "route_progress": null
+      },
+      "priority": 1,
+      "status": "expected",
+      "destination_id": "DEST_E",
+      "scheduled_arrival_sim_s": 0,
+      "expected_arrival_sim_s": 0,
+      "due_departure_sim_s": 600,
+      "actual_arrival_sim_s": null,
+      "actual_departure_sim_s": null,
+      "group_ids": [
+        "G1"
+      ],
+      "target_group_ids": [
+        "G1"
+      ],
+      "traction_resource_id": "TL1",
+      "traction_kind": "locomotive",
+      "planned_track_id": null,
+      "current_track_id": null
+    },
+    {
+      "id": "T2",
+      "number": "2002",
+      "type": "FREIGHT",
+      "service_profile_id": "freight_local_v1",
+      "processing_kind": "local",
+      "direction": "W_E",
+      "consist_kind": "wagon_groups",
+      "body_length_m": 112.0,
+      "total_length_m": 132.0,
+      "location": {
+        "kind": "boundary",
+        "boundary_id": "BW",
+        "track_id": null,
+        "route_id": null,
+        "operation_id": null,
+        "route_progress": null
+      },
+      "priority": 2,
+      "status": "expected",
+      "destination_id": "DEST_E",
+      "scheduled_arrival_sim_s": 180,
+      "expected_arrival_sim_s": 180,
+      "due_departure_sim_s": 2700,
+      "actual_arrival_sim_s": null,
+      "actual_departure_sim_s": null,
+      "group_ids": [
+        "G2L",
+        "G2K"
+      ],
+      "target_group_ids": [
+        "G2L",
+        "G2K"
+      ],
+      "traction_resource_id": "TL2",
+      "traction_kind": "locomotive",
+      "planned_track_id": null,
+      "current_track_id": null
+    },
+    {
+      "id": "T3",
+      "number": "2003",
+      "type": "FREIGHT",
+      "service_profile_id": "freight_transit_v1",
+      "processing_kind": "transit",
+      "direction": "E_W",
+      "consist_kind": "wagon_groups",
+      "body_length_m": 140.0,
+      "total_length_m": 160.0,
+      "location": {
+        "kind": "boundary",
+        "boundary_id": "BE",
+        "track_id": null,
+        "route_id": null,
+        "operation_id": null,
+        "route_progress": null
+      },
+      "priority": 3,
+      "status": "expected",
+      "destination_id": "DEST_W",
+      "scheduled_arrival_sim_s": 600,
+      "expected_arrival_sim_s": 600,
+      "due_departure_sim_s": 1500,
+      "actual_arrival_sim_s": null,
+      "actual_departure_sim_s": null,
+      "group_ids": [
+        "G3"
+      ],
+      "target_group_ids": [
+        "G3"
+      ],
+      "traction_resource_id": "TL3",
+      "traction_kind": "locomotive",
+      "planned_track_id": null,
+      "current_track_id": null
+    },
+    {
+      "id": "T4",
+      "number": "2004",
+      "type": "FREIGHT",
+      "service_profile_id": "freight_reclassify_v1",
+      "processing_kind": "reclassify",
+      "direction": "W_E",
+      "consist_kind": "wagon_groups",
+      "body_length_m": 140.0,
+      "total_length_m": 160.0,
+      "location": {
+        "kind": "boundary",
+        "boundary_id": "BW",
+        "track_id": null,
+        "route_id": null,
+        "operation_id": null,
+        "route_progress": null
+      },
+      "priority": 1,
+      "status": "expected",
+      "destination_id": "DEST_E",
+      "scheduled_arrival_sim_s": 840,
+      "expected_arrival_sim_s": 840,
+      "due_departure_sim_s": 3900,
+      "actual_arrival_sim_s": null,
+      "actual_departure_sim_s": null,
+      "group_ids": [
+        "G4A",
+        "G4B",
+        "G4K"
+      ],
+      "target_group_ids": [
+        "G4B",
+        "G4A",
+        "G4K"
+      ],
+      "traction_resource_id": "TL4",
+      "traction_kind": "locomotive",
+      "planned_track_id": null,
+      "current_track_id": null
+    },
+    {
+      "id": "T5",
+      "number": "2005",
+      "type": "FREIGHT",
+      "service_profile_id": "freight_local_v1",
+      "processing_kind": "local",
+      "direction": "W_E",
+      "consist_kind": "wagon_groups",
+      "body_length_m": 112.0,
+      "total_length_m": 132.0,
+      "location": {
+        "kind": "boundary",
+        "boundary_id": "BW",
+        "track_id": null,
+        "route_id": null,
+        "operation_id": null,
+        "route_progress": null
+      },
+      "priority": 2,
+      "status": "expected",
+      "destination_id": "DEST_E",
+      "scheduled_arrival_sim_s": 1920,
+      "expected_arrival_sim_s": 1920,
+      "due_departure_sim_s": 5100,
+      "actual_arrival_sim_s": null,
+      "actual_departure_sim_s": null,
+      "group_ids": [
+        "G5L",
+        "G5K"
+      ],
+      "target_group_ids": [
+        "G5L",
+        "G5K"
+      ],
+      "traction_resource_id": "TL5",
+      "traction_kind": "locomotive",
+      "planned_track_id": null,
+      "current_track_id": null
+    },
+    {
+      "id": "T6",
+      "number": "2006",
+      "type": "FREIGHT",
+      "service_profile_id": "freight_transit_v1",
+      "processing_kind": "transit",
+      "direction": "E_W",
+      "consist_kind": "wagon_groups",
+      "body_length_m": 168.0,
+      "total_length_m": 188.0,
+      "location": {
+        "kind": "boundary",
+        "boundary_id": "BE",
+        "track_id": null,
+        "route_id": null,
+        "operation_id": null,
+        "route_progress": null
+      },
+      "priority": 1,
+      "status": "expected",
+      "destination_id": "DEST_W",
+      "scheduled_arrival_sim_s": 2700,
+      "expected_arrival_sim_s": 2700,
+      "due_departure_sim_s": 4200,
+      "actual_arrival_sim_s": null,
+      "actual_departure_sim_s": null,
+      "group_ids": [
+        "G6"
+      ],
+      "target_group_ids": [
+        "G6"
+      ],
+      "traction_resource_id": "TL6",
+      "traction_kind": "locomotive",
+      "planned_track_id": null,
+      "current_track_id": null
+    },
+    {
+      "id": "P1",
+      "number": "P001",
+      "type": "PASSENGER",
+      "service_profile_id": "passenger_transit_v1",
+      "processing_kind": "transit",
+      "direction": "W_E",
+      "consist_kind": "fixed",
+      "body_length_m": 120.0,
+      "total_length_m": 120.0,
+      "location": {
+        "kind": "boundary",
+        "boundary_id": "BW",
+        "track_id": null,
+        "route_id": null,
+        "operation_id": null,
+        "route_progress": null
+      },
+      "priority": 3,
+      "status": "expected",
+      "destination_id": "DEST_E",
+      "scheduled_arrival_sim_s": 720,
+      "expected_arrival_sim_s": 720,
+      "due_departure_sim_s": 960,
+      "actual_arrival_sim_s": null,
+      "actual_departure_sim_s": null,
+      "group_ids": [],
+      "target_group_ids": [],
+      "traction_resource_id": "TP1",
+      "traction_kind": "self_propelled",
+      "planned_track_id": null,
+      "current_track_id": null
+    }
+  ],
+  "wagon_groups": [
+    {
+      "id": "G1",
+      "origin_train_id": "T1",
+      "assigned_train_id": "T1",
+      "current_train_id": "T1",
+      "wagon_ids": [
+        "G1-W01",
+        "G1-W02",
+        "G1-W03",
+        "G1-W04",
+        "G1-W05",
+        "G1-W06",
+        "G1-W07",
+        "G1-W08",
+        "G1-W09",
+        "G1-W10",
+        "G1-W11",
+        "G1-W12"
+      ],
+      "wagon_count": 12,
+      "length_m": 168.0,
+      "destination_id": "DEST_E",
+      "cargo_state": "loaded",
+      "location": {
+        "kind": "boundary",
+        "boundary_id": "BW",
+        "track_id": null,
+        "route_id": null,
+        "operation_id": null,
+        "route_progress": null
+      }
+    },
+    {
+      "id": "G2L",
+      "origin_train_id": "T2",
+      "assigned_train_id": "T2",
+      "current_train_id": "T2",
+      "wagon_ids": [
+        "G2L-W01",
+        "G2L-W02",
+        "G2L-W03",
+        "G2L-W04"
+      ],
+      "wagon_count": 4,
+      "length_m": 56.0,
+      "destination_id": "DEST_E",
+      "cargo_state": "unloaded",
+      "location": {
+        "kind": "boundary",
+        "boundary_id": "BW",
+        "track_id": null,
+        "route_id": null,
+        "operation_id": null,
+        "route_progress": null
+      }
+    },
+    {
+      "id": "G2K",
+      "origin_train_id": "T2",
+      "assigned_train_id": "T2",
+      "current_train_id": "T2",
+      "wagon_ids": [
+        "G2K-W01",
+        "G2K-W02",
+        "G2K-W03",
+        "G2K-W04"
+      ],
+      "wagon_count": 4,
+      "length_m": 56.0,
+      "destination_id": "DEST_E",
+      "cargo_state": "loaded",
+      "location": {
+        "kind": "boundary",
+        "boundary_id": "BW",
+        "track_id": null,
+        "route_id": null,
+        "operation_id": null,
+        "route_progress": null
+      }
+    },
+    {
+      "id": "G3",
+      "origin_train_id": "T3",
+      "assigned_train_id": "T3",
+      "current_train_id": "T3",
+      "wagon_ids": [
+        "G3-W01",
+        "G3-W02",
+        "G3-W03",
+        "G3-W04",
+        "G3-W05",
+        "G3-W06",
+        "G3-W07",
+        "G3-W08",
+        "G3-W09",
+        "G3-W10"
+      ],
+      "wagon_count": 10,
+      "length_m": 140.0,
+      "destination_id": "DEST_W",
+      "cargo_state": "loaded",
+      "location": {
+        "kind": "boundary",
+        "boundary_id": "BE",
+        "track_id": null,
+        "route_id": null,
+        "operation_id": null,
+        "route_progress": null
+      }
+    },
+    {
+      "id": "G4A",
+      "origin_train_id": "T4",
+      "assigned_train_id": "T4",
+      "current_train_id": "T4",
+      "wagon_ids": [
+        "G4A-W01",
+        "G4A-W02",
+        "G4A-W03"
+      ],
+      "wagon_count": 3,
+      "length_m": 42.0,
+      "destination_id": "DEST_E",
+      "cargo_state": "loaded",
+      "location": {
+        "kind": "boundary",
+        "boundary_id": "BW",
+        "track_id": null,
+        "route_id": null,
+        "operation_id": null,
+        "route_progress": null
+      }
+    },
+    {
+      "id": "G4B",
+      "origin_train_id": "T4",
+      "assigned_train_id": "T4",
+      "current_train_id": "T4",
+      "wagon_ids": [
+        "G4B-W01",
+        "G4B-W02",
+        "G4B-W03"
+      ],
+      "wagon_count": 3,
+      "length_m": 42.0,
+      "destination_id": "DEST_E",
+      "cargo_state": "loaded",
+      "location": {
+        "kind": "boundary",
+        "boundary_id": "BW",
+        "track_id": null,
+        "route_id": null,
+        "operation_id": null,
+        "route_progress": null
+      }
+    },
+    {
+      "id": "G4K",
+      "origin_train_id": "T4",
+      "assigned_train_id": "T4",
+      "current_train_id": "T4",
+      "wagon_ids": [
+        "G4K-W01",
+        "G4K-W02",
+        "G4K-W03",
+        "G4K-W04"
+      ],
+      "wagon_count": 4,
+      "length_m": 56.0,
+      "destination_id": "DEST_E",
+      "cargo_state": "loaded",
+      "location": {
+        "kind": "boundary",
+        "boundary_id": "BW",
+        "track_id": null,
+        "route_id": null,
+        "operation_id": null,
+        "route_progress": null
+      }
+    },
+    {
+      "id": "G5L",
+      "origin_train_id": "T5",
+      "assigned_train_id": "T5",
+      "current_train_id": "T5",
+      "wagon_ids": [
+        "G5L-W01",
+        "G5L-W02",
+        "G5L-W03",
+        "G5L-W04"
+      ],
+      "wagon_count": 4,
+      "length_m": 56.0,
+      "destination_id": "DEST_E",
+      "cargo_state": "unloaded",
+      "location": {
+        "kind": "boundary",
+        "boundary_id": "BW",
+        "track_id": null,
+        "route_id": null,
+        "operation_id": null,
+        "route_progress": null
+      }
+    },
+    {
+      "id": "G5K",
+      "origin_train_id": "T5",
+      "assigned_train_id": "T5",
+      "current_train_id": "T5",
+      "wagon_ids": [
+        "G5K-W01",
+        "G5K-W02",
+        "G5K-W03",
+        "G5K-W04"
+      ],
+      "wagon_count": 4,
+      "length_m": 56.0,
+      "destination_id": "DEST_E",
+      "cargo_state": "loaded",
+      "location": {
+        "kind": "boundary",
+        "boundary_id": "BW",
+        "track_id": null,
+        "route_id": null,
+        "operation_id": null,
+        "route_progress": null
+      }
+    },
+    {
+      "id": "G6",
+      "origin_train_id": "T6",
+      "assigned_train_id": "T6",
+      "current_train_id": "T6",
+      "wagon_ids": [
+        "G6-W01",
+        "G6-W02",
+        "G6-W03",
+        "G6-W04",
+        "G6-W05",
+        "G6-W06",
+        "G6-W07",
+        "G6-W08",
+        "G6-W09",
+        "G6-W10",
+        "G6-W11",
+        "G6-W12"
+      ],
+      "wagon_count": 12,
+      "length_m": 168.0,
+      "destination_id": "DEST_W",
+      "cargo_state": "loaded",
+      "location": {
+        "kind": "boundary",
+        "boundary_id": "BE",
+        "track_id": null,
+        "route_id": null,
+        "operation_id": null,
+        "route_progress": null
+      }
+    }
+  ],
+  "resources": [
+    {
+      "id": "L1",
+      "name": "L1",
+      "kind": "shunting_locomotive",
+      "status": "available",
+      "active_operation_id": null,
+      "location": {
+        "kind": "track",
+        "boundary_id": null,
+        "track_id": "D1",
+        "route_id": null,
+        "operation_id": null,
+        "route_progress": null
+      },
+      "available_after_sim_s": null,
+      "assigned_user_id": null
+    },
+    {
+      "id": "SH1",
+      "name": "SH1",
+      "kind": "shunting_crew",
+      "status": "available",
+      "active_operation_id": null,
+      "location": null,
+      "available_after_sim_s": null,
+      "assigned_user_id": null
+    },
+    {
+      "id": "I1",
+      "name": "I1",
+      "kind": "inspection_crew",
+      "status": "available",
+      "active_operation_id": null,
+      "location": null,
+      "available_after_sim_s": null,
+      "assigned_user_id": null
+    },
+    {
+      "id": "I2",
+      "name": "I2",
+      "kind": "inspection_crew",
+      "status": "available",
+      "active_operation_id": null,
+      "location": null,
+      "available_after_sim_s": null,
+      "assigned_user_id": null
+    },
+    {
+      "id": "CG1",
+      "name": "CG1",
+      "kind": "cargo_crew",
+      "status": "available",
+      "active_operation_id": null,
+      "location": null,
+      "available_after_sim_s": null,
+      "assigned_user_id": null
+    },
+    {
+      "id": "TL1",
+      "name": "TL1",
+      "kind": "train_locomotive",
+      "status": "available",
+      "active_operation_id": null,
+      "location": {
+        "kind": "boundary",
+        "boundary_id": "BW",
+        "track_id": null,
+        "route_id": null,
+        "operation_id": null,
+        "route_progress": null
+      },
+      "available_after_sim_s": null,
+      "assigned_user_id": null
+    },
+    {
+      "id": "TC1",
+      "name": "TC1",
+      "kind": "train_crew",
+      "status": "available",
+      "active_operation_id": null,
+      "location": null,
+      "available_after_sim_s": null,
+      "assigned_user_id": null
+    },
+    {
+      "id": "TL2",
+      "name": "TL2",
+      "kind": "train_locomotive",
+      "status": "available",
+      "active_operation_id": null,
+      "location": {
+        "kind": "boundary",
+        "boundary_id": "BW",
+        "track_id": null,
+        "route_id": null,
+        "operation_id": null,
+        "route_progress": null
+      },
+      "available_after_sim_s": null,
+      "assigned_user_id": null
+    },
+    {
+      "id": "TC2",
+      "name": "TC2",
+      "kind": "train_crew",
+      "status": "available",
+      "active_operation_id": null,
+      "location": null,
+      "available_after_sim_s": null,
+      "assigned_user_id": null
+    },
+    {
+      "id": "TL3",
+      "name": "TL3",
+      "kind": "train_locomotive",
+      "status": "available",
+      "active_operation_id": null,
+      "location": {
+        "kind": "boundary",
+        "boundary_id": "BE",
+        "track_id": null,
+        "route_id": null,
+        "operation_id": null,
+        "route_progress": null
+      },
+      "available_after_sim_s": null,
+      "assigned_user_id": null
+    },
+    {
+      "id": "TC3",
+      "name": "TC3",
+      "kind": "train_crew",
+      "status": "available",
+      "active_operation_id": null,
+      "location": null,
+      "available_after_sim_s": null,
+      "assigned_user_id": null
+    },
+    {
+      "id": "TL4",
+      "name": "TL4",
+      "kind": "train_locomotive",
+      "status": "available",
+      "active_operation_id": null,
+      "location": {
+        "kind": "boundary",
+        "boundary_id": "BW",
+        "track_id": null,
+        "route_id": null,
+        "operation_id": null,
+        "route_progress": null
+      },
+      "available_after_sim_s": null,
+      "assigned_user_id": null
+    },
+    {
+      "id": "TC4",
+      "name": "TC4",
+      "kind": "train_crew",
+      "status": "available",
+      "active_operation_id": null,
+      "location": null,
+      "available_after_sim_s": null,
+      "assigned_user_id": null
+    },
+    {
+      "id": "TL5",
+      "name": "TL5",
+      "kind": "train_locomotive",
+      "status": "available",
+      "active_operation_id": null,
+      "location": {
+        "kind": "boundary",
+        "boundary_id": "BW",
+        "track_id": null,
+        "route_id": null,
+        "operation_id": null,
+        "route_progress": null
+      },
+      "available_after_sim_s": null,
+      "assigned_user_id": null
+    },
+    {
+      "id": "TC5",
+      "name": "TC5",
+      "kind": "train_crew",
+      "status": "available",
+      "active_operation_id": null,
+      "location": null,
+      "available_after_sim_s": null,
+      "assigned_user_id": null
+    },
+    {
+      "id": "TL6",
+      "name": "TL6",
+      "kind": "train_locomotive",
+      "status": "available",
+      "active_operation_id": null,
+      "location": {
+        "kind": "boundary",
+        "boundary_id": "BE",
+        "track_id": null,
+        "route_id": null,
+        "operation_id": null,
+        "route_progress": null
+      },
+      "available_after_sim_s": null,
+      "assigned_user_id": null
+    },
+    {
+      "id": "TC6",
+      "name": "TC6",
+      "kind": "train_crew",
+      "status": "available",
+      "active_operation_id": null,
+      "location": null,
+      "available_after_sim_s": null,
+      "assigned_user_id": null
+    },
+    {
+      "id": "TP1",
+      "name": "TP1",
+      "kind": "self_propelled_unit",
+      "status": "available",
+      "active_operation_id": null,
+      "location": {
+        "kind": "boundary",
+        "boundary_id": "BW",
+        "track_id": null,
+        "route_id": null,
+        "operation_id": null,
+        "route_progress": null
+      },
+      "available_after_sim_s": null,
+      "assigned_user_id": null
+    },
+    {
+      "id": "TCP1",
+      "name": "TCP1",
+      "kind": "train_crew",
+      "status": "available",
+      "active_operation_id": null,
+      "location": null,
+      "available_after_sim_s": null,
+      "assigned_user_id": null
+    }
+  ],
+  "operations": [
+    {
+      "id": "op-T1-arrival",
+      "train_id": "T1",
+      "group_ids": [
+        "G1"
+      ],
+      "kind": "arrival",
+      "status": "pending",
+      "execution_mode": "auto",
+      "predecessor_ids": [],
+      "source_track_id": null,
+      "target_track_id": null,
+      "route_ids": [],
+      "resource_ids": [],
+      "duration_sim_s": 120,
+      "start_sim_s": null,
+      "end_sim_s": null,
+      "actual_start_sim_s": null,
+      "actual_end_sim_s": null,
+      "progress": 0.0,
+      "phase": null,
+      "blocked_reason_codes": [],
+      "assigned_user_id": null,
+      "can_complete": false
+    },
+    {
+      "id": "op-T1-inspection",
+      "train_id": "T1",
+      "group_ids": [
+        "G1"
+      ],
+      "kind": "inspection",
+      "status": "pending",
+      "execution_mode": "auto",
+      "predecessor_ids": [
+        "op-T1-arrival"
+      ],
+      "source_track_id": null,
+      "target_track_id": null,
+      "route_ids": [],
+      "resource_ids": [],
+      "duration_sim_s": 240,
+      "start_sim_s": null,
+      "end_sim_s": null,
+      "actual_start_sim_s": null,
+      "actual_end_sim_s": null,
+      "progress": 0.0,
+      "phase": null,
+      "blocked_reason_codes": [],
+      "assigned_user_id": null,
+      "can_complete": false
+    },
+    {
+      "id": "op-T1-departure",
+      "train_id": "T1",
+      "group_ids": [
+        "G1"
+      ],
+      "kind": "departure",
+      "status": "pending",
+      "execution_mode": "auto",
+      "predecessor_ids": [
+        "op-T1-inspection"
+      ],
+      "source_track_id": null,
+      "target_track_id": null,
+      "route_ids": [],
+      "resource_ids": [],
+      "duration_sim_s": 120,
+      "start_sim_s": null,
+      "end_sim_s": null,
+      "actual_start_sim_s": null,
+      "actual_end_sim_s": null,
+      "progress": 0.0,
+      "phase": null,
+      "blocked_reason_codes": [],
+      "assigned_user_id": null,
+      "can_complete": false
+    },
+    {
+      "id": "op-T2-arrival",
+      "train_id": "T2",
+      "group_ids": [
+        "G2L",
+        "G2K"
+      ],
+      "kind": "arrival",
+      "status": "pending",
+      "execution_mode": "auto",
+      "predecessor_ids": [],
+      "source_track_id": null,
+      "target_track_id": null,
+      "route_ids": [],
+      "resource_ids": [],
+      "duration_sim_s": 120,
+      "start_sim_s": null,
+      "end_sim_s": null,
+      "actual_start_sim_s": null,
+      "actual_end_sim_s": null,
+      "progress": 0.0,
+      "phase": null,
+      "blocked_reason_codes": [],
+      "assigned_user_id": null,
+      "can_complete": false
+    },
+    {
+      "id": "op-T2-inspection",
+      "train_id": "T2",
+      "group_ids": [
+        "G2L",
+        "G2K"
+      ],
+      "kind": "inspection",
+      "status": "pending",
+      "execution_mode": "auto",
+      "predecessor_ids": [
+        "op-T2-arrival"
+      ],
+      "source_track_id": null,
+      "target_track_id": null,
+      "route_ids": [],
+      "resource_ids": [],
+      "duration_sim_s": 240,
+      "start_sim_s": null,
+      "end_sim_s": null,
+      "actual_start_sim_s": null,
+      "actual_end_sim_s": null,
+      "progress": 0.0,
+      "phase": null,
+      "blocked_reason_codes": [],
+      "assigned_user_id": null,
+      "can_complete": false
+    },
+    {
+      "id": "op-T2-shunt-out",
+      "train_id": "T2",
+      "group_ids": [
+        "G2L"
+      ],
+      "kind": "shunt_transfer",
+      "status": "pending",
+      "execution_mode": "auto",
+      "predecessor_ids": [
+        "op-T2-inspection"
+      ],
+      "source_track_id": null,
+      "target_track_id": null,
+      "route_ids": [],
+      "resource_ids": [],
+      "duration_sim_s": 420,
+      "start_sim_s": null,
+      "end_sim_s": null,
+      "actual_start_sim_s": null,
+      "actual_end_sim_s": null,
+      "progress": 0.0,
+      "phase": null,
+      "blocked_reason_codes": [],
+      "assigned_user_id": null,
+      "can_complete": false
+    },
+    {
+      "id": "op-T2-cargo",
+      "train_id": "T2",
+      "group_ids": [
+        "G2L"
+      ],
+      "kind": "cargo",
+      "status": "pending",
+      "execution_mode": "auto",
+      "predecessor_ids": [
+        "op-T2-shunt-out"
+      ],
+      "source_track_id": null,
+      "target_track_id": null,
+      "route_ids": [],
+      "resource_ids": [],
+      "duration_sim_s": 720,
+      "start_sim_s": null,
+      "end_sim_s": null,
+      "actual_start_sim_s": null,
+      "actual_end_sim_s": null,
+      "progress": 0.0,
+      "phase": null,
+      "blocked_reason_codes": [],
+      "assigned_user_id": null,
+      "can_complete": false
+    },
+    {
+      "id": "op-T2-shunt-back",
+      "train_id": "T2",
+      "group_ids": [
+        "G2L"
+      ],
+      "kind": "shunt_transfer",
+      "status": "pending",
+      "execution_mode": "auto",
+      "predecessor_ids": [
+        "op-T2-cargo"
+      ],
+      "source_track_id": null,
+      "target_track_id": null,
+      "route_ids": [],
+      "resource_ids": [],
+      "duration_sim_s": 420,
+      "start_sim_s": null,
+      "end_sim_s": null,
+      "actual_start_sim_s": null,
+      "actual_end_sim_s": null,
+      "progress": 0.0,
+      "phase": null,
+      "blocked_reason_codes": [],
+      "assigned_user_id": null,
+      "can_complete": false
+    },
+    {
+      "id": "op-T2-prep",
+      "train_id": "T2",
+      "group_ids": [
+        "G2L",
+        "G2K"
+      ],
+      "kind": "departure_prep",
+      "status": "pending",
+      "execution_mode": "auto",
+      "predecessor_ids": [
+        "op-T2-shunt-back"
+      ],
+      "source_track_id": null,
+      "target_track_id": null,
+      "route_ids": [],
+      "resource_ids": [],
+      "duration_sim_s": 180,
+      "start_sim_s": null,
+      "end_sim_s": null,
+      "actual_start_sim_s": null,
+      "actual_end_sim_s": null,
+      "progress": 0.0,
+      "phase": null,
+      "blocked_reason_codes": [],
+      "assigned_user_id": null,
+      "can_complete": false
+    },
+    {
+      "id": "op-T2-departure",
+      "train_id": "T2",
+      "group_ids": [
+        "G2L",
+        "G2K"
+      ],
+      "kind": "departure",
+      "status": "pending",
+      "execution_mode": "auto",
+      "predecessor_ids": [
+        "op-T2-prep"
+      ],
+      "source_track_id": null,
+      "target_track_id": null,
+      "route_ids": [],
+      "resource_ids": [],
+      "duration_sim_s": 120,
+      "start_sim_s": null,
+      "end_sim_s": null,
+      "actual_start_sim_s": null,
+      "actual_end_sim_s": null,
+      "progress": 0.0,
+      "phase": null,
+      "blocked_reason_codes": [],
+      "assigned_user_id": null,
+      "can_complete": false
+    },
+    {
+      "id": "op-T3-arrival",
+      "train_id": "T3",
+      "group_ids": [
+        "G3"
+      ],
+      "kind": "arrival",
+      "status": "pending",
+      "execution_mode": "auto",
+      "predecessor_ids": [],
+      "source_track_id": null,
+      "target_track_id": null,
+      "route_ids": [],
+      "resource_ids": [],
+      "duration_sim_s": 120,
+      "start_sim_s": null,
+      "end_sim_s": null,
+      "actual_start_sim_s": null,
+      "actual_end_sim_s": null,
+      "progress": 0.0,
+      "phase": null,
+      "blocked_reason_codes": [],
+      "assigned_user_id": null,
+      "can_complete": false
+    },
+    {
+      "id": "op-T3-inspection",
+      "train_id": "T3",
+      "group_ids": [
+        "G3"
+      ],
+      "kind": "inspection",
+      "status": "pending",
+      "execution_mode": "auto",
+      "predecessor_ids": [
+        "op-T3-arrival"
+      ],
+      "source_track_id": null,
+      "target_track_id": null,
+      "route_ids": [],
+      "resource_ids": [],
+      "duration_sim_s": 240,
+      "start_sim_s": null,
+      "end_sim_s": null,
+      "actual_start_sim_s": null,
+      "actual_end_sim_s": null,
+      "progress": 0.0,
+      "phase": null,
+      "blocked_reason_codes": [],
+      "assigned_user_id": null,
+      "can_complete": false
+    },
+    {
+      "id": "op-T3-departure",
+      "train_id": "T3",
+      "group_ids": [
+        "G3"
+      ],
+      "kind": "departure",
+      "status": "pending",
+      "execution_mode": "auto",
+      "predecessor_ids": [
+        "op-T3-inspection"
+      ],
+      "source_track_id": null,
+      "target_track_id": null,
+      "route_ids": [],
+      "resource_ids": [],
+      "duration_sim_s": 120,
+      "start_sim_s": null,
+      "end_sim_s": null,
+      "actual_start_sim_s": null,
+      "actual_end_sim_s": null,
+      "progress": 0.0,
+      "phase": null,
+      "blocked_reason_codes": [],
+      "assigned_user_id": null,
+      "can_complete": false
+    },
+    {
+      "id": "op-T4-arrival",
+      "train_id": "T4",
+      "group_ids": [
+        "G4A",
+        "G4B",
+        "G4K"
+      ],
+      "kind": "arrival",
+      "status": "pending",
+      "execution_mode": "auto",
+      "predecessor_ids": [],
+      "source_track_id": null,
+      "target_track_id": null,
+      "route_ids": [],
+      "resource_ids": [],
+      "duration_sim_s": 120,
+      "start_sim_s": null,
+      "end_sim_s": null,
+      "actual_start_sim_s": null,
+      "actual_end_sim_s": null,
+      "progress": 0.0,
+      "phase": null,
+      "blocked_reason_codes": [],
+      "assigned_user_id": null,
+      "can_complete": false
+    },
+    {
+      "id": "op-T4-inspection",
+      "train_id": "T4",
+      "group_ids": [
+        "G4A",
+        "G4B",
+        "G4K"
+      ],
+      "kind": "inspection",
+      "status": "pending",
+      "execution_mode": "auto",
+      "predecessor_ids": [
+        "op-T4-arrival"
+      ],
+      "source_track_id": null,
+      "target_track_id": null,
+      "route_ids": [],
+      "resource_ids": [],
+      "duration_sim_s": 240,
+      "start_sim_s": null,
+      "end_sim_s": null,
+      "actual_start_sim_s": null,
+      "actual_end_sim_s": null,
+      "progress": 0.0,
+      "phase": null,
+      "blocked_reason_codes": [],
+      "assigned_user_id": null,
+      "can_complete": false
+    },
+    {
+      "id": "op-T4-shunt-A-out",
+      "train_id": "T4",
+      "group_ids": [
+        "G4A"
+      ],
+      "kind": "shunt_transfer",
+      "status": "pending",
+      "execution_mode": "auto",
+      "predecessor_ids": [
+        "op-T4-inspection"
+      ],
+      "source_track_id": null,
+      "target_track_id": null,
+      "route_ids": [],
+      "resource_ids": [],
+      "duration_sim_s": 420,
+      "start_sim_s": null,
+      "end_sim_s": null,
+      "actual_start_sim_s": null,
+      "actual_end_sim_s": null,
+      "progress": 0.0,
+      "phase": null,
+      "blocked_reason_codes": [],
+      "assigned_user_id": null,
+      "can_complete": false
+    },
+    {
+      "id": "op-T4-shunt-B-out",
+      "train_id": "T4",
+      "group_ids": [
+        "G4B"
+      ],
+      "kind": "shunt_transfer",
+      "status": "pending",
+      "execution_mode": "auto",
+      "predecessor_ids": [
+        "op-T4-shunt-A-out"
+      ],
+      "source_track_id": null,
+      "target_track_id": null,
+      "route_ids": [],
+      "resource_ids": [],
+      "duration_sim_s": 420,
+      "start_sim_s": null,
+      "end_sim_s": null,
+      "actual_start_sim_s": null,
+      "actual_end_sim_s": null,
+      "progress": 0.0,
+      "phase": null,
+      "blocked_reason_codes": [],
+      "assigned_user_id": null,
+      "can_complete": false
+    },
+    {
+      "id": "op-T4-shunt-A-back",
+      "train_id": "T4",
+      "group_ids": [
+        "G4A"
+      ],
+      "kind": "shunt_transfer",
+      "status": "pending",
+      "execution_mode": "auto",
+      "predecessor_ids": [
+        "op-T4-shunt-B-out"
+      ],
+      "source_track_id": null,
+      "target_track_id": null,
+      "route_ids": [],
+      "resource_ids": [],
+      "duration_sim_s": 420,
+      "start_sim_s": null,
+      "end_sim_s": null,
+      "actual_start_sim_s": null,
+      "actual_end_sim_s": null,
+      "progress": 0.0,
+      "phase": null,
+      "blocked_reason_codes": [],
+      "assigned_user_id": null,
+      "can_complete": false
+    },
+    {
+      "id": "op-T4-shunt-B-back",
+      "train_id": "T4",
+      "group_ids": [
+        "G4B"
+      ],
+      "kind": "shunt_transfer",
+      "status": "pending",
+      "execution_mode": "auto",
+      "predecessor_ids": [
+        "op-T4-shunt-A-back"
+      ],
+      "source_track_id": null,
+      "target_track_id": null,
+      "route_ids": [],
+      "resource_ids": [],
+      "duration_sim_s": 420,
+      "start_sim_s": null,
+      "end_sim_s": null,
+      "actual_start_sim_s": null,
+      "actual_end_sim_s": null,
+      "progress": 0.0,
+      "phase": null,
+      "blocked_reason_codes": [],
+      "assigned_user_id": null,
+      "can_complete": false
+    },
+    {
+      "id": "op-T4-prep",
+      "train_id": "T4",
+      "group_ids": [
+        "G4A",
+        "G4B",
+        "G4K"
+      ],
+      "kind": "departure_prep",
+      "status": "pending",
+      "execution_mode": "auto",
+      "predecessor_ids": [
+        "op-T4-shunt-B-back"
+      ],
+      "source_track_id": null,
+      "target_track_id": null,
+      "route_ids": [],
+      "resource_ids": [],
+      "duration_sim_s": 180,
+      "start_sim_s": null,
+      "end_sim_s": null,
+      "actual_start_sim_s": null,
+      "actual_end_sim_s": null,
+      "progress": 0.0,
+      "phase": null,
+      "blocked_reason_codes": [],
+      "assigned_user_id": null,
+      "can_complete": false
+    },
+    {
+      "id": "op-T4-departure",
+      "train_id": "T4",
+      "group_ids": [
+        "G4B",
+        "G4A",
+        "G4K"
+      ],
+      "kind": "departure",
+      "status": "pending",
+      "execution_mode": "auto",
+      "predecessor_ids": [
+        "op-T4-prep"
+      ],
+      "source_track_id": null,
+      "target_track_id": null,
+      "route_ids": [],
+      "resource_ids": [],
+      "duration_sim_s": 120,
+      "start_sim_s": null,
+      "end_sim_s": null,
+      "actual_start_sim_s": null,
+      "actual_end_sim_s": null,
+      "progress": 0.0,
+      "phase": null,
+      "blocked_reason_codes": [],
+      "assigned_user_id": null,
+      "can_complete": false
+    },
+    {
+      "id": "op-T5-arrival",
+      "train_id": "T5",
+      "group_ids": [
+        "G5L",
+        "G5K"
+      ],
+      "kind": "arrival",
+      "status": "pending",
+      "execution_mode": "auto",
+      "predecessor_ids": [],
+      "source_track_id": null,
+      "target_track_id": null,
+      "route_ids": [],
+      "resource_ids": [],
+      "duration_sim_s": 120,
+      "start_sim_s": null,
+      "end_sim_s": null,
+      "actual_start_sim_s": null,
+      "actual_end_sim_s": null,
+      "progress": 0.0,
+      "phase": null,
+      "blocked_reason_codes": [],
+      "assigned_user_id": null,
+      "can_complete": false
+    },
+    {
+      "id": "op-T5-inspection",
+      "train_id": "T5",
+      "group_ids": [
+        "G5L",
+        "G5K"
+      ],
+      "kind": "inspection",
+      "status": "pending",
+      "execution_mode": "auto",
+      "predecessor_ids": [
+        "op-T5-arrival"
+      ],
+      "source_track_id": null,
+      "target_track_id": null,
+      "route_ids": [],
+      "resource_ids": [],
+      "duration_sim_s": 240,
+      "start_sim_s": null,
+      "end_sim_s": null,
+      "actual_start_sim_s": null,
+      "actual_end_sim_s": null,
+      "progress": 0.0,
+      "phase": null,
+      "blocked_reason_codes": [],
+      "assigned_user_id": null,
+      "can_complete": false
+    },
+    {
+      "id": "op-T5-shunt-out",
+      "train_id": "T5",
+      "group_ids": [
+        "G5L"
+      ],
+      "kind": "shunt_transfer",
+      "status": "pending",
+      "execution_mode": "auto",
+      "predecessor_ids": [
+        "op-T5-inspection"
+      ],
+      "source_track_id": null,
+      "target_track_id": null,
+      "route_ids": [],
+      "resource_ids": [],
+      "duration_sim_s": 420,
+      "start_sim_s": null,
+      "end_sim_s": null,
+      "actual_start_sim_s": null,
+      "actual_end_sim_s": null,
+      "progress": 0.0,
+      "phase": null,
+      "blocked_reason_codes": [],
+      "assigned_user_id": null,
+      "can_complete": false
+    },
+    {
+      "id": "op-T5-cargo",
+      "train_id": "T5",
+      "group_ids": [
+        "G5L"
+      ],
+      "kind": "cargo",
+      "status": "pending",
+      "execution_mode": "auto",
+      "predecessor_ids": [
+        "op-T5-shunt-out"
+      ],
+      "source_track_id": null,
+      "target_track_id": null,
+      "route_ids": [],
+      "resource_ids": [],
+      "duration_sim_s": 720,
+      "start_sim_s": null,
+      "end_sim_s": null,
+      "actual_start_sim_s": null,
+      "actual_end_sim_s": null,
+      "progress": 0.0,
+      "phase": null,
+      "blocked_reason_codes": [],
+      "assigned_user_id": null,
+      "can_complete": false
+    },
+    {
+      "id": "op-T5-shunt-back",
+      "train_id": "T5",
+      "group_ids": [
+        "G5L"
+      ],
+      "kind": "shunt_transfer",
+      "status": "pending",
+      "execution_mode": "auto",
+      "predecessor_ids": [
+        "op-T5-cargo"
+      ],
+      "source_track_id": null,
+      "target_track_id": null,
+      "route_ids": [],
+      "resource_ids": [],
+      "duration_sim_s": 420,
+      "start_sim_s": null,
+      "end_sim_s": null,
+      "actual_start_sim_s": null,
+      "actual_end_sim_s": null,
+      "progress": 0.0,
+      "phase": null,
+      "blocked_reason_codes": [],
+      "assigned_user_id": null,
+      "can_complete": false
+    },
+    {
+      "id": "op-T5-prep",
+      "train_id": "T5",
+      "group_ids": [
+        "G5L",
+        "G5K"
+      ],
+      "kind": "departure_prep",
+      "status": "pending",
+      "execution_mode": "auto",
+      "predecessor_ids": [
+        "op-T5-shunt-back"
+      ],
+      "source_track_id": null,
+      "target_track_id": null,
+      "route_ids": [],
+      "resource_ids": [],
+      "duration_sim_s": 180,
+      "start_sim_s": null,
+      "end_sim_s": null,
+      "actual_start_sim_s": null,
+      "actual_end_sim_s": null,
+      "progress": 0.0,
+      "phase": null,
+      "blocked_reason_codes": [],
+      "assigned_user_id": null,
+      "can_complete": false
+    },
+    {
+      "id": "op-T5-departure",
+      "train_id": "T5",
+      "group_ids": [
+        "G5L",
+        "G5K"
+      ],
+      "kind": "departure",
+      "status": "pending",
+      "execution_mode": "auto",
+      "predecessor_ids": [
+        "op-T5-prep"
+      ],
+      "source_track_id": null,
+      "target_track_id": null,
+      "route_ids": [],
+      "resource_ids": [],
+      "duration_sim_s": 120,
+      "start_sim_s": null,
+      "end_sim_s": null,
+      "actual_start_sim_s": null,
+      "actual_end_sim_s": null,
+      "progress": 0.0,
+      "phase": null,
+      "blocked_reason_codes": [],
+      "assigned_user_id": null,
+      "can_complete": false
+    },
+    {
+      "id": "op-T6-arrival",
+      "train_id": "T6",
+      "group_ids": [
+        "G6"
+      ],
+      "kind": "arrival",
+      "status": "pending",
+      "execution_mode": "auto",
+      "predecessor_ids": [],
+      "source_track_id": null,
+      "target_track_id": null,
+      "route_ids": [],
+      "resource_ids": [],
+      "duration_sim_s": 120,
+      "start_sim_s": null,
+      "end_sim_s": null,
+      "actual_start_sim_s": null,
+      "actual_end_sim_s": null,
+      "progress": 0.0,
+      "phase": null,
+      "blocked_reason_codes": [],
+      "assigned_user_id": null,
+      "can_complete": false
+    },
+    {
+      "id": "op-T6-inspection",
+      "train_id": "T6",
+      "group_ids": [
+        "G6"
+      ],
+      "kind": "inspection",
+      "status": "pending",
+      "execution_mode": "auto",
+      "predecessor_ids": [
+        "op-T6-arrival"
+      ],
+      "source_track_id": null,
+      "target_track_id": null,
+      "route_ids": [],
+      "resource_ids": [],
+      "duration_sim_s": 240,
+      "start_sim_s": null,
+      "end_sim_s": null,
+      "actual_start_sim_s": null,
+      "actual_end_sim_s": null,
+      "progress": 0.0,
+      "phase": null,
+      "blocked_reason_codes": [],
+      "assigned_user_id": null,
+      "can_complete": false
+    },
+    {
+      "id": "op-T6-departure",
+      "train_id": "T6",
+      "group_ids": [
+        "G6"
+      ],
+      "kind": "departure",
+      "status": "pending",
+      "execution_mode": "auto",
+      "predecessor_ids": [
+        "op-T6-inspection"
+      ],
+      "source_track_id": null,
+      "target_track_id": null,
+      "route_ids": [],
+      "resource_ids": [],
+      "duration_sim_s": 120,
+      "start_sim_s": null,
+      "end_sim_s": null,
+      "actual_start_sim_s": null,
+      "actual_end_sim_s": null,
+      "progress": 0.0,
+      "phase": null,
+      "blocked_reason_codes": [],
+      "assigned_user_id": null,
+      "can_complete": false
+    },
+    {
+      "id": "op-P1-arrival",
+      "train_id": "P1",
+      "group_ids": [],
+      "kind": "arrival",
+      "status": "pending",
+      "execution_mode": "auto",
+      "predecessor_ids": [],
+      "source_track_id": null,
+      "target_track_id": null,
+      "route_ids": [],
+      "resource_ids": [],
+      "duration_sim_s": 120,
+      "start_sim_s": null,
+      "end_sim_s": null,
+      "actual_start_sim_s": null,
+      "actual_end_sim_s": null,
+      "progress": 0.0,
+      "phase": null,
+      "blocked_reason_codes": [],
+      "assigned_user_id": null,
+      "can_complete": false
+    },
+    {
+      "id": "op-P1-departure",
+      "train_id": "P1",
+      "group_ids": [],
+      "kind": "departure",
+      "status": "pending",
+      "execution_mode": "auto",
+      "predecessor_ids": [
+        "op-P1-arrival"
+      ],
+      "source_track_id": null,
+      "target_track_id": null,
+      "route_ids": [],
+      "resource_ids": [],
+      "duration_sim_s": 120,
+      "start_sim_s": null,
+      "end_sim_s": null,
+      "actual_start_sim_s": null,
+      "actual_end_sim_s": null,
+      "progress": 0.0,
+      "phase": null,
+      "blocked_reason_codes": [],
+      "assigned_user_id": null,
+      "can_complete": false
+    }
+  ],
+  "incidents": [],
+  "conflicts": [],
+  "plans": [],
+  "last_replan": null,
+  "efficiency": {
+    "mode": "actual",
+    "formula_version": "efficiency-v1",
+    "window_start_sim_s": 0,
+    "window_end_sim_s": 0,
+    "score": null,
+    "category": null,
+    "factors": [
+      {
+        "key": "throughput",
+        "raw": null,
+        "unit": "ratio",
+        "norm_penalty": null,
+        "weight": 0.3,
+        "contribution": null,
+        "reason": "Окно наблюдения ещё пусто"
+      },
+      {
+        "key": "delay",
+        "raw": null,
+        "unit": "sim_seconds",
+        "norm_penalty": null,
+        "weight": 0.25,
+        "contribution": null,
+        "reason": "Окно наблюдения ещё пусто"
+      },
+      {
+        "key": "occupancy",
+        "raw": null,
+        "unit": "ratio",
+        "norm_penalty": null,
+        "weight": 0.15,
+        "contribution": null,
+        "reason": "Окно наблюдения ещё пусто"
+      },
+      {
+        "key": "conflicts",
+        "raw": null,
+        "unit": "count",
+        "norm_penalty": null,
+        "weight": 0.2,
+        "contribution": null,
+        "reason": "Окно наблюдения ещё пусто"
+      },
+      {
+        "key": "resource_idle",
+        "raw": null,
+        "unit": "ratio",
+        "norm_penalty": null,
+        "weight": 0.1,
+        "contribution": null,
+        "reason": "Окно наблюдения ещё пусто"
+      }
+    ]
+  }
+}

@@ -1,0 +1,1862 @@
+{
+  "$defs": {
+    "Conflict": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "route_overlap",
+            "track_occupied",
+            "resource_unavailable",
+            "precedence",
+            "capacity",
+            "destination_closed"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "severity": {
+          "enum": [
+            "warning",
+            "critical"
+          ],
+          "title": "Severity",
+          "type": "string"
+        },
+        "reason_code": {
+          "title": "Reason Code",
+          "type": "string"
+        },
+        "entity_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Entity Ids",
+          "type": "array"
+        },
+        "operation_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Operation Ids",
+          "type": "array"
+        },
+        "message": {
+          "title": "Message",
+          "type": "string"
+        },
+        "recommendation": {
+          "title": "Recommendation",
+          "type": "string"
+        },
+        "detected_at": {
+          "title": "Detected At",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "kind",
+        "severity",
+        "reason_code",
+        "entity_ids",
+        "operation_ids",
+        "message",
+        "recommendation",
+        "detected_at"
+      ],
+      "title": "Conflict",
+      "type": "object"
+    },
+    "Edge": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "from_node_id": {
+          "title": "From Node Id",
+          "type": "string"
+        },
+        "to_node_id": {
+          "title": "To Node Id",
+          "type": "string"
+        },
+        "track_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Track Id"
+        },
+        "zone_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Zone Id"
+        },
+        "bidirectional": {
+          "title": "Bidirectional",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "id",
+        "from_node_id",
+        "to_node_id",
+        "track_id",
+        "zone_id",
+        "bidirectional"
+      ],
+      "title": "Edge",
+      "type": "object"
+    },
+    "Efficiency": {
+      "additionalProperties": false,
+      "properties": {
+        "mode": {
+          "enum": [
+            "actual",
+            "forecast"
+          ],
+          "title": "Mode",
+          "type": "string"
+        },
+        "formula_version": {
+          "title": "Formula Version",
+          "type": "string"
+        },
+        "window_start_sim_s": {
+          "title": "Window Start Sim S",
+          "type": "integer"
+        },
+        "window_end_sim_s": {
+          "title": "Window End Sim S",
+          "type": "integer"
+        },
+        "score": {
+          "anyOf": [
+            {
+              "maximum": 100,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Score"
+        },
+        "category": {
+          "anyOf": [
+            {
+              "enum": [
+                "normal",
+                "attention",
+                "critical"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Category"
+        },
+        "factors": {
+          "items": {
+            "$ref": "#/$defs/Factor"
+          },
+          "title": "Factors",
+          "type": "array"
+        }
+      },
+      "required": [
+        "mode",
+        "formula_version",
+        "window_start_sim_s",
+        "window_end_sim_s",
+        "score",
+        "category",
+        "factors"
+      ],
+      "title": "Efficiency",
+      "type": "object"
+    },
+    "Factor": {
+      "additionalProperties": false,
+      "properties": {
+        "key": {
+          "enum": [
+            "throughput",
+            "delay",
+            "occupancy",
+            "conflicts",
+            "resource_idle"
+          ],
+          "title": "Key",
+          "type": "string"
+        },
+        "raw": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Raw"
+        },
+        "unit": {
+          "title": "Unit",
+          "type": "string"
+        },
+        "norm_penalty": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Norm Penalty"
+        },
+        "weight": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Weight",
+          "type": "number"
+        },
+        "contribution": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Contribution"
+        },
+        "reason": {
+          "title": "Reason",
+          "type": "string"
+        }
+      },
+      "required": [
+        "key",
+        "raw",
+        "unit",
+        "norm_penalty",
+        "weight",
+        "contribution",
+        "reason"
+      ],
+      "title": "Factor",
+      "type": "object"
+    },
+    "Incident": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "train_delay",
+            "track_closure",
+            "resource_loss",
+            "destination_block"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "target_id": {
+          "title": "Target Id",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "active",
+            "pending",
+            "resolved"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "created_at": {
+          "title": "Created At",
+          "type": "string"
+        },
+        "starts_sim_s": {
+          "title": "Starts Sim S",
+          "type": "integer"
+        },
+        "ends_sim_s": {
+          "title": "Ends Sim S",
+          "type": "integer"
+        },
+        "delay_sim_s": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Delay Sim S"
+        },
+        "affected_operation_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Affected Operation Ids",
+          "type": "array"
+        },
+        "description": {
+          "title": "Description",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "kind",
+        "target_id",
+        "status",
+        "created_at",
+        "starts_sim_s",
+        "ends_sim_s",
+        "delay_sim_s",
+        "affected_operation_ids",
+        "description"
+      ],
+      "title": "Incident",
+      "type": "object"
+    },
+    "Layout": {
+      "additionalProperties": false,
+      "properties": {
+        "view_box": {
+          "maxItems": 4,
+          "minItems": 4,
+          "prefixItems": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "number"
+            }
+          ],
+          "title": "View Box",
+          "type": "array"
+        },
+        "nodes": {
+          "items": {
+            "$ref": "#/$defs/Node"
+          },
+          "title": "Nodes",
+          "type": "array"
+        },
+        "edges": {
+          "items": {
+            "$ref": "#/$defs/Edge"
+          },
+          "title": "Edges",
+          "type": "array"
+        },
+        "tracks": {
+          "items": {
+            "$ref": "#/$defs/TrackGeometry"
+          },
+          "title": "Tracks",
+          "type": "array"
+        },
+        "routes": {
+          "items": {
+            "$ref": "#/$defs/RouteGeometry"
+          },
+          "title": "Routes",
+          "type": "array"
+        }
+      },
+      "required": [
+        "view_box",
+        "nodes",
+        "edges",
+        "tracks",
+        "routes"
+      ],
+      "title": "Layout",
+      "type": "object"
+    },
+    "Node": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "boundary",
+            "switch_zone",
+            "track_end"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "x": {
+          "title": "X",
+          "type": "number"
+        },
+        "y": {
+          "title": "Y",
+          "type": "number"
+        },
+        "switch_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Switch Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "kind",
+        "x",
+        "y",
+        "switch_ids"
+      ],
+      "title": "Node",
+      "type": "object"
+    },
+    "Operation": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "train_id": {
+          "title": "Train Id",
+          "type": "string"
+        },
+        "group_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Group Ids",
+          "type": "array"
+        },
+        "kind": {
+          "enum": [
+            "arrival",
+            "inspection",
+            "shunt_transfer",
+            "cargo",
+            "departure_prep",
+            "departure"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "pending",
+            "planned",
+            "running",
+            "completed",
+            "blocked"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "execution_mode": {
+          "enum": [
+            "auto",
+            "manual"
+          ],
+          "title": "Execution Mode",
+          "type": "string"
+        },
+        "predecessor_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Predecessor Ids",
+          "type": "array"
+        },
+        "source_track_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Source Track Id"
+        },
+        "target_track_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Target Track Id"
+        },
+        "route_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Route Ids",
+          "type": "array"
+        },
+        "resource_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Resource Ids",
+          "type": "array"
+        },
+        "duration_sim_s": {
+          "exclusiveMinimum": 0,
+          "title": "Duration Sim S",
+          "type": "integer"
+        },
+        "start_sim_s": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Start Sim S"
+        },
+        "end_sim_s": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "End Sim S"
+        },
+        "actual_start_sim_s": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Actual Start Sim S"
+        },
+        "actual_end_sim_s": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Actual End Sim S"
+        },
+        "progress": {
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Progress",
+          "type": "number"
+        },
+        "phase": {
+          "anyOf": [
+            {
+              "enum": [
+                "empty_to_source",
+                "couple",
+                "pull_to_lead",
+                "reverse",
+                "push_to_target",
+                "uncouple",
+                "return_to_depot"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Phase"
+        },
+        "blocked_reason_codes": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Blocked Reason Codes",
+          "type": "array"
+        },
+        "assigned_user_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Assigned User Id"
+        },
+        "can_complete": {
+          "title": "Can Complete",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "id",
+        "train_id",
+        "group_ids",
+        "kind",
+        "status",
+        "execution_mode",
+        "predecessor_ids",
+        "source_track_id",
+        "target_track_id",
+        "route_ids",
+        "resource_ids",
+        "duration_sim_s",
+        "start_sim_s",
+        "end_sim_s",
+        "actual_start_sim_s",
+        "actual_end_sim_s",
+        "progress",
+        "phase",
+        "blocked_reason_codes",
+        "assigned_user_id",
+        "can_complete"
+      ],
+      "title": "Operation",
+      "type": "object"
+    },
+    "Park": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "receiving_departure",
+            "sorting",
+            "cargo",
+            "service"
+          ],
+          "title": "Kind",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "kind"
+      ],
+      "title": "Park",
+      "type": "object"
+    },
+    "PhysicalLocation": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "enum": [
+            "boundary",
+            "track",
+            "route",
+            "departed"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "boundary_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Boundary Id"
+        },
+        "track_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Track Id"
+        },
+        "route_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Route Id"
+        },
+        "operation_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Operation Id"
+        },
+        "route_progress": {
+          "anyOf": [
+            {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Route Progress"
+        }
+      },
+      "required": [
+        "kind"
+      ],
+      "title": "PhysicalLocation",
+      "type": "object"
+    },
+    "PlanSummary": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "proposed",
+            "active",
+            "superseded",
+            "stale",
+            "rejected"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "validity": {
+          "enum": [
+            "feasible",
+            "invalid"
+          ],
+          "title": "Validity",
+          "type": "string"
+        },
+        "optimization_run_id": {
+          "title": "Optimization Run Id",
+          "type": "string"
+        },
+        "strategy": {
+          "title": "Strategy",
+          "type": "string"
+        },
+        "base_input_revision": {
+          "title": "Base Input Revision",
+          "type": "integer"
+        },
+        "base_state_version": {
+          "title": "Base State Version",
+          "type": "integer"
+        },
+        "base_active_plan_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Base Active Plan Id"
+        },
+        "config_version": {
+          "title": "Config Version",
+          "type": "integer"
+        },
+        "created_at": {
+          "title": "Created At",
+          "type": "string"
+        },
+        "cutover_sim_s": {
+          "title": "Cutover Sim S",
+          "type": "integer"
+        },
+        "forecast": {
+          "$ref": "#/$defs/Efficiency"
+        },
+        "objective_value": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Objective Value"
+        },
+        "changed_operation_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Changed Operation Ids",
+          "type": "array"
+        },
+        "explanation": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Explanation",
+          "type": "array"
+        },
+        "can_apply": {
+          "title": "Can Apply",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "id",
+        "status",
+        "validity",
+        "optimization_run_id",
+        "strategy",
+        "base_input_revision",
+        "base_state_version",
+        "base_active_plan_id",
+        "config_version",
+        "created_at",
+        "cutover_sim_s",
+        "forecast",
+        "objective_value",
+        "changed_operation_ids",
+        "explanation",
+        "can_apply"
+      ],
+      "title": "PlanSummary",
+      "type": "object"
+    },
+    "ReplanJob": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "queued",
+            "running",
+            "succeeded",
+            "no_feasible_plan",
+            "stale",
+            "timeout",
+            "failed"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "reason": {
+          "title": "Reason",
+          "type": "string"
+        },
+        "created_at": {
+          "title": "Created At",
+          "type": "string"
+        },
+        "started_at": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Started At"
+        },
+        "finished_at": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Finished At"
+        },
+        "base_input_revision": {
+          "title": "Base Input Revision",
+          "type": "integer"
+        },
+        "candidate_plan_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Candidate Plan Ids",
+          "type": "array"
+        },
+        "applied_plan_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Applied Plan Id"
+        },
+        "elapsed_ms": {
+          "title": "Elapsed Ms",
+          "type": "number"
+        },
+        "compute_ms": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Compute Ms"
+        },
+        "validation_ms": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Validation Ms"
+        },
+        "deadline_ms": {
+          "const": 5000,
+          "title": "Deadline Ms",
+          "type": "integer"
+        },
+        "outcome_reason_codes": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Outcome Reason Codes",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "status",
+        "reason",
+        "created_at",
+        "started_at",
+        "finished_at",
+        "base_input_revision",
+        "candidate_plan_ids",
+        "applied_plan_id",
+        "elapsed_ms",
+        "compute_ms",
+        "validation_ms",
+        "deadline_ms",
+        "outcome_reason_codes"
+      ],
+      "title": "ReplanJob",
+      "type": "object"
+    },
+    "Resource": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "shunting_locomotive",
+            "train_locomotive",
+            "self_propelled_unit",
+            "shunting_crew",
+            "inspection_crew",
+            "cargo_crew",
+            "train_crew"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "available",
+            "busy",
+            "unavailable",
+            "unavailable_pending"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "active_operation_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Active Operation Id"
+        },
+        "location": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PhysicalLocation"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "available_after_sim_s": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Available After Sim S"
+        },
+        "assigned_user_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Assigned User Id"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "kind",
+        "status",
+        "active_operation_id",
+        "location",
+        "available_after_sim_s",
+        "assigned_user_id"
+      ],
+      "title": "Resource",
+      "type": "object"
+    },
+    "RouteGeometry": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "from_id": {
+          "title": "From Id",
+          "type": "string"
+        },
+        "to_id": {
+          "title": "To Id",
+          "type": "string"
+        },
+        "track_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Track Ids",
+          "type": "array"
+        },
+        "zone_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Zone Ids",
+          "type": "array"
+        },
+        "points": {
+          "items": {
+            "maxItems": 2,
+            "minItems": 2,
+            "prefixItems": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "number"
+              }
+            ],
+            "type": "array"
+          },
+          "minItems": 2,
+          "title": "Points",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "from_id",
+        "to_id",
+        "track_ids",
+        "zone_ids",
+        "points"
+      ],
+      "title": "RouteGeometry",
+      "type": "object"
+    },
+    "Station": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "parks": {
+          "items": {
+            "$ref": "#/$defs/Park"
+          },
+          "title": "Parks",
+          "type": "array"
+        },
+        "layout": {
+          "$ref": "#/$defs/Layout"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "parks",
+        "layout"
+      ],
+      "title": "Station",
+      "type": "object"
+    },
+    "Track": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "park_id": {
+          "title": "Park Id",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "receiving_departure",
+            "lead",
+            "sorting",
+            "cargo",
+            "parking"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "length_m": {
+          "exclusiveMinimum": 0,
+          "title": "Length M",
+          "type": "number"
+        },
+        "availability": {
+          "enum": [
+            "open",
+            "closed",
+            "closure_pending"
+          ],
+          "title": "Availability",
+          "type": "string"
+        },
+        "occupied_length_m": {
+          "minimum": 0,
+          "title": "Occupied Length M",
+          "type": "number"
+        },
+        "train_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Train Ids",
+          "type": "array"
+        },
+        "group_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Group Ids",
+          "type": "array"
+        },
+        "locomotive_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Locomotive Ids",
+          "type": "array"
+        },
+        "assigned_train_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Assigned Train Id"
+        },
+        "active_operation_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Active Operation Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "park_id",
+        "kind",
+        "length_m",
+        "availability",
+        "occupied_length_m",
+        "train_ids",
+        "group_ids",
+        "locomotive_ids",
+        "assigned_train_id",
+        "active_operation_ids"
+      ],
+      "title": "Track",
+      "type": "object"
+    },
+    "TrackGeometry": {
+      "additionalProperties": false,
+      "properties": {
+        "track_id": {
+          "title": "Track Id",
+          "type": "string"
+        },
+        "points": {
+          "items": {
+            "maxItems": 2,
+            "minItems": 2,
+            "prefixItems": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "number"
+              }
+            ],
+            "type": "array"
+          },
+          "minItems": 2,
+          "title": "Points",
+          "type": "array"
+        }
+      },
+      "required": [
+        "track_id",
+        "points"
+      ],
+      "title": "TrackGeometry",
+      "type": "object"
+    },
+    "Train": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "number": {
+          "title": "Number",
+          "type": "string"
+        },
+        "type": {
+          "enum": [
+            "FREIGHT",
+            "PASSENGER",
+            "SERVICE",
+            "OTHER"
+          ],
+          "title": "Type",
+          "type": "string"
+        },
+        "service_profile_id": {
+          "enum": [
+            "freight_transit_v1",
+            "freight_local_v1",
+            "freight_reclassify_v1",
+            "passenger_transit_v1",
+            "service_transit_v1"
+          ],
+          "title": "Service Profile Id",
+          "type": "string"
+        },
+        "processing_kind": {
+          "enum": [
+            "transit",
+            "local",
+            "reclassify"
+          ],
+          "title": "Processing Kind",
+          "type": "string"
+        },
+        "direction": {
+          "enum": [
+            "W_E",
+            "E_W"
+          ],
+          "title": "Direction",
+          "type": "string"
+        },
+        "consist_kind": {
+          "enum": [
+            "wagon_groups",
+            "fixed"
+          ],
+          "title": "Consist Kind",
+          "type": "string"
+        },
+        "body_length_m": {
+          "exclusiveMinimum": 0,
+          "title": "Body Length M",
+          "type": "number"
+        },
+        "total_length_m": {
+          "exclusiveMinimum": 0,
+          "title": "Total Length M",
+          "type": "number"
+        },
+        "location": {
+          "$ref": "#/$defs/PhysicalLocation"
+        },
+        "priority": {
+          "enum": [
+            1,
+            2,
+            3
+          ],
+          "title": "Priority",
+          "type": "integer"
+        },
+        "status": {
+          "enum": [
+            "expected",
+            "waiting_entry",
+            "on_station",
+            "ready_departure",
+            "departed"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "destination_id": {
+          "title": "Destination Id",
+          "type": "string"
+        },
+        "scheduled_arrival_sim_s": {
+          "minimum": 0,
+          "title": "Scheduled Arrival Sim S",
+          "type": "integer"
+        },
+        "expected_arrival_sim_s": {
+          "minimum": 0,
+          "title": "Expected Arrival Sim S",
+          "type": "integer"
+        },
+        "due_departure_sim_s": {
+          "minimum": 0,
+          "title": "Due Departure Sim S",
+          "type": "integer"
+        },
+        "actual_arrival_sim_s": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Actual Arrival Sim S"
+        },
+        "actual_departure_sim_s": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Actual Departure Sim S"
+        },
+        "group_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Group Ids",
+          "type": "array"
+        },
+        "target_group_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Target Group Ids",
+          "type": "array"
+        },
+        "traction_resource_id": {
+          "title": "Traction Resource Id",
+          "type": "string"
+        },
+        "traction_kind": {
+          "enum": [
+            "locomotive",
+            "self_propelled"
+          ],
+          "title": "Traction Kind",
+          "type": "string"
+        },
+        "planned_track_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Planned Track Id"
+        },
+        "current_track_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Current Track Id"
+        }
+      },
+      "required": [
+        "id",
+        "number",
+        "type",
+        "service_profile_id",
+        "processing_kind",
+        "direction",
+        "consist_kind",
+        "body_length_m",
+        "total_length_m",
+        "location",
+        "priority",
+        "status",
+        "destination_id",
+        "scheduled_arrival_sim_s",
+        "expected_arrival_sim_s",
+        "due_departure_sim_s",
+        "actual_arrival_sim_s",
+        "actual_departure_sim_s",
+        "group_ids",
+        "traction_resource_id",
+        "traction_kind",
+        "planned_track_id",
+        "current_track_id"
+      ],
+      "title": "Train",
+      "type": "object"
+    },
+    "WagonGroup": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "origin_train_id": {
+          "title": "Origin Train Id",
+          "type": "string"
+        },
+        "assigned_train_id": {
+          "title": "Assigned Train Id",
+          "type": "string"
+        },
+        "current_train_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Current Train Id"
+        },
+        "wagon_ids": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Wagon Ids",
+          "type": "array"
+        },
+        "wagon_count": {
+          "exclusiveMinimum": 0,
+          "title": "Wagon Count",
+          "type": "integer"
+        },
+        "length_m": {
+          "exclusiveMinimum": 0,
+          "title": "Length M",
+          "type": "number"
+        },
+        "destination_id": {
+          "title": "Destination Id",
+          "type": "string"
+        },
+        "cargo_state": {
+          "enum": [
+            "unloaded",
+            "loaded",
+            "not_applicable"
+          ],
+          "title": "Cargo State",
+          "type": "string"
+        },
+        "location": {
+          "$ref": "#/$defs/PhysicalLocation"
+        }
+      },
+      "required": [
+        "id",
+        "origin_train_id",
+        "assigned_train_id",
+        "current_train_id",
+        "wagon_ids",
+        "wagon_count",
+        "length_m",
+        "destination_id",
+        "cargo_state",
+        "location"
+      ],
+      "title": "WagonGroup",
+      "type": "object"
+    },
+    "Zone": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "enum": [
+            "W",
+            "E"
+          ],
+          "title": "Id",
+          "type": "string"
+        },
+        "active_operation_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Active Operation Id"
+        },
+        "availability": {
+          "enum": [
+            "open",
+            "closed"
+          ],
+          "title": "Availability",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "active_operation_id",
+        "availability"
+      ],
+      "title": "Zone",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "run_id": {
+      "title": "Run Id",
+      "type": "string"
+    },
+    "scenario_id": {
+      "title": "Scenario Id",
+      "type": "string"
+    },
+    "scenario_epoch": {
+      "title": "Scenario Epoch",
+      "type": "string"
+    },
+    "event_seq": {
+      "minimum": 0,
+      "title": "Event Seq",
+      "type": "integer"
+    },
+    "state_version": {
+      "minimum": 0,
+      "title": "State Version",
+      "type": "integer"
+    },
+    "input_revision": {
+      "minimum": 0,
+      "title": "Input Revision",
+      "type": "integer"
+    },
+    "config_version": {
+      "minimum": 1,
+      "title": "Config Version",
+      "type": "integer"
+    },
+    "server_time": {
+      "title": "Server Time",
+      "type": "string"
+    },
+    "sim_time_s": {
+      "minimum": 0,
+      "title": "Sim Time S",
+      "type": "integer"
+    },
+    "speed": {
+      "enum": [
+        1,
+        5,
+        10
+      ],
+      "title": "Speed",
+      "type": "integer"
+    },
+    "mode": {
+      "enum": [
+        "paused",
+        "running"
+      ],
+      "title": "Mode",
+      "type": "string"
+    },
+    "station": {
+      "$ref": "#/$defs/Station"
+    },
+    "active_plan_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Active Plan Id"
+    },
+    "tracks": {
+      "items": {
+        "$ref": "#/$defs/Track"
+      },
+      "title": "Tracks",
+      "type": "array"
+    },
+    "zones": {
+      "items": {
+        "$ref": "#/$defs/Zone"
+      },
+      "title": "Zones",
+      "type": "array"
+    },
+    "trains": {
+      "items": {
+        "$ref": "#/$defs/Train"
+      },
+      "title": "Trains",
+      "type": "array"
+    },
+    "wagon_groups": {
+      "items": {
+        "$ref": "#/$defs/WagonGroup"
+      },
+      "title": "Wagon Groups",
+      "type": "array"
+    },
+    "resources": {
+      "items": {
+        "$ref": "#/$defs/Resource"
+      },
+      "title": "Resources",
+      "type": "array"
+    },
+    "operations": {
+      "items": {
+        "$ref": "#/$defs/Operation"
+      },
+      "title": "Operations",
+      "type": "array"
+    },
+    "incidents": {
+      "items": {
+        "$ref": "#/$defs/Incident"
+      },
+      "title": "Incidents",
+      "type": "array"
+    },
+    "conflicts": {
+      "items": {
+        "$ref": "#/$defs/Conflict"
+      },
+      "title": "Conflicts",
+      "type": "array"
+    },
+    "plans": {
+      "items": {
+        "$ref": "#/$defs/PlanSummary"
+      },
+      "title": "Plans",
+      "type": "array"
+    },
+    "last_replan": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ReplanJob"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "efficiency": {
+      "$ref": "#/$defs/Efficiency"
+    }
+  },
+  "required": [
+    "schema_version",
+    "run_id",
+    "scenario_id",
+    "scenario_epoch",
+    "event_seq",
+    "state_version",
+    "input_revision",
+    "config_version",
+    "server_time",
+    "sim_time_s",
+    "speed",
+    "mode",
+    "station",
+    "active_plan_id",
+    "tracks",
+    "zones",
+    "trains",
+    "wagon_groups",
+    "resources",
+    "operations",
+    "incidents",
+    "conflicts",
+    "plans",
+    "last_replan",
+    "efficiency"
+  ],
+  "title": "State",
+  "type": "object"
+}

@@ -1,0 +1,3976 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Цифровая станция — H12",
+    "description": "Physical digital twin, independent validator, isolated deterministic heuristic planner and SSE.",
+    "version": "1.0"
+  },
+  "paths": {
+    "/health/live": {
+      "get": {
+        "summary": "Live",
+        "operationId": "live_health_live_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/health/ready": {
+      "get": {
+        "summary": "Ready",
+        "operationId": "ready_health_ready_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/auth/login": {
+      "post": {
+        "summary": "Login",
+        "operationId": "login_api_v1_auth_login_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/auth/me": {
+      "get": {
+        "summary": "Me",
+        "operationId": "me_api_v1_auth_me_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/auth/logout": {
+      "post": {
+        "summary": "Logout",
+        "operationId": "logout_api_v1_auth_logout_post",
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/snapshot": {
+      "get": {
+        "summary": "Snapshot",
+        "operationId": "snapshot_api_v1_snapshot_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/State"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/stream": {
+      "get": {
+        "summary": "Stream",
+        "operationId": "stream_api_v1_stream_get",
+        "parameters": [
+          {
+            "name": "after",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "After"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "text/event-stream": {}
+            }
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            },
+            "description": "Too Many Requests"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        }
+      }
+    },
+    "/api/v1/config": {
+      "get": {
+        "summary": "Config",
+        "operationId": "config_api_v1_config_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Config"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/replans": {
+      "post": {
+        "summary": "Replan",
+        "operationId": "replan_api_v1_replans_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReplanInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "202": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommandReceiptResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/incidents": {
+      "post": {
+        "summary": "Create Incidents",
+        "operationId": "create_incidents_api_v1_incidents_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IncidentBatchInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommandReceiptResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/incidents/{incident_id}/resolve": {
+      "post": {
+        "summary": "Resolve Incident",
+        "operationId": "resolve_incident_api_v1_incidents__incident_id__resolve_post",
+        "parameters": [
+          {
+            "name": "incident_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Incident Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CommandEnvelope"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommandReceiptResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            },
+            "description": "Too Many Requests"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        }
+      }
+    },
+    "/api/v1/replans/{job_id}": {
+      "get": {
+        "summary": "Replan Detail",
+        "operationId": "replan_detail_api_v1_replans__job_id__get",
+        "parameters": [
+          {
+            "name": "job_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Job Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReplanDetail"
+                }
+              }
+            }
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            },
+            "description": "Too Many Requests"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        }
+      }
+    },
+    "/api/v1/replans/{job_id}/explanation": {
+      "get": {
+        "summary": "Read-only railway display diff; no state mutation",
+        "operationId": "replan_explanation_api_v1_replans__job_id__explanation_get",
+        "parameters": [
+          {
+            "name": "job_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Job Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            },
+            "description": "Too Many Requests"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        }
+      }
+    },
+    "/api/v1/plans/{plan_id}/apply": {
+      "post": {
+        "summary": "Apply Plan",
+        "operationId": "apply_plan_api_v1_plans__plan_id__apply_post",
+        "parameters": [
+          {
+            "name": "plan_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Plan Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CommandEnvelope"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommandReceiptResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            },
+            "description": "Unauthorized"
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            },
+            "description": "Forbidden"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            },
+            "description": "Conflict"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            },
+            "description": "Unprocessable Entity"
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            },
+            "description": "Too Many Requests"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        }
+      }
+    },
+    "/api/v1/scenarios": {
+      "get": {
+        "summary": "Scenarios",
+        "operationId": "scenarios_api_v1_scenarios_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/simulation/control": {
+      "post": {
+        "summary": "Play/pause/step/speed via station actor; validated deterministic plans",
+        "operationId": "simulation_command_api_v1_simulation_control_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SimulationCommand"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CommandReceiptResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "APIError": {
+        "properties": {
+          "error": {
+            "$ref": "#/components/schemas/ErrorPayload"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "error"
+        ],
+        "title": "APIError"
+      },
+      "AuthResponse": {
+        "properties": {
+          "user": {
+            "$ref": "#/components/schemas/User"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "user"
+        ],
+        "title": "AuthResponse"
+      },
+      "CommandEnvelope": {
+        "properties": {
+          "request_id": {
+            "type": "string",
+            "title": "Request Id"
+          },
+          "run_id": {
+            "type": "string",
+            "title": "Run Id"
+          },
+          "expected_input_revision": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Expected Input Revision"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "request_id",
+          "run_id",
+          "expected_input_revision"
+        ],
+        "title": "CommandEnvelope"
+      },
+      "CommandReceiptResponse": {
+        "properties": {
+          "request_id": {
+            "type": "string",
+            "title": "Request Id"
+          },
+          "run_id": {
+            "type": "string",
+            "title": "Run Id"
+          },
+          "input_revision": {
+            "type": "integer",
+            "title": "Input Revision"
+          },
+          "state_version": {
+            "type": "integer",
+            "title": "State Version"
+          },
+          "result": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Result"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "request_id",
+          "run_id",
+          "input_revision",
+          "state_version",
+          "result"
+        ],
+        "title": "CommandReceiptResponse"
+      },
+      "Config": {
+        "properties": {
+          "config_version": {
+            "type": "integer",
+            "title": "Config Version"
+          },
+          "weights": {
+            "additionalProperties": {
+              "type": "number"
+            },
+            "type": "object",
+            "title": "Weights"
+          },
+          "category_thresholds": {
+            "additionalProperties": {
+              "type": "number"
+            },
+            "type": "object",
+            "title": "Category Thresholds"
+          },
+          "planner": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "type": "object",
+            "title": "Planner"
+          },
+          "units": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "type": "object",
+            "title": "Units"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "config_version",
+          "weights",
+          "category_thresholds",
+          "planner",
+          "units"
+        ],
+        "title": "Config"
+      },
+      "Conflict": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "route_overlap",
+              "track_occupied",
+              "resource_unavailable",
+              "precedence",
+              "capacity",
+              "destination_closed"
+            ],
+            "title": "Kind"
+          },
+          "severity": {
+            "type": "string",
+            "enum": [
+              "warning",
+              "critical"
+            ],
+            "title": "Severity"
+          },
+          "reason_code": {
+            "type": "string",
+            "title": "Reason Code"
+          },
+          "entity_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Entity Ids"
+          },
+          "operation_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Operation Ids"
+          },
+          "message": {
+            "type": "string",
+            "title": "Message"
+          },
+          "recommendation": {
+            "type": "string",
+            "title": "Recommendation"
+          },
+          "detected_at": {
+            "type": "string",
+            "title": "Detected At"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "kind",
+          "severity",
+          "reason_code",
+          "entity_ids",
+          "operation_ids",
+          "message",
+          "recommendation",
+          "detected_at"
+        ],
+        "title": "Conflict"
+      },
+      "Edge": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "from_node_id": {
+            "type": "string",
+            "title": "From Node Id"
+          },
+          "to_node_id": {
+            "type": "string",
+            "title": "To Node Id"
+          },
+          "track_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Track Id"
+          },
+          "zone_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Zone Id"
+          },
+          "bidirectional": {
+            "type": "boolean",
+            "title": "Bidirectional"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "from_node_id",
+          "to_node_id",
+          "track_id",
+          "zone_id",
+          "bidirectional"
+        ],
+        "title": "Edge"
+      },
+      "Efficiency": {
+        "properties": {
+          "mode": {
+            "type": "string",
+            "enum": [
+              "actual",
+              "forecast"
+            ],
+            "title": "Mode"
+          },
+          "formula_version": {
+            "type": "string",
+            "title": "Formula Version"
+          },
+          "window_start_sim_s": {
+            "type": "integer",
+            "title": "Window Start Sim S"
+          },
+          "window_end_sim_s": {
+            "type": "integer",
+            "title": "Window End Sim S"
+          },
+          "score": {
+            "anyOf": [
+              {
+                "type": "number",
+                "maximum": 100.0,
+                "minimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Score"
+          },
+          "category": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "normal",
+                  "attention",
+                  "critical"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Category"
+          },
+          "factors": {
+            "items": {
+              "$ref": "#/components/schemas/Factor"
+            },
+            "type": "array",
+            "title": "Factors"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "mode",
+          "formula_version",
+          "window_start_sim_s",
+          "window_end_sim_s",
+          "score",
+          "category",
+          "factors"
+        ],
+        "title": "Efficiency"
+      },
+      "ErrorPayload": {
+        "properties": {
+          "code": {
+            "type": "string",
+            "title": "Code"
+          },
+          "message": {
+            "type": "string",
+            "title": "Message"
+          },
+          "details": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Details"
+          },
+          "request_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Request Id"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "code",
+          "message",
+          "details",
+          "request_id"
+        ],
+        "title": "ErrorPayload"
+      },
+      "Factor": {
+        "properties": {
+          "key": {
+            "type": "string",
+            "enum": [
+              "throughput",
+              "delay",
+              "occupancy",
+              "conflicts",
+              "resource_idle"
+            ],
+            "title": "Key"
+          },
+          "raw": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Raw"
+          },
+          "unit": {
+            "type": "string",
+            "title": "Unit"
+          },
+          "norm_penalty": {
+            "anyOf": [
+              {
+                "type": "number",
+                "maximum": 1.0,
+                "minimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Norm Penalty"
+          },
+          "weight": {
+            "type": "number",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Weight"
+          },
+          "contribution": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Contribution"
+          },
+          "reason": {
+            "type": "string",
+            "title": "Reason"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "key",
+          "raw",
+          "unit",
+          "norm_penalty",
+          "weight",
+          "contribution",
+          "reason"
+        ],
+        "title": "Factor"
+      },
+      "Incident": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "train_delay",
+              "track_closure",
+              "resource_loss",
+              "destination_block"
+            ],
+            "title": "Kind"
+          },
+          "target_id": {
+            "type": "string",
+            "title": "Target Id"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "active",
+              "pending",
+              "resolved"
+            ],
+            "title": "Status"
+          },
+          "created_at": {
+            "type": "string",
+            "title": "Created At"
+          },
+          "starts_sim_s": {
+            "type": "integer",
+            "title": "Starts Sim S"
+          },
+          "ends_sim_s": {
+            "type": "integer",
+            "title": "Ends Sim S"
+          },
+          "delay_sim_s": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Delay Sim S"
+          },
+          "affected_operation_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Affected Operation Ids"
+          },
+          "description": {
+            "type": "string",
+            "title": "Description"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "kind",
+          "target_id",
+          "status",
+          "created_at",
+          "starts_sim_s",
+          "ends_sim_s",
+          "delay_sim_s",
+          "affected_operation_ids",
+          "description"
+        ],
+        "title": "Incident"
+      },
+      "IncidentBatchInput": {
+        "properties": {
+          "request_id": {
+            "type": "string",
+            "title": "Request Id"
+          },
+          "run_id": {
+            "type": "string",
+            "title": "Run Id"
+          },
+          "expected_input_revision": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Expected Input Revision"
+          },
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/IncidentInput"
+            },
+            "type": "array",
+            "maxItems": 10,
+            "minItems": 1,
+            "title": "Items"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "request_id",
+          "run_id",
+          "expected_input_revision",
+          "items"
+        ],
+        "title": "IncidentBatchInput"
+      },
+      "IncidentInput": {
+        "properties": {
+          "kind": {
+            "type": "string",
+            "enum": [
+              "train_delay",
+              "track_closure",
+              "resource_loss",
+              "destination_block"
+            ],
+            "title": "Kind"
+          },
+          "target_id": {
+            "type": "string",
+            "title": "Target Id"
+          },
+          "duration_sim_s": {
+            "type": "integer",
+            "maximum": 7200.0,
+            "minimum": 1.0,
+            "title": "Duration Sim S"
+          },
+          "delay_sim_s": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "maximum": 3600.0,
+                "minimum": 1.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Delay Sim S"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "kind",
+          "target_id",
+          "duration_sim_s"
+        ],
+        "title": "IncidentInput"
+      },
+      "Layout": {
+        "properties": {
+          "view_box": {
+            "prefixItems": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "number"
+              }
+            ],
+            "type": "array",
+            "maxItems": 4,
+            "minItems": 4,
+            "title": "View Box"
+          },
+          "nodes": {
+            "items": {
+              "$ref": "#/components/schemas/Node"
+            },
+            "type": "array",
+            "title": "Nodes"
+          },
+          "edges": {
+            "items": {
+              "$ref": "#/components/schemas/Edge"
+            },
+            "type": "array",
+            "title": "Edges"
+          },
+          "tracks": {
+            "items": {
+              "$ref": "#/components/schemas/TrackGeometry"
+            },
+            "type": "array",
+            "title": "Tracks"
+          },
+          "routes": {
+            "items": {
+              "$ref": "#/components/schemas/RouteGeometry"
+            },
+            "type": "array",
+            "title": "Routes"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "view_box",
+          "nodes",
+          "edges",
+          "tracks",
+          "routes"
+        ],
+        "title": "Layout"
+      },
+      "LoginInput": {
+        "properties": {
+          "username": {
+            "type": "string",
+            "maxLength": 100,
+            "minLength": 1,
+            "title": "Username"
+          },
+          "password": {
+            "type": "string",
+            "maxLength": 200,
+            "minLength": 1,
+            "format": "password",
+            "title": "Password",
+            "writeOnly": true
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "username",
+          "password"
+        ],
+        "title": "LoginInput"
+      },
+      "Node": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "boundary",
+              "switch_zone",
+              "track_end"
+            ],
+            "title": "Kind"
+          },
+          "x": {
+            "type": "number",
+            "title": "X"
+          },
+          "y": {
+            "type": "number",
+            "title": "Y"
+          },
+          "switch_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Switch Ids"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "kind",
+          "x",
+          "y",
+          "switch_ids"
+        ],
+        "title": "Node"
+      },
+      "Operation": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "train_id": {
+            "type": "string",
+            "title": "Train Id"
+          },
+          "group_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Group Ids"
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "arrival",
+              "inspection",
+              "shunt_transfer",
+              "cargo",
+              "departure_prep",
+              "departure"
+            ],
+            "title": "Kind"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "pending",
+              "planned",
+              "running",
+              "completed",
+              "blocked"
+            ],
+            "title": "Status"
+          },
+          "execution_mode": {
+            "type": "string",
+            "enum": [
+              "auto",
+              "manual"
+            ],
+            "title": "Execution Mode"
+          },
+          "predecessor_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Predecessor Ids"
+          },
+          "source_track_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Source Track Id"
+          },
+          "target_track_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Target Track Id"
+          },
+          "route_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Route Ids"
+          },
+          "resource_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Resource Ids"
+          },
+          "duration_sim_s": {
+            "type": "integer",
+            "exclusiveMinimum": 0.0,
+            "title": "Duration Sim S"
+          },
+          "start_sim_s": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Start Sim S"
+          },
+          "end_sim_s": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "End Sim S"
+          },
+          "actual_start_sim_s": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Actual Start Sim S"
+          },
+          "actual_end_sim_s": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Actual End Sim S"
+          },
+          "progress": {
+            "type": "number",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Progress"
+          },
+          "phase": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "empty_to_source",
+                  "couple",
+                  "pull_to_lead",
+                  "reverse",
+                  "push_to_target",
+                  "uncouple",
+                  "return_to_depot"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Phase"
+          },
+          "blocked_reason_codes": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Blocked Reason Codes"
+          },
+          "assigned_user_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Assigned User Id"
+          },
+          "can_complete": {
+            "type": "boolean",
+            "title": "Can Complete"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "train_id",
+          "group_ids",
+          "kind",
+          "status",
+          "execution_mode",
+          "predecessor_ids",
+          "source_track_id",
+          "target_track_id",
+          "route_ids",
+          "resource_ids",
+          "duration_sim_s",
+          "start_sim_s",
+          "end_sim_s",
+          "actual_start_sim_s",
+          "actual_end_sim_s",
+          "progress",
+          "phase",
+          "blocked_reason_codes",
+          "assigned_user_id",
+          "can_complete"
+        ],
+        "title": "Operation"
+      },
+      "Park": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "receiving_departure",
+              "sorting",
+              "cargo",
+              "service"
+            ],
+            "title": "Kind"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "kind"
+        ],
+        "title": "Park"
+      },
+      "PhysicalLocation": {
+        "properties": {
+          "kind": {
+            "type": "string",
+            "enum": [
+              "boundary",
+              "track",
+              "route",
+              "departed"
+            ],
+            "title": "Kind"
+          },
+          "boundary_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Boundary Id"
+          },
+          "track_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Track Id"
+          },
+          "route_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Route Id"
+          },
+          "operation_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Operation Id"
+          },
+          "route_progress": {
+            "anyOf": [
+              {
+                "type": "number",
+                "maximum": 1.0,
+                "minimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Route Progress"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "kind"
+        ],
+        "title": "PhysicalLocation"
+      },
+      "PlanDetail": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "proposed",
+              "active",
+              "superseded",
+              "stale",
+              "rejected"
+            ],
+            "title": "Status"
+          },
+          "validity": {
+            "type": "string",
+            "enum": [
+              "feasible",
+              "invalid"
+            ],
+            "title": "Validity"
+          },
+          "optimization_run_id": {
+            "type": "string",
+            "title": "Optimization Run Id"
+          },
+          "strategy": {
+            "type": "string",
+            "title": "Strategy"
+          },
+          "base_input_revision": {
+            "type": "integer",
+            "title": "Base Input Revision"
+          },
+          "base_state_version": {
+            "type": "integer",
+            "title": "Base State Version"
+          },
+          "base_active_plan_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Base Active Plan Id"
+          },
+          "config_version": {
+            "type": "integer",
+            "title": "Config Version"
+          },
+          "created_at": {
+            "type": "string",
+            "title": "Created At"
+          },
+          "cutover_sim_s": {
+            "type": "integer",
+            "title": "Cutover Sim S"
+          },
+          "forecast": {
+            "$ref": "#/components/schemas/Efficiency"
+          },
+          "objective_value": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Objective Value"
+          },
+          "changed_operation_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Changed Operation Ids"
+          },
+          "explanation": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Explanation"
+          },
+          "can_apply": {
+            "type": "boolean",
+            "title": "Can Apply"
+          },
+          "operations": {
+            "items": {
+              "$ref": "#/components/schemas/Operation"
+            },
+            "type": "array",
+            "title": "Operations"
+          },
+          "validator": {
+            "$ref": "#/components/schemas/ValidatorReport"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "status",
+          "validity",
+          "optimization_run_id",
+          "strategy",
+          "base_input_revision",
+          "base_state_version",
+          "base_active_plan_id",
+          "config_version",
+          "created_at",
+          "cutover_sim_s",
+          "forecast",
+          "objective_value",
+          "changed_operation_ids",
+          "explanation",
+          "can_apply",
+          "operations",
+          "validator"
+        ],
+        "title": "PlanDetail"
+      },
+      "PlanSummary": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "proposed",
+              "active",
+              "superseded",
+              "stale",
+              "rejected"
+            ],
+            "title": "Status"
+          },
+          "validity": {
+            "type": "string",
+            "enum": [
+              "feasible",
+              "invalid"
+            ],
+            "title": "Validity"
+          },
+          "optimization_run_id": {
+            "type": "string",
+            "title": "Optimization Run Id"
+          },
+          "strategy": {
+            "type": "string",
+            "title": "Strategy"
+          },
+          "base_input_revision": {
+            "type": "integer",
+            "title": "Base Input Revision"
+          },
+          "base_state_version": {
+            "type": "integer",
+            "title": "Base State Version"
+          },
+          "base_active_plan_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Base Active Plan Id"
+          },
+          "config_version": {
+            "type": "integer",
+            "title": "Config Version"
+          },
+          "created_at": {
+            "type": "string",
+            "title": "Created At"
+          },
+          "cutover_sim_s": {
+            "type": "integer",
+            "title": "Cutover Sim S"
+          },
+          "forecast": {
+            "$ref": "#/components/schemas/Efficiency"
+          },
+          "objective_value": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Objective Value"
+          },
+          "changed_operation_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Changed Operation Ids"
+          },
+          "explanation": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Explanation"
+          },
+          "can_apply": {
+            "type": "boolean",
+            "title": "Can Apply"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "status",
+          "validity",
+          "optimization_run_id",
+          "strategy",
+          "base_input_revision",
+          "base_state_version",
+          "base_active_plan_id",
+          "config_version",
+          "created_at",
+          "cutover_sim_s",
+          "forecast",
+          "objective_value",
+          "changed_operation_ids",
+          "explanation",
+          "can_apply"
+        ],
+        "title": "PlanSummary"
+      },
+      "ReplanDetail": {
+        "properties": {
+          "job": {
+            "$ref": "#/components/schemas/ReplanJob"
+          },
+          "plans": {
+            "items": {
+              "$ref": "#/components/schemas/PlanDetail"
+            },
+            "type": "array",
+            "title": "Plans"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "job",
+          "plans"
+        ],
+        "title": "ReplanDetail"
+      },
+      "ReplanInput": {
+        "properties": {
+          "request_id": {
+            "type": "string",
+            "title": "Request Id"
+          },
+          "run_id": {
+            "type": "string",
+            "title": "Run Id"
+          },
+          "expected_input_revision": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Expected Input Revision"
+          },
+          "reason": {
+            "type": "string",
+            "const": "manual",
+            "title": "Reason"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "request_id",
+          "run_id",
+          "expected_input_revision",
+          "reason"
+        ],
+        "title": "ReplanInput"
+      },
+      "ReplanJob": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "queued",
+              "running",
+              "succeeded",
+              "no_feasible_plan",
+              "stale",
+              "timeout",
+              "failed"
+            ],
+            "title": "Status"
+          },
+          "reason": {
+            "type": "string",
+            "title": "Reason"
+          },
+          "created_at": {
+            "type": "string",
+            "title": "Created At"
+          },
+          "started_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Started At"
+          },
+          "finished_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Finished At"
+          },
+          "base_input_revision": {
+            "type": "integer",
+            "title": "Base Input Revision"
+          },
+          "candidate_plan_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Candidate Plan Ids"
+          },
+          "applied_plan_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Applied Plan Id"
+          },
+          "elapsed_ms": {
+            "type": "number",
+            "title": "Elapsed Ms"
+          },
+          "compute_ms": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Compute Ms"
+          },
+          "validation_ms": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Validation Ms"
+          },
+          "deadline_ms": {
+            "type": "integer",
+            "const": 5000,
+            "title": "Deadline Ms"
+          },
+          "outcome_reason_codes": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Outcome Reason Codes"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "status",
+          "reason",
+          "created_at",
+          "started_at",
+          "finished_at",
+          "base_input_revision",
+          "candidate_plan_ids",
+          "applied_plan_id",
+          "elapsed_ms",
+          "compute_ms",
+          "validation_ms",
+          "deadline_ms",
+          "outcome_reason_codes"
+        ],
+        "title": "ReplanJob"
+      },
+      "Resource": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "shunting_locomotive",
+              "train_locomotive",
+              "self_propelled_unit",
+              "shunting_crew",
+              "inspection_crew",
+              "cargo_crew",
+              "train_crew"
+            ],
+            "title": "Kind"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "available",
+              "busy",
+              "unavailable",
+              "unavailable_pending"
+            ],
+            "title": "Status"
+          },
+          "active_operation_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Active Operation Id"
+          },
+          "location": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/PhysicalLocation"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "available_after_sim_s": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Available After Sim S"
+          },
+          "assigned_user_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Assigned User Id"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "kind",
+          "status",
+          "active_operation_id",
+          "location",
+          "available_after_sim_s",
+          "assigned_user_id"
+        ],
+        "title": "Resource"
+      },
+      "RouteGeometry": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "from_id": {
+            "type": "string",
+            "title": "From Id"
+          },
+          "to_id": {
+            "type": "string",
+            "title": "To Id"
+          },
+          "track_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Track Ids"
+          },
+          "zone_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Zone Ids"
+          },
+          "points": {
+            "items": {
+              "prefixItems": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "number"
+                }
+              ],
+              "type": "array",
+              "maxItems": 2,
+              "minItems": 2
+            },
+            "type": "array",
+            "minItems": 2,
+            "title": "Points"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "from_id",
+          "to_id",
+          "track_ids",
+          "zone_ids",
+          "points"
+        ],
+        "title": "RouteGeometry"
+      },
+      "SimulationCommand": {
+        "properties": {
+          "request_id": {
+            "type": "string",
+            "title": "Request Id"
+          },
+          "run_id": {
+            "type": "string",
+            "title": "Run Id"
+          },
+          "expected_input_revision": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Expected Input Revision"
+          },
+          "action": {
+            "type": "string",
+            "enum": [
+              "play",
+              "pause",
+              "step",
+              "set_speed"
+            ],
+            "title": "Action"
+          },
+          "speed": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "enum": [
+                  1,
+                  5,
+                  10
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Speed"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "request_id",
+          "run_id",
+          "expected_input_revision",
+          "action"
+        ],
+        "title": "SimulationCommand"
+      },
+      "State": {
+        "properties": {
+          "schema_version": {
+            "type": "string",
+            "const": "1.0",
+            "title": "Schema Version"
+          },
+          "run_id": {
+            "type": "string",
+            "title": "Run Id"
+          },
+          "scenario_id": {
+            "type": "string",
+            "title": "Scenario Id"
+          },
+          "scenario_epoch": {
+            "type": "string",
+            "title": "Scenario Epoch"
+          },
+          "event_seq": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Event Seq"
+          },
+          "state_version": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "State Version"
+          },
+          "input_revision": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Input Revision"
+          },
+          "config_version": {
+            "type": "integer",
+            "minimum": 1.0,
+            "title": "Config Version"
+          },
+          "server_time": {
+            "type": "string",
+            "title": "Server Time"
+          },
+          "sim_time_s": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Sim Time S"
+          },
+          "speed": {
+            "type": "integer",
+            "enum": [
+              1,
+              5,
+              10
+            ],
+            "title": "Speed"
+          },
+          "mode": {
+            "type": "string",
+            "enum": [
+              "paused",
+              "running"
+            ],
+            "title": "Mode"
+          },
+          "station": {
+            "$ref": "#/components/schemas/Station"
+          },
+          "active_plan_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Active Plan Id"
+          },
+          "tracks": {
+            "items": {
+              "$ref": "#/components/schemas/Track"
+            },
+            "type": "array",
+            "title": "Tracks"
+          },
+          "zones": {
+            "items": {
+              "$ref": "#/components/schemas/Zone"
+            },
+            "type": "array",
+            "title": "Zones"
+          },
+          "trains": {
+            "items": {
+              "$ref": "#/components/schemas/Train"
+            },
+            "type": "array",
+            "title": "Trains"
+          },
+          "wagon_groups": {
+            "items": {
+              "$ref": "#/components/schemas/WagonGroup"
+            },
+            "type": "array",
+            "title": "Wagon Groups"
+          },
+          "resources": {
+            "items": {
+              "$ref": "#/components/schemas/Resource"
+            },
+            "type": "array",
+            "title": "Resources"
+          },
+          "operations": {
+            "items": {
+              "$ref": "#/components/schemas/Operation"
+            },
+            "type": "array",
+            "title": "Operations"
+          },
+          "incidents": {
+            "items": {
+              "$ref": "#/components/schemas/Incident"
+            },
+            "type": "array",
+            "title": "Incidents"
+          },
+          "conflicts": {
+            "items": {
+              "$ref": "#/components/schemas/Conflict"
+            },
+            "type": "array",
+            "title": "Conflicts"
+          },
+          "plans": {
+            "items": {
+              "$ref": "#/components/schemas/PlanSummary"
+            },
+            "type": "array",
+            "title": "Plans"
+          },
+          "last_replan": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ReplanJob"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "efficiency": {
+            "$ref": "#/components/schemas/Efficiency"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "schema_version",
+          "run_id",
+          "scenario_id",
+          "scenario_epoch",
+          "event_seq",
+          "state_version",
+          "input_revision",
+          "config_version",
+          "server_time",
+          "sim_time_s",
+          "speed",
+          "mode",
+          "station",
+          "active_plan_id",
+          "tracks",
+          "zones",
+          "trains",
+          "wagon_groups",
+          "resources",
+          "operations",
+          "incidents",
+          "conflicts",
+          "plans",
+          "last_replan",
+          "efficiency"
+        ],
+        "title": "State"
+      },
+      "Station": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "parks": {
+            "items": {
+              "$ref": "#/components/schemas/Park"
+            },
+            "type": "array",
+            "title": "Parks"
+          },
+          "layout": {
+            "$ref": "#/components/schemas/Layout"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "parks",
+          "layout"
+        ],
+        "title": "Station"
+      },
+      "Track": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "park_id": {
+            "type": "string",
+            "title": "Park Id"
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "receiving_departure",
+              "lead",
+              "sorting",
+              "cargo",
+              "parking"
+            ],
+            "title": "Kind"
+          },
+          "length_m": {
+            "type": "number",
+            "exclusiveMinimum": 0.0,
+            "title": "Length M"
+          },
+          "availability": {
+            "type": "string",
+            "enum": [
+              "open",
+              "closed",
+              "closure_pending"
+            ],
+            "title": "Availability"
+          },
+          "occupied_length_m": {
+            "type": "number",
+            "minimum": 0.0,
+            "title": "Occupied Length M"
+          },
+          "train_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Train Ids"
+          },
+          "group_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Group Ids"
+          },
+          "locomotive_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Locomotive Ids"
+          },
+          "assigned_train_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Assigned Train Id"
+          },
+          "active_operation_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Active Operation Ids"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "park_id",
+          "kind",
+          "length_m",
+          "availability",
+          "occupied_length_m",
+          "train_ids",
+          "group_ids",
+          "locomotive_ids",
+          "assigned_train_id",
+          "active_operation_ids"
+        ],
+        "title": "Track"
+      },
+      "TrackGeometry": {
+        "properties": {
+          "track_id": {
+            "type": "string",
+            "title": "Track Id"
+          },
+          "points": {
+            "items": {
+              "prefixItems": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "number"
+                }
+              ],
+              "type": "array",
+              "maxItems": 2,
+              "minItems": 2
+            },
+            "type": "array",
+            "minItems": 2,
+            "title": "Points"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "track_id",
+          "points"
+        ],
+        "title": "TrackGeometry"
+      },
+      "Train": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "number": {
+            "type": "string",
+            "title": "Number"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "FREIGHT",
+              "PASSENGER",
+              "SERVICE",
+              "OTHER"
+            ],
+            "title": "Type"
+          },
+          "service_profile_id": {
+            "type": "string",
+            "enum": [
+              "freight_transit_v1",
+              "freight_local_v1",
+              "freight_reclassify_v1",
+              "passenger_transit_v1",
+              "service_transit_v1"
+            ],
+            "title": "Service Profile Id"
+          },
+          "processing_kind": {
+            "type": "string",
+            "enum": [
+              "transit",
+              "local",
+              "reclassify"
+            ],
+            "title": "Processing Kind"
+          },
+          "direction": {
+            "type": "string",
+            "enum": [
+              "W_E",
+              "E_W"
+            ],
+            "title": "Direction"
+          },
+          "consist_kind": {
+            "type": "string",
+            "enum": [
+              "wagon_groups",
+              "fixed"
+            ],
+            "title": "Consist Kind"
+          },
+          "body_length_m": {
+            "type": "number",
+            "exclusiveMinimum": 0.0,
+            "title": "Body Length M"
+          },
+          "total_length_m": {
+            "type": "number",
+            "exclusiveMinimum": 0.0,
+            "title": "Total Length M"
+          },
+          "location": {
+            "$ref": "#/components/schemas/PhysicalLocation"
+          },
+          "priority": {
+            "type": "integer",
+            "enum": [
+              1,
+              2,
+              3
+            ],
+            "title": "Priority"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "expected",
+              "waiting_entry",
+              "on_station",
+              "ready_departure",
+              "departed"
+            ],
+            "title": "Status"
+          },
+          "destination_id": {
+            "type": "string",
+            "title": "Destination Id"
+          },
+          "scheduled_arrival_sim_s": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Scheduled Arrival Sim S"
+          },
+          "expected_arrival_sim_s": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Expected Arrival Sim S"
+          },
+          "due_departure_sim_s": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Due Departure Sim S"
+          },
+          "actual_arrival_sim_s": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Actual Arrival Sim S"
+          },
+          "actual_departure_sim_s": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Actual Departure Sim S"
+          },
+          "group_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Group Ids"
+          },
+          "target_group_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Target Group Ids"
+          },
+          "traction_resource_id": {
+            "type": "string",
+            "title": "Traction Resource Id"
+          },
+          "traction_kind": {
+            "type": "string",
+            "enum": [
+              "locomotive",
+              "self_propelled"
+            ],
+            "title": "Traction Kind"
+          },
+          "planned_track_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Planned Track Id"
+          },
+          "current_track_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Current Track Id"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "number",
+          "type",
+          "service_profile_id",
+          "processing_kind",
+          "direction",
+          "consist_kind",
+          "body_length_m",
+          "total_length_m",
+          "location",
+          "priority",
+          "status",
+          "destination_id",
+          "scheduled_arrival_sim_s",
+          "expected_arrival_sim_s",
+          "due_departure_sim_s",
+          "actual_arrival_sim_s",
+          "actual_departure_sim_s",
+          "group_ids",
+          "traction_resource_id",
+          "traction_kind",
+          "planned_track_id",
+          "current_track_id"
+        ],
+        "title": "Train"
+      },
+      "User": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "display_name": {
+            "type": "string",
+            "title": "Display Name"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "viewer",
+              "operator",
+              "dispatcher",
+              "admin"
+            ],
+            "title": "Role"
+          },
+          "resource_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Resource Ids"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "display_name",
+          "role",
+          "resource_ids"
+        ],
+        "title": "User"
+      },
+      "ValidatorError": {
+        "properties": {
+          "code": {
+            "type": "string",
+            "title": "Code"
+          },
+          "entity_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Entity Ids"
+          },
+          "message": {
+            "type": "string",
+            "title": "Message"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "code",
+          "entity_ids",
+          "message"
+        ],
+        "title": "ValidatorError"
+      },
+      "ValidatorReport": {
+        "properties": {
+          "passed": {
+            "type": "boolean",
+            "title": "Passed"
+          },
+          "errors": {
+            "items": {
+              "$ref": "#/components/schemas/ValidatorError"
+            },
+            "type": "array",
+            "title": "Errors"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "passed",
+          "errors"
+        ],
+        "title": "ValidatorReport"
+      },
+      "WagonGroup": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "origin_train_id": {
+            "type": "string",
+            "title": "Origin Train Id"
+          },
+          "assigned_train_id": {
+            "type": "string",
+            "title": "Assigned Train Id"
+          },
+          "current_train_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Current Train Id"
+          },
+          "wagon_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "minItems": 1,
+            "title": "Wagon Ids"
+          },
+          "wagon_count": {
+            "type": "integer",
+            "exclusiveMinimum": 0.0,
+            "title": "Wagon Count"
+          },
+          "length_m": {
+            "type": "number",
+            "exclusiveMinimum": 0.0,
+            "title": "Length M"
+          },
+          "destination_id": {
+            "type": "string",
+            "title": "Destination Id"
+          },
+          "cargo_state": {
+            "type": "string",
+            "enum": [
+              "unloaded",
+              "loaded",
+              "not_applicable"
+            ],
+            "title": "Cargo State"
+          },
+          "location": {
+            "$ref": "#/components/schemas/PhysicalLocation"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "origin_train_id",
+          "assigned_train_id",
+          "current_train_id",
+          "wagon_ids",
+          "wagon_count",
+          "length_m",
+          "destination_id",
+          "cargo_state",
+          "location"
+        ],
+        "title": "WagonGroup"
+      },
+      "Zone": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "enum": [
+              "W",
+              "E"
+            ],
+            "title": "Id"
+          },
+          "active_operation_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Active Operation Id"
+          },
+          "availability": {
+            "type": "string",
+            "enum": [
+              "open",
+              "closed"
+            ],
+            "title": "Availability"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "active_operation_id",
+          "availability"
+        ],
+        "title": "Zone"
+      }
+    }
+  }
+}

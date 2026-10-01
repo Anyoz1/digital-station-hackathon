@@ -1,0 +1,189 @@
+import {label, operationCaption, displayTime, locationLabel, renderStation, affectedIds, DISPATCHER_NOTE} from './railway.js';
+
+// This page only renders authoritative REST/SSE data. It has no railway executor.
+const $ = id => document.getElementById(id);
+const node = (tag, text, cls) => { const n=document.createElement(tag); if(text!=null)n.textContent=String(text); if(cls)n.className=cls; return n; };
+let state=null, user=null, stream=null, retryTimer=null, retries=0, lastReceived=0, connection='OFFLINE', pending=false;
+let selected=null, detail=null, explanation=null, detailKey=null, generation=0;
+const events=[], observed=new Set();
+window.stationMetrics={frames:[]};
+const clock = s => s==null?'—':displayTime(state,s).split(' · ')[0];
+const minutes = s => s==null?'—':`${(s/60).toFixed(1)} мин`;
+const destination = id => ({DEST_W:'Следующая станция (запад)',DEST_E:'Следующая станция (восток)'})[id] ?? id;
+function showError(error) {
+  $('error').hidden=false; $('error').replaceChildren(node('div',error.body?.error?.message ?? error.message));
+  const more=node('details');more.append(node('summary','Технические подробности'),node('pre',JSON.stringify(error.body??{},null,2)));$('error').append(more);
+}
+function clearError(){ $('error').hidden=true; }
+async function api(path,options={}) {
+  const response=await fetch(path,{credentials:'same-origin',...options});
+  const body=response.status===204?null:await response.json();
+  if(!response.ok){ const err=new Error(body?.error?.message??`Ошибка запроса ${response.status}`);err.status=response.status;err.body=body;throw err; }
+  return body;
+}
+function writable(){ return !!(user&&['dispatcher','admin'].includes(user.role)&&state&&connection==='LIVE'&&performance.now()-lastReceived<3000&&!pending); }
+function controls(){
+  for(const id of ['play','pause','set-speed','replan','create-incident'])$(id).disabled=!writable();
+  $('play').disabled ||= state?.mode==='running';$('pause').disabled ||= state?.mode==='paused';
+  document.querySelectorAll('[data-command]').forEach(b=>b.disabled=!writable()||(b.dataset.command==='apply'&&b.dataset.canApply!=='true'));
+}
+function auth(value){user=value;$('persona').textContent=user?label('role',user.role):'Вход не выполнен';$('persona').title=DISPATCHER_NOTE;$('login-form').hidden=!!user;$('logout').hidden=!user;$('workspace').hidden=!user;controls();}
+function status(){
+  const age=lastReceived?performance.now()-lastReceived:Infinity;
+  const text=!user?'Нет связи':lastReceived&&age>10000?'Нет связи':lastReceived&&age>3000?'Данные устарели':({LIVE:'● Связь есть',CONNECTING:'Подключение…',RECONNECTING:'Восстановление связи…'})[connection]??'Нет связи';
+  $('connection').textContent=text;$('workspace').classList.toggle('stale',!!user&&(connection!=='LIVE'||age>3000));controls();
+}
+function select(id){selected=id;renderAll();}
+function button(text,fn){const b=node('button',text);b.type='button';b.addEventListener('click',fn);return b;}
+function latestDeparture(train){
+  const active=explanation?.plans.find(p=>p.plan_id===state.active_plan_id);
+  return active?.departures.find(d=>d.train_id===train.id);
+}
+function renderTrains(){
+  const target=$('train-list');target.replaceChildren();const affected=affectedIds(state);
+  state.trains.forEach(t=>{
+    const card=node('article',null,`train-card ${selected===t.id?'selected':''} ${affected.has(t.id)?'affected':''}`);card.dataset.trainId=t.id;card.tabIndex=0;card.addEventListener('click',()=>select(t.id));card.addEventListener('keydown',e=>{if(e.key==='Enter')select(t.id);});
+    const top=node('div',null,'train-title');top.append(node('strong',`${t.number} / ${t.id}`),node('span',label('trainType',t.type),`tag ${t.type==='PASSENGER'?'passenger':''}`));card.append(top);
+    const profile=node('p',label('profile',t.service_profile_id),'subtle');profile.title=t.service_profile_id;card.append(profile,node('p',`${label('trainStatus',t.status)} · ${locationLabel(t.location,state)}`,'train-position'));
+    const dep=state.operations.find(o=>o.train_id===t.id&&o.kind==='departure');const delay=latestDeparture(t);
+    const grid=node('div',null,'train-grid');
+    for(const line of [label('direction',t.direction),`Приоритет: ${label('priority',t.priority)}`,`ETA входа: ${clock(t.expected_arrival_sim_s)}`,`Срок отправления: ${clock(t.due_departure_sim_s)}`,`План отправления: ${clock(dep?.end_sim_s)}`,`Назначенный путь: ${t.planned_track_id??'—'}`,`Задержка (${delay?.basis==='actual'?'факт':'прогноз'}): ${delay?minutes(delay.delay_sim_s):'нет актуального прогноза'}`,destination(t.destination_id)])grid.append(node('span',line));card.append(grid);
+    const op=state.operations.find(o=>o.train_id===t.id&&o.status==='running');card.append(node('p',op?`${label('operationKind',op.kind)}${op.phase?` · ${label('phase',op.phase)}`:''}`:t.status==='departed'?'Работа завершена':'Ожидание следующей операции','train-operation'));target.append(card);
+  });
+}
+function renderSelection(){
+  const target=$('selection');target.replaceChildren();
+  if(!selected){target.textContent='Выберите поезд, путь, группу или локомотив на схеме.';return;}
+  const obj=[...state.tracks,...state.trains,...state.wagon_groups,...state.resources,...state.operations,...state.zones].find(o=>o.id===selected);
+  if(!obj){target.textContent='Объект больше не представлен в этом состоянии.';return;}
+  let text=selected;
+  if(state.tracks.includes(obj))text+=` · ${label('trackKind',obj.kind)} · факт ${obj.occupied_length_m}/${obj.length_m} м · ${label('availability',obj.availability)} · назначен ${obj.assigned_train_id??'никому'} · блокируют ${obj.active_operation_ids.map(id=>state.operations.find(o=>o.id===id)?.train_id??id).join(', ')||'нет операций'}`;
+  else if(state.operations.includes(obj))text+=` · ${label('operationKind',obj.kind)} · ${label('operationStatus',obj.status)} · ${obj.source_track_id??'граница'} → ${obj.target_track_id??'граница'} · ресурсы ${obj.resource_ids.join(', ')} · ${clock(obj.start_sim_s)}–${clock(obj.end_sim_s)}`;
+  else if(state.zones.includes(obj))text+=` · Горловина · ${obj.active_operation_id?'занята операцией '+obj.active_operation_id:'не занята операцией'}`;
+  else text+=` · ${locationLabel(obj.location,state)}${obj.wagon_count?` · ${obj.wagon_count} вагонов · ${label('cargoState',obj.cargo_state)}`:''}${obj.group_ids?` · группы ${obj.group_ids.join(', ')||'неделимый состав'}`:''}`;
+  target.append(node('strong',text));
+}
+function renderOperations(){
+  $('operations').replaceChildren();
+  state.trains.forEach(t=>{
+    const row=node('div',null,'ops-row');row.append(button(t.id,()=>select(t.id)));const chain=node('div',null,'chain');
+    state.operations.filter(o=>o.train_id===t.id).forEach(o=>{
+      const card=node('div',null,`op ${o.status} ${selected===o.id?'selected':''}`);card.dataset.operationId=o.id;card.title=`${o.id}\n${o.source_track_id??'граница'} → ${o.target_track_id??'граница'}\n${o.resource_ids.join(', ')}`;card.tabIndex=0;card.addEventListener('click',()=>select(o.id));card.addEventListener('keydown',e=>{if(e.key==='Enter')select(o.id);});
+      card.append(node('strong',operationCaption(o,state)),node('span',label('operationStatus',o.status)),node('span',`${clock(o.start_sim_s)}–${clock(o.end_sim_s)}`));
+      if(o.status==='running'){const p=node('progress');p.max=1;p.value=o.progress;card.append(p,node('span',`${Math.round(o.progress*100)}%`));}chain.append(card);
+    });row.append(chain);$('operations').append(row);
+  });
+  $('shunting').replaceChildren();const running=state.operations.filter(o=>o.kind==='shunt_transfer'&&o.status==='running');
+  if(!running.length)$('shunting').append(node('p','Маневровая перестановка сейчас не выполняется.','subtle'));
+  running.forEach(o=>{
+    const card=node('div',null,'shunt-card');card.append(node('strong',`${o.train_id} · ${o.group_ids.join(', ')} · ${o.source_track_id} → H → ${o.target_track_id}`),node('p',`${label('phase',o.phase)}${o.phase==='push_to_target'?` ${o.target_track_id}`:''}`),node('p',`L1: ${locationLabel(state.resources.find(r=>r.id==='L1').location,state)} · Бригада: ${o.resource_ids.filter(id=>id!=='L1').join(', ')} · W: ${state.zones.find(z=>z.id==='W').active_operation_id?'занята':'свободна'}`));
+    const phases=node('div',null,'phase-strip');['empty_to_source','couple','pull_to_lead','reverse','push_to_target','uncouple','return_to_depot'].forEach(p=>phases.append(node('span',label('phase',p),p===o.phase?'current':'')));card.append(phases);$('shunting').append(card);
+  });
+}
+function renderResources(){
+  $('resources').replaceChildren();$('train-resources').replaceChildren();const affected=affectedIds(state);
+  state.resources.forEach(r=>{
+    const box=node('div',null,`resource ${affected.has(r.id)?'affected':''}`);box.dataset.resourceId=r.id;const a=node('div');a.append(node('strong',`${r.id} · ${label('resourceKind',r.kind)}`));if(r.location)a.append(node('div',locationLabel(r.location,state),'detail'));
+    const b=node('div');b.append(node('span',label('resourceStatus',r.status),r.status));const op=state.operations.find(o=>o.id===r.active_operation_id);if(op)b.append(node('div',`${op.train_id} · ${label('operationKind',op.kind)}`,'detail'));box.append(a,b);(['train_locomotive','self_propelled_unit','train_crew'].includes(r.kind)?$('train-resources'):$('resources')).append(box);
+  });
+}
+function incidentText(i){
+  const until=clock(i.ends_sim_s);const pending=i.status==='pending'?` · после завершения текущей операции (${clock(i.starts_sim_s)})`:'';
+  return ({track_closure:`Путь ${i.target_id} ${i.status==='pending'?'закроется':'закрыт'} до ${until}`,resource_loss:`Ресурс ${i.target_id} ${i.status==='pending'?'станет недоступен':'недоступен'} до ${until}`,train_delay:`Поезд ${i.target_id}: ETA сдвинуто на ${minutes(i.delay_sim_s)}`,destination_block:`${destination(i.target_id)} не принимает до ${until}. Проверяется прибытие после учебного перегона, а не момент отправления.`})[i.kind]+pending;
+}
+function renderConflicts(){
+  $('conflicts').replaceChildren();$('incidents').replaceChildren();
+  if(!state.conflicts.length)$('conflicts').append(node('p','Нерешённых конфликтов действующего плана нет.','subtle'));
+  state.conflicts.forEach(c=>{
+    const related=state.incidents.find(i=>c.entity_ids.includes(i.id));const box=node('div',null,'conflict');box.dataset.conflictId=c.id;
+    const affected=[...new Set(c.operation_ids.map(id=>state.operations.find(o=>o.id===id)?.train_id).filter(Boolean))];
+    box.append(node('strong',label('conflictKind',c.kind)),node('p',related?incidentText(related):c.message),node('p',`Затронуты поезда: ${affected.join(', ')||'см. объекты'}. Требуется новый допустимый план.`));$('conflicts').append(box);
+  });
+  state.incidents.filter(i=>i.status!=='resolved').forEach(i=>{
+    const box=node('div',null,'incident');box.dataset.incidentId=i.id;box.append(node('strong',`${label('incidentStatus',i.status)} · ${incidentText(i)}`),node('p',`Затронуто операций: ${i.affected_operation_ids.length}`));
+    const b=button('Снять ограничение',()=>command(`/api/v1/incidents/${encodeURIComponent(i.id)}/resolve`,{}));b.dataset.command='resolve';box.append(b);$('incidents').append(box);
+  });
+}
+function renderPlans(){
+  const job=state.last_replan;$('replan-status').textContent=job?`${label('replanStatus',job.status)} · ${(job.elapsed_ms/1000).toFixed(2)} с`:'Расчётов пока нет';$('plans').replaceChildren();
+  if(!detail||detail.job.id!==job?.id){$('plans').textContent='Ожидаем детали текущего расчёта…';return;}
+  const current=new Map(state.plans.map(p=>[p.id,p]));
+  if(explanation?.available===false)$('plans').append(node('p',explanation.reason,'subtle'));
+  detail.plans.forEach((saved,index)=>{
+    const p={...saved,...current.get(saved.id)};const exp=explanation?.plans.find(x=>x.plan_id===p.id);const valid=p.validity==='feasible'&&saved.validator.passed;
+    const card=node('article',null,`plan ${p.id===state.active_plan_id?'active':''}`);card.dataset.planId=p.id;
+    card.append(node('h3',`Вариант ${String.fromCharCode(65+index)}${p.id===job.applied_plan_id?' · рекомендован расчётом':''}`),node('span',`${label('planStatus',p.status)} · ${valid?'✓ Независимая проверка пройдена':'⚠ Нет актуального подтверждения допустимости'}`,'tag'));
+    const metrics=node('div',null,'plan-metrics');for(const [value,name] of [[valid?p.forecast.score??'—':'—','Прогноз индекса / 100'],[p.objective_value?.toFixed(3)??'—','Общая цель J · меньше лучше'],[valid?p.forecast.factors.find(f=>f.key==='conflicts')?.raw??'—':'—','Конфликты прогноза']]){const item=node('div',null,'metric');item.append(node('strong',value),node('span',name));metrics.append(item);}card.append(metrics);
+    const order=saved.operations.filter(o=>o.kind==='arrival'&&o.train_id==='P1'||o.kind==='shunt_transfer'&&o.train_id==='T2'&&o.id==='op-T2-shunt-out');
+    const list=node('ul');order.forEach(o=>list.append(node('li',`${o.train_id} · ${label('operationKind',o.kind)}: ${clock(o.start_sim_s)}–${clock(o.end_sim_s)}`)));card.append(list);
+    if(exp){card.append(node('p',exp.reason,'reason'));const changes=node('details');changes.open=true;changes.append(node('summary',`Изменения относительно плана до расчёта: ${exp.changes.length}`));const lines=node('ul');exp.changes.forEach(c=>lines.append(node('li',`${c.train_id} · ${c.label}: ${clock(c.before_start_sim_s)} → ${clock(c.after_start_sim_s)}${c.shift_sim_s==null?'':` (${c.shift_sim_s>=0?'+':''}${minutes(c.shift_sim_s)})`}; путь ${c.before_track_id??'—'} → ${c.after_track_id??'—'}; ресурсы ${c.before_resource_ids.join(', ')} → ${c.after_resource_ids.join(', ')}`)));changes.append(lines);card.append(changes);}
+    const factors=node('details');factors.append(node('summary','Факторы прогнозного индекса'));const table=node('table');const factorNames={throughput:'Выполнение отправлений',delay:'Среднее опоздание',occupancy:'Загрузка путей',conflicts:'Конфликты',resource_idle:'Простой при готовой работе'};
+    p.forecast.factors.forEach(f=>{const tr=node('tr');tr.append(node('td',factorNames[f.key]),node('td',`${f.raw==null?'—':f.raw.toFixed(3)} ${f.unit==='sim_seconds'?'с':f.unit==='ratio'?'доля':'шт.'}`),node('td',`−${f.contribution?.toFixed(1)??'—'} п.`));table.append(tr);});factors.append(table);card.append(factors,node('p',`Окно прогноза: ${clock(p.forecast.window_start_sim_s)}–${clock(p.forecast.window_end_sim_s)}. Фактический live-индекс ещё не реализован.`,'fact-note'));
+    const apply=button('Применить вариант',()=>command(`/api/v1/plans/${encodeURIComponent(p.id)}/apply`,{}));apply.dataset.command='apply';apply.dataset.canApply=String(p.can_apply&&state.mode==='paused');card.append(apply);if(!p.can_apply)card.append(node('p','Для ручного выбора: пауза → новый расчёт → актуальная альтернатива.','fact-note'));$('plans').append(card);
+  });
+}
+function renderAll(){
+  if(!state)return;
+  $('mode').textContent=state.mode==='running'?'LIVE · РАБОТАЕТ':'ПАУЗА';$('sim-clock').textContent=clock(state.sim_time_s);$('sim-clock').title=displayTime(state);$('speed-label').textContent=`${state.speed}× · учебное время`;
+  const active=state.incidents.filter(i=>i.status!=='resolved').length;const job=state.last_replan;const planning=['queued','running'].includes(job?.status);
+  $('alert-strip').className=`alert-strip ${active||state.conflicts.length?'warning':''}`;
+  $('alert-strip').textContent=planning?'Перепланирование: новые операции ожидают проверенный план; уже начатые продолжаются.':`${active?`Действует ограничений: ${active}. `:''}Нерешённых конфликтов: ${state.conflicts.length}. ${job?.applied_plan_id===state.active_plan_id?'Проверенный план применён.':job?label('replanStatus',job.status):'Станция готова.'}`;
+  window.stationDiagram=renderStation($('station-svg'),state,select,selected);renderSelection();renderTrains();renderOperations();renderResources();renderConflicts();renderPlans();$('raw-state').textContent=JSON.stringify(state,null,2);controls();
+}
+async function getDetails(){
+  const job=state?.last_replan;if(!job)return;const key=`${state.run_id}:${job.id}:${job.status}`;if(key===detailKey)return;detailKey=key;
+  if(['queued','running'].includes(job.status)){detail=null;explanation=null;return;}
+  const currentGeneration=generation;
+  try{const [d,e]=await Promise.all([api(`/api/v1/replans/${encodeURIComponent(job.id)}`),api(`/api/v1/replans/${encodeURIComponent(job.id)}/explanation`)]);if(generation!==currentGeneration||state?.last_replan?.id!==job.id)return;detail=d;explanation=e;window.stationDetail=d;window.stationExplanation=e;renderAll();}
+  catch(error){if(generation===currentGeneration){detailKey=null;showError(error);}}
+}
+function accept(value,reset=false){
+  if(!reset&&state?.run_id===value.run_id&&value.event_seq<state.event_seq)return;
+  if(state?.run_id!==value.run_id){selected=null;detail=null;explanation=null;detailKey=null;events.length=0;observed.clear();}
+  if(detail?.job.id!==value.last_replan?.id || ['queued','running'].includes(value.last_replan?.status)){detail=null;explanation=null;}
+  state=value;window.stationState=state;renderAll();getDetails();
+}
+function stopStream(){stream?.close();stream=null;clearTimeout(retryTimer);retryTimer=null;}
+function receive(event){
+  try{
+    const data=JSON.parse(event.data),value=data.state;lastReceived=performance.now();connection='LIVE';retries=0;
+    const frames=window.stationMetrics.frames;frames.push({received_ms:lastReceived,seq:value.event_seq,sim_time_s:value.sim_time_s,mode:value.mode,kind:data.cause?.kind??data.reason,job:value.last_replan,occupied:value.tracks.filter(t=>t.occupied_length_m).map(t=>[t.id,t.occupied_length_m]),locomotive:value.resources.find(r=>r.id==='L1')?.location,running:value.operations.filter(o=>o.status==='running').map(o=>({id:o.id,phase:o.phase,progress:o.progress})),conflicts:value.conflicts.map(c=>c.id)});if(frames.length>2000)frames.shift();
+    const key=`${value.run_id}:${value.event_seq}`;
+    if(!observed.has(key)&&data.cause?.kind!=='heartbeat'){
+      observed.add(key);if(observed.size>1000)observed.delete(observed.values().next().value);
+      const names={tick:'Ход исполнения',incident_batch:'Зарегистрирован инцидент',incident_resolved:'Ограничение снято',operation_started:'Начата операция',operation_completed:'Завершена операция',plan_applied:'Применён проверенный план',replan_updated:'Состояние расчёта',simulation_control:'Режим симуляции',recovery:'Восстановление станции'};
+      if(data.cause?.kind!=='tick'){events.unshift(`${displayTime(value).split(' · ')[0]} · ${names[data.cause?.kind]??'Изменение станции'}${value.last_replan?` · ${label('replanStatus',value.last_replan.status)}`:''}${value.conflicts.length?` · конфликтов ${value.conflicts.length}`:''}`);if(events.length>80)events.pop();}
+    }
+    if(event.type==='reset'||!state||state.run_id!==value.run_id||value.event_seq>state.event_seq)accept(value,event.type==='reset');
+    $('event-log').replaceChildren(...events.map(s=>node('li',s)));status();
+  }catch(error){showError(error);}
+}
+function connect(){
+  stopStream();if(!user||!state)return;connection='CONNECTING';status();const ownGeneration=generation;
+  stream=new EventSource(`/api/v1/stream?after=${encodeURIComponent(`${state.run_id}:${state.event_seq}`)}`);for(const kind of ['state','reset'])stream.addEventListener(kind,event=>{if(ownGeneration===generation)receive(event);});
+  stream.onerror=()=>{
+    stopStream();connection='RECONNECTING';status();
+    retryTimer=setTimeout(async()=>{if(ownGeneration!==generation||!user)return;try{await api('/api/v1/auth/me');connect();}catch(error){if(error.status===401){clearSession();showError(error);}else connect();}},Math.min(10000,1000*2**retries++)*(.8+Math.random()*.4));
+  };
+}
+async function snapshot(){const ownGeneration=generation;const value=await api('/api/v1/snapshot');if(ownGeneration!==generation||!user)return;accept(value);fillTargets();connect();}
+function uuid(){if(crypto.randomUUID)return crypto.randomUUID();const b=crypto.getRandomValues(new Uint8Array(16));b[6]=b[6]&15|64;b[8]=b[8]&63|128;const s=Array.from(b,x=>x.toString(16).padStart(2,'0')).join('');return `${s.slice(0,8)}-${s.slice(8,12)}-${s.slice(12,16)}-${s.slice(16,20)}-${s.slice(20)}`;}
+async function command(path,fields){
+  if(!writable())return;clearError();pending=true;controls();
+  try{return await api(path,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({request_id:uuid(),run_id:state.run_id,expected_input_revision:state.input_revision,...fields})});}
+  catch(error){showError(error);if(error.status===409)await snapshot();if(error.status===401)clearSession();}
+  finally{pending=false;controls();}
+}
+function fillTargets(){
+  if(!state)return;const kind=$('incident-kind').value;const previous=$('incident-target').value;
+  const choices=kind==='track_closure'?state.tracks.map(t=>[t.id,`${t.id} · ${label('trackKind',t.kind)}`]):kind==='resource_loss'?state.resources.map(r=>[r.id,`${r.id} · ${label('resourceKind',r.kind)}`]):kind==='train_delay'?state.trains.map(t=>[t.id,`${t.id} · ${label('trainStatus',t.status)}`]):[...new Set(state.trains.map(t=>t.destination_id))].map(id=>[id,destination(id)]);
+  $('incident-target').replaceChildren(...choices.map(([id,text])=>{const o=node('option',text);o.value=id;return o;}));if(choices.some(([id])=>id===previous))$('incident-target').value=previous;$('delay-field').hidden=kind!=='train_delay';
+}
+function clearSession(){generation++;stopStream();state=null;detail=null;explanation=null;detailKey=null;selected=null;lastReceived=0;events.length=0;observed.clear();window.stationState=null;window.stationDetail=null;window.stationExplanation=null;window.stationMetrics.frames.length=0;connection='OFFLINE';for(const id of ['station-svg','raw-state','train-list','selection','shunting','operations','resources','train-resources','conflicts','incidents','plans','event-log'])$(id).replaceChildren();auth(null);status();}
+$('login-form').addEventListener('submit',async event=>{event.preventDefault();clearError();const submit=$('login-form').querySelector('button');submit.disabled=true;const ownGeneration=++generation;try{const result=await api('/api/v1/auth/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({username:$('username').value,password:$('password').value})});if(ownGeneration!==generation)return;auth(result.user);await snapshot();}catch(error){if(ownGeneration===generation)showError(error);}finally{$('password').value='';submit.disabled=false;}});
+$('logout').addEventListener('click',async()=>{try{await api('/api/v1/auth/logout',{method:'POST'});clearSession();}catch(error){showError(error);}});
+$('play').addEventListener('click',()=>command('/api/v1/simulation/control',{action:'play'}));$('pause').addEventListener('click',()=>command('/api/v1/simulation/control',{action:'pause'}));$('set-speed').addEventListener('click',()=>command('/api/v1/simulation/control',{action:'set_speed',speed:Number($('speed').value)}));$('replan').addEventListener('click',()=>command('/api/v1/replans',{reason:'manual'}));
+$('incident-kind').addEventListener('change',fillTargets);
+$('incident-form').addEventListener('submit',event=>{event.preventDefault();const item={kind:$('incident-kind').value,target_id:$('incident-target').value,duration_sim_s:Number($('incident-duration').value)*60};if(item.kind==='train_delay')item.delay_sim_s=Number($('incident-delay').value)*60;command('/api/v1/incidents',{items:[item]});});
+setInterval(status,250);
+api('/health/ready').then(()=>{$('health').textContent='Backend готов';}).catch(e=>{$('health').textContent='Backend недоступен';showError(e);});

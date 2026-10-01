@@ -1,0 +1,8 @@
+{
+  "user": {
+    "id": "u-admin",
+    "display_name": "Администратор",
+    "role": "admin",
+    "resource_ids": []
+  }
+}

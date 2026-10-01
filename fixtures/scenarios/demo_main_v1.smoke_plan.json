@@ -1,0 +1,485 @@
+{
+  "id": "smoke-plan-demo-main-v1",
+  "scenario_id": "demo_main_v1",
+  "source": "hand_authored_SPEC_4.1",
+  "optimizer_implemented": false,
+  "independent_validator_passed": false,
+  "description": "Fixed executable smoke timetable, not an optimization result or certified plan.",
+  "assignments": [
+    {
+      "operation_id": "op-T1-arrival",
+      "start_sim_s": 0,
+      "end_sim_s": 120,
+      "source_track_id": null,
+      "target_track_id": "R1",
+      "route_ids": [
+        "arrival-W-R1"
+      ],
+      "resource_ids": [
+        "TL1",
+        "TC1"
+      ]
+    },
+    {
+      "operation_id": "op-T1-inspection",
+      "start_sim_s": 120,
+      "end_sim_s": 360,
+      "source_track_id": "R1",
+      "target_track_id": "R1",
+      "route_ids": [],
+      "resource_ids": [
+        "I1"
+      ]
+    },
+    {
+      "operation_id": "op-T1-departure",
+      "start_sim_s": 360,
+      "end_sim_s": 480,
+      "source_track_id": "R1",
+      "target_track_id": null,
+      "route_ids": [
+        "departure-E-R1"
+      ],
+      "resource_ids": [
+        "TL1",
+        "TC1"
+      ]
+    },
+    {
+      "operation_id": "op-T2-arrival",
+      "start_sim_s": 180,
+      "end_sim_s": 300,
+      "source_track_id": null,
+      "target_track_id": "R3",
+      "route_ids": [
+        "arrival-W-R3"
+      ],
+      "resource_ids": [
+        "TL2",
+        "TC2"
+      ]
+    },
+    {
+      "operation_id": "op-T2-inspection",
+      "start_sim_s": 300,
+      "end_sim_s": 540,
+      "source_track_id": "R3",
+      "target_track_id": "R3",
+      "route_ids": [],
+      "resource_ids": [
+        "I2"
+      ]
+    },
+    {
+      "operation_id": "op-T2-shunt-out",
+      "start_sim_s": 840,
+      "end_sim_s": 1260,
+      "source_track_id": "R3",
+      "target_track_id": "C1",
+      "route_ids": [
+        "move-D1-H",
+        "move-H-R3",
+        "move-R3-H",
+        "move-H-C1",
+        "move-C1-H",
+        "move-H-D1"
+      ],
+      "resource_ids": [
+        "L1",
+        "SH1"
+      ]
+    },
+    {
+      "operation_id": "op-T2-cargo",
+      "start_sim_s": 1260,
+      "end_sim_s": 1980,
+      "source_track_id": "C1",
+      "target_track_id": "C1",
+      "route_ids": [],
+      "resource_ids": [
+        "CG1"
+      ]
+    },
+    {
+      "operation_id": "op-T2-shunt-back",
+      "start_sim_s": 2040,
+      "end_sim_s": 2460,
+      "source_track_id": "C1",
+      "target_track_id": "R3",
+      "route_ids": [
+        "move-D1-H",
+        "move-H-C1",
+        "move-C1-H",
+        "move-H-R3",
+        "move-R3-H",
+        "move-H-D1"
+      ],
+      "resource_ids": [
+        "L1",
+        "SH1"
+      ]
+    },
+    {
+      "operation_id": "op-T2-prep",
+      "start_sim_s": 2460,
+      "end_sim_s": 2640,
+      "source_track_id": "R3",
+      "target_track_id": "R3",
+      "route_ids": [],
+      "resource_ids": [
+        "I1",
+        "TL2",
+        "TC2"
+      ]
+    },
+    {
+      "operation_id": "op-T2-departure",
+      "start_sim_s": 2640,
+      "end_sim_s": 2760,
+      "source_track_id": "R3",
+      "target_track_id": null,
+      "route_ids": [
+        "departure-E-R3"
+      ],
+      "resource_ids": [
+        "TL2",
+        "TC2"
+      ]
+    },
+    {
+      "operation_id": "op-T3-arrival",
+      "start_sim_s": 600,
+      "end_sim_s": 720,
+      "source_track_id": null,
+      "target_track_id": "R2",
+      "route_ids": [
+        "arrival-E-R2"
+      ],
+      "resource_ids": [
+        "TL3",
+        "TC3"
+      ]
+    },
+    {
+      "operation_id": "op-T3-inspection",
+      "start_sim_s": 720,
+      "end_sim_s": 960,
+      "source_track_id": "R2",
+      "target_track_id": "R2",
+      "route_ids": [],
+      "resource_ids": [
+        "I1"
+      ]
+    },
+    {
+      "operation_id": "op-T3-departure",
+      "start_sim_s": 1380,
+      "end_sim_s": 1500,
+      "source_track_id": "R2",
+      "target_track_id": null,
+      "route_ids": [
+        "departure-W-R2"
+      ],
+      "resource_ids": [
+        "TL3",
+        "TC3"
+      ]
+    },
+    {
+      "operation_id": "op-T4-arrival",
+      "start_sim_s": 1260,
+      "end_sim_s": 1380,
+      "source_track_id": null,
+      "target_track_id": "R4",
+      "route_ids": [
+        "arrival-W-R4"
+      ],
+      "resource_ids": [
+        "TL4",
+        "TC4"
+      ]
+    },
+    {
+      "operation_id": "op-T4-inspection",
+      "start_sim_s": 1380,
+      "end_sim_s": 1620,
+      "source_track_id": "R4",
+      "target_track_id": "R4",
+      "route_ids": [],
+      "resource_ids": [
+        "I1"
+      ]
+    },
+    {
+      "operation_id": "op-T4-shunt-A-out",
+      "start_sim_s": 1620,
+      "end_sim_s": 2040,
+      "source_track_id": "R4",
+      "target_track_id": "S1",
+      "route_ids": [
+        "move-D1-H",
+        "move-H-R4",
+        "move-R4-H",
+        "move-H-S1",
+        "move-S1-H",
+        "move-H-D1"
+      ],
+      "resource_ids": [
+        "L1",
+        "SH1"
+      ]
+    },
+    {
+      "operation_id": "op-T4-shunt-B-out",
+      "start_sim_s": 2460,
+      "end_sim_s": 2880,
+      "source_track_id": "R4",
+      "target_track_id": "S2",
+      "route_ids": [
+        "move-D1-H",
+        "move-H-R4",
+        "move-R4-H",
+        "move-H-S2",
+        "move-S2-H",
+        "move-H-D1"
+      ],
+      "resource_ids": [
+        "L1",
+        "SH1"
+      ]
+    },
+    {
+      "operation_id": "op-T4-shunt-A-back",
+      "start_sim_s": 3240,
+      "end_sim_s": 3660,
+      "source_track_id": "S1",
+      "target_track_id": "R4",
+      "route_ids": [
+        "move-D1-H",
+        "move-H-S1",
+        "move-S1-H",
+        "move-H-R4",
+        "move-R4-H",
+        "move-H-D1"
+      ],
+      "resource_ids": [
+        "L1",
+        "SH1"
+      ]
+    },
+    {
+      "operation_id": "op-T4-shunt-B-back",
+      "start_sim_s": 3660,
+      "end_sim_s": 4080,
+      "source_track_id": "S2",
+      "target_track_id": "R4",
+      "route_ids": [
+        "move-D1-H",
+        "move-H-S2",
+        "move-S2-H",
+        "move-H-R4",
+        "move-R4-H",
+        "move-H-D1"
+      ],
+      "resource_ids": [
+        "L1",
+        "SH1"
+      ]
+    },
+    {
+      "operation_id": "op-T4-prep",
+      "start_sim_s": 4080,
+      "end_sim_s": 4260,
+      "source_track_id": "R4",
+      "target_track_id": "R4",
+      "route_ids": [],
+      "resource_ids": [
+        "I1",
+        "TL4",
+        "TC4"
+      ]
+    },
+    {
+      "operation_id": "op-T4-departure",
+      "start_sim_s": 4260,
+      "end_sim_s": 4380,
+      "source_track_id": "R4",
+      "target_track_id": null,
+      "route_ids": [
+        "departure-E-R4"
+      ],
+      "resource_ids": [
+        "TL4",
+        "TC4"
+      ]
+    },
+    {
+      "operation_id": "op-T5-arrival",
+      "start_sim_s": 2880,
+      "end_sim_s": 3000,
+      "source_track_id": null,
+      "target_track_id": "R3",
+      "route_ids": [
+        "arrival-W-R3"
+      ],
+      "resource_ids": [
+        "TL5",
+        "TC5"
+      ]
+    },
+    {
+      "operation_id": "op-T5-inspection",
+      "start_sim_s": 3000,
+      "end_sim_s": 3240,
+      "source_track_id": "R3",
+      "target_track_id": "R3",
+      "route_ids": [],
+      "resource_ids": [
+        "I2"
+      ]
+    },
+    {
+      "operation_id": "op-T5-shunt-out",
+      "start_sim_s": 4080,
+      "end_sim_s": 4500,
+      "source_track_id": "R3",
+      "target_track_id": "C1",
+      "route_ids": [
+        "move-D1-H",
+        "move-H-R3",
+        "move-R3-H",
+        "move-H-C1",
+        "move-C1-H",
+        "move-H-D1"
+      ],
+      "resource_ids": [
+        "L1",
+        "SH1"
+      ]
+    },
+    {
+      "operation_id": "op-T5-cargo",
+      "start_sim_s": 4500,
+      "end_sim_s": 5220,
+      "source_track_id": "C1",
+      "target_track_id": "C1",
+      "route_ids": [],
+      "resource_ids": [
+        "CG1"
+      ]
+    },
+    {
+      "operation_id": "op-T5-shunt-back",
+      "start_sim_s": 5220,
+      "end_sim_s": 5640,
+      "source_track_id": "C1",
+      "target_track_id": "R3",
+      "route_ids": [
+        "move-D1-H",
+        "move-H-C1",
+        "move-C1-H",
+        "move-H-R3",
+        "move-R3-H",
+        "move-H-D1"
+      ],
+      "resource_ids": [
+        "L1",
+        "SH1"
+      ]
+    },
+    {
+      "operation_id": "op-T5-prep",
+      "start_sim_s": 5640,
+      "end_sim_s": 5820,
+      "source_track_id": "R3",
+      "target_track_id": "R3",
+      "route_ids": [],
+      "resource_ids": [
+        "I1",
+        "TL5",
+        "TC5"
+      ]
+    },
+    {
+      "operation_id": "op-T5-departure",
+      "start_sim_s": 5820,
+      "end_sim_s": 5940,
+      "source_track_id": "R3",
+      "target_track_id": null,
+      "route_ids": [
+        "departure-E-R3"
+      ],
+      "resource_ids": [
+        "TL5",
+        "TC5"
+      ]
+    },
+    {
+      "operation_id": "op-T6-arrival",
+      "start_sim_s": 2760,
+      "end_sim_s": 2880,
+      "source_track_id": null,
+      "target_track_id": "R2",
+      "route_ids": [
+        "arrival-E-R2"
+      ],
+      "resource_ids": [
+        "TL6",
+        "TC6"
+      ]
+    },
+    {
+      "operation_id": "op-T6-inspection",
+      "start_sim_s": 2880,
+      "end_sim_s": 3120,
+      "source_track_id": "R2",
+      "target_track_id": "R2",
+      "route_ids": [],
+      "resource_ids": [
+        "I1"
+      ]
+    },
+    {
+      "operation_id": "op-T6-departure",
+      "start_sim_s": 3120,
+      "end_sim_s": 3240,
+      "source_track_id": "R2",
+      "target_track_id": null,
+      "route_ids": [
+        "departure-W-R2"
+      ],
+      "resource_ids": [
+        "TL6",
+        "TC6"
+      ]
+    },
+    {
+      "operation_id": "op-P1-arrival",
+      "start_sim_s": 720,
+      "end_sim_s": 840,
+      "source_track_id": null,
+      "target_track_id": "R1",
+      "route_ids": [
+        "arrival-W-R1"
+      ],
+      "resource_ids": [
+        "TP1",
+        "TCP1"
+      ]
+    },
+    {
+      "operation_id": "op-P1-departure",
+      "start_sim_s": 840,
+      "end_sim_s": 960,
+      "source_track_id": "R1",
+      "target_track_id": null,
+      "route_ids": [
+        "departure-E-R1"
+      ],
+      "resource_ids": [
+        "TP1",
+        "TCP1"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Цифровая станция · учебное рабочее место ДСП</title>
+  <link rel="icon" href="data:,"><link rel="stylesheet" href="/tech/station.css">
+  <script type="module" src="/tech/station.js"></script>
+</head>
+<body>
+<header class="masthead">
+  <div><p class="eyebrow">ОПЕРАТИВНАЯ РАБОТА · УЧЕБНЫЙ СИМУЛЯТОР</p><h1>Цифровая станция</h1></div>
+  <div class="session"><strong id="persona">Вход не выполнен</strong><span id="health">Проверка backend…</span><a href="/tech/debug">Технические данные ↗</a><button id="logout" hidden>Выйти</button></div>
+</header>
+<main>
+  <form id="login-form" class="panel login">
+    <h2>Рабочее место станции</h2><label>Пользователь <input id="username" autocomplete="username" value="dispatcher" required></label>
+    <label>Пароль <input id="password" type="password" autocomplete="current-password" required></label><button class="primary">Войти</button>
+  </form>
+  <div id="error" role="alert" hidden></div>
+  <section id="workspace" hidden>
+    <div class="toolbar panel">
+      <div><strong id="mode">ПАУЗА</strong><span id="sim-clock">—</span><span id="speed-label">—</span><span id="connection">Нет связи</span></div>
+      <div class="buttons"><button id="play" class="primary">▶ Пуск</button><button id="pause">Ⅱ Пауза</button>
+        <label>Скорость <select id="speed"><option value="1">1×</option><option value="5">5×</option><option value="10">10×</option></select></label><button id="set-speed">Изменить</button></div>
+    </div>
+    <div id="alert-strip" role="status" class="alert-strip">Получение поездного положения…</div>
+    <div class="overview">
+      <section class="panel diagram-panel"><div class="section-heading"><h2>Схема станции</h2><span>12 путей · 2 направления</span></div>
+        <p class="subtle">Учебная схема. Координаты условные; положение, занятость и маршруты — из backend.</p>
+        <svg id="station-svg" role="img" aria-label="Схема двенадцатипутной станции"></svg>
+        <div class="legend"><span>━ Свободен</span><span class="occupied-key">▰ Занят</span><span class="route-key">┄ Движение</span><span class="affected-key">⚠ Затронут</span><span>× Закрыт / ◷ ожидает закрытия</span></div>
+        <div id="selection" class="selection">Выберите поезд, путь, группу или локомотив на схеме.</div>
+      </section>
+      <section class="panel position-panel"><div class="section-heading"><h2>Поездное положение</h2><span id="train-count">7 поездов</span></div><div id="train-list"></div></section>
+    </div>
+    <section class="panel"><div class="section-heading"><h2>Маневровая работа</h2><span>L1 · составительская бригада SH1 · западная горловина W · вытяжной H</span></div><p class="subtle">SH1 агрегирует составительский и локомотивный персонал манёвра. Отдельные смены работников здесь не моделируются.</p><div id="shunting"></div></section>
+    <section class="panel"><div class="section-heading"><h2>Технологические операции</h2><span>Факт и действующий план</span></div><div id="operations"></div></section>
+    <div class="bottom-grid">
+      <section class="panel"><div class="section-heading"><h2>Локомотивы и бригады</h2><span>Назначения backend</span></div><div id="resources"></div><details><summary>Поездная тяга и бригады</summary><div id="train-resources"></div></details></section>
+      <section class="panel"><div class="section-heading"><h2>Ограничения и конфликты</h2><button id="replan">Пересчитать план</button></div><div id="conflicts"></div><div id="incidents"></div>
+        <details id="incident-controls"><summary>Учебный инцидент</summary><p class="subtle">Изменяет только симулятор. Занятый ресурс отключается после текущей неперерываемой работы.</p>
+          <form id="incident-form"><label>Событие <select id="incident-kind"><option value="track_closure">Закрытие пути</option><option value="resource_loss">Недоступность ресурса</option><option value="train_delay">Опоздание на подходе</option><option value="destination_block">Назначение не принимает</option></select></label>
+            <label>Объект <select id="incident-target"></select></label><label>Длительность, учебные минуты <input id="incident-duration" type="number" min="1" max="120" value="10" required></label>
+            <label id="delay-field" hidden>Сдвиг ETA, учебные минуты <input id="incident-delay" type="number" min="1" max="60" value="5"></label><button id="create-incident">Создать инцидент</button>
+          </form>
+        </details>
+      </section>
+    </div>
+    <section class="panel"><div class="section-heading"><h2>Варианты плана</h2><span id="replan-status">—</span></div><p id="plan-note" class="subtle">Сравниваются прогнозы одного расчёта. Рекомендация выбирается по общей цели J, а не только по индексу. Допустимый план не означает доказанно оптимальный.</p><div id="plans" class="plans"></div></section>
+    <details class="panel"><summary>Журнал событий текущего подключения</summary><p class="subtle">Не заменяет долговременную историю и replay.</p><ol id="event-log"></ol></details>
+    <details class="panel"><summary>Подробности состояния для разработчика</summary><pre id="raw-state"></pre></details>
+  </section>
+  <footer>Синтетическая станция: 12 путей, 6 грузовых и 1 пассажирский поезд. Все длительности, приоритеты и окна приёма учебные. Не система управления реальной инфраструктурой.</footer>
+</main>
+</body>
+</html>

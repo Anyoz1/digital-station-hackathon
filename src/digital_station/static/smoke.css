@@ -1,0 +1,22 @@
+:root { color-scheme: light; font: 15px/1.5 system-ui, sans-serif; color: #172536; background: #f3f5f8; }
+body { margin: 0; }
+main { max-width: 1160px; margin: 24px auto; padding: 0 20px; }
+h1 { font-size: 25px; } h2 { font-size: 19px; } h3 { font-size: 16px; }
+section { background: white; border: 1px solid #d5dde6; border-radius: 6px; padding: 16px 20px; margin: 16px 0; }
+form { display: flex; align-items: end; gap: 12px; flex-wrap: wrap; }
+label { display: flex; flex-direction: column; gap: 4px; }
+input, button, select { font: inherit; border: 1px solid #a5b4c7; border-radius: 4px; padding: 7px 12px; }
+button { background: #edf3fa; cursor: pointer; } button:disabled { cursor: default; opacity: .5; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th, td { text-align: left; border-bottom: 1px solid #e4e9ef; padding: 6px; overflow-wrap: anywhere; }
+thead { background: #f3f6fa; }
+.grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 20px; }
+.controls { display: flex; align-items: end; gap: 12px; flex-wrap: wrap; }
+.scroll-table { max-height: 450px; overflow: auto; }
+.scroll-table thead { position: sticky; top: 0; }
+#simulation-status { font-weight: 600; font-size: 18px; }
+dl { display: grid; grid-template-columns: 150px 1fr; gap: 3px 12px; } dd { margin: 0; overflow-wrap: anywhere; }
+pre { background: #f4f6f9; padding: 12px; white-space: pre-wrap; overflow-wrap: anywhere; max-height: 500px; overflow: auto; }
+#api-error { white-space: pre-wrap; background: #fff0f0; border: 1px solid #d85353; padding: 15px; }
+details { margin-top: 20px; } summary { cursor: pointer; }
+@media (max-width: 850px) { .grid { grid-template-columns: 1fr; } main { padding: 0 12px; } section { padding: 12px; } }

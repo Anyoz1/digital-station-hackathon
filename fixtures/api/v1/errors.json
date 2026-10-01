@@ -1,0 +1,46 @@
+[
+  {
+    "status": 401,
+    "body": {
+      "error": {
+        "code": "UNAUTHENTICATED",
+        "message": "Требуется вход",
+        "details": {},
+        "request_id": null
+      }
+    }
+  },
+  {
+    "status": 403,
+    "body": {
+      "error": {
+        "code": "FORBIDDEN",
+        "message": "Недостаточно прав",
+        "details": {},
+        "request_id": null
+      }
+    }
+  },
+  {
+    "status": 409,
+    "body": {
+      "error": {
+        "code": "REVISION_MISMATCH",
+        "message": "Устаревшая версия",
+        "details": {},
+        "request_id": null
+      }
+    }
+  },
+  {
+    "status": 422,
+    "body": {
+      "error": {
+        "code": "VALIDATION_ERROR",
+        "message": "Ошибка формата запроса",
+        "details": {},
+        "request_id": null
+      }
+    }
+  }
+]
