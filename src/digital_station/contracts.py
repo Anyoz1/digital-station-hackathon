@@ -1,6 +1,6 @@
 """API v1.0 DTOs; structural validation only, not the future plan validator."""
 
-from typing import Any, Literal
+from typing import Annotated, Any, Literal
 from uuid import UUID
 
 from pydantic import BaseModel, ConfigDict, Field, model_validator
@@ -486,6 +486,76 @@ class IncidentInput(DTO):
 
 class IncidentBatchInput(CommandEnvelope):
     items: list[IncidentInput] = Field(min_length=1, max_length=10)
+
+
+ConfigNumber = Annotated[float, Field(ge=0, le=100, allow_inf_nan=False, strict=True)]
+
+
+class ConfigWeights(DTO):
+    throughput: ConfigNumber
+    delay: ConfigNumber
+    occupancy: ConfigNumber
+    conflicts: ConfigNumber
+    resource_idle: ConfigNumber
+
+    @model_validator(mode="after")
+    def total_one(self):
+        values = self.model_dump().values()
+        if any(v > 1 for v in values) or abs(sum(values) - 1) > 1e-9:
+            raise ValueError("Веса должны быть неотрицательны и суммироваться к 1")
+        return self
+
+
+class ConfigThresholds(DTO):
+    normal_min: ConfigNumber
+    attention_min: ConfigNumber
+
+    @model_validator(mode="after")
+    def ordered(self):
+        if not self.attention_min < self.normal_min:
+            raise ValueError("Нужно 0 <= attention_min < normal_min <= 100")
+        return self
+
+
+class PlannerLimits(DTO):
+    time_limit_ms: int = Field(ge=100, le=3000, strict=True)
+    max_rollouts: int = Field(ge=1, le=12, strict=True)
+
+
+class ConfigPatch(DTO):
+    weights: ConfigWeights | None = None
+    category_thresholds: ConfigThresholds | None = None
+    planner: PlannerLimits | None = None
+
+    @model_validator(mode="after")
+    def nonempty(self):
+        if not self.model_fields_set or any(getattr(self, key) is None for key in self.model_fields_set):
+            raise ValueError("Patch должен содержать целый ненулевой вложенный объект")
+        return self
+
+
+class ConfigPatchInput(CommandEnvelope):
+    patch: ConfigPatch
+
+
+class HistoryEvent(DTO):
+    run_id: str
+    seq: int
+    server_time: str
+    sim_time_s: int
+    kind: str
+    entity_ids: list[str]
+    message: str
+    actor_user_id: str | None
+
+
+class HistoryPage(DTO):
+    items: list[HistoryEvent]
+    next_from_seq: int
+    has_more: bool
+    anchor_seq: int
+    available_from_wall_time: str
+    available_to_wall_time: str
 
 
 class ValidatorError(DTO):

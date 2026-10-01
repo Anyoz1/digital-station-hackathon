@@ -1,0 +1,53 @@
+{
+  "date": "2026-10-01",
+  "pytest": {
+    "passed": 178,
+    "failed": 0,
+    "skipped": 0,
+    "seconds": 138.587,
+    "junit": "pytest.xml",
+    "warning": "StarletteDeprecationWarning for TestClient/httpx"
+  },
+  "post_wording_regression": {
+    "passed": 53,
+    "seconds": 56.97
+  },
+  "ruff": {
+    "lint": "passed",
+    "format": "passed",
+    "files": 46
+  },
+  "mypy": {
+    "result": "passed",
+    "source_files": 21
+  },
+  "typescript": {
+    "result": "passed",
+    "flags": "--noEmit --strict --target ES2022 --lib ES2022,DOM",
+    "files": [
+      "contracts/api-v1.ts",
+      "contracts/railway-display.ts"
+    ]
+  },
+  "javascript": {
+    "syntax": [
+      "station.js",
+      "smoke.js"
+    ],
+    "tests_passed": 9
+  },
+  "browser": {
+    "tool": "Playwright MCP",
+    "engine": "system Chromium",
+    "evidence": "browser-final.json",
+    "nominal_console_errors": 0,
+    "nominal_page_errors": 0,
+    "nominal_failed_requests": 0,
+    "expected_negative_status": 403
+  },
+  "limits": [
+    "No full two-client/120s max ingress-to-paint SLA measurement",
+    "No browser integration of friend's frontend",
+    "Story A complete cycle and story C are offline engine evidence, not live replay"
+  ]
+}

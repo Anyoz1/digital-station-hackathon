@@ -1,0 +1,189 @@
+{
+  "run_id": "run-cda48aa1-eb33-486e-96a0-b22b33eeeae8",
+  "seq": 220,
+  "revision": 17,
+  "mode": "paused",
+  "speed": 1,
+  "sim_time_s": 1290,
+  "T2": {
+    "id": "T2",
+    "number": "2002",
+    "type": "FREIGHT",
+    "service_profile_id": "freight_local_v1",
+    "processing_kind": "local",
+    "direction": "W_E",
+    "consist_kind": "wagon_groups",
+    "body_length_m": 56,
+    "total_length_m": 76,
+    "location": {
+      "kind": "track",
+      "boundary_id": null,
+      "track_id": "R3",
+      "route_id": null,
+      "operation_id": null,
+      "route_progress": null
+    },
+    "priority": 2,
+    "status": "on_station",
+    "destination_id": "DEST_E",
+    "scheduled_arrival_sim_s": 180,
+    "expected_arrival_sim_s": 180,
+    "due_departure_sim_s": 2700,
+    "actual_arrival_sim_s": 180,
+    "actual_departure_sim_s": null,
+    "group_ids": [
+      "G2K"
+    ],
+    "target_group_ids": [
+      "G2L",
+      "G2K"
+    ],
+    "traction_resource_id": "TL2",
+    "traction_kind": "locomotive",
+    "planned_track_id": "R3",
+    "current_track_id": "R3"
+  },
+  "cargo": {
+    "id": "op-T2-cargo",
+    "train_id": "T2",
+    "group_ids": [
+      "G2L"
+    ],
+    "kind": "cargo",
+    "status": "running",
+    "execution_mode": "auto",
+    "predecessor_ids": [
+      "op-T2-shunt-out"
+    ],
+    "source_track_id": "C1",
+    "target_track_id": "C1",
+    "route_ids": [],
+    "resource_ids": [
+      "CG1"
+    ],
+    "duration_sim_s": 720,
+    "start_sim_s": 1260,
+    "end_sim_s": 1980,
+    "actual_start_sim_s": 1260,
+    "actual_end_sim_s": null,
+    "progress": 0.041666666666666664,
+    "phase": null,
+    "blocked_reason_codes": [],
+    "assigned_user_id": null,
+    "can_complete": false
+  },
+  "SSE": "LIVE · SSE · последний кадр 0.0 s назад",
+  "received_frames": [
+    {
+      "time": 410.8999999985099,
+      "seq": 209,
+      "mode": "running",
+      "sim": 1280
+    },
+    {
+      "time": 735.2999999970198,
+      "seq": 209,
+      "mode": "running",
+      "sim": 1280
+    },
+    {
+      "time": 1557.7999999970198,
+      "seq": 210,
+      "mode": "running",
+      "sim": 1281
+    },
+    {
+      "time": 2339.2999999970198,
+      "seq": 210,
+      "mode": "running",
+      "sim": 1281
+    },
+    {
+      "time": 3171.699999999255,
+      "seq": 211,
+      "mode": "running",
+      "sim": 1282
+    },
+    {
+      "time": 3970.099999997765,
+      "seq": 212,
+      "mode": "running",
+      "sim": 1283
+    },
+    {
+      "time": 4771.29999999702,
+      "seq": 213,
+      "mode": "running",
+      "sim": 1284
+    },
+    {
+      "time": 5559.39999999851,
+      "seq": 214,
+      "mode": "running",
+      "sim": 1285
+    },
+    {
+      "time": 6338.79999999702,
+      "seq": 214,
+      "mode": "running",
+      "sim": 1285
+    },
+    {
+      "time": 7157.599999997765,
+      "seq": 215,
+      "mode": "running",
+      "sim": 1286
+    },
+    {
+      "time": 7959.79999999702,
+      "seq": 216,
+      "mode": "running",
+      "sim": 1287
+    },
+    {
+      "time": 8763.5,
+      "seq": 217,
+      "mode": "running",
+      "sim": 1288
+    },
+    {
+      "time": 9564.79999999702,
+      "seq": 218,
+      "mode": "running",
+      "sim": 1289
+    },
+    {
+      "time": 10345.89999999851,
+      "seq": 218,
+      "mode": "running",
+      "sim": 1289
+    },
+    {
+      "time": 10488.599999997765,
+      "seq": 219,
+      "mode": "running",
+      "sim": 1290
+    },
+    {
+      "time": 10503.39999999851,
+      "seq": 220,
+      "mode": "paused",
+      "sim": 1290
+    }
+  ],
+  "measurement": {
+    "running_frames": 15,
+    "duration_s": 10.077699999999256,
+    "rate_hz": 1.389205870387195,
+    "max_gap_ms": 832.4000000022352
+  },
+  "navigationCount": 1,
+  "timeOrigin": 1790847626264,
+  "before": {
+    "sim_time_s": 1280,
+    "seq": 208,
+    "progress": 0.027777777777777776
+  },
+  "noReload": true,
+  "pageErrors": []
+}

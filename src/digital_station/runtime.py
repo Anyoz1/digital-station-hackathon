@@ -13,6 +13,7 @@ from datetime import UTC, datetime, timedelta
 from typing import Any
 
 from sqlalchemy import text, update
+from sqlalchemy.exc import SQLAlchemyError
 
 from .contracts import State
 from .db import (
@@ -25,12 +26,14 @@ from .db import (
     Scenario,
     StateSnapshot,
 )
+from .efficiency import actual, append_sample, metric_sample
+from .history import load_samples, prune_retention
 from .planning import PlanningCoordinator
 from .scenario import utc_now
 from .simulator import Simulator
 from .smoke_plan import SCHEDULE_ID, load_smoke_plan
 
-MIGRATION = "0004_incidents"
+MIGRATION = "0005_history_indexes"
 COLLECTIONS = (
     "tracks",
     "zones",
@@ -127,6 +130,8 @@ class StationActor:
         self.lock_connection = None
         self.enable_planner = enable_planner
         self.coordinator = None
+        self.metric_samples = []
+        self.maintenance_task = None
 
     async def start(self):
         self.lock_connection = await self.engine.connect()
@@ -144,6 +149,8 @@ class StationActor:
                 initial = State.model_validate(scenario.payload["initial_state"])
                 schedule = scenario.payload["smoke_plan"]
                 config = (await session.get(ConfigRevision, self.state.config_version)).payload
+                self.config = config
+                self.metric_samples = await load_samples(session, self.state)
                 initialized = run.execution_schedule_id is not None
             self.simulator = Simulator(self.state, initial)
             self.last_checkpoint = time.monotonic()
@@ -177,6 +184,7 @@ class StationActor:
             self.next_publish = self.anchor_wall + self.PERIOD
             self.ready = True
             self.task = asyncio.create_task(self.run(), name="station-actor")
+            self.maintenance_task = asyncio.create_task(self.maintain_history(), name="history-retention")
         except BaseException:
             if self.coordinator:
                 await self.coordinator.stop()
@@ -191,6 +199,9 @@ class StationActor:
             self.lock_connection = None
 
     async def stop(self):
+        if self.maintenance_task:
+            self.maintenance_task.cancel()
+            await asyncio.gather(self.maintenance_task, return_exceptions=True)
         if self.coordinator:
             await self.coordinator.stop()
         if self.task and not self.task.done():
@@ -199,6 +210,16 @@ class StationActor:
         self.ready = False
         self.close_streams()
         await self.release_writer()
+
+    async def maintain_history(self):
+        while self.ready:
+            await asyncio.sleep(60)
+            try:
+                async with self.sessions() as session, session.begin():
+                    await prune_retention(session)
+            except SQLAlchemyError:
+                # Retention failure cannot remove partial effects or stop the station actor.
+                LOGGER.warning("History retention transaction failed; retry next minute", exc_info=True)
 
     def exact_time(self, now):
         return self.anchor_sim + (
@@ -289,11 +310,17 @@ class StationActor:
         checkpoint=False,
         receipt_status=200,
         receipt_result=None,
+        config_record=None,
     ):
         before = self.state.model_dump(mode="json")
         candidate.event_seq = self.state.event_seq + 1
         candidate.state_version = self.state.state_version + 1
         candidate.server_time = utc_now()
+        config = config_record.payload if config_record is not None else self.config
+        samples = append_sample(
+            self.metric_samples, metric_sample(candidate), max(0, candidate.sim_time_s - 900)
+        )
+        candidate.efficiency = actual(candidate, samples, config)
         if self.coordinator:
             self.coordinator.update_can_apply(candidate)
         payload = State.model_validate(candidate.model_dump()).model_dump(mode="json")
@@ -318,6 +345,9 @@ class StationActor:
                 },
             )
         async with self.sessions() as session, session.begin():
+            if config_record is not None:
+                session.add(config_record)
+                await session.flush()
             changed = await session.execute(
                 update(RunState)
                 .where(
@@ -361,6 +391,7 @@ class StationActor:
                         "effects": effects(before, payload),
                         "transitions": transitions,
                         "ingested_at": ingress,
+                        "metric_sample": samples[-1],
                     },
                 )
             )
@@ -410,6 +441,7 @@ class StationActor:
                 record.payload = incident.model_dump(mode="json")
         # Nothing is visible to SSE subscribers until the transaction has committed.
         self.state = candidate
+        self.config, self.metric_samples = config, samples
         if self.coordinator:
             self.coordinator.dirty_jobs.clear()
         for name in (
@@ -572,7 +604,16 @@ class StationActor:
                     return
                 assert pending_future is not None
                 try:
-                    if kind in {"replan", "apply", "incidents", "resolve", "planner_start", "planner_result"}:
+                    if kind in {
+                        "replan",
+                        "apply",
+                        "incidents",
+                        "resolve",
+                        "planner_start",
+                        "planner_result",
+                        "config",
+                        "complete",
+                    }:
                         await self.flush_clock(time.monotonic())
                     if kind == "subscribe":
                         result = self.register(data)
@@ -591,6 +632,12 @@ class StationActor:
                     elif kind == "resolve":
                         assert self.coordinator is not None
                         result = await self.coordinator.resolve_incident(*data)
+                    elif kind in {"config", "complete"}:
+                        from .services import complete_operation, patch_config
+
+                        result = await (
+                            patch_config(self, *data) if kind == "config" else complete_operation(self, *data)
+                        )
                     elif kind == "planner_start":
                         assert self.coordinator is not None
                         result = await self.coordinator.start_job(data)

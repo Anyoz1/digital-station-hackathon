@@ -1,0 +1,2160 @@
+{
+  "before": {
+    "run": "run-97235c10-7b29-4bcb-a50a-8c47438e587c",
+    "sim": 601,
+    "job": "rp-73ebbe29-7abf-44e9-93ac-3c79d0ee373e",
+    "frameStart": 1,
+    "groups": [
+      {
+        "id": "G1",
+        "ids": [
+          "G1-W01",
+          "G1-W02",
+          "G1-W03",
+          "G1-W04",
+          "G1-W05",
+          "G1-W06",
+          "G1-W07",
+          "G1-W08",
+          "G1-W09",
+          "G1-W10",
+          "G1-W11",
+          "G1-W12"
+        ]
+      },
+      {
+        "id": "G2L",
+        "ids": [
+          "G2L-W01",
+          "G2L-W02",
+          "G2L-W03",
+          "G2L-W04"
+        ]
+      },
+      {
+        "id": "G2K",
+        "ids": [
+          "G2K-W01",
+          "G2K-W02",
+          "G2K-W03",
+          "G2K-W04"
+        ]
+      },
+      {
+        "id": "G3",
+        "ids": [
+          "G3-W01",
+          "G3-W02",
+          "G3-W03",
+          "G3-W04",
+          "G3-W05",
+          "G3-W06",
+          "G3-W07",
+          "G3-W08",
+          "G3-W09",
+          "G3-W10"
+        ]
+      },
+      {
+        "id": "G4A",
+        "ids": [
+          "G4A-W01",
+          "G4A-W02",
+          "G4A-W03"
+        ]
+      },
+      {
+        "id": "G4B",
+        "ids": [
+          "G4B-W01",
+          "G4B-W02",
+          "G4B-W03"
+        ]
+      },
+      {
+        "id": "G4K",
+        "ids": [
+          "G4K-W01",
+          "G4K-W02",
+          "G4K-W03",
+          "G4K-W04"
+        ]
+      },
+      {
+        "id": "G5L",
+        "ids": [
+          "G5L-W01",
+          "G5L-W02",
+          "G5L-W03",
+          "G5L-W04"
+        ]
+      },
+      {
+        "id": "G5K",
+        "ids": [
+          "G5K-W01",
+          "G5K-W02",
+          "G5K-W03",
+          "G5K-W04"
+        ]
+      },
+      {
+        "id": "G6",
+        "ids": [
+          "G6-W01",
+          "G6-W02",
+          "G6-W03",
+          "G6-W04",
+          "G6-W05",
+          "G6-W06",
+          "G6-W07",
+          "G6-W08",
+          "G6-W09",
+          "G6-W10",
+          "G6-W11",
+          "G6-W12"
+        ]
+      }
+    ],
+    "resources": [
+      {
+        "id": "L1",
+        "name": "L1",
+        "kind": "shunting_locomotive",
+        "status": "busy",
+        "active_operation_id": "op-T2-shunt-out",
+        "location": {
+          "kind": "track",
+          "boundary_id": null,
+          "track_id": "R3",
+          "route_id": null,
+          "operation_id": null,
+          "route_progress": null
+        },
+        "available_after_sim_s": null,
+        "assigned_user_id": null
+      }
+    ],
+    "occupancy": [
+      {
+        "id": "R1",
+        "m": 0
+      },
+      {
+        "id": "R2",
+        "m": 0
+      },
+      {
+        "id": "R3",
+        "m": 152
+      },
+      {
+        "id": "R4",
+        "m": 0
+      },
+      {
+        "id": "S1",
+        "m": 0
+      },
+      {
+        "id": "S2",
+        "m": 0
+      },
+      {
+        "id": "S3",
+        "m": 0
+      },
+      {
+        "id": "S4",
+        "m": 0
+      },
+      {
+        "id": "C1",
+        "m": 0
+      },
+      {
+        "id": "C2",
+        "m": 0
+      },
+      {
+        "id": "H",
+        "m": 0
+      },
+      {
+        "id": "D1",
+        "m": 0
+      }
+    ],
+    "operations": [
+      {
+        "id": "op-T1-arrival",
+        "start": 0,
+        "status": "completed",
+        "progress": 1
+      },
+      {
+        "id": "op-T1-inspection",
+        "start": 120,
+        "status": "completed",
+        "progress": 1
+      },
+      {
+        "id": "op-T1-departure",
+        "start": 360,
+        "status": "completed",
+        "progress": 1
+      },
+      {
+        "id": "op-T2-arrival",
+        "start": 180,
+        "status": "completed",
+        "progress": 1
+      },
+      {
+        "id": "op-T2-inspection",
+        "start": 300,
+        "status": "completed",
+        "progress": 1
+      },
+      {
+        "id": "op-T2-shunt-out",
+        "start": 540,
+        "status": "running",
+        "progress": 0.14523809523809525
+      }
+    ]
+  },
+  "after": {
+    "sim": 688,
+    "active": "plan-rp-fb620056-f699-43fe-bb60-5d213861fcb4-0",
+    "job": {
+      "id": "rp-fb620056-f699-43fe-bb60-5d213861fcb4",
+      "status": "succeeded",
+      "reason": "manual",
+      "created_at": "2026-10-01T11:49:08.264Z",
+      "started_at": "2026-10-01T11:49:08.461Z",
+      "finished_at": "2026-10-01T11:49:09.223Z",
+      "base_input_revision": 10,
+      "candidate_plan_ids": [
+        "plan-rp-fb620056-f699-43fe-bb60-5d213861fcb4-0",
+        "plan-rp-fb620056-f699-43fe-bb60-5d213861fcb4-1"
+      ],
+      "applied_plan_id": "plan-rp-fb620056-f699-43fe-bb60-5d213861fcb4-0",
+      "elapsed_ms": 959.6275420008169,
+      "compute_ms": 471.5228689965443,
+      "validation_ms": 169.76950600292184,
+      "deadline_ms": 5000,
+      "outcome_reason_codes": []
+    },
+    "plans": [
+      {
+        "id": "plan-rp-fb620056-f699-43fe-bb60-5d213861fcb4-0",
+        "strategy": "urgency/ascending",
+        "validator": {
+          "passed": true,
+          "errors": []
+        },
+        "J": 0.211996336996337,
+        "changed": []
+      },
+      {
+        "id": "plan-rp-fb620056-f699-43fe-bb60-5d213861fcb4-1",
+        "strategy": "urgency/descending",
+        "validator": {
+          "passed": true,
+          "errors": []
+        },
+        "J": 0.24903337403337403,
+        "changed": [
+          "op-T2-prep",
+          "op-T3-arrival",
+          "op-T3-inspection",
+          "op-T3-departure",
+          "op-T4-inspection",
+          "op-T4-shunt-A-out",
+          "op-T4-shunt-B-out",
+          "op-T4-shunt-A-back",
+          "op-T4-shunt-B-back",
+          "op-T4-prep",
+          "op-T5-inspection",
+          "op-T5-shunt-out",
+          "op-T5-cargo",
+          "op-T5-shunt-back",
+          "op-T5-prep",
+          "op-T6-arrival",
+          "op-T6-inspection",
+          "op-T6-departure",
+          "op-P1-arrival",
+          "op-P1-departure"
+        ]
+      }
+    ],
+    "groups": [
+      {
+        "id": "G1",
+        "ids": [
+          "G1-W01",
+          "G1-W02",
+          "G1-W03",
+          "G1-W04",
+          "G1-W05",
+          "G1-W06",
+          "G1-W07",
+          "G1-W08",
+          "G1-W09",
+          "G1-W10",
+          "G1-W11",
+          "G1-W12"
+        ]
+      },
+      {
+        "id": "G2L",
+        "ids": [
+          "G2L-W01",
+          "G2L-W02",
+          "G2L-W03",
+          "G2L-W04"
+        ]
+      },
+      {
+        "id": "G2K",
+        "ids": [
+          "G2K-W01",
+          "G2K-W02",
+          "G2K-W03",
+          "G2K-W04"
+        ]
+      },
+      {
+        "id": "G3",
+        "ids": [
+          "G3-W01",
+          "G3-W02",
+          "G3-W03",
+          "G3-W04",
+          "G3-W05",
+          "G3-W06",
+          "G3-W07",
+          "G3-W08",
+          "G3-W09",
+          "G3-W10"
+        ]
+      },
+      {
+        "id": "G4A",
+        "ids": [
+          "G4A-W01",
+          "G4A-W02",
+          "G4A-W03"
+        ]
+      },
+      {
+        "id": "G4B",
+        "ids": [
+          "G4B-W01",
+          "G4B-W02",
+          "G4B-W03"
+        ]
+      },
+      {
+        "id": "G4K",
+        "ids": [
+          "G4K-W01",
+          "G4K-W02",
+          "G4K-W03",
+          "G4K-W04"
+        ]
+      },
+      {
+        "id": "G5L",
+        "ids": [
+          "G5L-W01",
+          "G5L-W02",
+          "G5L-W03",
+          "G5L-W04"
+        ]
+      },
+      {
+        "id": "G5K",
+        "ids": [
+          "G5K-W01",
+          "G5K-W02",
+          "G5K-W03",
+          "G5K-W04"
+        ]
+      },
+      {
+        "id": "G6",
+        "ids": [
+          "G6-W01",
+          "G6-W02",
+          "G6-W03",
+          "G6-W04",
+          "G6-W05",
+          "G6-W06",
+          "G6-W07",
+          "G6-W08",
+          "G6-W09",
+          "G6-W10",
+          "G6-W11",
+          "G6-W12"
+        ]
+      }
+    ],
+    "resources": [
+      {
+        "id": "L1",
+        "name": "L1",
+        "kind": "shunting_locomotive",
+        "status": "busy",
+        "active_operation_id": "op-T2-shunt-out",
+        "location": {
+          "kind": "route",
+          "boundary_id": null,
+          "track_id": null,
+          "route_id": "move-R3-H",
+          "operation_id": "op-T2-shunt-out",
+          "route_progress": 0.3111111111111111
+        },
+        "available_after_sim_s": null,
+        "assigned_user_id": null
+      }
+    ],
+    "occupancy": [
+      {
+        "id": "R1",
+        "m": 0
+      },
+      {
+        "id": "R2",
+        "m": 0
+      },
+      {
+        "id": "R3",
+        "m": 76
+      },
+      {
+        "id": "R4",
+        "m": 0
+      },
+      {
+        "id": "S1",
+        "m": 0
+      },
+      {
+        "id": "S2",
+        "m": 0
+      },
+      {
+        "id": "S3",
+        "m": 0
+      },
+      {
+        "id": "S4",
+        "m": 0
+      },
+      {
+        "id": "C1",
+        "m": 0
+      },
+      {
+        "id": "C2",
+        "m": 0
+      },
+      {
+        "id": "H",
+        "m": 0
+      },
+      {
+        "id": "D1",
+        "m": 0
+      }
+    ],
+    "operations": [
+      {
+        "id": "op-T1-arrival",
+        "start": 0,
+        "status": "completed",
+        "progress": 1
+      },
+      {
+        "id": "op-T1-inspection",
+        "start": 120,
+        "status": "completed",
+        "progress": 1
+      },
+      {
+        "id": "op-T1-departure",
+        "start": 360,
+        "status": "completed",
+        "progress": 1
+      },
+      {
+        "id": "op-T2-arrival",
+        "start": 180,
+        "status": "completed",
+        "progress": 1
+      },
+      {
+        "id": "op-T2-inspection",
+        "start": 300,
+        "status": "completed",
+        "progress": 1
+      },
+      {
+        "id": "op-T2-shunt-out",
+        "start": 540,
+        "status": "running",
+        "progress": 0.3523809523809524
+      }
+    ],
+    "frames": [
+      {
+        "received_ms": 357.19999999925494,
+        "event": "state",
+        "kind": "simulation_control",
+        "seq": 61,
+        "sim_time_s": 601,
+        "mode": "running",
+        "speed": 10,
+        "running": [
+          {
+            "id": "op-T2-shunt-out",
+            "progress": 0.14523809523809525,
+            "phase": "couple"
+          }
+        ],
+        "occupied": [
+          {
+            "id": "R3",
+            "m": 152
+          }
+        ],
+        "locomotive": {
+          "kind": "track",
+          "boundary_id": null,
+          "track_id": "R3",
+          "route_id": null,
+          "operation_id": null,
+          "route_progress": null
+        },
+        "incidents": [
+          {
+            "id": "inc-4b215031-09bd-4fef-ab8a-24d0868051c7",
+            "status": "active"
+          },
+          {
+            "id": "inc-08c8bf64-1b33-4712-adf0-5761ca6e7a21",
+            "status": "active"
+          },
+          {
+            "id": "inc-d4d3a003-7cdd-4ac8-b63f-9748edb0690e",
+            "status": "active"
+          },
+          {
+            "id": "inc-b6fc8d32-3988-4d94-91f9-d8b4af51a656",
+            "status": "active"
+          },
+          {
+            "id": "inc-4a01d30d-cce1-4024-88da-df8030d75a72",
+            "status": "active"
+          },
+          {
+            "id": "inc-a4f32b3d-2d1e-42e0-a8bf-cc77f34012c8",
+            "status": "active"
+          },
+          {
+            "id": "inc-82f22100-4441-40e5-a9e4-798d97a32894",
+            "status": "active"
+          },
+          {
+            "id": "inc-438402e0-8fac-4b5c-a0fc-f91518f44791",
+            "status": "active"
+          },
+          {
+            "id": "inc-1448c4a9-de9d-44d5-9f7a-4c69b132c2d1",
+            "status": "active"
+          },
+          {
+            "id": "inc-468aefda-35df-4adf-bd6c-6ffbe98ad652",
+            "status": "active"
+          }
+        ],
+        "conflicts": [],
+        "job": {
+          "id": "rp-73ebbe29-7abf-44e9-93ac-3c79d0ee373e",
+          "status": "succeeded",
+          "applied_plan_id": "plan-rp-73ebbe29-7abf-44e9-93ac-3c79d0ee373e-0"
+        }
+      },
+      {
+        "received_ms": 430.29999999701977,
+        "event": "state",
+        "kind": "replan_updated",
+        "seq": 62,
+        "sim_time_s": 601,
+        "mode": "running",
+        "speed": 10,
+        "running": [
+          {
+            "id": "op-T2-shunt-out",
+            "progress": 0.14523809523809525,
+            "phase": "couple"
+          }
+        ],
+        "occupied": [
+          {
+            "id": "R3",
+            "m": 152
+          }
+        ],
+        "locomotive": {
+          "kind": "track",
+          "boundary_id": null,
+          "track_id": "R3",
+          "route_id": null,
+          "operation_id": null,
+          "route_progress": null
+        },
+        "incidents": [
+          {
+            "id": "inc-4b215031-09bd-4fef-ab8a-24d0868051c7",
+            "status": "active"
+          },
+          {
+            "id": "inc-08c8bf64-1b33-4712-adf0-5761ca6e7a21",
+            "status": "active"
+          },
+          {
+            "id": "inc-d4d3a003-7cdd-4ac8-b63f-9748edb0690e",
+            "status": "active"
+          },
+          {
+            "id": "inc-b6fc8d32-3988-4d94-91f9-d8b4af51a656",
+            "status": "active"
+          },
+          {
+            "id": "inc-4a01d30d-cce1-4024-88da-df8030d75a72",
+            "status": "active"
+          },
+          {
+            "id": "inc-a4f32b3d-2d1e-42e0-a8bf-cc77f34012c8",
+            "status": "active"
+          },
+          {
+            "id": "inc-82f22100-4441-40e5-a9e4-798d97a32894",
+            "status": "active"
+          },
+          {
+            "id": "inc-438402e0-8fac-4b5c-a0fc-f91518f44791",
+            "status": "active"
+          },
+          {
+            "id": "inc-1448c4a9-de9d-44d5-9f7a-4c69b132c2d1",
+            "status": "active"
+          },
+          {
+            "id": "inc-468aefda-35df-4adf-bd6c-6ffbe98ad652",
+            "status": "active"
+          }
+        ],
+        "conflicts": [],
+        "job": {
+          "id": "rp-fb620056-f699-43fe-bb60-5d213861fcb4",
+          "status": "queued",
+          "applied_plan_id": null
+        }
+      },
+      {
+        "received_ms": 510.19999999925494,
+        "event": "state",
+        "kind": "tick",
+        "seq": 63,
+        "sim_time_s": 602,
+        "mode": "running",
+        "speed": 10,
+        "running": [
+          {
+            "id": "op-T2-shunt-out",
+            "progress": 0.14761904761904762,
+            "phase": "couple"
+          }
+        ],
+        "occupied": [
+          {
+            "id": "R3",
+            "m": 152
+          }
+        ],
+        "locomotive": {
+          "kind": "track",
+          "boundary_id": null,
+          "track_id": "R3",
+          "route_id": null,
+          "operation_id": null,
+          "route_progress": null
+        },
+        "incidents": [
+          {
+            "id": "inc-4b215031-09bd-4fef-ab8a-24d0868051c7",
+            "status": "active"
+          },
+          {
+            "id": "inc-08c8bf64-1b33-4712-adf0-5761ca6e7a21",
+            "status": "active"
+          },
+          {
+            "id": "inc-d4d3a003-7cdd-4ac8-b63f-9748edb0690e",
+            "status": "active"
+          },
+          {
+            "id": "inc-b6fc8d32-3988-4d94-91f9-d8b4af51a656",
+            "status": "active"
+          },
+          {
+            "id": "inc-4a01d30d-cce1-4024-88da-df8030d75a72",
+            "status": "active"
+          },
+          {
+            "id": "inc-a4f32b3d-2d1e-42e0-a8bf-cc77f34012c8",
+            "status": "active"
+          },
+          {
+            "id": "inc-82f22100-4441-40e5-a9e4-798d97a32894",
+            "status": "active"
+          },
+          {
+            "id": "inc-438402e0-8fac-4b5c-a0fc-f91518f44791",
+            "status": "active"
+          },
+          {
+            "id": "inc-1448c4a9-de9d-44d5-9f7a-4c69b132c2d1",
+            "status": "active"
+          },
+          {
+            "id": "inc-468aefda-35df-4adf-bd6c-6ffbe98ad652",
+            "status": "active"
+          }
+        ],
+        "conflicts": [],
+        "job": {
+          "id": "rp-fb620056-f699-43fe-bb60-5d213861fcb4",
+          "status": "queued",
+          "applied_plan_id": null
+        }
+      },
+      {
+        "received_ms": 618.1999999992549,
+        "event": "state",
+        "kind": "tick",
+        "seq": 64,
+        "sim_time_s": 603,
+        "mode": "running",
+        "speed": 10,
+        "running": [
+          {
+            "id": "op-T2-shunt-out",
+            "progress": 0.15,
+            "phase": "couple"
+          }
+        ],
+        "occupied": [
+          {
+            "id": "R3",
+            "m": 152
+          }
+        ],
+        "locomotive": {
+          "kind": "track",
+          "boundary_id": null,
+          "track_id": "R3",
+          "route_id": null,
+          "operation_id": null,
+          "route_progress": null
+        },
+        "incidents": [
+          {
+            "id": "inc-4b215031-09bd-4fef-ab8a-24d0868051c7",
+            "status": "active"
+          },
+          {
+            "id": "inc-08c8bf64-1b33-4712-adf0-5761ca6e7a21",
+            "status": "active"
+          },
+          {
+            "id": "inc-d4d3a003-7cdd-4ac8-b63f-9748edb0690e",
+            "status": "active"
+          },
+          {
+            "id": "inc-b6fc8d32-3988-4d94-91f9-d8b4af51a656",
+            "status": "active"
+          },
+          {
+            "id": "inc-4a01d30d-cce1-4024-88da-df8030d75a72",
+            "status": "active"
+          },
+          {
+            "id": "inc-a4f32b3d-2d1e-42e0-a8bf-cc77f34012c8",
+            "status": "active"
+          },
+          {
+            "id": "inc-82f22100-4441-40e5-a9e4-798d97a32894",
+            "status": "active"
+          },
+          {
+            "id": "inc-438402e0-8fac-4b5c-a0fc-f91518f44791",
+            "status": "active"
+          },
+          {
+            "id": "inc-1448c4a9-de9d-44d5-9f7a-4c69b132c2d1",
+            "status": "active"
+          },
+          {
+            "id": "inc-468aefda-35df-4adf-bd6c-6ffbe98ad652",
+            "status": "active"
+          }
+        ],
+        "conflicts": [],
+        "job": {
+          "id": "rp-fb620056-f699-43fe-bb60-5d213861fcb4",
+          "status": "queued",
+          "applied_plan_id": null
+        }
+      },
+      {
+        "received_ms": 625.2999999970198,
+        "event": "state",
+        "kind": "replan_updated",
+        "seq": 65,
+        "sim_time_s": 603,
+        "mode": "running",
+        "speed": 10,
+        "running": [
+          {
+            "id": "op-T2-shunt-out",
+            "progress": 0.15,
+            "phase": "couple"
+          }
+        ],
+        "occupied": [
+          {
+            "id": "R3",
+            "m": 152
+          }
+        ],
+        "locomotive": {
+          "kind": "track",
+          "boundary_id": null,
+          "track_id": "R3",
+          "route_id": null,
+          "operation_id": null,
+          "route_progress": null
+        },
+        "incidents": [
+          {
+            "id": "inc-4b215031-09bd-4fef-ab8a-24d0868051c7",
+            "status": "active"
+          },
+          {
+            "id": "inc-08c8bf64-1b33-4712-adf0-5761ca6e7a21",
+            "status": "active"
+          },
+          {
+            "id": "inc-d4d3a003-7cdd-4ac8-b63f-9748edb0690e",
+            "status": "active"
+          },
+          {
+            "id": "inc-b6fc8d32-3988-4d94-91f9-d8b4af51a656",
+            "status": "active"
+          },
+          {
+            "id": "inc-4a01d30d-cce1-4024-88da-df8030d75a72",
+            "status": "active"
+          },
+          {
+            "id": "inc-a4f32b3d-2d1e-42e0-a8bf-cc77f34012c8",
+            "status": "active"
+          },
+          {
+            "id": "inc-82f22100-4441-40e5-a9e4-798d97a32894",
+            "status": "active"
+          },
+          {
+            "id": "inc-438402e0-8fac-4b5c-a0fc-f91518f44791",
+            "status": "active"
+          },
+          {
+            "id": "inc-1448c4a9-de9d-44d5-9f7a-4c69b132c2d1",
+            "status": "active"
+          },
+          {
+            "id": "inc-468aefda-35df-4adf-bd6c-6ffbe98ad652",
+            "status": "active"
+          }
+        ],
+        "conflicts": [],
+        "job": {
+          "id": "rp-fb620056-f699-43fe-bb60-5d213861fcb4",
+          "status": "running",
+          "applied_plan_id": null
+        }
+      },
+      {
+        "received_ms": 1316.7999999970198,
+        "event": "state",
+        "kind": "tick",
+        "seq": 66,
+        "sim_time_s": 610,
+        "mode": "running",
+        "speed": 10,
+        "running": [
+          {
+            "id": "op-T2-shunt-out",
+            "progress": 0.16666666666666666,
+            "phase": "couple"
+          }
+        ],
+        "occupied": [
+          {
+            "id": "R3",
+            "m": 152
+          }
+        ],
+        "locomotive": {
+          "kind": "track",
+          "boundary_id": null,
+          "track_id": "R3",
+          "route_id": null,
+          "operation_id": null,
+          "route_progress": null
+        },
+        "incidents": [
+          {
+            "id": "inc-4b215031-09bd-4fef-ab8a-24d0868051c7",
+            "status": "active"
+          },
+          {
+            "id": "inc-08c8bf64-1b33-4712-adf0-5761ca6e7a21",
+            "status": "active"
+          },
+          {
+            "id": "inc-d4d3a003-7cdd-4ac8-b63f-9748edb0690e",
+            "status": "active"
+          },
+          {
+            "id": "inc-b6fc8d32-3988-4d94-91f9-d8b4af51a656",
+            "status": "active"
+          },
+          {
+            "id": "inc-4a01d30d-cce1-4024-88da-df8030d75a72",
+            "status": "active"
+          },
+          {
+            "id": "inc-a4f32b3d-2d1e-42e0-a8bf-cc77f34012c8",
+            "status": "active"
+          },
+          {
+            "id": "inc-82f22100-4441-40e5-a9e4-798d97a32894",
+            "status": "active"
+          },
+          {
+            "id": "inc-438402e0-8fac-4b5c-a0fc-f91518f44791",
+            "status": "active"
+          },
+          {
+            "id": "inc-1448c4a9-de9d-44d5-9f7a-4c69b132c2d1",
+            "status": "active"
+          },
+          {
+            "id": "inc-468aefda-35df-4adf-bd6c-6ffbe98ad652",
+            "status": "active"
+          }
+        ],
+        "conflicts": [],
+        "job": {
+          "id": "rp-fb620056-f699-43fe-bb60-5d213861fcb4",
+          "status": "running",
+          "applied_plan_id": null
+        }
+      },
+      {
+        "received_ms": 1370.7999999970198,
+        "event": "state",
+        "kind": "plan_applied",
+        "seq": 67,
+        "sim_time_s": 610,
+        "mode": "running",
+        "speed": 10,
+        "running": [
+          {
+            "id": "op-T2-shunt-out",
+            "progress": 0.16666666666666666,
+            "phase": "couple"
+          }
+        ],
+        "occupied": [
+          {
+            "id": "R3",
+            "m": 152
+          }
+        ],
+        "locomotive": {
+          "kind": "track",
+          "boundary_id": null,
+          "track_id": "R3",
+          "route_id": null,
+          "operation_id": null,
+          "route_progress": null
+        },
+        "incidents": [
+          {
+            "id": "inc-4b215031-09bd-4fef-ab8a-24d0868051c7",
+            "status": "active"
+          },
+          {
+            "id": "inc-08c8bf64-1b33-4712-adf0-5761ca6e7a21",
+            "status": "active"
+          },
+          {
+            "id": "inc-d4d3a003-7cdd-4ac8-b63f-9748edb0690e",
+            "status": "active"
+          },
+          {
+            "id": "inc-b6fc8d32-3988-4d94-91f9-d8b4af51a656",
+            "status": "active"
+          },
+          {
+            "id": "inc-4a01d30d-cce1-4024-88da-df8030d75a72",
+            "status": "active"
+          },
+          {
+            "id": "inc-a4f32b3d-2d1e-42e0-a8bf-cc77f34012c8",
+            "status": "active"
+          },
+          {
+            "id": "inc-82f22100-4441-40e5-a9e4-798d97a32894",
+            "status": "active"
+          },
+          {
+            "id": "inc-438402e0-8fac-4b5c-a0fc-f91518f44791",
+            "status": "active"
+          },
+          {
+            "id": "inc-1448c4a9-de9d-44d5-9f7a-4c69b132c2d1",
+            "status": "active"
+          },
+          {
+            "id": "inc-468aefda-35df-4adf-bd6c-6ffbe98ad652",
+            "status": "active"
+          }
+        ],
+        "conflicts": [],
+        "job": {
+          "id": "rp-fb620056-f699-43fe-bb60-5d213861fcb4",
+          "status": "succeeded",
+          "applied_plan_id": "plan-rp-fb620056-f699-43fe-bb60-5d213861fcb4-0"
+        }
+      },
+      {
+        "received_ms": 1408.2999999970198,
+        "event": "state",
+        "kind": "replan_updated",
+        "seq": 68,
+        "sim_time_s": 610,
+        "mode": "running",
+        "speed": 10,
+        "running": [
+          {
+            "id": "op-T2-shunt-out",
+            "progress": 0.16666666666666666,
+            "phase": "couple"
+          }
+        ],
+        "occupied": [
+          {
+            "id": "R3",
+            "m": 152
+          }
+        ],
+        "locomotive": {
+          "kind": "track",
+          "boundary_id": null,
+          "track_id": "R3",
+          "route_id": null,
+          "operation_id": null,
+          "route_progress": null
+        },
+        "incidents": [
+          {
+            "id": "inc-4b215031-09bd-4fef-ab8a-24d0868051c7",
+            "status": "active"
+          },
+          {
+            "id": "inc-08c8bf64-1b33-4712-adf0-5761ca6e7a21",
+            "status": "active"
+          },
+          {
+            "id": "inc-d4d3a003-7cdd-4ac8-b63f-9748edb0690e",
+            "status": "active"
+          },
+          {
+            "id": "inc-b6fc8d32-3988-4d94-91f9-d8b4af51a656",
+            "status": "active"
+          },
+          {
+            "id": "inc-4a01d30d-cce1-4024-88da-df8030d75a72",
+            "status": "active"
+          },
+          {
+            "id": "inc-a4f32b3d-2d1e-42e0-a8bf-cc77f34012c8",
+            "status": "active"
+          },
+          {
+            "id": "inc-82f22100-4441-40e5-a9e4-798d97a32894",
+            "status": "active"
+          },
+          {
+            "id": "inc-438402e0-8fac-4b5c-a0fc-f91518f44791",
+            "status": "active"
+          },
+          {
+            "id": "inc-1448c4a9-de9d-44d5-9f7a-4c69b132c2d1",
+            "status": "active"
+          },
+          {
+            "id": "inc-468aefda-35df-4adf-bd6c-6ffbe98ad652",
+            "status": "active"
+          }
+        ],
+        "conflicts": [],
+        "job": {
+          "id": "rp-fb620056-f699-43fe-bb60-5d213861fcb4",
+          "status": "succeeded",
+          "applied_plan_id": "plan-rp-fb620056-f699-43fe-bb60-5d213861fcb4-0"
+        }
+      },
+      {
+        "received_ms": 1426.3999999985099,
+        "event": "state",
+        "kind": "tick",
+        "seq": 69,
+        "sim_time_s": 611,
+        "mode": "running",
+        "speed": 10,
+        "running": [
+          {
+            "id": "op-T2-shunt-out",
+            "progress": 0.16904761904761906,
+            "phase": "couple"
+          }
+        ],
+        "occupied": [
+          {
+            "id": "R3",
+            "m": 152
+          }
+        ],
+        "locomotive": {
+          "kind": "track",
+          "boundary_id": null,
+          "track_id": "R3",
+          "route_id": null,
+          "operation_id": null,
+          "route_progress": null
+        },
+        "incidents": [
+          {
+            "id": "inc-4b215031-09bd-4fef-ab8a-24d0868051c7",
+            "status": "active"
+          },
+          {
+            "id": "inc-08c8bf64-1b33-4712-adf0-5761ca6e7a21",
+            "status": "active"
+          },
+          {
+            "id": "inc-d4d3a003-7cdd-4ac8-b63f-9748edb0690e",
+            "status": "active"
+          },
+          {
+            "id": "inc-b6fc8d32-3988-4d94-91f9-d8b4af51a656",
+            "status": "active"
+          },
+          {
+            "id": "inc-4a01d30d-cce1-4024-88da-df8030d75a72",
+            "status": "active"
+          },
+          {
+            "id": "inc-a4f32b3d-2d1e-42e0-a8bf-cc77f34012c8",
+            "status": "active"
+          },
+          {
+            "id": "inc-82f22100-4441-40e5-a9e4-798d97a32894",
+            "status": "active"
+          },
+          {
+            "id": "inc-438402e0-8fac-4b5c-a0fc-f91518f44791",
+            "status": "active"
+          },
+          {
+            "id": "inc-1448c4a9-de9d-44d5-9f7a-4c69b132c2d1",
+            "status": "active"
+          },
+          {
+            "id": "inc-468aefda-35df-4adf-bd6c-6ffbe98ad652",
+            "status": "active"
+          }
+        ],
+        "conflicts": [],
+        "job": {
+          "id": "rp-fb620056-f699-43fe-bb60-5d213861fcb4",
+          "status": "succeeded",
+          "applied_plan_id": "plan-rp-fb620056-f699-43fe-bb60-5d213861fcb4-0"
+        }
+      },
+      {
+        "received_ms": 2267.099999997765,
+        "event": "state",
+        "kind": "tick",
+        "seq": 70,
+        "sim_time_s": 619,
+        "mode": "running",
+        "speed": 10,
+        "running": [
+          {
+            "id": "op-T2-shunt-out",
+            "progress": 0.1880952380952381,
+            "phase": "couple"
+          }
+        ],
+        "occupied": [
+          {
+            "id": "R3",
+            "m": 152
+          }
+        ],
+        "locomotive": {
+          "kind": "track",
+          "boundary_id": null,
+          "track_id": "R3",
+          "route_id": null,
+          "operation_id": null,
+          "route_progress": null
+        },
+        "incidents": [
+          {
+            "id": "inc-4b215031-09bd-4fef-ab8a-24d0868051c7",
+            "status": "active"
+          },
+          {
+            "id": "inc-08c8bf64-1b33-4712-adf0-5761ca6e7a21",
+            "status": "active"
+          },
+          {
+            "id": "inc-d4d3a003-7cdd-4ac8-b63f-9748edb0690e",
+            "status": "active"
+          },
+          {
+            "id": "inc-b6fc8d32-3988-4d94-91f9-d8b4af51a656",
+            "status": "active"
+          },
+          {
+            "id": "inc-4a01d30d-cce1-4024-88da-df8030d75a72",
+            "status": "active"
+          },
+          {
+            "id": "inc-a4f32b3d-2d1e-42e0-a8bf-cc77f34012c8",
+            "status": "active"
+          },
+          {
+            "id": "inc-82f22100-4441-40e5-a9e4-798d97a32894",
+            "status": "active"
+          },
+          {
+            "id": "inc-438402e0-8fac-4b5c-a0fc-f91518f44791",
+            "status": "active"
+          },
+          {
+            "id": "inc-1448c4a9-de9d-44d5-9f7a-4c69b132c2d1",
+            "status": "active"
+          },
+          {
+            "id": "inc-468aefda-35df-4adf-bd6c-6ffbe98ad652",
+            "status": "active"
+          }
+        ],
+        "conflicts": [],
+        "job": {
+          "id": "rp-fb620056-f699-43fe-bb60-5d213861fcb4",
+          "status": "succeeded",
+          "applied_plan_id": "plan-rp-fb620056-f699-43fe-bb60-5d213861fcb4-0"
+        }
+      },
+      {
+        "received_ms": 3022.2999999970198,
+        "event": "state",
+        "kind": "tick",
+        "seq": 71,
+        "sim_time_s": 627,
+        "mode": "running",
+        "speed": 10,
+        "running": [
+          {
+            "id": "op-T2-shunt-out",
+            "progress": 0.20714285714285716,
+            "phase": "couple"
+          }
+        ],
+        "occupied": [
+          {
+            "id": "R3",
+            "m": 152
+          }
+        ],
+        "locomotive": {
+          "kind": "track",
+          "boundary_id": null,
+          "track_id": "R3",
+          "route_id": null,
+          "operation_id": null,
+          "route_progress": null
+        },
+        "incidents": [
+          {
+            "id": "inc-4b215031-09bd-4fef-ab8a-24d0868051c7",
+            "status": "active"
+          },
+          {
+            "id": "inc-08c8bf64-1b33-4712-adf0-5761ca6e7a21",
+            "status": "active"
+          },
+          {
+            "id": "inc-d4d3a003-7cdd-4ac8-b63f-9748edb0690e",
+            "status": "active"
+          },
+          {
+            "id": "inc-b6fc8d32-3988-4d94-91f9-d8b4af51a656",
+            "status": "active"
+          },
+          {
+            "id": "inc-4a01d30d-cce1-4024-88da-df8030d75a72",
+            "status": "active"
+          },
+          {
+            "id": "inc-a4f32b3d-2d1e-42e0-a8bf-cc77f34012c8",
+            "status": "active"
+          },
+          {
+            "id": "inc-82f22100-4441-40e5-a9e4-798d97a32894",
+            "status": "active"
+          },
+          {
+            "id": "inc-438402e0-8fac-4b5c-a0fc-f91518f44791",
+            "status": "active"
+          },
+          {
+            "id": "inc-1448c4a9-de9d-44d5-9f7a-4c69b132c2d1",
+            "status": "active"
+          },
+          {
+            "id": "inc-468aefda-35df-4adf-bd6c-6ffbe98ad652",
+            "status": "active"
+          }
+        ],
+        "conflicts": [],
+        "job": {
+          "id": "rp-fb620056-f699-43fe-bb60-5d213861fcb4",
+          "status": "succeeded",
+          "applied_plan_id": "plan-rp-fb620056-f699-43fe-bb60-5d213861fcb4-0"
+        }
+      },
+      {
+        "received_ms": 3820.599999997765,
+        "event": "state",
+        "kind": "tick",
+        "seq": 72,
+        "sim_time_s": 635,
+        "mode": "running",
+        "speed": 10,
+        "running": [
+          {
+            "id": "op-T2-shunt-out",
+            "progress": 0.2261904761904762,
+            "phase": "couple"
+          }
+        ],
+        "occupied": [
+          {
+            "id": "R3",
+            "m": 152
+          }
+        ],
+        "locomotive": {
+          "kind": "track",
+          "boundary_id": null,
+          "track_id": "R3",
+          "route_id": null,
+          "operation_id": null,
+          "route_progress": null
+        },
+        "incidents": [
+          {
+            "id": "inc-4b215031-09bd-4fef-ab8a-24d0868051c7",
+            "status": "active"
+          },
+          {
+            "id": "inc-08c8bf64-1b33-4712-adf0-5761ca6e7a21",
+            "status": "active"
+          },
+          {
+            "id": "inc-d4d3a003-7cdd-4ac8-b63f-9748edb0690e",
+            "status": "active"
+          },
+          {
+            "id": "inc-b6fc8d32-3988-4d94-91f9-d8b4af51a656",
+            "status": "active"
+          },
+          {
+            "id": "inc-4a01d30d-cce1-4024-88da-df8030d75a72",
+            "status": "active"
+          },
+          {
+            "id": "inc-a4f32b3d-2d1e-42e0-a8bf-cc77f34012c8",
+            "status": "active"
+          },
+          {
+            "id": "inc-82f22100-4441-40e5-a9e4-798d97a32894",
+            "status": "active"
+          },
+          {
+            "id": "inc-438402e0-8fac-4b5c-a0fc-f91518f44791",
+            "status": "active"
+          },
+          {
+            "id": "inc-1448c4a9-de9d-44d5-9f7a-4c69b132c2d1",
+            "status": "active"
+          },
+          {
+            "id": "inc-468aefda-35df-4adf-bd6c-6ffbe98ad652",
+            "status": "active"
+          }
+        ],
+        "conflicts": [],
+        "job": {
+          "id": "rp-fb620056-f699-43fe-bb60-5d213861fcb4",
+          "status": "succeeded",
+          "applied_plan_id": "plan-rp-fb620056-f699-43fe-bb60-5d213861fcb4-0"
+        }
+      },
+      {
+        "received_ms": 4623.29999999702,
+        "event": "state",
+        "kind": "tick",
+        "seq": 73,
+        "sim_time_s": 643,
+        "mode": "running",
+        "speed": 10,
+        "running": [
+          {
+            "id": "op-T2-shunt-out",
+            "progress": 0.24523809523809523,
+            "phase": "couple"
+          }
+        ],
+        "occupied": [
+          {
+            "id": "R3",
+            "m": 152
+          }
+        ],
+        "locomotive": {
+          "kind": "track",
+          "boundary_id": null,
+          "track_id": "R3",
+          "route_id": null,
+          "operation_id": null,
+          "route_progress": null
+        },
+        "incidents": [
+          {
+            "id": "inc-4b215031-09bd-4fef-ab8a-24d0868051c7",
+            "status": "active"
+          },
+          {
+            "id": "inc-08c8bf64-1b33-4712-adf0-5761ca6e7a21",
+            "status": "active"
+          },
+          {
+            "id": "inc-d4d3a003-7cdd-4ac8-b63f-9748edb0690e",
+            "status": "active"
+          },
+          {
+            "id": "inc-b6fc8d32-3988-4d94-91f9-d8b4af51a656",
+            "status": "active"
+          },
+          {
+            "id": "inc-4a01d30d-cce1-4024-88da-df8030d75a72",
+            "status": "active"
+          },
+          {
+            "id": "inc-a4f32b3d-2d1e-42e0-a8bf-cc77f34012c8",
+            "status": "active"
+          },
+          {
+            "id": "inc-82f22100-4441-40e5-a9e4-798d97a32894",
+            "status": "active"
+          },
+          {
+            "id": "inc-438402e0-8fac-4b5c-a0fc-f91518f44791",
+            "status": "active"
+          },
+          {
+            "id": "inc-1448c4a9-de9d-44d5-9f7a-4c69b132c2d1",
+            "status": "active"
+          },
+          {
+            "id": "inc-468aefda-35df-4adf-bd6c-6ffbe98ad652",
+            "status": "active"
+          }
+        ],
+        "conflicts": [],
+        "job": {
+          "id": "rp-fb620056-f699-43fe-bb60-5d213861fcb4",
+          "status": "succeeded",
+          "applied_plan_id": "plan-rp-fb620056-f699-43fe-bb60-5d213861fcb4-0"
+        }
+      },
+      {
+        "received_ms": 5424.199999999255,
+        "event": "state",
+        "kind": "tick",
+        "seq": 74,
+        "sim_time_s": 651,
+        "mode": "running",
+        "speed": 10,
+        "running": [
+          {
+            "id": "op-T2-shunt-out",
+            "progress": 0.2642857142857143,
+            "phase": "couple"
+          }
+        ],
+        "occupied": [
+          {
+            "id": "R3",
+            "m": 152
+          }
+        ],
+        "locomotive": {
+          "kind": "track",
+          "boundary_id": null,
+          "track_id": "R3",
+          "route_id": null,
+          "operation_id": null,
+          "route_progress": null
+        },
+        "incidents": [
+          {
+            "id": "inc-4b215031-09bd-4fef-ab8a-24d0868051c7",
+            "status": "active"
+          },
+          {
+            "id": "inc-08c8bf64-1b33-4712-adf0-5761ca6e7a21",
+            "status": "active"
+          },
+          {
+            "id": "inc-d4d3a003-7cdd-4ac8-b63f-9748edb0690e",
+            "status": "active"
+          },
+          {
+            "id": "inc-b6fc8d32-3988-4d94-91f9-d8b4af51a656",
+            "status": "active"
+          },
+          {
+            "id": "inc-4a01d30d-cce1-4024-88da-df8030d75a72",
+            "status": "active"
+          },
+          {
+            "id": "inc-a4f32b3d-2d1e-42e0-a8bf-cc77f34012c8",
+            "status": "active"
+          },
+          {
+            "id": "inc-82f22100-4441-40e5-a9e4-798d97a32894",
+            "status": "active"
+          },
+          {
+            "id": "inc-438402e0-8fac-4b5c-a0fc-f91518f44791",
+            "status": "active"
+          },
+          {
+            "id": "inc-1448c4a9-de9d-44d5-9f7a-4c69b132c2d1",
+            "status": "active"
+          },
+          {
+            "id": "inc-468aefda-35df-4adf-bd6c-6ffbe98ad652",
+            "status": "active"
+          }
+        ],
+        "conflicts": [],
+        "job": {
+          "id": "rp-fb620056-f699-43fe-bb60-5d213861fcb4",
+          "status": "succeeded",
+          "applied_plan_id": "plan-rp-fb620056-f699-43fe-bb60-5d213861fcb4-0"
+        }
+      },
+      {
+        "received_ms": 6226.79999999702,
+        "event": "state",
+        "kind": "tick",
+        "seq": 75,
+        "sim_time_s": 659,
+        "mode": "running",
+        "speed": 10,
+        "running": [
+          {
+            "id": "op-T2-shunt-out",
+            "progress": 0.2833333333333333,
+            "phase": "couple"
+          }
+        ],
+        "occupied": [
+          {
+            "id": "R3",
+            "m": 152
+          }
+        ],
+        "locomotive": {
+          "kind": "track",
+          "boundary_id": null,
+          "track_id": "R3",
+          "route_id": null,
+          "operation_id": null,
+          "route_progress": null
+        },
+        "incidents": [
+          {
+            "id": "inc-4b215031-09bd-4fef-ab8a-24d0868051c7",
+            "status": "active"
+          },
+          {
+            "id": "inc-08c8bf64-1b33-4712-adf0-5761ca6e7a21",
+            "status": "active"
+          },
+          {
+            "id": "inc-d4d3a003-7cdd-4ac8-b63f-9748edb0690e",
+            "status": "active"
+          },
+          {
+            "id": "inc-b6fc8d32-3988-4d94-91f9-d8b4af51a656",
+            "status": "active"
+          },
+          {
+            "id": "inc-4a01d30d-cce1-4024-88da-df8030d75a72",
+            "status": "active"
+          },
+          {
+            "id": "inc-a4f32b3d-2d1e-42e0-a8bf-cc77f34012c8",
+            "status": "active"
+          },
+          {
+            "id": "inc-82f22100-4441-40e5-a9e4-798d97a32894",
+            "status": "active"
+          },
+          {
+            "id": "inc-438402e0-8fac-4b5c-a0fc-f91518f44791",
+            "status": "active"
+          },
+          {
+            "id": "inc-1448c4a9-de9d-44d5-9f7a-4c69b132c2d1",
+            "status": "active"
+          },
+          {
+            "id": "inc-468aefda-35df-4adf-bd6c-6ffbe98ad652",
+            "status": "active"
+          }
+        ],
+        "conflicts": [],
+        "job": {
+          "id": "rp-fb620056-f699-43fe-bb60-5d213861fcb4",
+          "status": "succeeded",
+          "applied_plan_id": "plan-rp-fb620056-f699-43fe-bb60-5d213861fcb4-0"
+        }
+      },
+      {
+        "received_ms": 6254.39999999851,
+        "event": "state",
+        "kind": "tick",
+        "seq": 76,
+        "sim_time_s": 660,
+        "mode": "running",
+        "speed": 10,
+        "running": [
+          {
+            "id": "op-T2-shunt-out",
+            "progress": 0.2857142857142857,
+            "phase": "pull_to_lead"
+          }
+        ],
+        "occupied": [
+          {
+            "id": "R3",
+            "m": 76
+          }
+        ],
+        "locomotive": {
+          "kind": "route",
+          "boundary_id": null,
+          "track_id": null,
+          "route_id": "move-R3-H",
+          "operation_id": "op-T2-shunt-out",
+          "route_progress": 0
+        },
+        "incidents": [
+          {
+            "id": "inc-4b215031-09bd-4fef-ab8a-24d0868051c7",
+            "status": "active"
+          },
+          {
+            "id": "inc-08c8bf64-1b33-4712-adf0-5761ca6e7a21",
+            "status": "active"
+          },
+          {
+            "id": "inc-d4d3a003-7cdd-4ac8-b63f-9748edb0690e",
+            "status": "active"
+          },
+          {
+            "id": "inc-b6fc8d32-3988-4d94-91f9-d8b4af51a656",
+            "status": "active"
+          },
+          {
+            "id": "inc-4a01d30d-cce1-4024-88da-df8030d75a72",
+            "status": "active"
+          },
+          {
+            "id": "inc-a4f32b3d-2d1e-42e0-a8bf-cc77f34012c8",
+            "status": "active"
+          },
+          {
+            "id": "inc-82f22100-4441-40e5-a9e4-798d97a32894",
+            "status": "active"
+          },
+          {
+            "id": "inc-438402e0-8fac-4b5c-a0fc-f91518f44791",
+            "status": "active"
+          },
+          {
+            "id": "inc-1448c4a9-de9d-44d5-9f7a-4c69b132c2d1",
+            "status": "active"
+          },
+          {
+            "id": "inc-468aefda-35df-4adf-bd6c-6ffbe98ad652",
+            "status": "active"
+          }
+        ],
+        "conflicts": [],
+        "job": {
+          "id": "rp-fb620056-f699-43fe-bb60-5d213861fcb4",
+          "status": "succeeded",
+          "applied_plan_id": "plan-rp-fb620056-f699-43fe-bb60-5d213861fcb4-0"
+        }
+      },
+      {
+        "received_ms": 7028.199999999255,
+        "event": "state",
+        "kind": "tick",
+        "seq": 77,
+        "sim_time_s": 667,
+        "mode": "running",
+        "speed": 10,
+        "running": [
+          {
+            "id": "op-T2-shunt-out",
+            "progress": 0.30238095238095236,
+            "phase": "pull_to_lead"
+          }
+        ],
+        "occupied": [
+          {
+            "id": "R3",
+            "m": 76
+          }
+        ],
+        "locomotive": {
+          "kind": "route",
+          "boundary_id": null,
+          "track_id": null,
+          "route_id": "move-R3-H",
+          "operation_id": "op-T2-shunt-out",
+          "route_progress": 0.07777777777777778
+        },
+        "incidents": [
+          {
+            "id": "inc-4b215031-09bd-4fef-ab8a-24d0868051c7",
+            "status": "active"
+          },
+          {
+            "id": "inc-08c8bf64-1b33-4712-adf0-5761ca6e7a21",
+            "status": "active"
+          },
+          {
+            "id": "inc-d4d3a003-7cdd-4ac8-b63f-9748edb0690e",
+            "status": "active"
+          },
+          {
+            "id": "inc-b6fc8d32-3988-4d94-91f9-d8b4af51a656",
+            "status": "active"
+          },
+          {
+            "id": "inc-4a01d30d-cce1-4024-88da-df8030d75a72",
+            "status": "active"
+          },
+          {
+            "id": "inc-a4f32b3d-2d1e-42e0-a8bf-cc77f34012c8",
+            "status": "active"
+          },
+          {
+            "id": "inc-82f22100-4441-40e5-a9e4-798d97a32894",
+            "status": "active"
+          },
+          {
+            "id": "inc-438402e0-8fac-4b5c-a0fc-f91518f44791",
+            "status": "active"
+          },
+          {
+            "id": "inc-1448c4a9-de9d-44d5-9f7a-4c69b132c2d1",
+            "status": "active"
+          },
+          {
+            "id": "inc-468aefda-35df-4adf-bd6c-6ffbe98ad652",
+            "status": "active"
+          }
+        ],
+        "conflicts": [],
+        "job": {
+          "id": "rp-fb620056-f699-43fe-bb60-5d213861fcb4",
+          "status": "succeeded",
+          "applied_plan_id": "plan-rp-fb620056-f699-43fe-bb60-5d213861fcb4-0"
+        }
+      },
+      {
+        "received_ms": 7826.29999999702,
+        "event": "state",
+        "kind": "tick",
+        "seq": 78,
+        "sim_time_s": 675,
+        "mode": "running",
+        "speed": 10,
+        "running": [
+          {
+            "id": "op-T2-shunt-out",
+            "progress": 0.32142857142857145,
+            "phase": "pull_to_lead"
+          }
+        ],
+        "occupied": [
+          {
+            "id": "R3",
+            "m": 76
+          }
+        ],
+        "locomotive": {
+          "kind": "route",
+          "boundary_id": null,
+          "track_id": null,
+          "route_id": "move-R3-H",
+          "operation_id": "op-T2-shunt-out",
+          "route_progress": 0.16666666666666666
+        },
+        "incidents": [
+          {
+            "id": "inc-4b215031-09bd-4fef-ab8a-24d0868051c7",
+            "status": "active"
+          },
+          {
+            "id": "inc-08c8bf64-1b33-4712-adf0-5761ca6e7a21",
+            "status": "active"
+          },
+          {
+            "id": "inc-d4d3a003-7cdd-4ac8-b63f-9748edb0690e",
+            "status": "active"
+          },
+          {
+            "id": "inc-b6fc8d32-3988-4d94-91f9-d8b4af51a656",
+            "status": "active"
+          },
+          {
+            "id": "inc-4a01d30d-cce1-4024-88da-df8030d75a72",
+            "status": "active"
+          },
+          {
+            "id": "inc-a4f32b3d-2d1e-42e0-a8bf-cc77f34012c8",
+            "status": "active"
+          },
+          {
+            "id": "inc-82f22100-4441-40e5-a9e4-798d97a32894",
+            "status": "active"
+          },
+          {
+            "id": "inc-438402e0-8fac-4b5c-a0fc-f91518f44791",
+            "status": "active"
+          },
+          {
+            "id": "inc-1448c4a9-de9d-44d5-9f7a-4c69b132c2d1",
+            "status": "active"
+          },
+          {
+            "id": "inc-468aefda-35df-4adf-bd6c-6ffbe98ad652",
+            "status": "active"
+          }
+        ],
+        "conflicts": [],
+        "job": {
+          "id": "rp-fb620056-f699-43fe-bb60-5d213861fcb4",
+          "status": "succeeded",
+          "applied_plan_id": "plan-rp-fb620056-f699-43fe-bb60-5d213861fcb4-0"
+        }
+      },
+      {
+        "received_ms": 8629.89999999851,
+        "event": "state",
+        "kind": "tick",
+        "seq": 79,
+        "sim_time_s": 683,
+        "mode": "running",
+        "speed": 10,
+        "running": [
+          {
+            "id": "op-T2-shunt-out",
+            "progress": 0.3404761904761905,
+            "phase": "pull_to_lead"
+          }
+        ],
+        "occupied": [
+          {
+            "id": "R3",
+            "m": 76
+          }
+        ],
+        "locomotive": {
+          "kind": "route",
+          "boundary_id": null,
+          "track_id": null,
+          "route_id": "move-R3-H",
+          "operation_id": "op-T2-shunt-out",
+          "route_progress": 0.25555555555555554
+        },
+        "incidents": [
+          {
+            "id": "inc-4b215031-09bd-4fef-ab8a-24d0868051c7",
+            "status": "active"
+          },
+          {
+            "id": "inc-08c8bf64-1b33-4712-adf0-5761ca6e7a21",
+            "status": "active"
+          },
+          {
+            "id": "inc-d4d3a003-7cdd-4ac8-b63f-9748edb0690e",
+            "status": "active"
+          },
+          {
+            "id": "inc-b6fc8d32-3988-4d94-91f9-d8b4af51a656",
+            "status": "active"
+          },
+          {
+            "id": "inc-4a01d30d-cce1-4024-88da-df8030d75a72",
+            "status": "active"
+          },
+          {
+            "id": "inc-a4f32b3d-2d1e-42e0-a8bf-cc77f34012c8",
+            "status": "active"
+          },
+          {
+            "id": "inc-82f22100-4441-40e5-a9e4-798d97a32894",
+            "status": "active"
+          },
+          {
+            "id": "inc-438402e0-8fac-4b5c-a0fc-f91518f44791",
+            "status": "active"
+          },
+          {
+            "id": "inc-1448c4a9-de9d-44d5-9f7a-4c69b132c2d1",
+            "status": "active"
+          },
+          {
+            "id": "inc-468aefda-35df-4adf-bd6c-6ffbe98ad652",
+            "status": "active"
+          }
+        ],
+        "conflicts": [],
+        "job": {
+          "id": "rp-fb620056-f699-43fe-bb60-5d213861fcb4",
+          "status": "succeeded",
+          "applied_plan_id": "plan-rp-fb620056-f699-43fe-bb60-5d213861fcb4-0"
+        }
+      },
+      {
+        "received_ms": 9136.79999999702,
+        "event": "state",
+        "kind": "tick",
+        "seq": 80,
+        "sim_time_s": 688,
+        "mode": "running",
+        "speed": 10,
+        "running": [
+          {
+            "id": "op-T2-shunt-out",
+            "progress": 0.3523809523809524,
+            "phase": "pull_to_lead"
+          }
+        ],
+        "occupied": [
+          {
+            "id": "R3",
+            "m": 76
+          }
+        ],
+        "locomotive": {
+          "kind": "route",
+          "boundary_id": null,
+          "track_id": null,
+          "route_id": "move-R3-H",
+          "operation_id": "op-T2-shunt-out",
+          "route_progress": 0.3111111111111111
+        },
+        "incidents": [
+          {
+            "id": "inc-4b215031-09bd-4fef-ab8a-24d0868051c7",
+            "status": "active"
+          },
+          {
+            "id": "inc-08c8bf64-1b33-4712-adf0-5761ca6e7a21",
+            "status": "active"
+          },
+          {
+            "id": "inc-d4d3a003-7cdd-4ac8-b63f-9748edb0690e",
+            "status": "active"
+          },
+          {
+            "id": "inc-b6fc8d32-3988-4d94-91f9-d8b4af51a656",
+            "status": "active"
+          },
+          {
+            "id": "inc-4a01d30d-cce1-4024-88da-df8030d75a72",
+            "status": "active"
+          },
+          {
+            "id": "inc-a4f32b3d-2d1e-42e0-a8bf-cc77f34012c8",
+            "status": "active"
+          },
+          {
+            "id": "inc-82f22100-4441-40e5-a9e4-798d97a32894",
+            "status": "active"
+          },
+          {
+            "id": "inc-438402e0-8fac-4b5c-a0fc-f91518f44791",
+            "status": "active"
+          },
+          {
+            "id": "inc-1448c4a9-de9d-44d5-9f7a-4c69b132c2d1",
+            "status": "active"
+          },
+          {
+            "id": "inc-468aefda-35df-4adf-bd6c-6ffbe98ad652",
+            "status": "active"
+          }
+        ],
+        "conflicts": [],
+        "job": {
+          "id": "rp-fb620056-f699-43fe-bb60-5d213861fcb4",
+          "status": "succeeded",
+          "applied_plan_id": "plan-rp-fb620056-f699-43fe-bb60-5d213861fcb4-0"
+        }
+      },
+      {
+        "received_ms": 9157.79999999702,
+        "event": "state",
+        "kind": "simulation_control",
+        "seq": 81,
+        "sim_time_s": 688,
+        "mode": "paused",
+        "speed": 10,
+        "running": [
+          {
+            "id": "op-T2-shunt-out",
+            "progress": 0.3523809523809524,
+            "phase": "pull_to_lead"
+          }
+        ],
+        "occupied": [
+          {
+            "id": "R3",
+            "m": 76
+          }
+        ],
+        "locomotive": {
+          "kind": "route",
+          "boundary_id": null,
+          "track_id": null,
+          "route_id": "move-R3-H",
+          "operation_id": "op-T2-shunt-out",
+          "route_progress": 0.3111111111111111
+        },
+        "incidents": [
+          {
+            "id": "inc-4b215031-09bd-4fef-ab8a-24d0868051c7",
+            "status": "active"
+          },
+          {
+            "id": "inc-08c8bf64-1b33-4712-adf0-5761ca6e7a21",
+            "status": "active"
+          },
+          {
+            "id": "inc-d4d3a003-7cdd-4ac8-b63f-9748edb0690e",
+            "status": "active"
+          },
+          {
+            "id": "inc-b6fc8d32-3988-4d94-91f9-d8b4af51a656",
+            "status": "active"
+          },
+          {
+            "id": "inc-4a01d30d-cce1-4024-88da-df8030d75a72",
+            "status": "active"
+          },
+          {
+            "id": "inc-a4f32b3d-2d1e-42e0-a8bf-cc77f34012c8",
+            "status": "active"
+          },
+          {
+            "id": "inc-82f22100-4441-40e5-a9e4-798d97a32894",
+            "status": "active"
+          },
+          {
+            "id": "inc-438402e0-8fac-4b5c-a0fc-f91518f44791",
+            "status": "active"
+          },
+          {
+            "id": "inc-1448c4a9-de9d-44d5-9f7a-4c69b132c2d1",
+            "status": "active"
+          },
+          {
+            "id": "inc-468aefda-35df-4adf-bd6c-6ffbe98ad652",
+            "status": "active"
+          }
+        ],
+        "conflicts": [],
+        "job": {
+          "id": "rp-fb620056-f699-43fe-bb60-5d213861fcb4",
+          "status": "succeeded",
+          "applied_plan_id": "plan-rp-fb620056-f699-43fe-bb60-5d213861fcb4-0"
+        }
+      }
+    ],
+    "stateSummary": "PAUSED · sim 688 s · speed 10× · seq 81"
+  },
+  "pageErrors": [],
+  "failed": [],
+  "httpErrors": [],
+  "browser": "151.0.7922.137",
+  "note": "Final source verification: exact operation scarcity and pending resource availability, no reload/no synthetic state",
+  "sse_hz": 2.272572324614808,
+  "max_gap_ms": 840.6999999992549
+}

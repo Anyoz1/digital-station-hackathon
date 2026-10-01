@@ -1,0 +1,663 @@
+{
+  "viewer": {
+    "role": "Наблюдатель · роль: viewer · u-viewer",
+    "controlsDisabled": true,
+    "status": 403,
+    "error": {
+      "error": {
+        "code": "FORBIDDEN",
+        "message": "Действие доступно диспетчеру или администратору",
+        "details": {},
+        "request_id": "81e4ac92-2f76-4b14-bcb4-a707c19e5251"
+      }
+    }
+  },
+  "before": {
+    "seq": 45,
+    "run": "run-97235c10-7b29-4bcb-a50a-8c47438e587c",
+    "sim": 601,
+    "frames": 440
+  },
+  "offline": "LIVE · SSE · последний кадр 0.0 s назад",
+  "after": {
+    "seq": 45,
+    "run": "run-97235c10-7b29-4bcb-a50a-8c47438e587c",
+    "sim": 601,
+    "role": "Диспетчер · роль: dispatcher · u-dispatcher",
+    "connection": "LIVE · SSE · последний кадр 0.0 s назад"
+  },
+  "steady": {
+    "elapsed": 6503.5,
+    "frames": [
+      {
+        "received_ms": 344490.700000003,
+        "event": "state",
+        "kind": "heartbeat",
+        "seq": 45,
+        "sim_time_s": 601,
+        "mode": "paused",
+        "speed": 10,
+        "running": [
+          {
+            "id": "op-T2-shunt-out",
+            "progress": 0.14523809523809525,
+            "phase": "couple"
+          }
+        ],
+        "occupied": [
+          {
+            "id": "R3",
+            "m": 152
+          }
+        ],
+        "locomotive": {
+          "kind": "track",
+          "boundary_id": null,
+          "track_id": "R3",
+          "route_id": null,
+          "operation_id": null,
+          "route_progress": null
+        },
+        "incidents": [
+          {
+            "id": "inc-4b215031-09bd-4fef-ab8a-24d0868051c7",
+            "status": "active"
+          },
+          {
+            "id": "inc-08c8bf64-1b33-4712-adf0-5761ca6e7a21",
+            "status": "active"
+          },
+          {
+            "id": "inc-d4d3a003-7cdd-4ac8-b63f-9748edb0690e",
+            "status": "active"
+          },
+          {
+            "id": "inc-b6fc8d32-3988-4d94-91f9-d8b4af51a656",
+            "status": "active"
+          },
+          {
+            "id": "inc-4a01d30d-cce1-4024-88da-df8030d75a72",
+            "status": "active"
+          },
+          {
+            "id": "inc-a4f32b3d-2d1e-42e0-a8bf-cc77f34012c8",
+            "status": "active"
+          },
+          {
+            "id": "inc-82f22100-4441-40e5-a9e4-798d97a32894",
+            "status": "active"
+          },
+          {
+            "id": "inc-438402e0-8fac-4b5c-a0fc-f91518f44791",
+            "status": "active"
+          },
+          {
+            "id": "inc-1448c4a9-de9d-44d5-9f7a-4c69b132c2d1",
+            "status": "active"
+          },
+          {
+            "id": "inc-468aefda-35df-4adf-bd6c-6ffbe98ad652",
+            "status": "active"
+          }
+        ],
+        "conflicts": [],
+        "job": {
+          "id": "rp-9912d6bb-ca55-4954-8ed6-793bf123e510",
+          "status": "succeeded",
+          "applied_plan_id": "plan-rp-9912d6bb-ca55-4954-8ed6-793bf123e510-0"
+        }
+      },
+      {
+        "received_ms": 345291.40000000224,
+        "event": "state",
+        "kind": "heartbeat",
+        "seq": 45,
+        "sim_time_s": 601,
+        "mode": "paused",
+        "speed": 10,
+        "running": [
+          {
+            "id": "op-T2-shunt-out",
+            "progress": 0.14523809523809525,
+            "phase": "couple"
+          }
+        ],
+        "occupied": [
+          {
+            "id": "R3",
+            "m": 152
+          }
+        ],
+        "locomotive": {
+          "kind": "track",
+          "boundary_id": null,
+          "track_id": "R3",
+          "route_id": null,
+          "operation_id": null,
+          "route_progress": null
+        },
+        "incidents": [
+          {
+            "id": "inc-4b215031-09bd-4fef-ab8a-24d0868051c7",
+            "status": "active"
+          },
+          {
+            "id": "inc-08c8bf64-1b33-4712-adf0-5761ca6e7a21",
+            "status": "active"
+          },
+          {
+            "id": "inc-d4d3a003-7cdd-4ac8-b63f-9748edb0690e",
+            "status": "active"
+          },
+          {
+            "id": "inc-b6fc8d32-3988-4d94-91f9-d8b4af51a656",
+            "status": "active"
+          },
+          {
+            "id": "inc-4a01d30d-cce1-4024-88da-df8030d75a72",
+            "status": "active"
+          },
+          {
+            "id": "inc-a4f32b3d-2d1e-42e0-a8bf-cc77f34012c8",
+            "status": "active"
+          },
+          {
+            "id": "inc-82f22100-4441-40e5-a9e4-798d97a32894",
+            "status": "active"
+          },
+          {
+            "id": "inc-438402e0-8fac-4b5c-a0fc-f91518f44791",
+            "status": "active"
+          },
+          {
+            "id": "inc-1448c4a9-de9d-44d5-9f7a-4c69b132c2d1",
+            "status": "active"
+          },
+          {
+            "id": "inc-468aefda-35df-4adf-bd6c-6ffbe98ad652",
+            "status": "active"
+          }
+        ],
+        "conflicts": [],
+        "job": {
+          "id": "rp-9912d6bb-ca55-4954-8ed6-793bf123e510",
+          "status": "succeeded",
+          "applied_plan_id": "plan-rp-9912d6bb-ca55-4954-8ed6-793bf123e510-0"
+        }
+      },
+      {
+        "received_ms": 346092.1000000015,
+        "event": "state",
+        "kind": "heartbeat",
+        "seq": 45,
+        "sim_time_s": 601,
+        "mode": "paused",
+        "speed": 10,
+        "running": [
+          {
+            "id": "op-T2-shunt-out",
+            "progress": 0.14523809523809525,
+            "phase": "couple"
+          }
+        ],
+        "occupied": [
+          {
+            "id": "R3",
+            "m": 152
+          }
+        ],
+        "locomotive": {
+          "kind": "track",
+          "boundary_id": null,
+          "track_id": "R3",
+          "route_id": null,
+          "operation_id": null,
+          "route_progress": null
+        },
+        "incidents": [
+          {
+            "id": "inc-4b215031-09bd-4fef-ab8a-24d0868051c7",
+            "status": "active"
+          },
+          {
+            "id": "inc-08c8bf64-1b33-4712-adf0-5761ca6e7a21",
+            "status": "active"
+          },
+          {
+            "id": "inc-d4d3a003-7cdd-4ac8-b63f-9748edb0690e",
+            "status": "active"
+          },
+          {
+            "id": "inc-b6fc8d32-3988-4d94-91f9-d8b4af51a656",
+            "status": "active"
+          },
+          {
+            "id": "inc-4a01d30d-cce1-4024-88da-df8030d75a72",
+            "status": "active"
+          },
+          {
+            "id": "inc-a4f32b3d-2d1e-42e0-a8bf-cc77f34012c8",
+            "status": "active"
+          },
+          {
+            "id": "inc-82f22100-4441-40e5-a9e4-798d97a32894",
+            "status": "active"
+          },
+          {
+            "id": "inc-438402e0-8fac-4b5c-a0fc-f91518f44791",
+            "status": "active"
+          },
+          {
+            "id": "inc-1448c4a9-de9d-44d5-9f7a-4c69b132c2d1",
+            "status": "active"
+          },
+          {
+            "id": "inc-468aefda-35df-4adf-bd6c-6ffbe98ad652",
+            "status": "active"
+          }
+        ],
+        "conflicts": [],
+        "job": {
+          "id": "rp-9912d6bb-ca55-4954-8ed6-793bf123e510",
+          "status": "succeeded",
+          "applied_plan_id": "plan-rp-9912d6bb-ca55-4954-8ed6-793bf123e510-0"
+        }
+      },
+      {
+        "received_ms": 346895.40000000224,
+        "event": "state",
+        "kind": "heartbeat",
+        "seq": 45,
+        "sim_time_s": 601,
+        "mode": "paused",
+        "speed": 10,
+        "running": [
+          {
+            "id": "op-T2-shunt-out",
+            "progress": 0.14523809523809525,
+            "phase": "couple"
+          }
+        ],
+        "occupied": [
+          {
+            "id": "R3",
+            "m": 152
+          }
+        ],
+        "locomotive": {
+          "kind": "track",
+          "boundary_id": null,
+          "track_id": "R3",
+          "route_id": null,
+          "operation_id": null,
+          "route_progress": null
+        },
+        "incidents": [
+          {
+            "id": "inc-4b215031-09bd-4fef-ab8a-24d0868051c7",
+            "status": "active"
+          },
+          {
+            "id": "inc-08c8bf64-1b33-4712-adf0-5761ca6e7a21",
+            "status": "active"
+          },
+          {
+            "id": "inc-d4d3a003-7cdd-4ac8-b63f-9748edb0690e",
+            "status": "active"
+          },
+          {
+            "id": "inc-b6fc8d32-3988-4d94-91f9-d8b4af51a656",
+            "status": "active"
+          },
+          {
+            "id": "inc-4a01d30d-cce1-4024-88da-df8030d75a72",
+            "status": "active"
+          },
+          {
+            "id": "inc-a4f32b3d-2d1e-42e0-a8bf-cc77f34012c8",
+            "status": "active"
+          },
+          {
+            "id": "inc-82f22100-4441-40e5-a9e4-798d97a32894",
+            "status": "active"
+          },
+          {
+            "id": "inc-438402e0-8fac-4b5c-a0fc-f91518f44791",
+            "status": "active"
+          },
+          {
+            "id": "inc-1448c4a9-de9d-44d5-9f7a-4c69b132c2d1",
+            "status": "active"
+          },
+          {
+            "id": "inc-468aefda-35df-4adf-bd6c-6ffbe98ad652",
+            "status": "active"
+          }
+        ],
+        "conflicts": [],
+        "job": {
+          "id": "rp-9912d6bb-ca55-4954-8ed6-793bf123e510",
+          "status": "succeeded",
+          "applied_plan_id": "plan-rp-9912d6bb-ca55-4954-8ed6-793bf123e510-0"
+        }
+      },
+      {
+        "received_ms": 347694.90000000224,
+        "event": "state",
+        "kind": "heartbeat",
+        "seq": 45,
+        "sim_time_s": 601,
+        "mode": "paused",
+        "speed": 10,
+        "running": [
+          {
+            "id": "op-T2-shunt-out",
+            "progress": 0.14523809523809525,
+            "phase": "couple"
+          }
+        ],
+        "occupied": [
+          {
+            "id": "R3",
+            "m": 152
+          }
+        ],
+        "locomotive": {
+          "kind": "track",
+          "boundary_id": null,
+          "track_id": "R3",
+          "route_id": null,
+          "operation_id": null,
+          "route_progress": null
+        },
+        "incidents": [
+          {
+            "id": "inc-4b215031-09bd-4fef-ab8a-24d0868051c7",
+            "status": "active"
+          },
+          {
+            "id": "inc-08c8bf64-1b33-4712-adf0-5761ca6e7a21",
+            "status": "active"
+          },
+          {
+            "id": "inc-d4d3a003-7cdd-4ac8-b63f-9748edb0690e",
+            "status": "active"
+          },
+          {
+            "id": "inc-b6fc8d32-3988-4d94-91f9-d8b4af51a656",
+            "status": "active"
+          },
+          {
+            "id": "inc-4a01d30d-cce1-4024-88da-df8030d75a72",
+            "status": "active"
+          },
+          {
+            "id": "inc-a4f32b3d-2d1e-42e0-a8bf-cc77f34012c8",
+            "status": "active"
+          },
+          {
+            "id": "inc-82f22100-4441-40e5-a9e4-798d97a32894",
+            "status": "active"
+          },
+          {
+            "id": "inc-438402e0-8fac-4b5c-a0fc-f91518f44791",
+            "status": "active"
+          },
+          {
+            "id": "inc-1448c4a9-de9d-44d5-9f7a-4c69b132c2d1",
+            "status": "active"
+          },
+          {
+            "id": "inc-468aefda-35df-4adf-bd6c-6ffbe98ad652",
+            "status": "active"
+          }
+        ],
+        "conflicts": [],
+        "job": {
+          "id": "rp-9912d6bb-ca55-4954-8ed6-793bf123e510",
+          "status": "succeeded",
+          "applied_plan_id": "plan-rp-9912d6bb-ca55-4954-8ed6-793bf123e510-0"
+        }
+      },
+      {
+        "received_ms": 348495.40000000224,
+        "event": "state",
+        "kind": "heartbeat",
+        "seq": 45,
+        "sim_time_s": 601,
+        "mode": "paused",
+        "speed": 10,
+        "running": [
+          {
+            "id": "op-T2-shunt-out",
+            "progress": 0.14523809523809525,
+            "phase": "couple"
+          }
+        ],
+        "occupied": [
+          {
+            "id": "R3",
+            "m": 152
+          }
+        ],
+        "locomotive": {
+          "kind": "track",
+          "boundary_id": null,
+          "track_id": "R3",
+          "route_id": null,
+          "operation_id": null,
+          "route_progress": null
+        },
+        "incidents": [
+          {
+            "id": "inc-4b215031-09bd-4fef-ab8a-24d0868051c7",
+            "status": "active"
+          },
+          {
+            "id": "inc-08c8bf64-1b33-4712-adf0-5761ca6e7a21",
+            "status": "active"
+          },
+          {
+            "id": "inc-d4d3a003-7cdd-4ac8-b63f-9748edb0690e",
+            "status": "active"
+          },
+          {
+            "id": "inc-b6fc8d32-3988-4d94-91f9-d8b4af51a656",
+            "status": "active"
+          },
+          {
+            "id": "inc-4a01d30d-cce1-4024-88da-df8030d75a72",
+            "status": "active"
+          },
+          {
+            "id": "inc-a4f32b3d-2d1e-42e0-a8bf-cc77f34012c8",
+            "status": "active"
+          },
+          {
+            "id": "inc-82f22100-4441-40e5-a9e4-798d97a32894",
+            "status": "active"
+          },
+          {
+            "id": "inc-438402e0-8fac-4b5c-a0fc-f91518f44791",
+            "status": "active"
+          },
+          {
+            "id": "inc-1448c4a9-de9d-44d5-9f7a-4c69b132c2d1",
+            "status": "active"
+          },
+          {
+            "id": "inc-468aefda-35df-4adf-bd6c-6ffbe98ad652",
+            "status": "active"
+          }
+        ],
+        "conflicts": [],
+        "job": {
+          "id": "rp-9912d6bb-ca55-4954-8ed6-793bf123e510",
+          "status": "succeeded",
+          "applied_plan_id": "plan-rp-9912d6bb-ca55-4954-8ed6-793bf123e510-0"
+        }
+      },
+      {
+        "received_ms": 349295.5,
+        "event": "state",
+        "kind": "heartbeat",
+        "seq": 45,
+        "sim_time_s": 601,
+        "mode": "paused",
+        "speed": 10,
+        "running": [
+          {
+            "id": "op-T2-shunt-out",
+            "progress": 0.14523809523809525,
+            "phase": "couple"
+          }
+        ],
+        "occupied": [
+          {
+            "id": "R3",
+            "m": 152
+          }
+        ],
+        "locomotive": {
+          "kind": "track",
+          "boundary_id": null,
+          "track_id": "R3",
+          "route_id": null,
+          "operation_id": null,
+          "route_progress": null
+        },
+        "incidents": [
+          {
+            "id": "inc-4b215031-09bd-4fef-ab8a-24d0868051c7",
+            "status": "active"
+          },
+          {
+            "id": "inc-08c8bf64-1b33-4712-adf0-5761ca6e7a21",
+            "status": "active"
+          },
+          {
+            "id": "inc-d4d3a003-7cdd-4ac8-b63f-9748edb0690e",
+            "status": "active"
+          },
+          {
+            "id": "inc-b6fc8d32-3988-4d94-91f9-d8b4af51a656",
+            "status": "active"
+          },
+          {
+            "id": "inc-4a01d30d-cce1-4024-88da-df8030d75a72",
+            "status": "active"
+          },
+          {
+            "id": "inc-a4f32b3d-2d1e-42e0-a8bf-cc77f34012c8",
+            "status": "active"
+          },
+          {
+            "id": "inc-82f22100-4441-40e5-a9e4-798d97a32894",
+            "status": "active"
+          },
+          {
+            "id": "inc-438402e0-8fac-4b5c-a0fc-f91518f44791",
+            "status": "active"
+          },
+          {
+            "id": "inc-1448c4a9-de9d-44d5-9f7a-4c69b132c2d1",
+            "status": "active"
+          },
+          {
+            "id": "inc-468aefda-35df-4adf-bd6c-6ffbe98ad652",
+            "status": "active"
+          }
+        ],
+        "conflicts": [],
+        "job": {
+          "id": "rp-9912d6bb-ca55-4954-8ed6-793bf123e510",
+          "status": "succeeded",
+          "applied_plan_id": "plan-rp-9912d6bb-ca55-4954-8ed6-793bf123e510-0"
+        }
+      },
+      {
+        "received_ms": 350097.90000000224,
+        "event": "state",
+        "kind": "heartbeat",
+        "seq": 45,
+        "sim_time_s": 601,
+        "mode": "paused",
+        "speed": 10,
+        "running": [
+          {
+            "id": "op-T2-shunt-out",
+            "progress": 0.14523809523809525,
+            "phase": "couple"
+          }
+        ],
+        "occupied": [
+          {
+            "id": "R3",
+            "m": 152
+          }
+        ],
+        "locomotive": {
+          "kind": "track",
+          "boundary_id": null,
+          "track_id": "R3",
+          "route_id": null,
+          "operation_id": null,
+          "route_progress": null
+        },
+        "incidents": [
+          {
+            "id": "inc-4b215031-09bd-4fef-ab8a-24d0868051c7",
+            "status": "active"
+          },
+          {
+            "id": "inc-08c8bf64-1b33-4712-adf0-5761ca6e7a21",
+            "status": "active"
+          },
+          {
+            "id": "inc-d4d3a003-7cdd-4ac8-b63f-9748edb0690e",
+            "status": "active"
+          },
+          {
+            "id": "inc-b6fc8d32-3988-4d94-91f9-d8b4af51a656",
+            "status": "active"
+          },
+          {
+            "id": "inc-4a01d30d-cce1-4024-88da-df8030d75a72",
+            "status": "active"
+          },
+          {
+            "id": "inc-a4f32b3d-2d1e-42e0-a8bf-cc77f34012c8",
+            "status": "active"
+          },
+          {
+            "id": "inc-82f22100-4441-40e5-a9e4-798d97a32894",
+            "status": "active"
+          },
+          {
+            "id": "inc-438402e0-8fac-4b5c-a0fc-f91518f44791",
+            "status": "active"
+          },
+          {
+            "id": "inc-1448c4a9-de9d-44d5-9f7a-4c69b132c2d1",
+            "status": "active"
+          },
+          {
+            "id": "inc-468aefda-35df-4adf-bd6c-6ffbe98ad652",
+            "status": "active"
+          }
+        ],
+        "conflicts": [],
+        "job": {
+          "id": "rp-9912d6bb-ca55-4954-8ed6-793bf123e510",
+          "status": "succeeded",
+          "applied_plan_id": "plan-rp-9912d6bb-ca55-4954-8ed6-793bf123e510-0"
+        }
+      }
+    ],
+    "hz": 1.2483949208162595,
+    "max_gap_ms": 803.3000000007451
+  },
+  "pageErrors": [],
+  "note": "403 is an intentional negative check. context.setOffline did NOT disconnect an established SSE socket (observed LIVE); real disconnection/recovery was subsequently verified in server-restart and transport-reconnect artifacts.",
+  "browser": "151.0.7922.137"
+}

@@ -8,6 +8,7 @@ from sqlalchemy import (
     Float,
     ForeignKey,
     ForeignKeyConstraint,
+    Index,
     Integer,
     String,
     UniqueConstraint,
@@ -97,6 +98,8 @@ class DomainEvent(Base):
     __table_args__ = (
         UniqueConstraint("source_event_id"),
         CheckConstraint("seq >= 0", name="nonnegative_seq"),
+        Index("ix_domain_event_run_wall_seq", "run_id", "received_at", "seq"),
+        Index("ix_domain_event_run_sim_seq", "run_id", "sim_time_s", "seq"),
     )
     run_id: Mapped[str] = mapped_column(ForeignKey("run.id"), primary_key=True)
     seq: Mapped[int] = mapped_column(BigInteger, primary_key=True)
@@ -111,7 +114,10 @@ class DomainEvent(Base):
 
 class StateSnapshot(Base):
     __tablename__ = "state_snapshot"
-    __table_args__ = (ForeignKeyConstraint(["run_id", "seq"], ["domain_event.run_id", "domain_event.seq"]),)
+    __table_args__ = (
+        ForeignKeyConstraint(["run_id", "seq"], ["domain_event.run_id", "domain_event.seq"]),
+        Index("ix_state_snapshot_run_wall_seq", "run_id", "created_at", "seq"),
+    )
     run_id: Mapped[str] = mapped_column(String, primary_key=True)
     seq: Mapped[int] = mapped_column(BigInteger, primary_key=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), index=True)

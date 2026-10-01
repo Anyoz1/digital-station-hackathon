@@ -1,0 +1,105 @@
+{
+  "run_id": "run-cda48aa1-eb33-486e-96a0-b22b33eeeae8",
+  "seq": 207,
+  "input_revision": 14,
+  "sim_time_s": 1280,
+  "mode": "paused",
+  "train": {
+    "id": "T2",
+    "number": "2002",
+    "type": "FREIGHT",
+    "service_profile_id": "freight_local_v1",
+    "processing_kind": "local",
+    "direction": "W_E",
+    "consist_kind": "wagon_groups",
+    "body_length_m": 56,
+    "total_length_m": 76,
+    "location": {
+      "kind": "track",
+      "boundary_id": null,
+      "track_id": "R3",
+      "route_id": null,
+      "operation_id": null,
+      "route_progress": null
+    },
+    "priority": 2,
+    "status": "on_station",
+    "destination_id": "DEST_E",
+    "scheduled_arrival_sim_s": 180,
+    "expected_arrival_sim_s": 180,
+    "due_departure_sim_s": 2700,
+    "actual_arrival_sim_s": 180,
+    "actual_departure_sim_s": null,
+    "group_ids": [
+      "G2K"
+    ],
+    "target_group_ids": [
+      "G2L",
+      "G2K"
+    ],
+    "traction_resource_id": "TL2",
+    "traction_kind": "locomotive",
+    "planned_track_id": "R3",
+    "current_track_id": "R3"
+  },
+  "role": "Диспетчер · роль: dispatcher · u-dispatcher",
+  "tracks": [
+    {
+      "id": "R3",
+      "name": "R3",
+      "park_id": "reception",
+      "kind": "receiving_departure",
+      "length_m": 350,
+      "availability": "open",
+      "occupied_length_m": 76,
+      "train_ids": [
+        "T2"
+      ],
+      "group_ids": [
+        "G2K"
+      ],
+      "locomotive_ids": [
+        "TL2"
+      ],
+      "assigned_train_id": "T2",
+      "active_operation_ids": []
+    },
+    {
+      "id": "C1",
+      "name": "C1",
+      "park_id": "cargo",
+      "kind": "cargo",
+      "length_m": 160,
+      "availability": "open",
+      "occupied_length_m": 56,
+      "train_ids": [],
+      "group_ids": [
+        "G2L"
+      ],
+      "locomotive_ids": [],
+      "assigned_train_id": null,
+      "active_operation_ids": [
+        "op-T2-cargo"
+      ]
+    },
+    {
+      "id": "D1",
+      "name": "D1",
+      "park_id": "service",
+      "kind": "parking",
+      "length_m": 160,
+      "availability": "open",
+      "occupied_length_m": 20,
+      "train_ids": [],
+      "group_ids": [],
+      "locomotive_ids": [
+        "L1"
+      ],
+      "assigned_train_id": null,
+      "active_operation_ids": []
+    }
+  ],
+  "pageErrors": [],
+  "SSE": "LIVE · SSE · последний кадр 0.1 s назад",
+  "navigationCount": 1
+}

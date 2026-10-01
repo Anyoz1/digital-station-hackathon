@@ -1,0 +1,24 @@
+{
+  "denied": {
+    "status": 403,
+    "body": {
+      "error": {
+        "code": "FORBIDDEN",
+        "message": "Действие доступно диспетчеру или администратору",
+        "details": {},
+        "request_id": "0d66198d-809d-4c40-b6d2-1628cc068143"
+      }
+    },
+    "playDisabled": true
+  },
+  "pageErrors": [],
+  "fallbackUUIDValid": true,
+  "current": {
+    "run_id": "run-cda48aa1-eb33-486e-96a0-b22b33eeeae8",
+    "seq": 198,
+    "sim": 1275,
+    "mode": "paused",
+    "role": "Диспетчер · роль: dispatcher · u-dispatcher",
+    "apiErrorVisible": false
+  }
+}

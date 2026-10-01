@@ -1,0 +1,21 @@
+{
+  "date": "2026-10-01",
+  "scope": "H12-H15 only: actual/config/history/replay/CSV/manual/RBAC",
+  "final_full_pytest": {"passed": 217, "seconds": 184.21, "warnings": 1, "failed": 0},
+  "final_h15_and_frozen_rerun": {"passed": 51, "seconds": 47.58, "failed": 0},
+  "javascript_display_tests": {"passed": 9, "failed": 0},
+  "ruff_check": "passed",
+  "ruff_format_check": "58 files already formatted",
+  "mypy": "Success: no issues found in 25 source files",
+  "typescript_strict": "passed: contracts/api-v1.ts, contracts/railway-display.ts",
+  "station_js_syntax": "passed",
+  "alembic_check_current": "No new upgrade operations detected",
+  "clean_migration": {
+    "database": "digital_station_h15_clean_test",
+    "tables_before": 0, "tables_after": 13, "revision": "0005_history_indexes",
+    "upgrade": "passed", "check": "passed", "ready": 200, "login": 200,
+    "tracks": 12, "trains": 7, "plans": 2, "initial_replan_ms": 1735.6150099949446
+  },
+  "realtime_during_full_csv": {"frames": 21, "observed_seconds": 15.48160000000149, "hz": 1.2918561389002476, "max_gap_ms": 950.3999999985099},
+  "limitations": ["Not final paint SLA", "Not 120-second two-visible-client acceptance", "Not full paired baseline benchmark", "H15-H18 not started"]
+}

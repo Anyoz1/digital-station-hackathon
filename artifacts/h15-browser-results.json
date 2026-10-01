@@ -1,0 +1,605 @@
+{
+  "h15_browser_main": {
+    "download": "station-report.csv",
+    "seq": 610,
+    "sim": 3098,
+    "kpi": {
+      "mode": "actual",
+      "formula_version": "efficiency-v1",
+      "window_start_sim_s": 2198,
+      "window_end_sim_s": 3098,
+      "score": 99,
+      "category": "normal",
+      "factors": [
+        {
+          "key": "throughput",
+          "raw": 1,
+          "unit": "ratio",
+          "norm_penalty": 0,
+          "weight": 0.3,
+          "contribution": 0,
+          "reason": "Фактические отправления к концу окна; когорта: T2"
+        },
+        {
+          "key": "delay",
+          "raw": 0,
+          "unit": "sim_seconds",
+          "norm_penalty": 0,
+          "weight": 0.25,
+          "contribution": 0,
+          "reason": "Фактическое опоздание/ожидание относительно due; когорта: T2"
+        },
+        {
+          "key": "occupancy",
+          "raw": 0.32755555555555554,
+          "unit": "ratio",
+          "norm_penalty": 0,
+          "weight": 0.15,
+          "contribution": 0,
+          "reason": "Интеграл физической занятости R1–R4/S1–S4/C1–C2; H/D1 исключены"
+        },
+        {
+          "key": "conflicts",
+          "raw": 0,
+          "unit": "count",
+          "norm_penalty": 0,
+          "weight": 0.2,
+          "contribution": 0,
+          "reason": "Нерешённые предупреждения: нет"
+        },
+        {
+          "key": "resource_idle",
+          "raw": 0.10092514718250631,
+          "unit": "ratio",
+          "norm_penalty": 0.10092514718250631,
+          "weight": 0.1,
+          "contribution": 1.0092514718250631,
+          "reason": "Интеграл незанятых доступных L1/SH1/I1/I2/CG1 при готовом спросе"
+        }
+      ]
+    },
+    "history": {
+      "events": 500,
+      "first": {
+        "run_id": "run-513160d5-fb78-4b87-915b-827be2d1f920",
+        "seq": 1,
+        "server_time": "2026-10-01T15:17:32.240Z",
+        "sim_time_s": 0,
+        "kind": "run_initialized",
+        "entity_ids": [],
+        "message": "Создан учебный прогон",
+        "actor_user_id": null
+      },
+      "last": {
+        "run_id": "run-513160d5-fb78-4b87-915b-827be2d1f920",
+        "seq": 500,
+        "server_time": "2026-10-01T16:32:37.582Z",
+        "sim_time_s": 2986,
+        "kind": "tick",
+        "entity_ids": [],
+        "message": "Ход исполнения",
+        "actor_user_id": null
+      },
+      "has_more": true
+    },
+    "logs": {
+      "errors": [],
+      "httpErrors": []
+    }
+  },
+  "h15_browser_permissions": {
+    "viewer": {
+      "status": 403,
+      "body": {
+        "error": {
+          "code": "FORBIDDEN",
+          "message": "Требуется администратор",
+          "details": {},
+          "request_id": "08ea5438-565d-45e7-bb5a-ed1eecf61b06"
+        }
+      },
+      "playDisabled": true,
+      "saveHidden": true
+    },
+    "admin": {
+      "version": 2,
+      "replan": {
+        "id": "rp-f06c6a3b-f9f7-4cce-bbc3-3efa2811350e",
+        "status": "succeeded",
+        "reason": "config_changed",
+        "created_at": "2026-10-01T16:36:30.955Z",
+        "started_at": "2026-10-01T16:36:31.172Z",
+        "finished_at": "2026-10-01T16:36:31.935Z",
+        "base_input_revision": 18,
+        "candidate_plan_ids": [
+          "plan-rp-f06c6a3b-f9f7-4cce-bbc3-3efa2811350e-0",
+          "plan-rp-f06c6a3b-f9f7-4cce-bbc3-3efa2811350e-1"
+        ],
+        "applied_plan_id": "plan-rp-f06c6a3b-f9f7-4cce-bbc3-3efa2811350e-0",
+        "elapsed_ms": 980.6883109995397,
+        "compute_ms": 395.2013989983243,
+        "validation_ms": 203.90326000051573,
+        "deadline_ms": 5000,
+        "outcome_reason_codes": []
+      },
+      "plans": [
+        {
+          "id": "plan-rp-f06c6a3b-f9f7-4cce-bbc3-3efa2811350e-0",
+          "config": 2,
+          "validator": true
+        },
+        {
+          "id": "plan-rp-f06c6a3b-f9f7-4cce-bbc3-3efa2811350e-1",
+          "config": 2,
+          "validator": true
+        }
+      ]
+    },
+    "invalid": {
+      "status": 422,
+      "body": {
+        "error": {
+          "code": "VALIDATION_ERROR",
+          "message": "Ошибка формата запроса",
+          "details": {
+            "fields": [
+              {
+                "path": "patch.category_thresholds",
+                "message": "Value error, Нужно 0 <= attention_min < normal_min <= 100"
+              }
+            ]
+          },
+          "request_id": null
+        }
+      }
+    }
+  },
+  "h15_browser_replay": {
+    "capture": {
+      "selected": 225,
+      "selectedSim": 1737,
+      "range": {
+        "run_id": "run-513160d5-fb78-4b87-915b-827be2d1f920",
+        "from_wall_time": "2026-10-01T16:23:46.776Z",
+        "to_wall_time": "2026-10-01T16:38:46.776Z"
+      },
+      "items": 651,
+      "first": {
+        "run_id": "run-513160d5-fb78-4b87-915b-827be2d1f920",
+        "seq": 225,
+        "server_time": "2026-10-01T15:41:18.380Z",
+        "sim_time_s": 1737,
+        "message": "Опорное сохранённое состояние"
+      },
+      "last": {
+        "run_id": "run-513160d5-fb78-4b87-915b-827be2d1f920",
+        "seq": 875,
+        "server_time": "2026-10-01T16:38:46.379Z",
+        "sim_time_s": 3355,
+        "kind": "tick",
+        "entity_ids": [],
+        "message": "Ход исполнения",
+        "actor_user_id": null
+      }
+    },
+    "frozen": {
+      "selected": 225,
+      "sim": 1737,
+      "liveSeq": 878,
+      "liveSim": 3358
+    },
+    "frames": {
+      "dt": 6.6726000000014905,
+      "count": 7,
+      "note": "Pre-offload sample; replaced by h15_browser_sse_csv. Do not treat this as final SLA."
+    },
+    "download": "station-report.csv",
+    "logs": {
+      "errors": [],
+      "consoleErrors": [],
+      "badHttp": []
+    }
+  },
+  "h15_browser_sse_csv": {
+    "csv": {
+      "status": 200,
+      "size": 111158,
+      "elapsedMs": 3731.89999999851
+    },
+    "frames": {
+      "frames": 21,
+      "observed_seconds": 15.48160000000149,
+      "hz": 1.2918561389002476,
+      "max_gap_ms": 950.3999999985099,
+      "seqs": [
+        1036,
+        1036,
+        1036,
+        1036,
+        1036,
+        1036,
+        1036,
+        1036,
+        1036,
+        1036,
+        1036,
+        1036,
+        1036,
+        1036,
+        1036,
+        1036,
+        1036,
+        1036,
+        1036,
+        1036,
+        1036
+      ],
+      "sample": "paused SSE during full durable CSV export"
+    },
+    "logs": {
+      "errors": [],
+      "consoleErrors": [],
+      "httpErrors": []
+    }
+  },
+  "h15_manual_early": {
+    "early": {
+      "sim": 120,
+      "op": {
+        "id": "op-T1-inspection",
+        "train_id": "T1",
+        "group_ids": [
+          "G1"
+        ],
+        "kind": "inspection",
+        "status": "running",
+        "execution_mode": "manual",
+        "predecessor_ids": [
+          "op-T1-arrival"
+        ],
+        "source_track_id": "R1",
+        "target_track_id": "R1",
+        "route_ids": [],
+        "resource_ids": [
+          "I1"
+        ],
+        "duration_sim_s": 240,
+        "start_sim_s": 120,
+        "end_sim_s": 360,
+        "actual_start_sim_s": 120,
+        "actual_end_sim_s": null,
+        "progress": 0,
+        "phase": null,
+        "blocked_reason_codes": [],
+        "assigned_user_id": "u-operator",
+        "can_complete": false
+      },
+      "own": {
+        "status": 409,
+        "body": {
+          "error": {
+            "code": "INVALID_TRANSITION",
+            "message": "Предусловия или минимальная длительность не выполнены",
+            "details": {},
+            "request_id": "9c8171cc-2321-4655-8ad1-066c64d346eb"
+          }
+        }
+      },
+      "foreign": {
+        "status": 403,
+        "body": {
+          "error": {
+            "code": "FORBIDDEN",
+            "message": "Операция назначена другому исполнителю",
+            "details": {},
+            "request_id": "5f327425-1eca-405f-bc55-de8e35164626"
+          }
+        }
+      },
+      "buttonDisabled": true
+    },
+    "startSim": 121,
+    "persona": "Исполнитель технологической операции",
+    "operatorPlayDisabled": true
+  },
+  "h15_manual_nominal_confirmation": {
+    "early": {
+      "sim": 121,
+      "disabled": true
+    },
+    "before": {
+      "sim": 360,
+      "op": {
+        "id": "op-T1-inspection",
+        "train_id": "T1",
+        "group_ids": [
+          "G1"
+        ],
+        "kind": "inspection",
+        "status": "running",
+        "execution_mode": "manual",
+        "predecessor_ids": [
+          "op-T1-arrival"
+        ],
+        "source_track_id": "R1",
+        "target_track_id": "R1",
+        "route_ids": [],
+        "resource_ids": [
+          "I1"
+        ],
+        "duration_sim_s": 240,
+        "start_sim_s": 120,
+        "end_sim_s": 360,
+        "actual_start_sim_s": 120,
+        "actual_end_sim_s": null,
+        "progress": 1,
+        "phase": null,
+        "blocked_reason_codes": [],
+        "assigned_user_id": "u-operator",
+        "can_complete": true
+      },
+      "I1": {
+        "id": "I1",
+        "name": "I1",
+        "kind": "inspection_crew",
+        "status": "busy",
+        "active_operation_id": "op-T1-inspection",
+        "location": null,
+        "available_after_sim_s": null,
+        "assigned_user_id": null
+      }
+    },
+    "receipt": {
+      "request_id": "d5fdf46d-c8d2-4e1e-b5d6-cd561701f053",
+      "run_id": "run-2c555a95-8bb8-40c6-bb40-f1bdd2d140b4",
+      "input_revision": 6,
+      "state_version": 61,
+      "result": {
+        "replan_id": "rp-503a2bdf-ca78-4e96-a9aa-e98a20839f0c",
+        "operation_id": "op-T1-inspection"
+      }
+    },
+    "after": {
+      "sim": 365,
+      "op": {
+        "id": "op-T1-inspection",
+        "train_id": "T1",
+        "group_ids": [
+          "G1"
+        ],
+        "kind": "inspection",
+        "status": "completed",
+        "execution_mode": "manual",
+        "predecessor_ids": [
+          "op-T1-arrival"
+        ],
+        "source_track_id": "R1",
+        "target_track_id": "R1",
+        "route_ids": [],
+        "resource_ids": [
+          "I1"
+        ],
+        "duration_sim_s": 240,
+        "start_sim_s": 120,
+        "end_sim_s": 360,
+        "actual_start_sim_s": 120,
+        "actual_end_sim_s": 365,
+        "progress": 1,
+        "phase": null,
+        "blocked_reason_codes": [],
+        "assigned_user_id": "u-operator",
+        "can_complete": false
+      },
+      "T1": {
+        "id": "T1",
+        "number": "2001",
+        "type": "FREIGHT",
+        "service_profile_id": "freight_transit_v1",
+        "processing_kind": "transit",
+        "direction": "W_E",
+        "consist_kind": "wagon_groups",
+        "body_length_m": 168,
+        "total_length_m": 188,
+        "location": {
+          "kind": "track",
+          "boundary_id": null,
+          "track_id": "R1",
+          "route_id": null,
+          "operation_id": null,
+          "route_progress": null
+        },
+        "priority": 1,
+        "status": "ready_departure",
+        "destination_id": "DEST_E",
+        "scheduled_arrival_sim_s": 0,
+        "expected_arrival_sim_s": 0,
+        "due_departure_sim_s": 600,
+        "actual_arrival_sim_s": 120,
+        "actual_departure_sim_s": null,
+        "group_ids": [
+          "G1"
+        ],
+        "target_group_ids": [
+          "G1"
+        ],
+        "traction_resource_id": "TL1",
+        "traction_kind": "locomotive",
+        "planned_track_id": "R1",
+        "current_track_id": "R1"
+      }
+    },
+    "logs": {
+      "errors": [],
+      "consoleErrors": [],
+      "httpErrors": []
+    }
+  },
+  "h15_manual_nominal_e2e": {
+    "replan": {
+      "job": {
+        "id": "rp-503a2bdf-ca78-4e96-a9aa-e98a20839f0c",
+        "status": "succeeded",
+        "reason": "manual_confirmation",
+        "created_at": "2026-10-01T16:58:32.500Z",
+        "started_at": "2026-10-01T16:58:32.727Z",
+        "finished_at": "2026-10-01T16:58:33.577Z",
+        "base_input_revision": 6,
+        "candidate_plan_ids": [
+          "plan-rp-503a2bdf-ca78-4e96-a9aa-e98a20839f0c-0",
+          "plan-rp-503a2bdf-ca78-4e96-a9aa-e98a20839f0c-1"
+        ],
+        "applied_plan_id": "plan-rp-503a2bdf-ca78-4e96-a9aa-e98a20839f0c-0",
+        "elapsed_ms": 1077.2195030003786,
+        "compute_ms": 532.5456270002178,
+        "validation_ms": 193.1470179988537,
+        "deadline_ms": 5000,
+        "outcome_reason_codes": []
+      },
+      "plans": [
+        {
+          "id": "plan-rp-503a2bdf-ca78-4e96-a9aa-e98a20839f0c-0",
+          "passed": true
+        },
+        {
+          "id": "plan-rp-503a2bdf-ca78-4e96-a9aa-e98a20839f0c-1",
+          "passed": true
+        }
+      ]
+    },
+    "history": {
+      "event": {
+        "run_id": "run-2c555a95-8bb8-40c6-bb40-f1bdd2d140b4",
+        "seq": 61,
+        "server_time": "2026-10-01T16:58:32.538Z",
+        "sim_time_s": 365,
+        "kind": "manual_operation_completed",
+        "entity_ids": [
+          "T1",
+          "op-T1-inspection",
+          "rp-503a2bdf-ca78-4e96-a9aa-e98a20839f0c"
+        ],
+        "message": "Исполнитель подтвердил операцию",
+        "actor_user_id": "u-operator"
+      },
+      "saved_op": {
+        "id": "op-T1-inspection",
+        "train_id": "T1",
+        "group_ids": [
+          "G1"
+        ],
+        "kind": "inspection",
+        "status": "completed",
+        "execution_mode": "manual",
+        "predecessor_ids": [
+          "op-T1-arrival"
+        ],
+        "source_track_id": "R1",
+        "target_track_id": "R1",
+        "route_ids": [],
+        "resource_ids": [
+          "I1"
+        ],
+        "duration_sim_s": 240,
+        "start_sim_s": 120,
+        "end_sim_s": 360,
+        "actual_start_sim_s": 120,
+        "actual_end_sim_s": 365,
+        "progress": 1,
+        "phase": null,
+        "blocked_reason_codes": [],
+        "assigned_user_id": "u-operator",
+        "can_complete": false
+      },
+      "saved_train": "ready_departure"
+    },
+    "departed": {
+      "sim": 881,
+      "T1": {
+        "id": "T1",
+        "number": "2001",
+        "type": "FREIGHT",
+        "service_profile_id": "freight_transit_v1",
+        "processing_kind": "transit",
+        "direction": "W_E",
+        "consist_kind": "wagon_groups",
+        "body_length_m": 168,
+        "total_length_m": 188,
+        "location": {
+          "kind": "departed",
+          "boundary_id": null,
+          "track_id": null,
+          "route_id": null,
+          "operation_id": null,
+          "route_progress": null
+        },
+        "priority": 1,
+        "status": "departed",
+        "destination_id": "DEST_E",
+        "scheduled_arrival_sim_s": 0,
+        "expected_arrival_sim_s": 0,
+        "due_departure_sim_s": 600,
+        "actual_arrival_sim_s": 120,
+        "actual_departure_sim_s": 535,
+        "group_ids": [
+          "G1"
+        ],
+        "target_group_ids": [
+          "G1"
+        ],
+        "traction_resource_id": "TL1",
+        "traction_kind": "locomotive",
+        "planned_track_id": "R1",
+        "current_track_id": null
+      },
+      "departure": {
+        "id": "op-T1-departure",
+        "train_id": "T1",
+        "group_ids": [
+          "G1"
+        ],
+        "kind": "departure",
+        "status": "completed",
+        "execution_mode": "auto",
+        "predecessor_ids": [
+          "op-T1-inspection"
+        ],
+        "source_track_id": "R1",
+        "target_track_id": null,
+        "route_ids": [
+          "departure-E-R1"
+        ],
+        "resource_ids": [
+          "TL1",
+          "TC1"
+        ],
+        "duration_sim_s": 120,
+        "start_sim_s": 415,
+        "end_sim_s": 535,
+        "actual_start_sim_s": 415,
+        "actual_end_sim_s": 535,
+        "progress": 1,
+        "phase": null,
+        "blocked_reason_codes": [],
+        "assigned_user_id": null,
+        "can_complete": false
+      }
+    },
+    "logs": {
+      "errors": [],
+      "consoleErrors": [],
+      "httpErrors": []
+    },
+    "adminMovement": {
+      "status": 409,
+      "body": {
+        "error": {
+          "code": "INVALID_TRANSITION",
+          "message": "Вручную подтверждается только manual service operation",
+          "details": {},
+          "request_id": "1b8f3efe-65b6-48ca-bea0-b91d2d94659f"
+        }
+      }
+    },
+    "finalSim": 890
+  }
+}

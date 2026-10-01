@@ -1,0 +1,14 @@
+{
+  "database": "digital_station_h12_clean_test",
+  "tables_before": 0,
+  "alembic_upgrade": "passed",
+  "alembic_check": "passed",
+  "revision": "0004_incidents",
+  "tables_after": 13,
+  "ready_status": 200,
+  "login_status": 200,
+  "snapshot_tracks": 12,
+  "snapshot_trains": 7,
+  "plans": 2,
+  "initial_replan_ms": 685.870364002767
+}

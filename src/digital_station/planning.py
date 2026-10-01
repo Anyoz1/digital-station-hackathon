@@ -166,6 +166,7 @@ class PlanningCoordinator:
         receipt_result=None,
         receipt_scope=None,
         event_kind="replan_updated",
+        config_record=None,
     ):
         if body:
             previous, digest = await self.command_check(user_id, body, receipt_scope)
@@ -232,6 +233,7 @@ class PlanningCoordinator:
             ingested=ingress,
             receipt_status=receipt_status,
             receipt_result=result,
+            config_record=config_record,
         )
         if spawn and (self.task is None or self.task.done() or self.task.cancelling()):
             self.task = asyncio.create_task(self.perform(job.id), name=f"planner-{job.id}")
@@ -295,8 +297,23 @@ class PlanningCoordinator:
     async def initialize(self):
         await self.request("init", utc_now(), spawn=False)
         data = await self.start_job(self.owner)
-        result = await self.worker.solve(data)
+        result = self.manual_wait(data) or await self.worker.solve(data)
         await self.result(self.owner, result)
+
+    @staticmethod
+    def manual_wait(data):
+        if any(
+            o["execution_mode"] == "manual" and o["status"] != "completed"
+            for o in data["state"]["operations"]
+        ):
+            return dict(
+                status="no_feasible_plan",
+                candidates=[],
+                compute_ms=None,
+                validation_ms=None,
+                outcome_reason_codes=["MANUAL_CONFIRMATION_REQUIRED"],
+            )
+        return None
 
     async def start_job(self, job_id):
         if job_id != self.owner:
@@ -337,7 +354,7 @@ class PlanningCoordinator:
             data = await self.actor.call("planner_start", job_id)
             if data is None:
                 return
-            result = await self.worker.solve(data)
+            result = self.manual_wait(data) or await self.worker.solve(data)
         except asyncio.CancelledError:
             return
         except TimeoutError:

@@ -1,0 +1,70 @@
+{
+  "revision": "0005_history_indexes",
+  "run_id": "run-513160d5-fb78-4b87-915b-827be2d1f920",
+  "scenario_id": "demo_main_v1",
+  "mode": "paused",
+  "sim_time_s": 3512,
+  "event_seq": 1031,
+  "config_version": 2,
+  "committed_sha256": "74ca9db5c0e9d224cf845e92ed21ea65450d54f9367744f427c29d493f236927",
+  "physical_sha256": "83aeb52c0bb29f790323d9b80c4c2aa4ab63b5999a4f373a7dbd74749ea2577d",
+  "replay_equals_committed": true,
+  "actual_equals_recorded": true,
+  "efficiency": {
+    "mode": "actual",
+    "formula_version": "efficiency-v1",
+    "window_start_sim_s": 2612,
+    "window_end_sim_s": 3512,
+    "score": 98.9,
+    "category": "normal",
+    "factors": [
+      {
+        "key": "throughput",
+        "raw": 1.0,
+        "unit": "ratio",
+        "norm_penalty": 0.0,
+        "weight": 0.3,
+        "contribution": 0.0,
+        "reason": "Фактические отправления к концу окна; когорта: T2"
+      },
+      {
+        "key": "delay",
+        "raw": 0.0,
+        "unit": "sim_seconds",
+        "norm_penalty": 0.0,
+        "weight": 0.25,
+        "contribution": 0.0,
+        "reason": "Фактическое опоздание/ожидание относительно due; когорта: T2"
+      },
+      {
+        "key": "occupancy",
+        "raw": 0.3771111111111111,
+        "unit": "ratio",
+        "norm_penalty": 0.0,
+        "weight": 0.15,
+        "contribution": 0.0,
+        "reason": "Интеграл физической занятости R1–R4/S1–S4/C1–C2; H/D1 исключены"
+      },
+      {
+        "key": "conflicts",
+        "raw": 0.0,
+        "unit": "count",
+        "norm_penalty": 0.0,
+        "weight": 0.2,
+        "contribution": 0.0,
+        "reason": "Нерешённые предупреждения: нет"
+      },
+      {
+        "key": "resource_idle",
+        "raw": 0.10526315789473684,
+        "unit": "ratio",
+        "norm_penalty": 0.10526315789473684,
+        "weight": 0.1,
+        "contribution": 1.0526315789473684,
+        "reason": "Интеграл незанятых доступных L1/SH1/I1/I2/CG1 при готовом спросе"
+      }
+    ]
+  },
+  "events": 1031,
+  "checkpoints": 41
+}

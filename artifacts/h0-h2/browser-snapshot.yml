@@ -1,0 +1,166 @@
+- main [ref=e2]:
+  - heading "Цифровая станция · проверка backend" [level=1] [ref=e3]
+  - paragraph [ref=e4]: "Этап H0–H2. Сохранённое начальное состояние: 12 путей, 7 поездов. Симулятор, SSE и планировщик ещё не реализованы."
+  - region [ref=e5]:
+    - heading "Готовность" [level=2] [ref=e6]
+    - button "Проверить health" [ref=e7] [cursor=pointer]
+    - status [ref=e8]: "live: alive · ready: ready · H0-H2"
+    - generic [ref=e9]: "{ \"live\": { \"status\": \"alive\", \"stage\": \"H0-H2\" }, \"ready\": { \"status\": \"ready\", \"stage\": \"H0-H2\", \"checks\": { \"database\": \"ok\", \"schema\": \"ok\", \"initial_state\": \"ok\" }, \"capabilities\": { \"auth\": true, \"snapshot\": true, \"simulation\": false, \"sse\": false, \"optimization\": false } } }"
+  - region [ref=e10]:
+    - heading "Пользователь" [level=2] [ref=e11]
+    - generic [ref=e12]:
+      - generic [ref=e13]:
+        - text: Имя пользователя
+        - textbox "Имя пользователя" [ref=e14]: dispatcher
+      - generic [ref=e15]:
+        - text: Пароль
+        - textbox "Пароль" [ref=e16]
+      - button "Войти" [ref=e17] [cursor=pointer]
+    - paragraph [ref=e18]: "Учётные записи: viewer, operator, dispatcher, admin. Пароли — в локальном .env."
+    - status [ref=e19]: "Диспетчер · роль: dispatcher · u-dispatcher"
+    - button "Текущий пользователь" [ref=e20] [cursor=pointer]
+    - button "Выйти" [ref=e21] [cursor=pointer]
+  - region [ref=e22]:
+    - heading "Состояние из GET /api/v1/snapshot" [level=2] [ref=e23]
+    - button "Загрузить snapshot" [active] [ref=e24] [cursor=pointer]
+    - status [ref=e25]: "Получен snapshot: 12 путей, 7 поездов, 19 ресурсов · 2026-10-01T07:36:10.563Z"
+    - generic [ref=e37]:
+      - term [ref=e38]: run_id
+      - definition [ref=e39]: run-cda48aa1-eb33-486e-96a0-b22b33eeeae8
+      - term [ref=e40]: event_seq
+      - definition [ref=e41]: "1"
+      - term [ref=e42]: state_version
+      - definition [ref=e43]: "1"
+      - term [ref=e44]: input_revision
+      - definition [ref=e45]: "1"
+      - term [ref=e46]: config_version
+      - definition [ref=e47]: "1"
+      - term [ref=e48]: sim_time_s
+      - definition [ref=e49]: "0"
+      - term [ref=e50]: mode
+      - definition [ref=e51]: paused
+      - term [ref=e52]: speed
+      - definition [ref=e53]: "1"
+    - generic [ref=e26]:
+      - generic [ref=e27]:
+        - heading "Пути" [level=3] [ref=e28]
+        - table [ref=e55]:
+          - rowgroup [ref=e56]
+          - rowgroup [ref=e63]
+      - generic [ref=e29]:
+        - heading "Поезда" [level=3] [ref=e30]
+        - table [ref=e137]:
+          - rowgroup [ref=e138]
+          - rowgroup [ref=e146]
+    - heading "Ресурсы" [level=3] [ref=e31]
+    - table [ref=e197]:
+      - rowgroup [ref=e198]:
+        - row "ID Вид Статус Местоположение" [ref=e199]:
+          - columnheader "ID" [ref=e200]
+          - columnheader "Вид" [ref=e201]
+          - columnheader "Статус" [ref=e202]
+          - columnheader "Местоположение" [ref=e203]
+      - rowgroup [ref=e204]:
+        - 'row "L1 shunting_locomotive available track: D1" [ref=e205]':
+          - cell "L1" [ref=e206]
+          - cell "shunting_locomotive" [ref=e207]
+          - cell "available" [ref=e208]
+          - 'cell "track: D1" [ref=e209]'
+        - row "SH1 shunting_crew available —" [ref=e210]:
+          - cell "SH1" [ref=e211]
+          - cell "shunting_crew" [ref=e212]
+          - cell "available" [ref=e213]
+          - cell "—" [ref=e214]
+        - row "I1 inspection_crew available —" [ref=e215]:
+          - cell "I1" [ref=e216]
+          - cell "inspection_crew" [ref=e217]
+          - cell "available" [ref=e218]
+          - cell "—" [ref=e219]
+        - row "I2 inspection_crew available —" [ref=e220]:
+          - cell "I2" [ref=e221]
+          - cell "inspection_crew" [ref=e222]
+          - cell "available" [ref=e223]
+          - cell "—" [ref=e224]
+        - row "CG1 cargo_crew available —" [ref=e225]:
+          - cell "CG1" [ref=e226]
+          - cell "cargo_crew" [ref=e227]
+          - cell "available" [ref=e228]
+          - cell "—" [ref=e229]
+        - 'row "TL1 train_locomotive available boundary: BW" [ref=e230]':
+          - cell "TL1" [ref=e231]
+          - cell "train_locomotive" [ref=e232]
+          - cell "available" [ref=e233]
+          - 'cell "boundary: BW" [ref=e234]'
+        - row "TC1 train_crew available —" [ref=e235]:
+          - cell "TC1" [ref=e236]
+          - cell "train_crew" [ref=e237]
+          - cell "available" [ref=e238]
+          - cell "—" [ref=e239]
+        - 'row "TL2 train_locomotive available boundary: BW" [ref=e240]':
+          - cell "TL2" [ref=e241]
+          - cell "train_locomotive" [ref=e242]
+          - cell "available" [ref=e243]
+          - 'cell "boundary: BW" [ref=e244]'
+        - row "TC2 train_crew available —" [ref=e245]:
+          - cell "TC2" [ref=e246]
+          - cell "train_crew" [ref=e247]
+          - cell "available" [ref=e248]
+          - cell "—" [ref=e249]
+        - 'row "TL3 train_locomotive available boundary: BE" [ref=e250]':
+          - cell "TL3" [ref=e251]
+          - cell "train_locomotive" [ref=e252]
+          - cell "available" [ref=e253]
+          - 'cell "boundary: BE" [ref=e254]'
+        - row "TC3 train_crew available —" [ref=e255]:
+          - cell "TC3" [ref=e256]
+          - cell "train_crew" [ref=e257]
+          - cell "available" [ref=e258]
+          - cell "—" [ref=e259]
+        - 'row "TL4 train_locomotive available boundary: BW" [ref=e260]':
+          - cell "TL4" [ref=e261]
+          - cell "train_locomotive" [ref=e262]
+          - cell "available" [ref=e263]
+          - 'cell "boundary: BW" [ref=e264]'
+        - row "TC4 train_crew available —" [ref=e265]:
+          - cell "TC4" [ref=e266]
+          - cell "train_crew" [ref=e267]
+          - cell "available" [ref=e268]
+          - cell "—" [ref=e269]
+        - 'row "TL5 train_locomotive available boundary: BW" [ref=e270]':
+          - cell "TL5" [ref=e271]
+          - cell "train_locomotive" [ref=e272]
+          - cell "available" [ref=e273]
+          - 'cell "boundary: BW" [ref=e274]'
+        - row "TC5 train_crew available —" [ref=e275]:
+          - cell "TC5" [ref=e276]
+          - cell "train_crew" [ref=e277]
+          - cell "available" [ref=e278]
+          - cell "—" [ref=e279]
+        - 'row "TL6 train_locomotive available boundary: BE" [ref=e280]':
+          - cell "TL6" [ref=e281]
+          - cell "train_locomotive" [ref=e282]
+          - cell "available" [ref=e283]
+          - 'cell "boundary: BE" [ref=e284]'
+        - row "TC6 train_crew available —" [ref=e285]:
+          - cell "TC6" [ref=e286]
+          - cell "train_crew" [ref=e287]
+          - cell "available" [ref=e288]
+          - cell "—" [ref=e289]
+        - 'row "TP1 self_propelled_unit available boundary: BW" [ref=e290]':
+          - cell "TP1" [ref=e291]
+          - cell "self_propelled_unit" [ref=e292]
+          - cell "available" [ref=e293]
+          - 'cell "boundary: BW" [ref=e294]'
+        - row "TCP1 train_crew available —" [ref=e295]:
+          - cell "TCP1" [ref=e296]
+          - cell "train_crew" [ref=e297]
+          - cell "available" [ref=e298]
+          - cell "—" [ref=e299]
+    - group [ref=e32]:
+      - generic "Raw JSON текущего snapshot" [ref=e33] [cursor=pointer]
+  - paragraph [ref=e34]:
+    - link "Swagger" [ref=e35] [cursor=pointer]:
+      - /url: /docs
+    - text: ·
+    - link "OpenAPI" [ref=e36] [cursor=pointer]:
+      - /url: /openapi.json

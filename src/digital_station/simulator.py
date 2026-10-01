@@ -166,9 +166,6 @@ class Simulator:
             if train.consist_kind == "wagon_groups":
                 train.body_length_m = sum(self.wagon_groups[g].length_m for g in train.group_ids)
                 train.total_length_m = train.body_length_m + 20
-        self.state.efficiency.window_end_sim_s = self.state.sim_time_s
-        for factor in self.state.efficiency.factors:
-            factor.reason = "Индекс/KPI ещё не реализованы на этапе H2–H5"
         for track in self.tracks.values():
             track.occupied_length_m = 0
             track.train_ids, track.group_ids, track.locomotive_ids, track.active_operation_ids = (
@@ -204,6 +201,7 @@ class Simulator:
                     track.locomotive_ids.append(resource.id)
                     track.occupied_length_m += 20
         for op in self.operations.values():
+            op.can_complete = self.manual_ready(op)
             if op.status == "running":
                 track_ids, zone_ids = self.locks(op)
                 for tid in track_ids:
@@ -220,7 +218,11 @@ class Simulator:
     def guard(self, op):
         train = self.trains[op.train_id]
         require(op.kind in PROFILE_KINDS[train.service_profile_id], "PROFILE_OPERATION_MISMATCH")
-        require(op.execution_mode == "auto", "MANUAL_EXECUTION_NOT_IMPLEMENTED")
+        require(
+            op.execution_mode == "auto"
+            or (op.kind in {"inspection", "cargo", "departure_prep"} and op.assigned_user_id is not None),
+            "MANUAL_MOVEMENT_FORBIDDEN",
+        )
         require(op.end_sim_s - op.start_sim_s == op.duration_sim_s, "DURATION_MISMATCH")
         require(
             all(self.operations[p].status == "completed" for p in op.predecessor_ids),
@@ -463,9 +465,22 @@ class Simulator:
                 self.wagon_groups[gid].cargo_state = "loaded"
         op.status, op.progress, op.actual_end_sim_s = "completed", 1, self.state.sim_time_s
         op.phase = None
+        op.can_complete = False
         for rid in op.resource_ids:
             resource = self.resources[rid]
             resource.status, resource.active_operation_id = "available", None
+
+    def manual_ready(self, op):
+        return bool(
+            op.execution_mode == "manual"
+            and op.kind in {"inspection", "cargo", "departure_prep"}
+            and op.status == "running"
+            and op.actual_start_sim_s is not None
+            and self.state.sim_time_s >= op.actual_start_sim_s + op.duration_sim_s
+            and all(self.operations[p].status == "completed" for p in op.predecessor_ids)
+            and all(self.resources[r].active_operation_id == op.id for r in op.resource_ids)
+            and bool(op.resource_ids)
+        )
 
     def next_due(self, allow_starts=True):
         now = self.state.sim_time_s
@@ -476,7 +491,8 @@ class Simulator:
                 times.append(max(now, op.start_sim_s))
             if op.status == "running":
                 assert op.actual_start_sim_s is not None
-                times.append(op.actual_start_sim_s + op.duration_sim_s)
+                if op.execution_mode == "auto" or op.actual_start_sim_s + op.duration_sim_s > now:
+                    times.append(op.actual_start_sim_s + op.duration_sim_s)
                 if op.kind == "shunt_transfer":
                     times += [
                         op.actual_start_sim_s + t for t in SHUNT_BOUNDARIES if op.actual_start_sim_s + t > now
@@ -497,7 +513,7 @@ class Simulator:
             if op.status != "running":
                 continue
             assert op.actual_start_sim_s is not None
-            if op.actual_start_sim_s + op.duration_sim_s == time:
+            if op.execution_mode == "auto" and op.actual_start_sim_s + op.duration_sim_s == time:
                 self.complete(op)
                 events.append(dict(kind="operation_completed", entity_ids=[op.id, op.train_id]))
         events.extend(refresh_calendars(self.state))

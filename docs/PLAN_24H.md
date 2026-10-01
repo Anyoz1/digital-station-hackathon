@@ -227,3 +227,25 @@ Manual confirmation остаётся MUST по новому уточнению, 
 5. Replay требует15настоящих wall-мин истории: фоновый прогон начинаем заранее. Ускорение simulation clock или backdated test records не превращаются в live-историю.20повторов timing и120с latency проводятся заранее; их полный raw результат доступен на защите.
 
 Контрольные точки остатка: после первых3ч — готовые actual KPI/config и history-контракт либо явный пересмотр оценки; после6ч — все MUST runtime endpoints/manual/telemetry, frontend подключён; после8ч — измерения и репетиция с таблицей открытых пунктов; последние2ч — только исправления/перепроверка. Это цели очередности, не утверждение, что H12 UI-pass уже закрыл оставшиеся R06/R08/R13/R16/R21/R22.
+
+## Контрольная точка H15 — по последнему ограниченному разрешению
+
+Последний пользовательский scope H12–H15: **actual KPI/config/history/replay/CSV/manual/RBAC и их проверки**. Он уже, чем исходная общая строка H12–H15 (там также metrics/noisy): последние остаются обязательными хвостами, а не тихо удалёнными требованиями. Переход H15–H18 не разрешён. Исходный план v1.0 выше маркера не изменён; оценки предыдущей post-H12 таблицы исторические и заменяются нижними актуальными остатками.
+
+Завершено: пять actual факторов/score/category/contribution, config GET/PATCH/version/replan, durable journal/checkpoints/read-only snapshot,24h retention, reference replay15 wall-мин/ReturnLIVE, настоящий CSV, назначенная manual inspection с min-duration/удержанием ресурсов/continuation DAG, RBAC всех новых endpoints. Проверено217pytest +9JS, Ruff/mypy/TS strict, чистые migrations, Chromium и реальный restart PostgreSQL/API. [Факты и оговорки](H12_H15_REPORT.md). Contract/domain/topology/planner/validator не перепроектированы.
+
+### MUST после остановки на H15 (не выполняется сейчас)
+
+| Работа | B, часы | F параллельно / приёмка |
+|---|---:|---|
+| `/time`, render telemetry, `/metrics`, два клиента |1–1,5| Настоящий double-rAF ack показанного seq/clock probes; missing/invalid/>500ms учитывать, не скрывать |
+| Source normalization/dedup/out-of-order/noisy observed progress |0,5–0,75| Отдельная входная диагностическая pipeline; не сглаживать физическую occupancy/locks |
+| Admin `POST /runs` без удаления истории |0,5–0,75| Idempotency, новый run/reset SSE, роли; заменяет offline rehearsal helpers |
+| Основной frontend/Гант/replay/config/manual + LAN |0,75–1,25 B|1,5–3ч F при уже существующих экранах; если их нет,2–4ч F дополнительно. Совместная проверка единого State/ошибок/ролей |
+| Полная численная приёмка и честный baseline |1–1,5|120wall-с/1×/10×/2visible clients/burst5/10;20replans, одинаковые входы, raw результаты и отрицательные случаи |
+| Сборка материалов защиты:README/manual,10–12слайдов,6–8мин демо/резервная запись |0,75–1 B|1–1,5ч F на оформление параллельно; не выдавать синтетическую станцию за реальную |
+| Резерв исправлений и репетиции |1–1,5| Только исправления mandatory, повторная проверка и запуск |
+
+Сумма B **5,5–8,25ч** включая резерв; фактическая оценка **около6–8ч до полной защиты при готовых заготовках frontend друга и параллельной F-дорожке**. Если frontend отсутствует или численная SLA-проверка выявит дефект, оценка увеличится; нет гарантии по неизвестному состоянию чужого UI. Наличие217тестов и короткого receiveHz sample не закрывает paint SLA. Рабочий reference позволяет продолжать интеграцию, но не объявляет основную UI-часть выполненной автоматически.
+
+SHOULD/ONLY IF TIME сейчас отложены: Gemini и derived demo signals. DROP неизменен: новая topology/поезда/СЦБ/CV/RFID/OR-Tools/микросервисы/production scaling. После отчёта H15 агент останавливается и ждёт следующей команды.

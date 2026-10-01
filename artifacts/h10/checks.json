@@ -1,0 +1,15 @@
+{
+  "pytest": {
+    "passed": 106,
+    "seconds": 73.02,
+    "warnings": 1
+  },
+  "ruff": "passed",
+  "format": "35 files already formatted",
+  "mypy": "19 source files passed; check_untyped_defs",
+  "typescript": "tsc --noEmit --strict ES2022 passed",
+  "chromium": "151.0.7922.137",
+  "sse_hz": 3.43128080354278,
+  "max_gap_ms": 800.6999999992549,
+  "manual_elapsed_ms": 778.8979859979008
+}

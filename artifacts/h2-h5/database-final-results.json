@@ -1,0 +1,25 @@
+{
+  "run_id": "run-cda48aa1-eb33-486e-96a0-b22b33eeeae8",
+  "mode": "paused",
+  "speed": 1,
+  "sim_time_s": 1290,
+  "event_seq": 220,
+  "state_version": 220,
+  "input_revision": 17,
+  "config_version": 1,
+  "counts": {
+    "domain_event": 220,
+    "state_snapshot": 14,
+    "command_receipt": 12
+  },
+  "events_reconstruct_current_state": true,
+  "compact_checkpoints": true,
+  "schema_head": "0002_simulation_runtime",
+  "public_table_count": 10,
+  "clean_database": {
+    "name": "digital_station_h2_clean_test",
+    "schema_head": "0002_simulation_runtime",
+    "public_table_count": 10,
+    "run_count": 0
+  }
+}

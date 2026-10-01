@@ -1,4 +1,4 @@
-# Цифровая станция — H12 и railway UI reference
+# Цифровая станция — H15 и railway UI reference
 
 Реальный backend-симулятор и полный State по SSE поверх H0–H2. PostgreSQL16,
 SQLAlchemy2 async/Psycopg3, Alembic, FastAPI, Python3.12. `demo_main_v1`:
@@ -6,7 +6,7 @@ SQLAlchemy2 async/Psycopg3, Alembic, FastAPI, Python3.12. `demo_main_v1`:
 Работают independent validator, безопасный FCFS и ограниченный deterministic
 multi-strategy planner в отдельном процессе, incidents/batch1..10 и automatic
 validated apply с frozen prefix/barrier/CAS. Добавлен предметный `/tech/station`;
-обязательные функциональные хвосты H12–H15 пока не закрыты.
+actual KPI/config/history/replay/CSV/manual/RBAC по последнему scope H15 реализованы.
 
 Принятые документы: commit `2764a83`, tag `spec-v1.0`, [SHA-256](docs/V1.0.md).
 Исходный текст четырёх файлов v1.0 сохранён, handoff/план получили явно отделённое
@@ -16,6 +16,8 @@ post-H12 дополнение. [Отчёт H0–H2](docs/H0_H2_REPORT.md) — и
 [Предметная проверка](docs/RAILWAY_DOMAIN_REVIEW.md),
 [приёмка railway UI](docs/RAILWAY_UI_REPORT.md) и новый раздел
 [handoff](docs/FRONTEND_HANDOFF.md#дополнение-после-h12-railway-oriented-ui-reference).
+[Приёмка H12–H15](docs/H12_H15_REPORT.md):217pytest, реальные API/Chromium/restart,
+actual sample, CSV и manual DAG; остальные mandatory хвосты перечислены отдельно.
 [Приложение P2 AI Explanation](docs/ADDENDUM_P2_AI_EXPLANATION.md) только описано:
 никакого LLM/API key/provider dependency в runtime нет.
 
@@ -40,6 +42,8 @@ uv run uvicorn digital_station.main:app --host 0.0.0.0 --port 8000 --workers 1 -
 Открыть **http://127.0.0.1:8000/tech/station** → login → snapshot/SSE подключаются
 автоматически. Здесь схема всех12 путей, поездное положение, фазы манёвра,
 цепочки операций, ресурсы, инциденты и два настоящих варианта с backend diff.
+Добавлены actual5факторов, история15wall-мин/list/slider/ReturnLIVE, CSV,
+folded config JSON (admin) и подтверждение назначенных manual service операций.
 Все реальные positions/route_progress/occupancy приходят из State, не из анимации.
 `/tech` и `/` ведут сюда. `/tech/debug` открывает прежний `/tech/smoke`:
 login → snapshot/SSE подключаются
@@ -68,12 +72,16 @@ vanilla-JS reference/fallback, не замена основному frontend д�
 
 | Endpoint | Реализация |
 |---|---|
-| GET `/health/live`, `/health/ready` | DB/schema/scenario/actor/worker readiness H12; simulation/SSE/optimization=true |
+| GET `/health/live`, `/health/ready` | DB/schema/scenario/actor/worker readiness H15; simulation/SSE/optimization и H15 capabilities |
 | POST `/auth/login`, `/auth/logout`; GET `/auth/me` | DB users, Argon2id, HttpOnly/SameSite=Lax cookie,12ч, revoke/expiry |
 | GET `/snapshot` | Полный State v1.0 из PostgreSQL, authenticated |
 | GET `/stream?after=run_id:seq` | Полные State, nominal1.25wall-Hz, immediate transitions, paused heartbeat без DB writes, catch-up/reset |
 | POST `/simulation/control` | `{request_id,run_id,expected_input_revision,action,speed?}`; play/pause/step/set_speed. Dispatcher/admin200, viewer/operator403 |
-| GET `/scenarios`, `/config` | Описание fixed demo и initial config, readonly |
+| GET `/scenarios`, `/config` | Описание fixed demo и current run config, все роли |
+| PATCH `/config` | Envelope + validated patch, только admin; version/event/receipt + automatic replan |
+| GET `/history`, `/history/snapshot` | PostgreSQL pagination/window/anchor, exact seq readonly State; без повторного engine/planner |
+| GET `/reports.csv` | Настоящий UTF-8 export run/window raw KPI/incidents/plans/timings, units/formula version |
+| POST `/operations/{id}/complete` | Назначенный operator/admin, только готовая manual service; durable event/replan/continued DAG |
 | POST `/incidents` | Envelope + items1..10; четыре kind из v1.0;201 receipt + automatic replan; dispatcher/admin |
 | POST `/incidents/{id}/resolve` | Envelope;200 receipt; ETA после delay не отматывается; dispatcher/admin |
 | POST `/replans` | Envelope + reason=manual;202 receipt; dispatcher/admin |
@@ -88,9 +96,10 @@ vanilla-JS reference/fallback, не замена основному frontend д�
 версии, Origin и роли проверяются сервером. Errors: `{error:{code,message,details,request_id}}`.
 
 State/API schema v1.0 не переименована. Init создаёт настоящий validated active plan;
-smoke timetable не выдаётся за certified optimization plan. **Live actual индекс/KPI
-пока null**, forecast пяти факторов/J/diff рассчитан по проверенным rollout фактам.
-БД содержит optimization_run, plan и incident; текущая Alembic revision0004_incidents.
+smoke timetable не выдаётся за certified optimization plan. Live actual индекс
+рассчитан по recorded engine transitions; forecast пяти факторов/J/diff — отдельно
+по проверенным rollout фактам. Пустое окно/нетactivity дают null.
+БД содержит optimization_run, plan и incident; Alembic revision0005_history_indexes.
 
 ## Модель исполнения и сохранение
 
@@ -112,7 +121,9 @@ SSE. PostgreSQL transaction содержит current State + compact effects/tra
 
 Memory ring: до900wall-секунд, дополнительно ограничен32MiB wire payload; queue клиента100.
 Slow client отключается, старый/gapped cursor получает reset. Это live recovery,
-**не готовые history API/replay UI/retention24ч**: они остаются на следующих этапах.
+не substitute durable history: отдельные H15 history/snapshot endpoints и reference
+replay используют PostgreSQL checkpoints/effects. Retention24h оставляет anchor chain
+и защищает sim KPI-anchor открытого paused run; read-only CSV/reduction не блокируют actor.
 
 ## Тесты и fixtures
 
@@ -144,7 +155,11 @@ receipts/CAS/rollback, compact-effect reconstruction, recovery и SSE queues/cur
 с manifest provenance, не live запись. `fixtures/scenarios/demo_main_v1.smoke_plan.json`
 — фиксированное расписание из SPEC4.1; independent_validator_passed=false и
 optimizer_implemented=false. Backend не читает API-fixture-файлы вместо живого State.
-Новые replan/history/manual/SERVICE fixtures не созданы.
+Static fixtures остаются исходными mocks. `manual-control-v1` создаётся отдельно в БД
+через `scripts/prepare_h15_manual.py --confirm-api-stopped` после полной остановки API:
+те же topology/поезда, T1 inspection manual/u-operator, paused sim120, baseline config1.
+До human confirmation полный поиск не предполагает неизвестное время ответа человека;
+после подтверждения validator-checked replan продолжает auto-хвост. Старые runs не удаляются.
 
 Планировщик не использует `Train.type` для выбора workflow: DAG задаётся profile.
 До12 event-jump rollout: FCFS/earliest due/urgency/release-R × ascending/descending/
@@ -167,9 +182,9 @@ worker, следующий расчёт создаёт замену. До зам
 повторный запуск на уже заполненной БД откажет, а не очистит её.
 
 `contracts/api-v1.ts` — принятая полная будущая v1.0 из handoff;
-`contracts/openapi.json` — фактически реализованная часть H12 с аддитивным read-only
+`contracts/openapi.json` — фактически реализованная часть H15 с аддитивным read-only
 explanation endpoint. Друг уже может подключать snapshot/SSE, simulation,
-incidents/replan/apply и брать `/tech/station` как SVG-reference; основной React/Гант
+incidents/replan/apply, actual/config/history/replay/CSV/manual и брать `/tech/station` как reference; основной React/Гант
 frontend остаётся отдельной дорожкой.
 
 ## Две машины и браузерная проверка
@@ -198,9 +213,15 @@ strict contracts passed. Chromium проверил12 путей/7 поездов
 LIVE1,725–1,904Hz; два incident replan1635,9/1736,6ms. [Отчёт и screenshots](docs/RAILWAY_UI_REPORT.md).
 Это короткие измерения receive/elapsed, не замена полной paint/120s приёмке.
 
+H15:217pytest +9JS passed, Ruff/mypy/TS strict и чистый Alembic upgrade/check passed.
+Chromium подтвердил actual/history/replay/ReturnLIVE/CSV/config roles/manual+departure.
+При полном CSV export SSE1,292Hz/maxgap950,4ms; actual/history/config физически
+сохранены после PostgreSQL/API restart. [Факты, screenshots и ограничения](docs/H12_H15_REPORT.md).
+
 Mock/учебные: сценарий, технологические длительности, next-station calendar/600s
-travel и static API samples. Не реализованы live actual KPI, config PATCH,
-manual confirmation, history/replay/CSV/retention, telemetry normalizer и AI.
+travel, manual smoke-bootstrap и static API samples. Не реализованы публичный new-run,
+time/render telemetry/metrics, полная noisy normalizer pipeline и AI. Основной frontend
+друга и полная измеримая SLA/benchmark/защита не объявлены готовыми.
 Railway-oriented UI реализован по отдельной post-H12 команде. Оставшаяся работа
 MUST/SHOULD/DROP описана в дополнении PLAN_24H; наличие UI не закрывает эти хвосты.
 

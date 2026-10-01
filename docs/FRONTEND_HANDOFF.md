@@ -744,7 +744,7 @@ Mock transport предоставляет `getSnapshot`, `subscribe`, `sendComma
 {"available":false,"reason":"Исходный снимок расчёта не сохранён","plans":[]}
 ```
 
-### Фактическая готовность и следующие подключения
+### Историческая готовность сразу после H12
 
 | Статус после H12 | API/возможности |
 |---|---|
@@ -764,3 +764,42 @@ Mock transport предоставляет `getSnapshot`, `subscribe`, `sendComma
 **C — T6 и приём следующей станцией.** T6 имеет `direction=E_W`, `destination_id=DEST_W`. Положительный пример блокирует **DEST_W**, не DEST_E. В воспроизводимом engine-checkpoint sim3300 старый departure end3780 означает прибытие к соседнему назначению4380 после600sim-с пути. Блок `[3300,4800)` затрагивает это прибытие; проверенный новый план даёт departure4440–4560 и приём5160. DEST_E — отрицательная проверка прямого ограничения T6; другие поезда могут повлиять на него косвенно. Простого короткого блока, завершившегося раньше прогнозируемого приёма, недостаточно для этой истории.
 
 Все числа этого раздела — результаты указанного offline сценария текущего кода, не норматив и не live SLA; изменившийся snapshot может дать другие интервалы. [Сохранённый JSON вывода проверочного скрипта](../artifacts/railway-ui/stories.json) содержит оба настоящих top2, отдельно urgency, реальные route sequences, frozen prefix и validator results. Скрипт не пишет БД/живое состояние. Контрольную позицию для live готовим только исполнением engine/API с сохранением происхождения; не расставляем вагоны вручную, не подделываем wall-history и не загружаем offline кадры как live SSE.
+
+## Актуальное дополнение H15: KPI, config, history/replay, CSV и manual
+
+Этот раздел заменяет исторические статусы «не реализовано» выше **только для шести возможностей последнего задания пользователя**. Нормативная часть v1.0 до маркера не изменена. `State`, topology, основной fixture и frozen `api-v1.ts` не переименованы. Реальная OpenAPI обновлена; [H12_H15_REPORT.md](H12_H15_REPORT.md) содержит проверку и ограничения.
+
+| Готовый endpoint, префикс `/api/v1` | Права / поведение |
+|---|---|
+| GET `/config` | Все четыре роли; конфигурация **текущего run**, а не всегда v1 и не максимальный номер чужого run |
+| PATCH `/config` | Только admin. Envelope v1.0 + `patch`. Полностью заменяются переданные вложенные `weights`, `category_thresholds`, `planner`; непереданные сохраняются. Новая config_version/input_revision, durable receipt и automatic replan одной транзакцией |
+| GET `/history` | Все авторизованные роли; `run_id` обязателен; `from_seq` exclusive, default0; `limit`1..500/default100; optional ISO UTC/offset `from_wall_time`/`to_wall_time` |
+| GET `/history/snapshot?run_id=…&seq=…` | Все роли; точный сохранённый State этого seq, включая исходное `server_time`. Не обновляет live, не запускает engine/planner |
+| GET `/reports.csv?run_id=…&from_wall_time=…&to_wall_time=…` | Все роли; UTF-8 attachment `station-report.csv`, тот же выбор wall-окна. Без параметров window — вся доступная история run |
+| POST `/operations/{id}/complete` | Envelope v1.0; operator — только `assigned_user_id===user.id`, admin — любая допустимая manual service. Dispatcher/viewer403. Auto/movement/неготовая manual409; receipt с operation_id/replan_id |
+
+### Фактический индекс
+
+`State.efficiency` теперь настоящий **actual**, рассчитанный сервером из committed transitions, окно `[max(0,sim_now−900),sim_now]` в **sim-секундах**, формула `efficiency-v1`. Пять факторов имеют прежние `raw/unit/norm_penalty/weight/contribution/reason`; score/category/null следуют SPEC§8. Forecast в PlanDetail остаётся forecast на своём окне: не подменять им actual и не вычислять «улучшение» между несопоставимыми окнами. Нулевое окно или отсутствие activity дают null, не100. На паузе данные не меняются от wall-clock/FPS. Причины факторов — tooltip/детали, вклад — потеря пунктов индекса. Raw occupancy — доля физически занятых R/S/C-путей, а не занятые метры/назначенные пути; H/D1 исключены.
+
+Config validation: все пять конечных неотрицательных весов суммарно1; `0<=attention_min<normal_min<=100`; planner `time_limit_ms`100..3000 и `max_rollouts`1..12, строго целые. Пустой patch, null/частичный вложенный объект, неизвестные поля и неверные значения422. Даже смена порогов запускает replan по принятому контракту; не заставлять UI предполагать мгновенную готовность вариантов. Идемпотентность и CAS/error envelope прежние.
+
+### Read-only replay reference
+
+Открыть `/tech/station` → «История ·15минут». Клиент запрашивает фиксированный `[now−900wall-с,now]`, проходит страницы до `has_more=false`, отдельно загружает `anchor_seq`; список/slider запрашивают `/history/snapshot`. `items` содержат `run_id,seq,server_time,sim_time_s,kind,entity_ids,message,actor_user_id`; ответ также `next_from_seq,has_more,anchor_seq,available_from_wall_time,available_to_wall_time`. Anchor может быть раньше окна: на долгой паузе это правильное постоянное состояние, а не потерянные heartbeat events. Новый run может быть короче15мин, доступный диапазон показан честно. Не повторять `from_seq` как inclusive.
+
+Держать два состояния: `liveState` продолжает получать SSE в фоне, `displayedState` — выбранный исторический кадр. Все live-команды, config mutation, manual/apply/incident controls отключены в replay. Исторические карточки планов берутся из сохранённого State, не из mutable live detail. «Вернуться в LIVE» немедленно показывает последний актуальный live кадр; отменять/игнорировать поздний replay response. CSV из replay использует тот же **выбранный window**, не окно вокруг текущего slider seq; live CSV — последние15 wall-мин. Основной frontend вправе сделать более удобную временную шкалу поверх этих же API, но не воспроизводить собственный simulator.
+
+Сервер: checkpoints30 wall-с и plan apply, компактные durable effects; retention24h сохраняет anchor/effect chain и дополнительный KPI-anchor открытого paused run. Неавторизован401; отсутствующий run/seq404; обнаруженный разрыв409 `HISTORY_GAP`; неверные/без timezone/обратные window422. Восстановление/CSV вычисляются read-only в фоне, чтобы не задерживать actor/SSE. Replay `server_time` — время исторического commit, не индикатор текущего соединения.
+
+### CSV и ручная работа
+
+CSV сохраняет поля из v1.0: `record_type,run_id,wall_time,sim_time_s,entity_id,metric,value,unit,plan_id,formula_version,details`. Summary/factor — actual raw значения и дополнительные trains/hour, wagon-hours, resource_busy percent; incidents/plans/timings — факты journal в window. `details` содержит реальный anchor/end seq, wall/sim window, config_version, factor normalization/contribution. Selected wall-window отображается на anchor/end committed sim-time: это не то же окно, что rolling live KPI. `wall_ms` отдельно от `sim_seconds`; null — пустая ячейка, не0. Изменения планов/инцидентов могут давать несколько строк одной сущности. Текст безопасен для открытия в spreadsheet; числовой отрицательный value остаётся числом.
+
+Основной `demo_main_v1` остаётся auto,7поездов/12путей. `manual-control-v1` — **отдельный разрешённый fixture с той же topology и теми же поездами**, inspection T1 assigned u-operator. Для подготовки остановить API полностью, выполнить `uv run python scripts/prepare_h15_manual.py --confirm-api-stopped`, перезапустить API. Создаётся новый run paused sim120; предыдущие runs/config/history сохраняются. Fixture использует baseline config v1. Нового публичного reset/`POST /runs` пока нет. Это подготовка реальным engine, не доказательство15 wall-мин истории.
+
+Manual min end — `actual_start_sim_s+duration_sim_s`; показывать assigned_user_id, progress и **backend `can_complete`**, не вычислять доступность кнопки самостоятельно по времени. При min end работа остаётся running, ресурс busy до подтверждения; ответ человека не прогнозируется. До него полный поиск возвращает `no_feasible_plan` с `MANUAL_CONFIRMATION_REQUIRED` — показывать «Ожидается подтверждение исполнителя», это не timeout и не доказательство математической несовместимости. Исполнение контрольного расписания до подтверждения — явно smoke fixture, не найденный оптимизатором полный вариант. После подтверждения backend фиксирует actual end/готовность DAG, освобождает ресурс и автоматически планирует известный хвост с independent validator; движение завершается только engine.
+
+### Что подключать следующим, но не объявлять готовым
+
+Друг уже может подключать все строки таблицы H15. Основной frontend/Гант и LAN-интеграция ещё отдельно проверяются. `POST /runs`, `/time`, `/telemetry/ui-render`, `/metrics`, полная noisy source normalization и формальная paint/120s/20-repeat приёмка остаются открытыми; в этой ограниченной итерации не реализуются. Gemini/signals/P2 не добавлены.

@@ -1,0 +1,849 @@
+{
+  "pytest": {
+    "passed": 92,
+    "duration_s": 31.29
+  },
+  "ruff": "passed",
+  "mypy": "passed:14 source files",
+  "typescript_strict": "passed",
+  "browser": {
+    "before": {
+      "sim": 1430,
+      "seq": 244,
+      "timeOrigin": 1790849279823.2
+    },
+    "after": {
+      "sim": 1510,
+      "seq": 258,
+      "timeOrigin": 1790849279823.2,
+      "frames": [
+        {
+          "received_ms": 303.19999999925494,
+          "event": "state",
+          "kind": "heartbeat",
+          "seq": 244,
+          "sim_time_s": 1430,
+          "mode": "paused",
+          "speed": 10,
+          "running": [
+            {
+              "id": "op-T2-cargo",
+              "progress": 0.2361111111111111,
+              "phase": null
+            },
+            {
+              "id": "op-T3-departure",
+              "progress": 0.4166666666666667,
+              "phase": null
+            },
+            {
+              "id": "op-T4-inspection",
+              "progress": 0.20833333333333334,
+              "phase": null
+            }
+          ],
+          "occupied": [
+            {
+              "id": "R3",
+              "m": 76
+            },
+            {
+              "id": "R4",
+              "m": 160
+            },
+            {
+              "id": "C1",
+              "m": 56
+            },
+            {
+              "id": "D1",
+              "m": 20
+            }
+          ],
+          "locomotive": {
+            "kind": "track",
+            "boundary_id": null,
+            "track_id": "D1",
+            "route_id": null,
+            "operation_id": null,
+            "route_progress": null
+          }
+        },
+        {
+          "received_ms": 383.80000000074506,
+          "event": "state",
+          "kind": "simulation_control",
+          "seq": 245,
+          "sim_time_s": 1430,
+          "mode": "running",
+          "speed": 10,
+          "running": [
+            {
+              "id": "op-T2-cargo",
+              "progress": 0.2361111111111111,
+              "phase": null
+            },
+            {
+              "id": "op-T3-departure",
+              "progress": 0.4166666666666667,
+              "phase": null
+            },
+            {
+              "id": "op-T4-inspection",
+              "progress": 0.20833333333333334,
+              "phase": null
+            }
+          ],
+          "occupied": [
+            {
+              "id": "R3",
+              "m": 76
+            },
+            {
+              "id": "R4",
+              "m": 160
+            },
+            {
+              "id": "C1",
+              "m": 56
+            },
+            {
+              "id": "D1",
+              "m": 20
+            }
+          ],
+          "locomotive": {
+            "kind": "track",
+            "boundary_id": null,
+            "track_id": "D1",
+            "route_id": null,
+            "operation_id": null,
+            "route_progress": null
+          }
+        },
+        {
+          "received_ms": 565.3000000007451,
+          "event": "state",
+          "kind": "tick",
+          "seq": 246,
+          "sim_time_s": 1431,
+          "mode": "running",
+          "speed": 10,
+          "running": [
+            {
+              "id": "op-T2-cargo",
+              "progress": 0.2375,
+              "phase": null
+            },
+            {
+              "id": "op-T3-departure",
+              "progress": 0.425,
+              "phase": null
+            },
+            {
+              "id": "op-T4-inspection",
+              "progress": 0.2125,
+              "phase": null
+            }
+          ],
+          "occupied": [
+            {
+              "id": "R3",
+              "m": 76
+            },
+            {
+              "id": "R4",
+              "m": 160
+            },
+            {
+              "id": "C1",
+              "m": 56
+            },
+            {
+              "id": "D1",
+              "m": 20
+            }
+          ],
+          "locomotive": {
+            "kind": "track",
+            "boundary_id": null,
+            "track_id": "D1",
+            "route_id": null,
+            "operation_id": null,
+            "route_progress": null
+          }
+        },
+        {
+          "received_ms": 1365.9000000022352,
+          "event": "state",
+          "kind": "tick",
+          "seq": 247,
+          "sim_time_s": 1439,
+          "mode": "running",
+          "speed": 10,
+          "running": [
+            {
+              "id": "op-T2-cargo",
+              "progress": 0.24861111111111112,
+              "phase": null
+            },
+            {
+              "id": "op-T3-departure",
+              "progress": 0.49166666666666664,
+              "phase": null
+            },
+            {
+              "id": "op-T4-inspection",
+              "progress": 0.24583333333333332,
+              "phase": null
+            }
+          ],
+          "occupied": [
+            {
+              "id": "R3",
+              "m": 76
+            },
+            {
+              "id": "R4",
+              "m": 160
+            },
+            {
+              "id": "C1",
+              "m": 56
+            },
+            {
+              "id": "D1",
+              "m": 20
+            }
+          ],
+          "locomotive": {
+            "kind": "track",
+            "boundary_id": null,
+            "track_id": "D1",
+            "route_id": null,
+            "operation_id": null,
+            "route_progress": null
+          }
+        },
+        {
+          "received_ms": 2165.699999999255,
+          "event": "state",
+          "kind": "tick",
+          "seq": 248,
+          "sim_time_s": 1447,
+          "mode": "running",
+          "speed": 10,
+          "running": [
+            {
+              "id": "op-T2-cargo",
+              "progress": 0.25972222222222224,
+              "phase": null
+            },
+            {
+              "id": "op-T3-departure",
+              "progress": 0.5583333333333333,
+              "phase": null
+            },
+            {
+              "id": "op-T4-inspection",
+              "progress": 0.2791666666666667,
+              "phase": null
+            }
+          ],
+          "occupied": [
+            {
+              "id": "R3",
+              "m": 76
+            },
+            {
+              "id": "R4",
+              "m": 160
+            },
+            {
+              "id": "C1",
+              "m": 56
+            },
+            {
+              "id": "D1",
+              "m": 20
+            }
+          ],
+          "locomotive": {
+            "kind": "track",
+            "boundary_id": null,
+            "track_id": "D1",
+            "route_id": null,
+            "operation_id": null,
+            "route_progress": null
+          }
+        },
+        {
+          "received_ms": 3099.900000002235,
+          "event": "state",
+          "kind": "tick",
+          "seq": 249,
+          "sim_time_s": 1455,
+          "mode": "running",
+          "speed": 10,
+          "running": [
+            {
+              "id": "op-T2-cargo",
+              "progress": 0.2708333333333333,
+              "phase": null
+            },
+            {
+              "id": "op-T3-departure",
+              "progress": 0.625,
+              "phase": null
+            },
+            {
+              "id": "op-T4-inspection",
+              "progress": 0.3125,
+              "phase": null
+            }
+          ],
+          "occupied": [
+            {
+              "id": "R3",
+              "m": 76
+            },
+            {
+              "id": "R4",
+              "m": 160
+            },
+            {
+              "id": "C1",
+              "m": 56
+            },
+            {
+              "id": "D1",
+              "m": 20
+            }
+          ],
+          "locomotive": {
+            "kind": "track",
+            "boundary_id": null,
+            "track_id": "D1",
+            "route_id": null,
+            "operation_id": null,
+            "route_progress": null
+          }
+        },
+        {
+          "received_ms": 3900.699999999255,
+          "event": "state",
+          "kind": "tick",
+          "seq": 250,
+          "sim_time_s": 1463,
+          "mode": "running",
+          "speed": 10,
+          "running": [
+            {
+              "id": "op-T2-cargo",
+              "progress": 0.28194444444444444,
+              "phase": null
+            },
+            {
+              "id": "op-T3-departure",
+              "progress": 0.6916666666666667,
+              "phase": null
+            },
+            {
+              "id": "op-T4-inspection",
+              "progress": 0.3458333333333333,
+              "phase": null
+            }
+          ],
+          "occupied": [
+            {
+              "id": "R3",
+              "m": 76
+            },
+            {
+              "id": "R4",
+              "m": 160
+            },
+            {
+              "id": "C1",
+              "m": 56
+            },
+            {
+              "id": "D1",
+              "m": 20
+            }
+          ],
+          "locomotive": {
+            "kind": "track",
+            "boundary_id": null,
+            "track_id": "D1",
+            "route_id": null,
+            "operation_id": null,
+            "route_progress": null
+          }
+        },
+        {
+          "received_ms": 4715.699999999255,
+          "event": "state",
+          "kind": "tick",
+          "seq": 251,
+          "sim_time_s": 1471,
+          "mode": "running",
+          "speed": 10,
+          "running": [
+            {
+              "id": "op-T2-cargo",
+              "progress": 0.29305555555555557,
+              "phase": null
+            },
+            {
+              "id": "op-T3-departure",
+              "progress": 0.7583333333333333,
+              "phase": null
+            },
+            {
+              "id": "op-T4-inspection",
+              "progress": 0.37916666666666665,
+              "phase": null
+            }
+          ],
+          "occupied": [
+            {
+              "id": "R3",
+              "m": 76
+            },
+            {
+              "id": "R4",
+              "m": 160
+            },
+            {
+              "id": "C1",
+              "m": 56
+            },
+            {
+              "id": "D1",
+              "m": 20
+            }
+          ],
+          "locomotive": {
+            "kind": "track",
+            "boundary_id": null,
+            "track_id": "D1",
+            "route_id": null,
+            "operation_id": null,
+            "route_progress": null
+          }
+        },
+        {
+          "received_ms": 5508.5,
+          "event": "state",
+          "kind": "tick",
+          "seq": 252,
+          "sim_time_s": 1479,
+          "mode": "running",
+          "speed": 10,
+          "running": [
+            {
+              "id": "op-T2-cargo",
+              "progress": 0.30416666666666664,
+              "phase": null
+            },
+            {
+              "id": "op-T3-departure",
+              "progress": 0.825,
+              "phase": null
+            },
+            {
+              "id": "op-T4-inspection",
+              "progress": 0.4125,
+              "phase": null
+            }
+          ],
+          "occupied": [
+            {
+              "id": "R3",
+              "m": 76
+            },
+            {
+              "id": "R4",
+              "m": 160
+            },
+            {
+              "id": "C1",
+              "m": 56
+            },
+            {
+              "id": "D1",
+              "m": 20
+            }
+          ],
+          "locomotive": {
+            "kind": "track",
+            "boundary_id": null,
+            "track_id": "D1",
+            "route_id": null,
+            "operation_id": null,
+            "route_progress": null
+          }
+        },
+        {
+          "received_ms": 6324.900000002235,
+          "event": "state",
+          "kind": "tick",
+          "seq": 253,
+          "sim_time_s": 1487,
+          "mode": "running",
+          "speed": 10,
+          "running": [
+            {
+              "id": "op-T2-cargo",
+              "progress": 0.31527777777777777,
+              "phase": null
+            },
+            {
+              "id": "op-T3-departure",
+              "progress": 0.8916666666666667,
+              "phase": null
+            },
+            {
+              "id": "op-T4-inspection",
+              "progress": 0.44583333333333336,
+              "phase": null
+            }
+          ],
+          "occupied": [
+            {
+              "id": "R3",
+              "m": 76
+            },
+            {
+              "id": "R4",
+              "m": 160
+            },
+            {
+              "id": "C1",
+              "m": 56
+            },
+            {
+              "id": "D1",
+              "m": 20
+            }
+          ],
+          "locomotive": {
+            "kind": "track",
+            "boundary_id": null,
+            "track_id": "D1",
+            "route_id": null,
+            "operation_id": null,
+            "route_progress": null
+          }
+        },
+        {
+          "received_ms": 6968.60000000149,
+          "event": "state",
+          "kind": "tick",
+          "seq": 254,
+          "sim_time_s": 1495,
+          "mode": "running",
+          "speed": 10,
+          "running": [
+            {
+              "id": "op-T2-cargo",
+              "progress": 0.3263888888888889,
+              "phase": null
+            },
+            {
+              "id": "op-T3-departure",
+              "progress": 0.9583333333333334,
+              "phase": null
+            },
+            {
+              "id": "op-T4-inspection",
+              "progress": 0.4791666666666667,
+              "phase": null
+            }
+          ],
+          "occupied": [
+            {
+              "id": "R3",
+              "m": 76
+            },
+            {
+              "id": "R4",
+              "m": 160
+            },
+            {
+              "id": "C1",
+              "m": 56
+            },
+            {
+              "id": "D1",
+              "m": 20
+            }
+          ],
+          "locomotive": {
+            "kind": "track",
+            "boundary_id": null,
+            "track_id": "D1",
+            "route_id": null,
+            "operation_id": null,
+            "route_progress": null
+          }
+        },
+        {
+          "received_ms": 7384.699999999255,
+          "event": "state",
+          "kind": "operation_completed",
+          "seq": 255,
+          "sim_time_s": 1500,
+          "mode": "running",
+          "speed": 10,
+          "running": [
+            {
+              "id": "op-T2-cargo",
+              "progress": 0.3333333333333333,
+              "phase": null
+            },
+            {
+              "id": "op-T4-inspection",
+              "progress": 0.5,
+              "phase": null
+            }
+          ],
+          "occupied": [
+            {
+              "id": "R3",
+              "m": 76
+            },
+            {
+              "id": "R4",
+              "m": 160
+            },
+            {
+              "id": "C1",
+              "m": 56
+            },
+            {
+              "id": "D1",
+              "m": 20
+            }
+          ],
+          "locomotive": {
+            "kind": "track",
+            "boundary_id": null,
+            "track_id": "D1",
+            "route_id": null,
+            "operation_id": null,
+            "route_progress": null
+          }
+        },
+        {
+          "received_ms": 7787,
+          "event": "state",
+          "kind": "tick",
+          "seq": 256,
+          "sim_time_s": 1503,
+          "mode": "running",
+          "speed": 10,
+          "running": [
+            {
+              "id": "op-T2-cargo",
+              "progress": 0.3375,
+              "phase": null
+            },
+            {
+              "id": "op-T4-inspection",
+              "progress": 0.5125,
+              "phase": null
+            }
+          ],
+          "occupied": [
+            {
+              "id": "R3",
+              "m": 76
+            },
+            {
+              "id": "R4",
+              "m": 160
+            },
+            {
+              "id": "C1",
+              "m": 56
+            },
+            {
+              "id": "D1",
+              "m": 20
+            }
+          ],
+          "locomotive": {
+            "kind": "track",
+            "boundary_id": null,
+            "track_id": "D1",
+            "route_id": null,
+            "operation_id": null,
+            "route_progress": null
+          }
+        },
+        {
+          "received_ms": 8468.199999999255,
+          "event": "state",
+          "kind": "tick",
+          "seq": 257,
+          "sim_time_s": 1510,
+          "mode": "running",
+          "speed": 10,
+          "running": [
+            {
+              "id": "op-T2-cargo",
+              "progress": 0.3472222222222222,
+              "phase": null
+            },
+            {
+              "id": "op-T4-inspection",
+              "progress": 0.5416666666666666,
+              "phase": null
+            }
+          ],
+          "occupied": [
+            {
+              "id": "R3",
+              "m": 76
+            },
+            {
+              "id": "R4",
+              "m": 160
+            },
+            {
+              "id": "C1",
+              "m": 56
+            },
+            {
+              "id": "D1",
+              "m": 20
+            }
+          ],
+          "locomotive": {
+            "kind": "track",
+            "boundary_id": null,
+            "track_id": "D1",
+            "route_id": null,
+            "operation_id": null,
+            "route_progress": null
+          }
+        },
+        {
+          "received_ms": 8473.60000000149,
+          "event": "state",
+          "kind": "simulation_control",
+          "seq": 258,
+          "sim_time_s": 1510,
+          "mode": "paused",
+          "speed": 10,
+          "running": [
+            {
+              "id": "op-T2-cargo",
+              "progress": 0.3472222222222222,
+              "phase": null
+            },
+            {
+              "id": "op-T4-inspection",
+              "progress": 0.5416666666666666,
+              "phase": null
+            }
+          ],
+          "occupied": [
+            {
+              "id": "R3",
+              "m": 76
+            },
+            {
+              "id": "R4",
+              "m": 160
+            },
+            {
+              "id": "C1",
+              "m": 56
+            },
+            {
+              "id": "D1",
+              "m": 20
+            }
+          ],
+          "locomotive": {
+            "kind": "track",
+            "boundary_id": null,
+            "track_id": "D1",
+            "route_id": null,
+            "operation_id": null,
+            "route_progress": null
+          }
+        }
+      ],
+      "operations": [
+        {
+          "id": "op-T2-cargo",
+          "train_id": "T2",
+          "group_ids": [
+            "G2L"
+          ],
+          "kind": "cargo",
+          "status": "running",
+          "execution_mode": "auto",
+          "predecessor_ids": [
+            "op-T2-shunt-out"
+          ],
+          "source_track_id": "C1",
+          "target_track_id": "C1",
+          "route_ids": [],
+          "resource_ids": [
+            "CG1"
+          ],
+          "duration_sim_s": 720,
+          "start_sim_s": 1260,
+          "end_sim_s": 1980,
+          "actual_start_sim_s": 1260,
+          "actual_end_sim_s": null,
+          "progress": 0.3472222222222222,
+          "phase": null,
+          "blocked_reason_codes": [],
+          "assigned_user_id": null,
+          "can_complete": false
+        },
+        {
+          "id": "op-T4-inspection",
+          "train_id": "T4",
+          "group_ids": [
+            "G4A",
+            "G4B",
+            "G4K"
+          ],
+          "kind": "inspection",
+          "status": "running",
+          "execution_mode": "auto",
+          "predecessor_ids": [
+            "op-T4-arrival"
+          ],
+          "source_track_id": "R4",
+          "target_track_id": "R4",
+          "route_ids": [],
+          "resource_ids": [
+            "I1"
+          ],
+          "duration_sim_s": 240,
+          "start_sim_s": 1380,
+          "end_sim_s": 1620,
+          "actual_start_sim_s": 1380,
+          "actual_end_sim_s": null,
+          "progress": 0.5416666666666666,
+          "phase": null,
+          "blocked_reason_codes": [],
+          "assigned_user_id": null,
+          "can_complete": false
+        }
+      ],
+      "conflicts": []
+    },
+    "conflictsTableVisible": true,
+    "role": "Диспетчер · роль: dispatcher · u-dispatcher",
+    "errors": []
+  }
+}

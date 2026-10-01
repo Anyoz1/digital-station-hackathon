@@ -1,0 +1,70 @@
+{
+  "revision": "0005_history_indexes",
+  "run_id": "run-2c555a95-8bb8-40c6-bb40-f1bdd2d140b4",
+  "scenario_id": "manual-control-v1",
+  "mode": "paused",
+  "sim_time_s": 890,
+  "event_seq": 146,
+  "config_version": 1,
+  "committed_sha256": "2c834fb1b23d3fb2491cece0302f2d16383d79b337a92f0feffb970dcc15a569",
+  "physical_sha256": "d8ffe138ed260f92d99b7d5a88ac29b94373d92183b58b69897d459fd104af11",
+  "replay_equals_committed": true,
+  "actual_equals_recorded": true,
+  "efficiency": {
+    "mode": "actual",
+    "formula_version": "efficiency-v1",
+    "window_start_sim_s": 0,
+    "window_end_sim_s": 890,
+    "score": 100.0,
+    "category": "normal",
+    "factors": [
+      {
+        "key": "throughput",
+        "raw": 1.0,
+        "unit": "ratio",
+        "norm_penalty": 0.0,
+        "weight": 0.3,
+        "contribution": 0.0,
+        "reason": "Фактические отправления к концу окна; когорта: T1"
+      },
+      {
+        "key": "delay",
+        "raw": 0.0,
+        "unit": "sim_seconds",
+        "norm_penalty": 0.0,
+        "weight": 0.25,
+        "contribution": 0.0,
+        "reason": "Фактическое опоздание/ожидание относительно due; когорта: T1"
+      },
+      {
+        "key": "occupancy",
+        "raw": 0.12078651685393259,
+        "unit": "ratio",
+        "norm_penalty": 0.0,
+        "weight": 0.15,
+        "contribution": 0.0,
+        "reason": "Интеграл физической занятости R1–R4/S1–S4/C1–C2; H/D1 исключены"
+      },
+      {
+        "key": "conflicts",
+        "raw": 0.0,
+        "unit": "count",
+        "norm_penalty": 0.0,
+        "weight": 0.2,
+        "contribution": 0.0,
+        "reason": "Нерешённые предупреждения: нет"
+      },
+      {
+        "key": "resource_idle",
+        "raw": 0.0,
+        "unit": "ratio",
+        "norm_penalty": 0.0,
+        "weight": 0.1,
+        "contribution": 0.0,
+        "reason": "Интеграл незанятых доступных L1/SH1/I1/I2/CG1 при готовом спросе"
+      }
+    ]
+  },
+  "events": 146,
+  "checkpoints": 6
+}

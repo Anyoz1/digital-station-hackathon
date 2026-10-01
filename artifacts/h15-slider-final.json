@@ -1,0 +1,27 @@
+{
+  "before": {
+    "seq": 146,
+    "sim": 890,
+    "tracks": 12,
+    "trains": 7,
+    "svgTracks": 12,
+    "resources": 19
+  },
+  "replay": {
+    "seq": 61,
+    "sim": 365,
+    "op": "completed",
+    "playDisabled": true,
+    "configDisabled": true
+  },
+  "after": {
+    "seq": 146,
+    "sim": 890,
+    "displaySeq": 146
+  },
+  "logs": {
+    "pageErrors": [],
+    "consoleErrors": [],
+    "httpErrors": []
+  }
+}

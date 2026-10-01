@@ -4,7 +4,7 @@ from pathlib import Path
 from typing import NoReturn
 from uuid import uuid4
 
-from fastapi import Depends, FastAPI, HTTPException, Request, Response
+from fastapi import Depends, FastAPI, HTTPException, Query, Request, Response
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import FileResponse, JSONResponse, RedirectResponse
 from sqlalchemy import select, text
@@ -21,6 +21,8 @@ from .contracts import (
     CommandEnvelope,
     CommandReceiptResponse,
     Config,
+    ConfigPatchInput,
+    HistoryPage,
     IncidentBatchInput,
     LoginInput,
     ReplanDetail,
@@ -29,7 +31,11 @@ from .contracts import (
     State,
 )
 from .db import AppUser, ConfigRevision, OptimizationRun, PlanRecord, RunState, database
+from .history import HistoryError
+from .history import page as history_page
+from .history import snapshot as history_snapshot
 from .presentation import explain_plans
+from .reporting import export_csv
 from .runtime import MIGRATION, ActorError, StationActor
 from .scenario import PROFILE_IDS, utc_now
 from .settings import Settings
@@ -69,7 +75,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             await engine.dispose()
 
     app = FastAPI(
-        title="Цифровая станция — H12",
+        title="Цифровая станция — H15",
         version="1.0",
         lifespan=lifespan,
         description="Physical digital twin, independent validator, isolated deterministic heuristic planner and SSE.",
@@ -142,6 +148,10 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             headers={"Retry-After": "1"} if exc.status == 429 else None,
         )
 
+    @app.exception_handler(HistoryError)
+    async def history_error(request, exc):
+        return JSONResponse(status_code=exc.status, content=error_body(request, exc.code, exc.message))
+
     async def db_session():
         async with sessions() as session:
             yield session
@@ -166,9 +176,19 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             fail(403, "FORBIDDEN", "Действие доступно диспетчеру или администратору")
         return user
 
+    async def admin_only(user=Depends(current_user)):
+        if user.role != "admin":
+            fail(403, "FORBIDDEN", "Требуется администратор")
+        return user
+
+    async def operator_or_admin(user=Depends(current_user)):
+        if user.role not in {"operator", "admin"}:
+            fail(403, "FORBIDDEN", "Требуется исполнитель или администратор")
+        return user
+
     @app.get("/health/live")
     async def live():
-        return {"status": "alive", "stage": "H12"}
+        return {"status": "alive", "stage": "H15"}
 
     @app.get("/health/ready")
     async def ready(session=Depends(db_session)):
@@ -188,7 +208,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             fail(503, "SERVICE_NOT_READY", "База данных недоступна")
         return {
             "status": "ready",
-            "stage": "H12",
+            "stage": "H15",
             "checks": {
                 "database": "ok",
                 "schema": "ok",
@@ -205,6 +225,11 @@ def create_app(settings: Settings | None = None) -> FastAPI:
                 "simulation": True,
                 "sse": True,
                 "optimization": True,
+                "actual_efficiency": True,
+                "config_patch": True,
+                "history": True,
+                "csv": True,
+                "manual_confirmation": True,
             },
         }
 
@@ -300,10 +325,59 @@ def create_app(settings: Settings | None = None) -> FastAPI:
 
     @app.get("/api/v1/config", response_model=Config)
     async def config(user=Depends(current_user), session=Depends(db_session)):
-        row = await session.get(ConfigRevision, 1)
+        current = await session.get(RunState, app.state.run_id)
+        row = await session.get(ConfigRevision, current.config_version)
         if row is None:
             fail(503, "SERVICE_NOT_READY", "Начальная конфигурация отсутствует")
         return row.payload
+
+    @app.patch("/api/v1/config", response_model=CommandReceiptResponse)
+    async def update_config(body: ConfigPatchInput, request: Request, user=Depends(admin_only)):
+        request.state.command_id = body.request_id
+        return await app.state.actor.call("config", (user.id, body, utc_now()))
+
+    @app.post("/api/v1/operations/{operation_id}/complete", response_model=CommandReceiptResponse)
+    async def complete_operation(
+        operation_id: str, body: CommandEnvelope, request: Request, user=Depends(operator_or_admin)
+    ):
+        request.state.command_id = body.request_id
+        return await app.state.actor.call("complete", (user.id, body, operation_id, utc_now()))
+
+    @app.get("/api/v1/history", response_model=HistoryPage)
+    async def history(
+        run_id: str,
+        from_seq: int = Query(0, ge=0),
+        limit: int = Query(100, ge=1, le=500),
+        from_wall_time: datetime | None = None,
+        to_wall_time: datetime | None = None,
+        user=Depends(current_user),
+        session=Depends(db_session),
+    ):
+        await session.execute(text("SET TRANSACTION ISOLATION LEVEL REPEATABLE READ READ ONLY"))
+        return await history_page(session, run_id, from_seq, limit, from_wall_time, to_wall_time)
+
+    @app.get("/api/v1/history/snapshot", response_model=State)
+    async def replay_snapshot(
+        run_id: str, seq: int = Query(..., ge=1), user=Depends(current_user), session=Depends(db_session)
+    ):
+        await session.execute(text("SET TRANSACTION ISOLATION LEVEL REPEATABLE READ READ ONLY"))
+        return await history_snapshot(session, run_id, seq)
+
+    @app.get("/api/v1/reports.csv", response_class=Response, responses={200: {"content": {"text/csv": {}}}})
+    async def reports(
+        run_id: str,
+        from_wall_time: datetime | None = None,
+        to_wall_time: datetime | None = None,
+        user=Depends(current_user),
+        session=Depends(db_session),
+    ):
+        await session.execute(text("SET TRANSACTION ISOLATION LEVEL REPEATABLE READ READ ONLY"))
+        content = await export_csv(session, run_id, from_wall_time, to_wall_time)
+        return Response(
+            content,
+            media_type="text/csv; charset=utf-8",
+            headers={"Content-Disposition": 'attachment; filename="station-report.csv"'},
+        )
 
     @app.post("/api/v1/replans", response_model=CommandReceiptResponse, status_code=202)
     async def replan(body: ReplanInput, request: Request, user=Depends(dispatcher_or_admin)):

@@ -1,0 +1,22 @@
+{
+  "before": {
+    "run": "run-97235c10-7b29-4bcb-a50a-8c47438e587c",
+    "seq": 50,
+    "sim": 601
+  },
+  "immediate": {
+    "label": "RECONNECTING · SSE · последний кадр 0.0 s назад",
+    "playDisabled": true,
+    "replanDisabled": true
+  },
+  "stale": "STALE · SSE · последний кадр 3.3 s назад",
+  "after": {
+    "run": "run-97235c10-7b29-4bcb-a50a-8c47438e587c",
+    "seq": 50,
+    "sim": 601,
+    "connection": "LIVE · SSE · последний кадр 0.0 s назад",
+    "playDisabled": false
+  },
+  "pageErrors": [],
+  "note": "Intentional aborted SSE transport requests; no synthetic domain state or connection-state assignment"
+}

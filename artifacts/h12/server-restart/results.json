@@ -1,0 +1,22 @@
+{
+  "offline": {
+    "connection": "OFFLINE · SSE · последний кадр 70.4 s назад",
+    "playDisabled": true,
+    "incidents": true,
+    "run": "run-97235c10-7b29-4bcb-a50a-8c47438e587c",
+    "sim": 601,
+    "seq": 45
+  },
+  "recovered": {
+    "connection": "LIVE · SSE · последний кадр 0.3 s назад",
+    "run": "run-97235c10-7b29-4bcb-a50a-8c47438e587c",
+    "sim": 601,
+    "seq": 50,
+    "incidents": 10,
+    "role": "Диспетчер · роль: dispatcher · u-dispatcher",
+    "replan": "succeeded",
+    "navigation_entries": 1,
+    "page_reload_during_recovery": false
+  },
+  "note": "Actual API stop/start, no page reload; expected connection-refused/stream errors during outage"
+}

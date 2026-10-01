@@ -1,0 +1,17 @@
+{
+  "before": {
+    "sim": 1275,
+    "seq": 199,
+    "progress": 0.020833333333333332,
+    "frames": 81
+  },
+  "after": {
+    "sim": 1280,
+    "seq": 206,
+    "revision": 13,
+    "progress": 0.027777777777777776,
+    "mode": "paused",
+    "speed": 1,
+    "frames": 90
+  }
+}

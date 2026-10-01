@@ -1,0 +1,61 @@
+{
+  "logoutReloginPassed": true,
+  "apiErrorVisible": "HTTP 401: UNAUTHENTICATED — Неверное имя пользователя или пароль\n{\n  \"error\": {\n    \"code\": \"UNAUTHENTICATED\",\n    \"message\": \"Неверное имя пользователя или пароль\",\n    \"details\": {},\n    \"request_id\": null\n  }\n}",
+  "roleGuard": {
+    "status": 403,
+    "body": {
+      "error": {
+        "code": "FORBIDDEN",
+        "message": "Действие доступно диспетчеру или администратору",
+        "details": {},
+        "request_id": "de13c34e-9d2a-42d4-9ee9-900000000002"
+      }
+    }
+  },
+  "run_id": "run-cda48aa1-eb33-486e-96a0-b22b33eeeae8",
+  "sim_time_s": 0,
+  "state_version": 1,
+  "unexpectedPageErrors": [],
+  "requestFailures": [],
+  "rawJsonMatchesRows": true,
+  "passenger": {
+    "id": "P1",
+    "number": "P001",
+    "type": "PASSENGER",
+    "service_profile_id": "passenger_transit_v1",
+    "processing_kind": "transit",
+    "direction": "W_E",
+    "consist_kind": "fixed",
+    "body_length_m": 120,
+    "total_length_m": 120,
+    "location": {
+      "kind": "boundary",
+      "boundary_id": "BW",
+      "track_id": null,
+      "route_id": null,
+      "operation_id": null,
+      "route_progress": null
+    },
+    "priority": 3,
+    "status": "expected",
+    "destination_id": "DEST_E",
+    "scheduled_arrival_sim_s": 720,
+    "expected_arrival_sim_s": 720,
+    "due_departure_sim_s": 960,
+    "actual_arrival_sim_s": null,
+    "actual_departure_sim_s": null,
+    "group_ids": [],
+    "target_group_ids": [],
+    "traction_resource_id": "TP1",
+    "traction_kind": "self_propelled",
+    "planned_track_id": null,
+    "current_track_id": null
+  },
+  "browser_version": "151.0.7922.137",
+  "transport": "Playwright MCP / Chromium",
+  "normal_path_console_errors": 0,
+  "expected_negative_http_statuses": [
+    401,
+    403
+  ]
+}

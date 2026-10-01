@@ -5,7 +5,9 @@ const $ = id => document.getElementById(id);
 const node = (tag, text, cls) => { const n=document.createElement(tag); if(text!=null)n.textContent=String(text); if(cls)n.className=cls; return n; };
 let state=null, user=null, stream=null, retryTimer=null, retries=0, lastReceived=0, connection='OFFLINE', pending=false;
 let selected=null, detail=null, explanation=null, detailKey=null, generation=0;
+let liveState=null, replayMode=false, replayGeneration=0, replayTimer=null, historyWindow=null, historyItems=[];
 const events=[], observed=new Set();
+const FACTOR_NAMES={throughput:'Выполнение отправлений',delay:'Среднее опоздание',occupancy:'Физическая загрузка путей',conflicts:'Нерешённые конфликты',resource_idle:'Простой при готовой работе'};
 window.stationMetrics={frames:[]};
 const clock = s => s==null?'—':displayTime(state,s).split(' · ')[0];
 const minutes = s => s==null?'—':`${(s/60).toFixed(1)} мин`;
@@ -21,13 +23,18 @@ async function api(path,options={}) {
   if(!response.ok){ const err=new Error(body?.error?.message??`Ошибка запроса ${response.status}`);err.status=response.status;err.body=body;throw err; }
   return body;
 }
-function writable(){ return !!(user&&['dispatcher','admin'].includes(user.role)&&state&&connection==='LIVE'&&performance.now()-lastReceived<3000&&!pending); }
+function connectedWrite(){return !!(user&&state&&!replayMode&&connection==='LIVE'&&performance.now()-lastReceived<3000&&!pending);}
+function writable(){ return connectedWrite()&&['dispatcher','admin'].includes(user.role); }
+function canConfirm(op){return connectedWrite()&&op.can_complete&&(user.role==='admin'||user.role==='operator'&&op.assigned_user_id===user.id);}
 function controls(){
   for(const id of ['play','pause','set-speed','replan','create-incident'])$(id).disabled=!writable();
   $('play').disabled ||= state?.mode==='running';$('pause').disabled ||= state?.mode==='paused';
-  document.querySelectorAll('[data-command]').forEach(b=>b.disabled=!writable()||(b.dataset.command==='apply'&&b.dataset.canApply!=='true'));
+  document.querySelectorAll('[data-command]').forEach(b=>{const op=state?.operations.find(o=>o.id===b.dataset.operationId);b.disabled=b.dataset.command==='complete'?!(op&&canConfirm(op)):!writable()||(b.dataset.command==='apply'&&b.dataset.canApply!=='true');});
+  $('save-config').disabled=!(connectedWrite()&&user.role==='admin');
+  $('history-open').disabled=!user||!liveState||pending;
+  $('csv-download').disabled=!user||!state;
 }
-function auth(value){user=value;$('persona').textContent=user?label('role',user.role):'Вход не выполнен';$('persona').title=DISPATCHER_NOTE;$('login-form').hidden=!!user;$('logout').hidden=!user;$('workspace').hidden=!user;controls();}
+function auth(value){user=value;$('persona').textContent=user?label('role',user.role):'Вход не выполнен';$('persona').title=DISPATCHER_NOTE;$('login-form').hidden=!!user;$('logout').hidden=!user;$('workspace').hidden=!user;$('save-config').hidden=user?.role!=='admin';$('config-json').readOnly=user?.role!=='admin';controls();}
 function status(){
   const age=lastReceived?performance.now()-lastReceived:Infinity;
   const text=!user?'Нет связи':lastReceived&&age>10000?'Нет связи':lastReceived&&age>3000?'Данные устарели':({LIVE:'● Связь есть',CONNECTING:'Подключение…',RECONNECTING:'Восстановление связи…'})[connection]??'Нет связи';
@@ -71,6 +78,10 @@ function renderOperations(){
       const card=node('div',null,`op ${o.status} ${selected===o.id?'selected':''}`);card.dataset.operationId=o.id;card.title=`${o.id}\n${o.source_track_id??'граница'} → ${o.target_track_id??'граница'}\n${o.resource_ids.join(', ')}`;card.tabIndex=0;card.addEventListener('click',()=>select(o.id));card.addEventListener('keydown',e=>{if(e.key==='Enter')select(o.id);});
       card.append(node('strong',operationCaption(o,state)),node('span',label('operationStatus',o.status)),node('span',`${clock(o.start_sim_s)}–${clock(o.end_sim_s)}`));
       if(o.status==='running'){const p=node('progress');p.max=1;p.value=o.progress;card.append(p,node('span',`${Math.round(o.progress*100)}%`));}chain.append(card);
+      if(o.execution_mode==='manual'&&o.status!=='completed'){
+        card.append(node('span',`Ручное подтверждение · ${o.assigned_user_id??'не назначен'} · минимум до ${o.actual_start_sim_s==null?'начала операции':clock(o.actual_start_sim_s+o.duration_sim_s)}`));
+        if(user?.role==='admin'||user?.role==='operator'&&o.assigned_user_id===user.id){const complete=button('Подтвердить завершение',()=>command(`/api/v1/operations/${encodeURIComponent(o.id)}/complete`,{},'POST','complete'));complete.className='manual-complete';complete.dataset.command='complete';complete.dataset.operationId=o.id;card.append(complete);}
+      }
     });row.append(chain);$('operations').append(row);
   });
   $('shunting').replaceChildren();const running=state.operations.filter(o=>o.kind==='shunt_transfer'&&o.status==='running');
@@ -106,6 +117,7 @@ function renderConflicts(){
 }
 function renderPlans(){
   const job=state.last_replan;$('replan-status').textContent=job?`${label('replanStatus',job.status)} · ${(job.elapsed_ms/1000).toFixed(2)} с`:'Расчётов пока нет';$('plans').replaceChildren();
+  if(replayMode){state.plans.forEach(p=>{const card=node('article',null,'plan');card.append(node('strong',`${label('planStatus',p.status)} · ${p.strategy}`),node('p',`Сохранённый прогноз: ${p.forecast.score??'нет данных'} / 100 · J ${p.objective_value??'—'}`));$('plans').append(card);});$('plans').append(node('p','Историческое состояние. Применение планов отключено.'));return;}
   if(!detail||detail.job.id!==job?.id){$('plans').textContent='Ожидаем детали текущего расчёта…';return;}
   const current=new Map(state.plans.map(p=>[p.id,p]));
   if(explanation?.available===false)$('plans').append(node('p',explanation.reason,'subtle'));
@@ -117,28 +129,32 @@ function renderPlans(){
     const order=saved.operations.filter(o=>o.kind==='arrival'&&o.train_id==='P1'||o.kind==='shunt_transfer'&&o.train_id==='T2'&&o.id==='op-T2-shunt-out');
     const list=node('ul');order.forEach(o=>list.append(node('li',`${o.train_id} · ${label('operationKind',o.kind)}: ${clock(o.start_sim_s)}–${clock(o.end_sim_s)}`)));card.append(list);
     if(exp){card.append(node('p',exp.reason,'reason'));const changes=node('details');changes.open=true;changes.append(node('summary',`Изменения относительно плана до расчёта: ${exp.changes.length}`));const lines=node('ul');exp.changes.forEach(c=>lines.append(node('li',`${c.train_id} · ${c.label}: ${clock(c.before_start_sim_s)} → ${clock(c.after_start_sim_s)}${c.shift_sim_s==null?'':` (${c.shift_sim_s>=0?'+':''}${minutes(c.shift_sim_s)})`}; путь ${c.before_track_id??'—'} → ${c.after_track_id??'—'}; ресурсы ${c.before_resource_ids.join(', ')} → ${c.after_resource_ids.join(', ')}`)));changes.append(lines);card.append(changes);}
-    const factors=node('details');factors.append(node('summary','Факторы прогнозного индекса'));const table=node('table');const factorNames={throughput:'Выполнение отправлений',delay:'Среднее опоздание',occupancy:'Загрузка путей',conflicts:'Конфликты',resource_idle:'Простой при готовой работе'};
-    p.forecast.factors.forEach(f=>{const tr=node('tr');tr.append(node('td',factorNames[f.key]),node('td',`${f.raw==null?'—':f.raw.toFixed(3)} ${f.unit==='sim_seconds'?'с':f.unit==='ratio'?'доля':'шт.'}`),node('td',`−${f.contribution?.toFixed(1)??'—'} п.`));table.append(tr);});factors.append(table);card.append(factors,node('p',`Окно прогноза: ${clock(p.forecast.window_start_sim_s)}–${clock(p.forecast.window_end_sim_s)}. Фактический live-индекс ещё не реализован.`,'fact-note'));
+    const factors=node('details');factors.append(node('summary','Факторы прогнозного индекса'));const table=node('table');const factorNames=FACTOR_NAMES;
+    p.forecast.factors.forEach(f=>{const tr=node('tr');tr.append(node('td',factorNames[f.key]),node('td',`${f.raw==null?'—':f.raw.toFixed(3)} ${f.unit==='sim_seconds'?'с':f.unit==='ratio'?'доля':'шт.'}`),node('td',`−${f.contribution?.toFixed(1)??'—'} п.`));table.append(tr);});factors.append(table);card.append(factors,node('p',`Окно прогноза: ${clock(p.forecast.window_start_sim_s)}–${clock(p.forecast.window_end_sim_s)}. Фактический индекс показан отдельно.`,'fact-note'));
     const apply=button('Применить вариант',()=>command(`/api/v1/plans/${encodeURIComponent(p.id)}/apply`,{}));apply.dataset.command='apply';apply.dataset.canApply=String(p.can_apply&&state.mode==='paused');card.append(apply);if(!p.can_apply)card.append(node('p','Для ручного выбора: пауза → новый расчёт → актуальная альтернатива.','fact-note'));$('plans').append(card);
   });
 }
 function renderAll(){
   if(!state)return;
-  $('mode').textContent=state.mode==='running'?'LIVE · РАБОТАЕТ':'ПАУЗА';$('sim-clock').textContent=clock(state.sim_time_s);$('sim-clock').title=displayTime(state);$('speed-label').textContent=`${state.speed}× · учебное время`;
+  $('mode').textContent=replayMode?'ИСТОРИЯ · ПРОСМОТР':state.mode==='running'?'LIVE · РАБОТАЕТ':'ПАУЗА';$('sim-clock').textContent=clock(state.sim_time_s);$('sim-clock').title=displayTime(state);$('speed-label').textContent=`${state.speed}× · учебное время`;
+  $('return-live').hidden=!replayMode;$('view-note').textContent=replayMode?'Сохранённое состояние; LIVE обновляется в фоне':'Текущее состояние станции';renderActual();
   const active=state.incidents.filter(i=>i.status!=='resolved').length;const job=state.last_replan;const planning=['queued','running'].includes(job?.status);
   $('alert-strip').className=`alert-strip ${active||state.conflicts.length?'warning':''}`;
   $('alert-strip').textContent=planning?'Перепланирование: новые операции ожидают проверенный план; уже начатые продолжаются.':`${active?`Действует ограничений: ${active}. `:''}Нерешённых конфликтов: ${state.conflicts.length}. ${job?.applied_plan_id===state.active_plan_id?'Проверенный план применён.':job?label('replanStatus',job.status):'Станция готова.'}`;
   window.stationDiagram=renderStation($('station-svg'),state,select,selected);renderSelection();renderTrains();renderOperations();renderResources();renderConflicts();renderPlans();$('raw-state').textContent=JSON.stringify(state,null,2);controls();
 }
 async function getDetails(){
+  if(replayMode)return;
   const job=state?.last_replan;if(!job)return;const key=`${state.run_id}:${job.id}:${job.status}`;if(key===detailKey)return;detailKey=key;
   if(['queued','running'].includes(job.status)){detail=null;explanation=null;return;}
   const currentGeneration=generation;
-  try{const [d,e]=await Promise.all([api(`/api/v1/replans/${encodeURIComponent(job.id)}`),api(`/api/v1/replans/${encodeURIComponent(job.id)}/explanation`)]);if(generation!==currentGeneration||state?.last_replan?.id!==job.id)return;detail=d;explanation=e;window.stationDetail=d;window.stationExplanation=e;renderAll();}
+  try{const [d,e]=await Promise.all([api(`/api/v1/replans/${encodeURIComponent(job.id)}`),api(`/api/v1/replans/${encodeURIComponent(job.id)}/explanation`)]);if(replayMode||generation!==currentGeneration||state?.last_replan?.id!==job.id)return;detail=d;explanation=e;window.stationDetail=d;window.stationExplanation=e;renderAll();}
   catch(error){if(generation===currentGeneration){detailKey=null;showError(error);}}
 }
 function accept(value,reset=false){
-  if(!reset&&state?.run_id===value.run_id&&value.event_seq<state.event_seq)return;
+  if(!reset&&liveState?.run_id===value.run_id&&value.event_seq<liveState.event_seq)return;
+  liveState=value;window.stationLiveState=value;
+  if(replayMode)return;
   if(state?.run_id!==value.run_id){selected=null;detail=null;explanation=null;detailKey=null;events.length=0;observed.clear();}
   if(detail?.job.id!==value.last_replan?.id || ['queued','running'].includes(value.last_replan?.status)){detail=null;explanation=null;}
   state=value;window.stationState=state;renderAll();getDetails();
@@ -154,23 +170,24 @@ function receive(event){
       const names={tick:'Ход исполнения',incident_batch:'Зарегистрирован инцидент',incident_resolved:'Ограничение снято',operation_started:'Начата операция',operation_completed:'Завершена операция',plan_applied:'Применён проверенный план',replan_updated:'Состояние расчёта',simulation_control:'Режим симуляции',recovery:'Восстановление станции'};
       if(data.cause?.kind!=='tick'){events.unshift(`${displayTime(value).split(' · ')[0]} · ${names[data.cause?.kind]??'Изменение станции'}${value.last_replan?` · ${label('replanStatus',value.last_replan.status)}`:''}${value.conflicts.length?` · конфликтов ${value.conflicts.length}`:''}`);if(events.length>80)events.pop();}
     }
-    if(event.type==='reset'||!state||state.run_id!==value.run_id||value.event_seq>state.event_seq)accept(value,event.type==='reset');
+    if(event.type==='reset'||!liveState||liveState.run_id!==value.run_id||value.event_seq>liveState.event_seq)accept(value,event.type==='reset');
     $('event-log').replaceChildren(...events.map(s=>node('li',s)));status();
   }catch(error){showError(error);}
 }
 function connect(){
   stopStream();if(!user||!state)return;connection='CONNECTING';status();const ownGeneration=generation;
-  stream=new EventSource(`/api/v1/stream?after=${encodeURIComponent(`${state.run_id}:${state.event_seq}`)}`);for(const kind of ['state','reset'])stream.addEventListener(kind,event=>{if(ownGeneration===generation)receive(event);});
+  const current=liveState??state;stream=new EventSource(`/api/v1/stream?after=${encodeURIComponent(`${current.run_id}:${current.event_seq}`)}`);for(const kind of ['state','reset'])stream.addEventListener(kind,event=>{if(ownGeneration===generation)receive(event);});
   stream.onerror=()=>{
     stopStream();connection='RECONNECTING';status();
     retryTimer=setTimeout(async()=>{if(ownGeneration!==generation||!user)return;try{await api('/api/v1/auth/me');connect();}catch(error){if(error.status===401){clearSession();showError(error);}else connect();}},Math.min(10000,1000*2**retries++)*(.8+Math.random()*.4));
   };
 }
-async function snapshot(){const ownGeneration=generation;const value=await api('/api/v1/snapshot');if(ownGeneration!==generation||!user)return;accept(value);fillTargets();connect();}
+async function snapshot(){const ownGeneration=generation;const value=await api('/api/v1/snapshot');if(ownGeneration!==generation||!user)return;accept(value);fillTargets();connect();loadConfig();}
 function uuid(){if(crypto.randomUUID)return crypto.randomUUID();const b=crypto.getRandomValues(new Uint8Array(16));b[6]=b[6]&15|64;b[8]=b[8]&63|128;const s=Array.from(b,x=>x.toString(16).padStart(2,'0')).join('');return `${s.slice(0,8)}-${s.slice(8,12)}-${s.slice(12,16)}-${s.slice(16,20)}-${s.slice(20)}`;}
-async function command(path,fields){
-  if(!writable())return;clearError();pending=true;controls();
-  try{return await api(path,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({request_id:uuid(),run_id:state.run_id,expected_input_revision:state.input_revision,...fields})});}
+async function command(path,fields,method='POST',permission='dispatcher'){
+  const allowed=permission==='complete'?connectedWrite()&&['operator','admin'].includes(user.role):permission==='admin'?connectedWrite()&&user.role==='admin':writable();
+  if(!allowed)return;clearError();pending=true;controls();
+  try{return await api(path,{method,headers:{'Content-Type':'application/json'},body:JSON.stringify({request_id:uuid(),run_id:state.run_id,expected_input_revision:state.input_revision,...fields})});}
   catch(error){showError(error);if(error.status===409)await snapshot();if(error.status===401)clearSession();}
   finally{pending=false;controls();}
 }
@@ -179,7 +196,7 @@ function fillTargets(){
   const choices=kind==='track_closure'?state.tracks.map(t=>[t.id,`${t.id} · ${label('trackKind',t.kind)}`]):kind==='resource_loss'?state.resources.map(r=>[r.id,`${r.id} · ${label('resourceKind',r.kind)}`]):kind==='train_delay'?state.trains.map(t=>[t.id,`${t.id} · ${label('trainStatus',t.status)}`]):[...new Set(state.trains.map(t=>t.destination_id))].map(id=>[id,destination(id)]);
   $('incident-target').replaceChildren(...choices.map(([id,text])=>{const o=node('option',text);o.value=id;return o;}));if(choices.some(([id])=>id===previous))$('incident-target').value=previous;$('delay-field').hidden=kind!=='train_delay';
 }
-function clearSession(){generation++;stopStream();state=null;detail=null;explanation=null;detailKey=null;selected=null;lastReceived=0;events.length=0;observed.clear();window.stationState=null;window.stationDetail=null;window.stationExplanation=null;window.stationMetrics.frames.length=0;connection='OFFLINE';for(const id of ['station-svg','raw-state','train-list','selection','shunting','operations','resources','train-resources','conflicts','incidents','plans','event-log'])$(id).replaceChildren();auth(null);status();}
+function clearSession(){generation++;replayGeneration++;clearTimeout(replayTimer);stopStream();state=null;liveState=null;replayMode=false;historyItems=[];historyWindow=null;$('history-panel').hidden=true;$('return-live').hidden=true;detail=null;explanation=null;detailKey=null;selected=null;lastReceived=0;events.length=0;observed.clear();window.stationState=null;window.stationLiveState=null;window.stationHistory=null;window.stationDetail=null;window.stationExplanation=null;window.stationMetrics.frames.length=0;connection='OFFLINE';for(const id of ['station-svg','raw-state','train-list','selection','shunting','operations','resources','train-resources','conflicts','incidents','plans','event-log','actual-kpi','history-events'])$(id).replaceChildren();$('config-json').value='';auth(null);status();}
 $('login-form').addEventListener('submit',async event=>{event.preventDefault();clearError();const submit=$('login-form').querySelector('button');submit.disabled=true;const ownGeneration=++generation;try{const result=await api('/api/v1/auth/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({username:$('username').value,password:$('password').value})});if(ownGeneration!==generation)return;auth(result.user);await snapshot();}catch(error){if(ownGeneration===generation)showError(error);}finally{$('password').value='';submit.disabled=false;}});
 $('logout').addEventListener('click',async()=>{try{await api('/api/v1/auth/logout',{method:'POST'});clearSession();}catch(error){showError(error);}});
 $('play').addEventListener('click',()=>command('/api/v1/simulation/control',{action:'play'}));$('pause').addEventListener('click',()=>command('/api/v1/simulation/control',{action:'pause'}));$('set-speed').addEventListener('click',()=>command('/api/v1/simulation/control',{action:'set_speed',speed:Number($('speed').value)}));$('replan').addEventListener('click',()=>command('/api/v1/replans',{reason:'manual'}));
@@ -187,3 +204,38 @@ $('incident-kind').addEventListener('change',fillTargets);
 $('incident-form').addEventListener('submit',event=>{event.preventDefault();const item={kind:$('incident-kind').value,target_id:$('incident-target').value,duration_sim_s:Number($('incident-duration').value)*60};if(item.kind==='train_delay')item.delay_sim_s=Number($('incident-delay').value)*60;command('/api/v1/incidents',{items:[item]});});
 setInterval(status,250);
 api('/health/ready').then(()=>{$('health').textContent='Backend готов';}).catch(e=>{$('health').textContent='Backend недоступен';showError(e);});
+
+function renderActual(){
+  const index=state.efficiency;$('actual-window').textContent=`${clock(index.window_start_sim_s)}–${clock(index.window_end_sim_s)} · учебное время`;$('actual-kpi').replaceChildren();
+  const score=node('div',null,'metric');score.append(node('strong',index.score??'—'),node('span',index.category?label('efficiencyCategory',index.category):'Недостаточно данных'),node('p',`Факт · ${index.formula_version}`,'subtle'));$('actual-kpi').append(score);
+  const table=node('table');const header=node('tr');['Фактор','Фактическое значение','Штраф 0..1','Потеря пунктов'].forEach(s=>header.append(node('th',s)));table.append(header);
+  index.factors.forEach(f=>{const row=node('tr');row.title=f.reason;const units={ratio:'доля',sim_seconds:'с',count:'шт.'};row.append(node('td',FACTOR_NAMES[f.key]),node('td',`${f.raw==null?'—':f.raw.toFixed(3)} ${units[f.unit]??f.unit}`),node('td',f.norm_penalty?.toFixed(3)??'—'),node('td',f.contribution==null?'—':`−${f.contribution.toFixed(2)}`));table.append(row);});$('actual-kpi').append(table);
+}
+async function loadConfig(){
+  const own=generation;try{const cfg=await api('/api/v1/config');if(own!==generation||!user)return;$('config-json').value=JSON.stringify({weights:cfg.weights,category_thresholds:cfg.category_thresholds,planner:cfg.planner},null,2);$('config-note').textContent=`Текущая конфигурация LIVE · версия ${cfg.config_version}. Изменяет только администратор.`;}catch(error){if(own===generation)showError(error);}
+}
+function wallLabel(value){return new Date(value).toLocaleString('ru-RU',{timeZone:'Asia/Almaty'});}
+async function showHistory(index){
+  const token=++replayGeneration,own=generation,item=historyItems[index];if(!item)return;
+  try{const saved=await api(`/api/v1/history/snapshot?run_id=${encodeURIComponent(historyWindow.run_id)}&seq=${item.seq}`);if(!replayMode||token!==replayGeneration||own!==generation)return;state=saved;selected=null;detail=null;explanation=null;window.stationState=state;window.stationHistory={window:historyWindow,items:historyItems,selected_seq:item.seq};$('history-events').value=String(index);$('history-slider').value=String(index);$('history-selected').textContent=`${wallLabel(item.server_time)} · ${clock(saved.sim_time_s)} · ${item.message} · seq ${item.seq}`;renderAll();}catch(error){if(own===generation)showError(error);}
+}
+async function openHistory(){
+  if(!liveState||!user)return;clearError();const own=generation,to=new Date().toISOString(),from=new Date(Date.now()-900000).toISOString();const range={run_id:liveState.run_id,from_wall_time:from,to_wall_time:to};
+  $('history-open').disabled=true;
+  try{let rows=[],cursor=0,page;do{const query=new URLSearchParams({...range,from_seq:String(cursor),limit:'500'});page=await api(`/api/v1/history?${query}`);rows.push(...page.items);cursor=page.next_from_seq;}while(page.has_more&&own===generation);
+    if(own!==generation||!user)return;
+    const anchor=await api(`/api/v1/history/snapshot?run_id=${encodeURIComponent(range.run_id)}&seq=${page.anchor_seq}`);
+    if(own!==generation||!user)return;
+    historyWindow=range;historyItems=[{run_id:range.run_id,seq:page.anchor_seq,server_time:anchor.server_time,sim_time_s:anchor.sim_time_s,message:'Опорное сохранённое состояние'},...rows.filter(r=>r.seq!==page.anchor_seq)];replayMode=true;detail=null;explanation=null;$('history-panel').hidden=false;
+    $('history-range').textContent=`Запрошены последние 15 wall-минут: ${wallLabel(from)}–${wallLabel(to)}. Доступная история: ${wallLabel(page.available_from_wall_time)}–${wallLabel(page.available_to_wall_time)}. Новый run может быть короче.`;
+    $('history-events').replaceChildren(...historyItems.map((item,i)=>{const o=node('option',`${wallLabel(item.server_time)} · ${item.message} · ${item.sim_time_s} sim-с`);o.value=String(i);return o;}));$('history-slider').max=String(historyItems.length-1);await showHistory(0);
+  }catch(error){if(own===generation)showError(error);}finally{controls();}
+}
+function returnLive(){replayMode=false;replayGeneration++;clearTimeout(replayTimer);$('history-panel').hidden=true;state=liveState;selected=null;detail=null;explanation=null;detailKey=null;window.stationState=state;window.stationHistory=null;renderAll();getDetails();fillTargets();}
+async function downloadCsv(){
+  if(!state||!user)return;clearError();const range=replayMode?historyWindow:{run_id:state.run_id,from_wall_time:new Date(Date.now()-900000).toISOString(),to_wall_time:new Date().toISOString()};
+  try{const response=await fetch(`/api/v1/reports.csv?${new URLSearchParams(range)}`,{credentials:'same-origin'});if(!response.ok){const error=new Error('Не удалось выгрузить CSV');error.body=await response.json();throw error;}const blob=await response.blob(),url=URL.createObjectURL(blob),link=node('a');link.href=url;link.download='station-report.csv';link.click();setTimeout(()=>URL.revokeObjectURL(url),5000);}catch(error){showError(error);}
+}
+$('history-open').addEventListener('click',openHistory);$('return-live').addEventListener('click',returnLive);$('history-events').addEventListener('change',()=>showHistory(Number($('history-events').value)));
+$('history-slider').addEventListener('input',()=>{clearTimeout(replayTimer);replayTimer=setTimeout(()=>showHistory(Number($('history-slider').value)),120);});$('csv-download').addEventListener('click',downloadCsv);$('load-config').addEventListener('click',loadConfig);
+$('save-config').addEventListener('click',async()=>{try{const patch=JSON.parse($('config-json').value);const receipt=await command('/api/v1/config',{patch},'PATCH','admin');if(receipt)$('config-note').textContent=`Сохранена версия ${receipt.result.config_version}; запрос расчёта зарегистрирован.`;}catch(error){showError(error);}});

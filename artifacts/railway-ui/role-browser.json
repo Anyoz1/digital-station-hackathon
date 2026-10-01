@@ -1,0 +1,35 @@
+{
+  "original": {
+    "run": "run-513160d5-fb78-4b87-915b-827be2d1f920",
+    "seq": 116,
+    "sim": 995
+  },
+  "cleared": {
+    "workspaceHidden": true,
+    "svgChildren": 0,
+    "raw": ""
+  },
+  "viewer": {
+    "role": "Наблюдатель",
+    "playDisabled": true,
+    "incidentDisabled": true
+  },
+  "denied": {
+    "status": 403,
+    "body": {
+      "error": {
+        "code": "FORBIDDEN",
+        "message": "Действие доступно диспетчеру или администратору",
+        "details": {},
+        "request_id": "7e8d975b-bbab-48fb-b236-29bcaad7dd34"
+      }
+    }
+  },
+  "after": {
+    "run": "run-513160d5-fb78-4b87-915b-827be2d1f920",
+    "sim": 995,
+    "mode": "paused",
+    "persona": "Дежурный по станции",
+    "errors": []
+  }
+}

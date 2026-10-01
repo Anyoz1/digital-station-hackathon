@@ -52,18 +52,18 @@ async def bootstrap(sessions, settings) -> str:
         return await create_initial_run(session)
 
 
-async def create_initial_run(session):
+async def create_initial_run(session, scenario_id="demo_main_v1"):
     """Create a new initial run without deleting existing runs (also used by isolated tests)."""
     now = datetime.now(UTC)
     run_id = f"run-{uuid4()}"
-    scenario = await session.get(Scenario, ("demo_main_v1", 1))
+    scenario = await session.get(Scenario, (scenario_id, 1))
     template = State.model_validate(scenario.payload["initial_state"])
     template.run_id, template.server_time = run_id, utc_now()
     state = template.model_dump(mode="json")
     session.add(
         Run(
             id=run_id,
-            scenario_id="demo_main_v1",
+            scenario_id=scenario_id,
             scenario_version=1,
             seed=42,
             status="paused",
@@ -77,7 +77,7 @@ async def create_initial_run(session):
             run_id=run_id,
             state_version=1,
             input_revision=1,
-            config_version=1,
+            config_version=template.config_version,
             sim_time_s=0,
             active_plan_id=None,
             updated_at=now,
@@ -102,3 +102,27 @@ async def create_initial_run(session):
         StateSnapshot(run_id=run_id, seq=1, created_at=now, sim_time_s=0, schema_version="1.0", payload=state)
     )
     return run_id
+
+
+async def ensure_manual_scenario(session):
+    """The approved separate fixture: same topology/trains, one assigned manual inspection."""
+    if await session.get(Scenario, ("manual-control-v1", 1)) is not None:
+        return
+    main = await session.get(Scenario, ("demo_main_v1", 1))
+    initial = State.model_validate(main.payload["initial_state"])
+    initial.scenario_id = "manual-control-v1"
+    op = next(o for o in initial.operations if o.id == "op-T1-inspection")
+    op.execution_mode, op.assigned_user_id = "manual", "u-operator"
+    session.add(
+        Scenario(
+            id="manual-control-v1",
+            version=1,
+            created_at=datetime.now(UTC),
+            payload={
+                **main.payload,
+                "initial_state": initial.model_dump(mode="json"),
+                "smoke_plan": fixture(initial),
+            },
+        )
+    )
+    await session.flush()
