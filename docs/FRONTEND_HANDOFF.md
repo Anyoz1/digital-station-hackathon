@@ -1,6 +1,6 @@
 # Frontend цифровой станции
 
-Статус на 1 октября 2026 года: **предлагаемое техническое задание и контракт v1.0, ещё не утверждённые пользователем**. Документ переработан после сравнительной матрицы [RESEARCH.md](RESEARCH.md): выбрана учебная станция среднего масштаба, ограничен активный горизонт планирования. Backend, frontend, `/tech`, endpoint-ы и fixture-файлы пока не реализованы. Этот документ позволяет параллельно подготовить интерфейс после утверждения ТЗ; перечисление endpoint-а не означает его готовность.
+Статус на 1 октября 2026 года: **контракт v1.0 принят пользователем как основа и зафиксирован перед H0–H2**. Документ переработан после сравнительной матрицы [RESEARCH.md](RESEARCH.md): выбрана учебная станция среднего масштаба, ограничен активный горизонт планирования. Перечисление endpoint-а не означает его готовность: реализованные возможности и mock перечисляются отдельно в [отчёте H0–H2](H0_H2_REPORT.md). Основной frontend друг разрабатывает самостоятельно.
 
 Каноническая предметная модель, ограничения и формулы находятся в [SPEC.md](SPEC.md). Здесь закреплены представление данных и сетевой контракт. Изменения названий полей и enum после контрольной точки H2 допускаются только согласованно в обоих документах; добавлять необязательные поля можно без ломания клиента. План работ — [PLAN_24H.md](PLAN_24H.md).
 
@@ -37,6 +37,8 @@
 На узком экране можно складывать панели вертикально. Цвет не должен быть единственным сигналом: у закрытого пути и ошибки есть подпись/иконка. Гант можно построить обычными DOM-элементами; дополнительная диаграммная библиотека не обязательна. Движение рисуется по route geometry и server progress. Интерполяция между полученными отсчётами допустима только как оформление и не меняет состояние, статусы или занятость.
 
 Технический `/tech` делает backend-исполнитель независимо за ≤0,75ч: одна HTML/JS-страница, login, сырые таблицы State, версии/связь, stream/event log, play/pause/step/speed/reset, raw JSON-форма incident-команды, replan/result/apply. Это реальный клиент тех же API/SSE, без диаграмм, второго дизайна и бизнес-логики. Manual complete и history проверяются общей формой endpoint+JSON или Swagger, CSV — ссылкой на export; отдельного replay-slider в `/tech` нет. Полноценную схему/Гант/replay из таблицы выше реализует основной frontend, их отсутствие в `/tech` не означает исключение из продукта.
+
+На H0–H2 по уточнению пользователя появляется только `/tech/smoke`: health/ready, login/logout/me, GET snapshot, таблицы путей/поездов/ресурсов, версии и raw JSON, понятные ошибки API. SSE и команды симуляции добавляются позже, на предусмотренных этапах. Страница не подменяет состояние fixtures и не исполняет локальных переходов.
 
 ## Подключение и авторизация
 
@@ -85,6 +87,7 @@ server: {
 - `input_revision` возрастает при изменении условий планирования: инцидент, ручное подтверждение, конфигурация, play/pause/step/speed, принятие новой ручной команды, меняющей условия. Предсказуемый tick и выполнение уже учтённого плана не увеличивают её. Это позволяет планировщику завершаться при потоке 1 Гц.
 - `config_version` обозначает точную версию весов/порогов/лимитов, использованную при расчёте.
 - Все `*_sim_s` — целые секунды от `scenario_epoch = "2026-10-01T08:00:00Z"`; длительности тоже секунды. Симулятор хранит дробный остаток wall-time внутри, наружу выдаёт целые секунды.
+- ETA (`expected_arrival_sim_s`) — момент готовности начать входной маршрут; `actual_arrival_sim_s` — окончание arrival на R; due/actual departure — окончание выходного движения. Занятость R начинается раньше actual_arrival, со старта arrival. Время входа для метрик берётся из `Operation.actual_start_sim_s`, не угадывается по статусу поезда.
 - Все `*_at`, `server_time` — UTC ISO 8601 с миллисекундами. Реальная latency и replan duration измеряются в **wall ms**, не sim-time. `speed` только 1, 5 или 10.
 - `null` означает отсутствующее/ещё не наступившее значение. Нулевое время и нулевая метрика не заменяют `null`.
 - `priority`: 1 — низкий, 2 — обычный, 3 — высокий. `processing_kind`, `service_profile_id` и `type` независимы от приоритета. Тип не выбирает цепочку работ автоматически.
@@ -221,11 +224,11 @@ interface Operation {
 
 `Track.train_ids` отражает присутствующие составы, включая fixed с пустым group_ids. `occupied_length_m` приходит готовой от backend: frontend не суммирует независимо train/group/resource длины, иначе посчитает вагоны или встроенную тягу дважды. `locomotive_ids` обозначает отдельные локомотивы; TP1 отображается внутри P1 через traction_resource_id. Во время движения `location.kind=route`; поезд/группа/локомотив не рисуются одновременно стоящими на двух путях. `Resource.location=null` допустимо для персонала, которому не задаётся координата; у отдельного локомотива и самоходной тяговой единицы location обязательна. Для kind=boundary задан boundary_id (BW/BE), kind=track — track_id, kind=route — route_id/operation_id/route_progress; неприменимые поля равны null.
 
-Семь фаз манёвра: `empty_to_source` — D1→W→source без вагонов (60с), `couple` (60с), `pull_to_lead` — source→W→H (90с), `reverse` (30с), `push_to_target` — H→W→target (90с), `uncouple` (30с), `return_to_depot` — target→W→D1 (60с). Итого 420 sim-секунд. Для всей макрооперации резервируются D1, W, H, source, target, локомотив и составительская бригада. UI рисует текущую фазу по server location и не выводит занятость ресурсов из одной общей полосы progress. Reserved/assigned track не равен фактической occupancy. Блокировки и допустимость назначений определяет backend.
+Семь фаз манёвра: `empty_to_source` — D1→ZW→H (25с), разворот на H (10с), H→ZW→source (25с); `couple` — остановка/сцепка/подготовка обратного выхода (60с); `pull_to_lead` — source→ZW→H (90с); `reverse` (30с); `push_to_target` — H→ZW→target (90с); `uncouple` — остановка/отцепка/подготовка обратного выхода (30с); `return_to_depot` — target→ZW→H (25с), разворот (10с), H→ZW→D1 (25с). Итого420 sim-секунд. Во время разворота location=track H/source/target, route_progress=null, а не вымышленное движение внутри стрелки. Operation.route_ids содержит шесть legs в порядке исполнения; route geometry каждого leg задаётся сервером. Для всей макрооперации резервируются D1, W, H, source, target, локомотив и составительская бригада. UI рисует текущую фазу по server location и не выводит занятость ресурсов из одной общей полосы progress. Reserved/assigned track не равен фактической occupancy. Блокировки и допустимость назначений определяет backend.
 
 Неизвестный либо отключённый `service_profile_id` в scenario/input возвращает `422 UNKNOWN_SERVICE_PROFILE`. Сервер проверяет требования профиля к составу, ресурсам и маршрутам; несоответствие — `422 PROFILE_REQUIREMENT_MISMATCH`. Ядро не разрешает/запрещает операции по четырём значениям Train.type. `passenger_transit_v1` включён в `demo_main_v1`; `service_transit_v1` предусмотрен как выключенное по умолчанию P2-расширение. Приоритет P1 явно задан числом 3 в сценарии; тип сам по себе его не повышает.
 
-Узлы ZW/ZE агрегируют внутреннюю работу стрелок в две взаимно исключающие горловины; `switch_ids` хранит подписи моделируемых стрелок. Фактический владелец блокировки зоны приходит в `State.zones.active_operation_id`: frontend не рассчитывает его по пересечению route_ids. В P0 нет команды закрытия всей зоны, поэтому её availability обычно open; инцидент закрывает выбранный путь. Полной модели электрической централизации нет.
+Узлы ZW/ZE агрегируют внутреннюю работу стрелок в две взаимно исключающие горловины; `switch_ids` хранит подписи моделируемых стрелок. Для схемы H и BW находятся с западной стороны ZW, R/S/C/D1 — с восточной. Соседство через ZW не разрешает прямой маршрут боковая ветвь→боковая ветвь: маневровые legs идут через H. Фактический владелец блокировки зоны приходит в `State.zones.active_operation_id`: frontend не рассчитывает его по пересечению route_ids. В P0 нет команды закрытия всей зоны, поэтому её availability обычно open; инцидент закрывает выбранный путь. Полной модели электрической централизации нет.
 
 ```ts
 interface Incident {
@@ -250,6 +253,7 @@ interface Efficiency {
 }
 interface PlanSummary {
   id: string; status: PlanStatus; validity: PlanValidity;
+  optimization_run_id: string;
   strategy: string; base_input_revision: number; base_state_version: number;
   base_active_plan_id: string | null;
   config_version: number; created_at: string; cutover_sim_s: number;
@@ -277,7 +281,7 @@ interface ReplanJob {
 
 ## Endpoint-ы и команды
 
-Все mutating domain-запросы имеют `request_id` UUID, `run_id`, `expected_input_revision`. Новый запрос — новый UUID; сетевой retry **того же** запроса сохраняет UUID и тело. Сервер возвращает прежний результат без повторного эффекта. Один UUID с другим телом — `409 IDEMPOTENCY_MISMATCH`. На `409 REVISION_MISMATCH` клиент обновляет snapshot и предлагает повторить действие; скрыто повторять потенциально устаревшую команду с новой revision нельзя.
+Все mutating domain-запросы имеют `request_id` UUID, `run_id`, `expected_input_revision`. Новый запрос — новый UUID; сетевой retry **того же** запроса сохраняет UUID и тело. После auth сервер сначала ищет receipt, а затем проверяет текущие run/revision: повтор уже выполненного reset возвращает прежний результат, даже когда текущий run изменился. Один UUID с другим телом — `409 IDEMPOTENCY_MISMATCH`. На `409 REVISION_MISMATCH` клиент обновляет snapshot и предлагает повторить действие; скрыто повторять потенциально устаревшую команду с новой revision нельзя.
 
 ```ts
 interface CommandEnvelope {
@@ -305,7 +309,7 @@ interface CommandReceipt {
 | `GET /replans/{id}` | Job detail | `200 {job,plans}` |
 | `POST /plans/{id}/apply` | Envelope; применить предложенную актуальную альтернативу | `200 receipt`, `result={plan_id}` |
 | `POST /operations/{id}/complete` | Envelope; manual service operation при выполненных предусловиях | `200 receipt`, `result={operation_id,replan_id}` |
-| `GET /history` | `run_id`, `from_seq` exclusive (default 0), `limit` 1..500 (default 100), опционально `from_wall_time`,`to_wall_time` UTC ISO | `{items:HistoryEvent[],next_from_seq:number,has_more:boolean}` |
+| `GET /history` | `run_id`, `from_seq` exclusive (default 0), `limit` 1..500 (default 100), опционально `from_wall_time`,`to_wall_time` UTC ISO | `{items:HistoryEvent[],next_from_seq:number,has_more:boolean,anchor_seq:number,available_from_wall_time:string,available_to_wall_time:string}` |
 | `GET /history/snapshot` | `run_id`, `seq` | `200 State` на запрошенном seq; не изменяет live |
 | `GET /reports.csv` | `run_id`; опционально `from_wall_time`,`to_wall_time` | UTF-8 CSV attachment с реальными KPI/планами/инцидентами |
 | `GET /config` | Все authenticated users | `{config_version,weights,category_thresholds,planner,units}` |
@@ -462,7 +466,7 @@ data: {"state":<полный State>,"cause":{"kind":"incident_batch","entity_ids
 
 `no_feasible_plan`, `timeout` и `failed` — разные исходы. При отсутствии допустимого плана UI показывает причины и сохраняет выполняемые операции; невозможные новые старты блокируются. «Не найден за лимит» не означает «невозможность доказана». Не окрашивать такой результат зелёным и не считать его выполнением требования успешного перепланирования за 5 секунд.
 
-Исторический план не применяется из replay. Для актуальной альтернативы кнопка доступна только при `can_apply=true`; `POST /plans/{id}/apply` может вернуть `409 PLAN_STALE`, если условия успели измениться. Старое расписание и новые forecast планы не меняют фактические положения поездов.
+Исторический план не применяется из replay. Ручной выбор альтернативы в MVP: pause → свежий replan → сравнить/применить → play. `can_apply=true` только на паузе при sim_time=cutover, совпадающих input/config revisions/prefix и общем optimization_run_id с текущим active plan. Worker-публикация проверяет base_active_plan_id; ручное переключение на sibling того же job допускается после autoapply победителя, хотя его base_active_plan_id уже исторический. Применение повышает input_revision; дальнейшие старые варианты становятся stale. `POST /plans/{id}/apply` может вернуть `409 PLAN_STALE`, если условия успели измениться. В running/replay кнопка выключена. Старое расписание и новые forecast планы не меняют фактические положения поездов.
 
 ## История и replay
 
@@ -478,7 +482,7 @@ interface HistoryEvent {
 }
 ```
 
-Slider получает события за `[now−15min, now]` через `/history?run_id=...&from_wall_time=...&to_wall_time=...`, переходит по seq через `/history/snapshot?run_id=...&seq=...`. При `has_more=true` следующая страница использует `from_seq=next_from_seq` с теми же временными границами. Клиент может кэшировать прочитанные snapshots и проигрывать их с регулируемой скоростью UI; это replay сохранённого состояния, а не повторный расчёт симуляции. Действия управления станцией в replay скрыты/disabled. Live SSE остаётся подключён, складывает только последний live State. Возврат live мгновенно показывает его; позиции в history не меняют live cursor.
+Slider получает события за `[now−15min, now]` через `/history?run_id=...&from_wall_time=...&to_wall_time=...`, переходит по seq через `/history/snapshot?run_id=...&seq=...`. `anchor_seq` — последнее доступное состояние не позже начала запрошенного/доступного окна; если run моложе, его начальный seq. Оно задаёт начальное состояние даже при items=[] после долгой паузы. Доступный диапазон ограничивается available_from/to_wall_time; между событиями состояние неизменно, wall-время slider может идти дальше времени последнего факта. При `has_more=true` следующая страница использует `from_seq=next_from_seq` с теми же временными границами. Клиент может кэшировать прочитанные snapshots и проигрывать их с регулируемой скоростью UI; это replay сохранённого состояния, а не повторный расчёт симуляции. Действия управления станцией в replay скрыты/disabled. Live SSE остаётся подключён, складывает только последний live State. Возврат live мгновенно показывает его; позиции в history не меняют live cursor.
 
 ## Ошибки
 
@@ -547,9 +551,11 @@ interface Metrics {
   published_events: number; connected_clients: number;
   actor_queue_depth: number; planner_running_jobs: number; planner_pending_jobs: number;
   ui_render: {client_id: string; latency_upper: DurationStats; receive_to_render: DurationStats;
-    invalid_samples: number; hidden_samples: number; unreported_events: number}[];
+    invalid_samples: number; hidden_samples: number; unreported_events: number;
+    latency_exceedances: number}[]; // upper latency >=500ms
   replans: {elapsed: DurationStats; compute: DurationStats; succeeded: number;
-    no_feasible_plan: number; stale: number; timeout: number; failed: number};
+    no_feasible_plan: number; stale: number; timeout: number; failed: number;
+    deadline_exceedances: number}; // elapsed >5000ms
 }
 ```
 
