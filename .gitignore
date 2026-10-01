@@ -1,0 +1,16 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.env
+.env.*
+!.env.example
+node_modules/
+dist/
+build/
+.vscode/
+.idea/
+*.log
+
+# Не публикуем исходные материалы организаторов
+hackathon_docs/
