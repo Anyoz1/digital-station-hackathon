@@ -594,7 +594,18 @@ class StationActor:
                 (t["kind"] for t in transitions if t["kind"] in {"operation_blocked", "incident_resolved"}),
                 None,
             )
-            if trigger or self.coordinator.owner or self.state.active_plan_id is None:
+            # Approved manual fixture executes its guarded smoke prefix until the
+            # human service completion is known. A redundant control-only search
+            # would impose a barrier on start0, return the same manual wait, and
+            # leave that unchanged timetable irreversibly START_TIME_MISSED.
+            # Incident/guard/config requests still replan; no safety check bypass.
+            manual_wait = (
+                not self.coordinator.owner
+                and self.state.last_replan is not None
+                and self.state.last_replan.status == "no_feasible_plan"
+                and "MANUAL_CONFIRMATION_REQUIRED" in self.state.last_replan.outcome_reason_codes
+            )
+            if trigger or self.coordinator.owner or self.state.active_plan_id is None and not manual_wait:
                 await self.coordinator.request(
                     "guard_violation" if trigger == "operation_blocked" else trigger or "simulation_control",
                     ingress,

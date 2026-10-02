@@ -1,0 +1,30 @@
+{
+  "items": [
+    {
+      "id": "demo_main_v1",
+      "name": "Основное смешанное демо",
+      "description": "12 путей; 6 грузовых и 1 пассажирский поезд; учебный сценарий",
+      "train_count": 7,
+      "horizon_sim_s": 7200,
+      "enabled_service_profiles": [
+        "freight_transit_v1",
+        "freight_local_v1",
+        "freight_reclassify_v1",
+        "passenger_transit_v1"
+      ]
+    },
+    {
+      "id": "manual-control-v1",
+      "name": "Контроль ручного осмотра",
+      "description": "12 путей; 6 грузовых и 1 пассажирский поезд; учебный сценарий",
+      "train_count": 7,
+      "horizon_sim_s": 7200,
+      "enabled_service_profiles": [
+        "freight_transit_v1",
+        "freight_local_v1",
+        "freight_reclassify_v1",
+        "passenger_transit_v1"
+      ]
+    }
+  ]
+}

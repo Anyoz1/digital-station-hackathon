@@ -1,0 +1,8 @@
+{
+  "user": {
+    "id": "u-dispatcher",
+    "display_name": "Диспетчер",
+    "role": "dispatcher",
+    "resource_ids": []
+  }
+}

@@ -1,7 +1,7 @@
 [project]
 name = "digital-station"
-version = "0.1.0"
-description = "ALT hackathon digital station — H2–H5 physical simulator and SSE"
+version = "1.0.0"
+description = "ALT hackathon digital station — backend v1.0"
 requires-python = ">=3.12,<3.13"
 dependencies = [
   "fastapi>=0.115,<1", "uvicorn>=0.34,<1", "pydantic>=2.10,<3",

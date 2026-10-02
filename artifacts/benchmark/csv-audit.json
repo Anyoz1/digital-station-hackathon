@@ -1,0 +1,18 @@
+{
+  "tool": "@oai/artifact-tool",
+  "operation": "read-only CSV audit",
+  "rows": 12,
+  "paired_cases": 6,
+  "exact_quality_inputs": true,
+  "exact_live_inputs": true,
+  "units_and_raw_reconciled": true,
+  "index_contributions_reconciled": true,
+  "blank_replan_values": 0,
+  "independent_validation_passed": 12,
+  "live_timing_source_present": true,
+  "heuristic_lower_actual_index": [
+    "train_delay",
+    "burst5",
+    "burst10"
+  ]
+}

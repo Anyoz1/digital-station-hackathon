@@ -1,0 +1,45 @@
+{
+  "console": [],
+  "page": [],
+  "http": [],
+  "results": [
+    {
+      "url": "http://127.0.0.1:5173/tech/station",
+      "snapshot": {
+        "tracks": 12,
+        "trains": 7,
+        "mode": "paused"
+      },
+      "persona": "Дежурный по станции",
+      "cookies": [
+        {
+          "name": "station_session",
+          "httpOnly": true,
+          "sameSite": "Lax",
+          "secure": false,
+          "domain": "127.0.0.1"
+        }
+      ],
+      "SSE": "● Связь есть"
+    },
+    {
+      "url": "http://10.63.52.9:5173/tech/station",
+      "snapshot": {
+        "tracks": 12,
+        "trains": 7,
+        "mode": "paused"
+      },
+      "persona": "Дежурный по станции",
+      "cookies": [
+        {
+          "name": "station_session",
+          "httpOnly": true,
+          "sameSite": "Lax",
+          "secure": false,
+          "domain": "10.63.52.9"
+        }
+      ],
+      "SSE": "● Связь есть"
+    }
+  ]
+}

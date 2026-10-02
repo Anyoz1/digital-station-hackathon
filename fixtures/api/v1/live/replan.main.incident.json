@@ -1,0 +1,2369 @@
+{
+  "job": {
+    "id": "rp-c63ce861-bae7-4cb0-8176-6a34e438b12e",
+    "status": "succeeded",
+    "reason": "incident_batch",
+    "created_at": "2026-10-02T00:09:28.733Z",
+    "started_at": "2026-10-02T00:09:28.929Z",
+    "finished_at": "2026-10-02T00:09:29.699Z",
+    "base_input_revision": 9,
+    "candidate_plan_ids": [
+      "plan-rp-c63ce861-bae7-4cb0-8176-6a34e438b12e-0",
+      "plan-rp-c63ce861-bae7-4cb0-8176-6a34e438b12e-1"
+    ],
+    "applied_plan_id": "plan-rp-c63ce861-bae7-4cb0-8176-6a34e438b12e-0",
+    "elapsed_ms": 966.2668140008464,
+    "compute_ms": 472.99278700666036,
+    "validation_ms": 161.6386909954599,
+    "deadline_ms": 5000,
+    "outcome_reason_codes": []
+  },
+  "plans": [
+    {
+      "id": "plan-rp-c63ce861-bae7-4cb0-8176-6a34e438b12e-0",
+      "status": "active",
+      "validity": "feasible",
+      "optimization_run_id": "rp-c63ce861-bae7-4cb0-8176-6a34e438b12e",
+      "strategy": "earliest_due/ascending",
+      "base_input_revision": 9,
+      "base_state_version": 121,
+      "base_active_plan_id": "plan-rp-36ff73d8-7dce-4dcf-8117-df5080fa94ec-0",
+      "config_version": 3,
+      "created_at": "2026-10-02T00:09:29.651Z",
+      "cutover_sim_s": 737,
+      "forecast": {
+        "mode": "forecast",
+        "formula_version": "efficiency-v1",
+        "window_start_sim_s": 737,
+        "window_end_sim_s": 7937,
+        "score": 93.9,
+        "category": "normal",
+        "factors": [
+          {
+            "key": "throughput",
+            "raw": 1,
+            "unit": "ratio",
+            "norm_penalty": 0,
+            "weight": 0.3,
+            "contribution": 0,
+            "reason": "Прогноз по независимо проверенным transitions"
+          },
+          {
+            "key": "delay",
+            "raw": 220,
+            "unit": "sim_seconds",
+            "norm_penalty": 0.24444444444444444,
+            "weight": 0.25,
+            "contribution": 6.111111111111111,
+            "reason": "Прогноз по независимо проверенным transitions"
+          },
+          {
+            "key": "occupancy",
+            "raw": 0.15619444444444444,
+            "unit": "ratio",
+            "norm_penalty": 0,
+            "weight": 0.15,
+            "contribution": 0,
+            "reason": "Прогноз по независимо проверенным transitions"
+          },
+          {
+            "key": "conflicts",
+            "raw": 0,
+            "unit": "count",
+            "norm_penalty": 0,
+            "weight": 0.2,
+            "contribution": 0,
+            "reason": "Прогноз по независимо проверенным transitions"
+          },
+          {
+            "key": "resource_idle",
+            "raw": 0,
+            "unit": "ratio",
+            "norm_penalty": 0,
+            "weight": 0.1,
+            "contribution": 0,
+            "reason": "Прогноз по независимо проверенным transitions"
+          }
+        ]
+      },
+      "objective_value": 0.26325732600732604,
+      "changed_operation_ids": [
+        "op-T3-departure",
+        "op-P1-arrival",
+        "op-P1-departure"
+      ],
+      "explanation": [
+        "Допустимый earliest_due/ascending; J=0.263257; optimal не доказан.",
+        "inc-aa309c47-a3b4-4fe1-a0b8-75c3545f2dee: train_delay для P1",
+        "op-T3-departure: 1080→960 sim s; путь None→None; ресурсы TL3,TC3",
+        "op-P1-arrival: 960→1080 sim s; путь R2→R1; ресурсы TP1,TCP1",
+        "op-P1-departure: 1080→1200 sim s; путь None→None; ресурсы TP1,TCP1"
+      ],
+      "can_apply": false,
+      "operations": [
+        {
+          "id": "op-T1-arrival",
+          "train_id": "T1",
+          "group_ids": [
+            "G1"
+          ],
+          "kind": "arrival",
+          "status": "completed",
+          "execution_mode": "auto",
+          "predecessor_ids": [],
+          "source_track_id": null,
+          "target_track_id": "R1",
+          "route_ids": [
+            "arrival-W-R1"
+          ],
+          "resource_ids": [
+            "TL1",
+            "TC1"
+          ],
+          "duration_sim_s": 120,
+          "start_sim_s": 0,
+          "end_sim_s": 120,
+          "actual_start_sim_s": 0,
+          "actual_end_sim_s": 120,
+          "progress": 1,
+          "phase": null,
+          "blocked_reason_codes": [],
+          "assigned_user_id": null,
+          "can_complete": false
+        },
+        {
+          "id": "op-T1-inspection",
+          "train_id": "T1",
+          "group_ids": [
+            "G1"
+          ],
+          "kind": "inspection",
+          "status": "completed",
+          "execution_mode": "auto",
+          "predecessor_ids": [
+            "op-T1-arrival"
+          ],
+          "source_track_id": "R1",
+          "target_track_id": "R1",
+          "route_ids": [],
+          "resource_ids": [
+            "I1"
+          ],
+          "duration_sim_s": 240,
+          "start_sim_s": 120,
+          "end_sim_s": 360,
+          "actual_start_sim_s": 120,
+          "actual_end_sim_s": 360,
+          "progress": 1,
+          "phase": null,
+          "blocked_reason_codes": [],
+          "assigned_user_id": null,
+          "can_complete": false
+        },
+        {
+          "id": "op-T1-departure",
+          "train_id": "T1",
+          "group_ids": [
+            "G1"
+          ],
+          "kind": "departure",
+          "status": "completed",
+          "execution_mode": "auto",
+          "predecessor_ids": [
+            "op-T1-inspection"
+          ],
+          "source_track_id": "R1",
+          "target_track_id": null,
+          "route_ids": [
+            "departure-E-R1"
+          ],
+          "resource_ids": [
+            "TL1",
+            "TC1"
+          ],
+          "duration_sim_s": 120,
+          "start_sim_s": 360,
+          "end_sim_s": 480,
+          "actual_start_sim_s": 360,
+          "actual_end_sim_s": 480,
+          "progress": 1,
+          "phase": null,
+          "blocked_reason_codes": [],
+          "assigned_user_id": null,
+          "can_complete": false
+        },
+        {
+          "id": "op-T2-arrival",
+          "train_id": "T2",
+          "group_ids": [
+            "G2L",
+            "G2K"
+          ],
+          "kind": "arrival",
+          "status": "completed",
+          "execution_mode": "auto",
+          "predecessor_ids": [],
+          "source_track_id": null,
+          "target_track_id": "R3",
+          "route_ids": [
+            "arrival-W-R3"
+          ],
+          "resource_ids": [
+            "TL2",
+            "TC2"
+          ],
+          "duration_sim_s": 120,
+          "start_sim_s": 180,
+          "end_sim_s": 300,
+          "actual_start_sim_s": 180,
+          "actual_end_sim_s": 300,
+          "progress": 1,
+          "phase": null,
+          "blocked_reason_codes": [],
+          "assigned_user_id": null,
+          "can_complete": false
+        },
+        {
+          "id": "op-T2-inspection",
+          "train_id": "T2",
+          "group_ids": [
+            "G2L",
+            "G2K"
+          ],
+          "kind": "inspection",
+          "status": "completed",
+          "execution_mode": "auto",
+          "predecessor_ids": [
+            "op-T2-arrival"
+          ],
+          "source_track_id": "R3",
+          "target_track_id": "R3",
+          "route_ids": [],
+          "resource_ids": [
+            "I2"
+          ],
+          "duration_sim_s": 240,
+          "start_sim_s": 300,
+          "end_sim_s": 540,
+          "actual_start_sim_s": 300,
+          "actual_end_sim_s": 540,
+          "progress": 1,
+          "phase": null,
+          "blocked_reason_codes": [],
+          "assigned_user_id": null,
+          "can_complete": false
+        },
+        {
+          "id": "op-T2-shunt-out",
+          "train_id": "T2",
+          "group_ids": [
+            "G2L"
+          ],
+          "kind": "shunt_transfer",
+          "status": "running",
+          "execution_mode": "auto",
+          "predecessor_ids": [
+            "op-T2-inspection"
+          ],
+          "source_track_id": "R3",
+          "target_track_id": "C1",
+          "route_ids": [
+            "move-D1-H",
+            "move-H-R3",
+            "move-R3-H",
+            "move-H-C1",
+            "move-C1-H",
+            "move-H-D1"
+          ],
+          "resource_ids": [
+            "L1",
+            "SH1"
+          ],
+          "duration_sim_s": 420,
+          "start_sim_s": 540,
+          "end_sim_s": 960,
+          "actual_start_sim_s": 540,
+          "actual_end_sim_s": null,
+          "progress": 0.46904761904761905,
+          "phase": "pull_to_lead",
+          "blocked_reason_codes": [],
+          "assigned_user_id": null,
+          "can_complete": false
+        },
+        {
+          "id": "op-T2-cargo",
+          "train_id": "T2",
+          "group_ids": [
+            "G2L"
+          ],
+          "kind": "cargo",
+          "status": "planned",
+          "execution_mode": "auto",
+          "predecessor_ids": [
+            "op-T2-shunt-out"
+          ],
+          "source_track_id": "C1",
+          "target_track_id": "C1",
+          "route_ids": [],
+          "resource_ids": [
+            "CG1"
+          ],
+          "duration_sim_s": 720,
+          "start_sim_s": 960,
+          "end_sim_s": 1680,
+          "actual_start_sim_s": null,
+          "actual_end_sim_s": null,
+          "progress": 0,
+          "phase": null,
+          "blocked_reason_codes": [],
+          "assigned_user_id": null,
+          "can_complete": false
+        },
+        {
+          "id": "op-T2-shunt-back",
+          "train_id": "T2",
+          "group_ids": [
+            "G2L"
+          ],
+          "kind": "shunt_transfer",
+          "status": "planned",
+          "execution_mode": "auto",
+          "predecessor_ids": [
+            "op-T2-cargo"
+          ],
+          "source_track_id": "C1",
+          "target_track_id": "R3",
+          "route_ids": [
+            "move-D1-H",
+            "move-H-C1",
+            "move-C1-H",
+            "move-H-R3",
+            "move-R3-H",
+            "move-H-D1"
+          ],
+          "resource_ids": [
+            "L1",
+            "SH1"
+          ],
+          "duration_sim_s": 420,
+          "start_sim_s": 1980,
+          "end_sim_s": 2400,
+          "actual_start_sim_s": null,
+          "actual_end_sim_s": null,
+          "progress": 0,
+          "phase": null,
+          "blocked_reason_codes": [],
+          "assigned_user_id": null,
+          "can_complete": false
+        },
+        {
+          "id": "op-T2-prep",
+          "train_id": "T2",
+          "group_ids": [
+            "G2L",
+            "G2K"
+          ],
+          "kind": "departure_prep",
+          "status": "planned",
+          "execution_mode": "auto",
+          "predecessor_ids": [
+            "op-T2-shunt-back"
+          ],
+          "source_track_id": "R3",
+          "target_track_id": "R3",
+          "route_ids": [],
+          "resource_ids": [
+            "I1",
+            "TL2",
+            "TC2"
+          ],
+          "duration_sim_s": 180,
+          "start_sim_s": 2400,
+          "end_sim_s": 2580,
+          "actual_start_sim_s": null,
+          "actual_end_sim_s": null,
+          "progress": 0,
+          "phase": null,
+          "blocked_reason_codes": [],
+          "assigned_user_id": null,
+          "can_complete": false
+        },
+        {
+          "id": "op-T2-departure",
+          "train_id": "T2",
+          "group_ids": [
+            "G2L",
+            "G2K"
+          ],
+          "kind": "departure",
+          "status": "planned",
+          "execution_mode": "auto",
+          "predecessor_ids": [
+            "op-T2-prep"
+          ],
+          "source_track_id": "R3",
+          "target_track_id": null,
+          "route_ids": [
+            "departure-E-R3"
+          ],
+          "resource_ids": [
+            "TL2",
+            "TC2"
+          ],
+          "duration_sim_s": 120,
+          "start_sim_s": 2580,
+          "end_sim_s": 2700,
+          "actual_start_sim_s": null,
+          "actual_end_sim_s": null,
+          "progress": 0,
+          "phase": null,
+          "blocked_reason_codes": [],
+          "assigned_user_id": null,
+          "can_complete": false
+        },
+        {
+          "id": "op-T3-arrival",
+          "train_id": "T3",
+          "group_ids": [
+            "G3"
+          ],
+          "kind": "arrival",
+          "status": "completed",
+          "execution_mode": "auto",
+          "predecessor_ids": [],
+          "source_track_id": null,
+          "target_track_id": "R1",
+          "route_ids": [
+            "arrival-E-R1"
+          ],
+          "resource_ids": [
+            "TL3",
+            "TC3"
+          ],
+          "duration_sim_s": 120,
+          "start_sim_s": 600,
+          "end_sim_s": 720,
+          "actual_start_sim_s": 600,
+          "actual_end_sim_s": 720,
+          "progress": 1,
+          "phase": null,
+          "blocked_reason_codes": [],
+          "assigned_user_id": null,
+          "can_complete": false
+        },
+        {
+          "id": "op-T3-inspection",
+          "train_id": "T3",
+          "group_ids": [
+            "G3"
+          ],
+          "kind": "inspection",
+          "status": "running",
+          "execution_mode": "auto",
+          "predecessor_ids": [
+            "op-T3-arrival"
+          ],
+          "source_track_id": "R1",
+          "target_track_id": "R1",
+          "route_ids": [],
+          "resource_ids": [
+            "I1"
+          ],
+          "duration_sim_s": 240,
+          "start_sim_s": 720,
+          "end_sim_s": 960,
+          "actual_start_sim_s": 720,
+          "actual_end_sim_s": null,
+          "progress": 0.07083333333333333,
+          "phase": null,
+          "blocked_reason_codes": [],
+          "assigned_user_id": null,
+          "can_complete": false
+        },
+        {
+          "id": "op-T3-departure",
+          "train_id": "T3",
+          "group_ids": [
+            "G3"
+          ],
+          "kind": "departure",
+          "status": "planned",
+          "execution_mode": "auto",
+          "predecessor_ids": [
+            "op-T3-inspection"
+          ],
+          "source_track_id": "R1",
+          "target_track_id": null,
+          "route_ids": [
+            "departure-W-R1"
+          ],
+          "resource_ids": [
+            "TL3",
+            "TC3"
+          ],
+          "duration_sim_s": 120,
+          "start_sim_s": 960,
+          "end_sim_s": 1080,
+          "actual_start_sim_s": null,
+          "actual_end_sim_s": null,
+          "progress": 0,
+          "phase": null,
+          "blocked_reason_codes": [],
+          "assigned_user_id": null,
+          "can_complete": false
+        },
+        {
+          "id": "op-T4-arrival",
+          "train_id": "T4",
+          "group_ids": [
+            "G4A",
+            "G4B",
+            "G4K"
+          ],
+          "kind": "arrival",
+          "status": "planned",
+          "execution_mode": "auto",
+          "predecessor_ids": [],
+          "source_track_id": null,
+          "target_track_id": "R4",
+          "route_ids": [
+            "arrival-W-R4"
+          ],
+          "resource_ids": [
+            "TL4",
+            "TC4"
+          ],
+          "duration_sim_s": 120,
+          "start_sim_s": 1200,
+          "end_sim_s": 1320,
+          "actual_start_sim_s": null,
+          "actual_end_sim_s": null,
+          "progress": 0,
+          "phase": null,
+          "blocked_reason_codes": [],
+          "assigned_user_id": null,
+          "can_complete": false
+        },
+        {
+          "id": "op-T4-inspection",
+          "train_id": "T4",
+          "group_ids": [
+            "G4A",
+            "G4B",
+            "G4K"
+          ],
+          "kind": "inspection",
+          "status": "planned",
+          "execution_mode": "auto",
+          "predecessor_ids": [
+            "op-T4-arrival"
+          ],
+          "source_track_id": "R4",
+          "target_track_id": "R4",
+          "route_ids": [],
+          "resource_ids": [
+            "I1"
+          ],
+          "duration_sim_s": 240,
+          "start_sim_s": 1320,
+          "end_sim_s": 1560,
+          "actual_start_sim_s": null,
+          "actual_end_sim_s": null,
+          "progress": 0,
+          "phase": null,
+          "blocked_reason_codes": [],
+          "assigned_user_id": null,
+          "can_complete": false
+        },
+        {
+          "id": "op-T4-shunt-A-out",
+          "train_id": "T4",
+          "group_ids": [
+            "G4A"
+          ],
+          "kind": "shunt_transfer",
+          "status": "planned",
+          "execution_mode": "auto",
+          "predecessor_ids": [
+            "op-T4-inspection"
+          ],
+          "source_track_id": "R4",
+          "target_track_id": "S1",
+          "route_ids": [
+            "move-D1-H",
+            "move-H-R4",
+            "move-R4-H",
+            "move-H-S1",
+            "move-S1-H",
+            "move-H-D1"
+          ],
+          "resource_ids": [
+            "L1",
+            "SH1"
+          ],
+          "duration_sim_s": 420,
+          "start_sim_s": 1560,
+          "end_sim_s": 1980,
+          "actual_start_sim_s": null,
+          "actual_end_sim_s": null,
+          "progress": 0,
+          "phase": null,
+          "blocked_reason_codes": [],
+          "assigned_user_id": null,
+          "can_complete": false
+        },
+        {
+          "id": "op-T4-shunt-B-out",
+          "train_id": "T4",
+          "group_ids": [
+            "G4B"
+          ],
+          "kind": "shunt_transfer",
+          "status": "planned",
+          "execution_mode": "auto",
+          "predecessor_ids": [
+            "op-T4-shunt-A-out"
+          ],
+          "source_track_id": "R4",
+          "target_track_id": "S2",
+          "route_ids": [
+            "move-D1-H",
+            "move-H-R4",
+            "move-R4-H",
+            "move-H-S2",
+            "move-S2-H",
+            "move-H-D1"
+          ],
+          "resource_ids": [
+            "L1",
+            "SH1"
+          ],
+          "duration_sim_s": 420,
+          "start_sim_s": 2400,
+          "end_sim_s": 2820,
+          "actual_start_sim_s": null,
+          "actual_end_sim_s": null,
+          "progress": 0,
+          "phase": null,
+          "blocked_reason_codes": [],
+          "assigned_user_id": null,
+          "can_complete": false
+        },
+        {
+          "id": "op-T4-shunt-A-back",
+          "train_id": "T4",
+          "group_ids": [
+            "G4A"
+          ],
+          "kind": "shunt_transfer",
+          "status": "planned",
+          "execution_mode": "auto",
+          "predecessor_ids": [
+            "op-T4-shunt-B-out"
+          ],
+          "source_track_id": "S1",
+          "target_track_id": "R4",
+          "route_ids": [
+            "move-D1-H",
+            "move-H-S1",
+            "move-S1-H",
+            "move-H-R4",
+            "move-R4-H",
+            "move-H-D1"
+          ],
+          "resource_ids": [
+            "L1",
+            "SH1"
+          ],
+          "duration_sim_s": 420,
+          "start_sim_s": 2820,
+          "end_sim_s": 3240,
+          "actual_start_sim_s": null,
+          "actual_end_sim_s": null,
+          "progress": 0,
+          "phase": null,
+          "blocked_reason_codes": [],
+          "assigned_user_id": null,
+          "can_complete": false
+        },
+        {
+          "id": "op-T4-shunt-B-back",
+          "train_id": "T4",
+          "group_ids": [
+            "G4B"
+          ],
+          "kind": "shunt_transfer",
+          "status": "planned",
+          "execution_mode": "auto",
+          "predecessor_ids": [
+            "op-T4-shunt-A-back"
+          ],
+          "source_track_id": "S2",
+          "target_track_id": "R4",
+          "route_ids": [
+            "move-D1-H",
+            "move-H-S2",
+            "move-S2-H",
+            "move-H-R4",
+            "move-R4-H",
+            "move-H-D1"
+          ],
+          "resource_ids": [
+            "L1",
+            "SH1"
+          ],
+          "duration_sim_s": 420,
+          "start_sim_s": 3240,
+          "end_sim_s": 3660,
+          "actual_start_sim_s": null,
+          "actual_end_sim_s": null,
+          "progress": 0,
+          "phase": null,
+          "blocked_reason_codes": [],
+          "assigned_user_id": null,
+          "can_complete": false
+        },
+        {
+          "id": "op-T4-prep",
+          "train_id": "T4",
+          "group_ids": [
+            "G4A",
+            "G4B",
+            "G4K"
+          ],
+          "kind": "departure_prep",
+          "status": "planned",
+          "execution_mode": "auto",
+          "predecessor_ids": [
+            "op-T4-shunt-B-back"
+          ],
+          "source_track_id": "R4",
+          "target_track_id": "R4",
+          "route_ids": [],
+          "resource_ids": [
+            "I1",
+            "TL4",
+            "TC4"
+          ],
+          "duration_sim_s": 180,
+          "start_sim_s": 3660,
+          "end_sim_s": 3840,
+          "actual_start_sim_s": null,
+          "actual_end_sim_s": null,
+          "progress": 0,
+          "phase": null,
+          "blocked_reason_codes": [],
+          "assigned_user_id": null,
+          "can_complete": false
+        },
+        {
+          "id": "op-T4-departure",
+          "train_id": "T4",
+          "group_ids": [
+            "G4B",
+            "G4A",
+            "G4K"
+          ],
+          "kind": "departure",
+          "status": "planned",
+          "execution_mode": "auto",
+          "predecessor_ids": [
+            "op-T4-prep"
+          ],
+          "source_track_id": "R4",
+          "target_track_id": null,
+          "route_ids": [
+            "departure-E-R4"
+          ],
+          "resource_ids": [
+            "TL4",
+            "TC4"
+          ],
+          "duration_sim_s": 120,
+          "start_sim_s": 3840,
+          "end_sim_s": 3960,
+          "actual_start_sim_s": null,
+          "actual_end_sim_s": null,
+          "progress": 0,
+          "phase": null,
+          "blocked_reason_codes": [],
+          "assigned_user_id": null,
+          "can_complete": false
+        },
+        {
+          "id": "op-T5-arrival",
+          "train_id": "T5",
+          "group_ids": [
+            "G5L",
+            "G5K"
+          ],
+          "kind": "arrival",
+          "status": "planned",
+          "execution_mode": "auto",
+          "predecessor_ids": [],
+          "source_track_id": null,
+          "target_track_id": "R3",
+          "route_ids": [
+            "arrival-W-R3"
+          ],
+          "resource_ids": [
+            "TL5",
+            "TC5"
+          ],
+          "duration_sim_s": 120,
+          "start_sim_s": 3780,
+          "end_sim_s": 3900,
+          "actual_start_sim_s": null,
+          "actual_end_sim_s": null,
+          "progress": 0,
+          "phase": null,
+          "blocked_reason_codes": [],
+          "assigned_user_id": null,
+          "can_complete": false
+        },
+        {
+          "id": "op-T5-inspection",
+          "train_id": "T5",
+          "group_ids": [
+            "G5L",
+            "G5K"
+          ],
+          "kind": "inspection",
+          "status": "planned",
+          "execution_mode": "auto",
+          "predecessor_ids": [
+            "op-T5-arrival"
+          ],
+          "source_track_id": "R3",
+          "target_track_id": "R3",
+          "route_ids": [],
+          "resource_ids": [
+            "I1"
+          ],
+          "duration_sim_s": 240,
+          "start_sim_s": 3900,
+          "end_sim_s": 4140,
+          "actual_start_sim_s": null,
+          "actual_end_sim_s": null,
+          "progress": 0,
+          "phase": null,
+          "blocked_reason_codes": [],
+          "assigned_user_id": null,
+          "can_complete": false
+        },
+        {
+          "id": "op-T5-shunt-out",
+          "train_id": "T5",
+          "group_ids": [
+            "G5L"
+          ],
+          "kind": "shunt_transfer",
+          "status": "planned",
+          "execution_mode": "auto",
+          "predecessor_ids": [
+            "op-T5-inspection"
+          ],
+          "source_track_id": "R3",
+          "target_track_id": "C1",
+          "route_ids": [
+            "move-D1-H",
+            "move-H-R3",
+            "move-R3-H",
+            "move-H-C1",
+            "move-C1-H",
+            "move-H-D1"
+          ],
+          "resource_ids": [
+            "L1",
+            "SH1"
+          ],
+          "duration_sim_s": 420,
+          "start_sim_s": 4140,
+          "end_sim_s": 4560,
+          "actual_start_sim_s": null,
+          "actual_end_sim_s": null,
+          "progress": 0,
+          "phase": null,
+          "blocked_reason_codes": [],
+          "assigned_user_id": null,
+          "can_complete": false
+        },
+        {
+          "id": "op-T5-cargo",
+          "train_id": "T5",
+          "group_ids": [
+            "G5L"
+          ],
+          "kind": "cargo",
+          "status": "planned",
+          "execution_mode": "auto",
+          "predecessor_ids": [
+            "op-T5-shunt-out"
+          ],
+          "source_track_id": "C1",
+          "target_track_id": "C1",
+          "route_ids": [],
+          "resource_ids": [
+            "CG1"
+          ],
+          "duration_sim_s": 720,
+          "start_sim_s": 4560,
+          "end_sim_s": 5280,
+          "actual_start_sim_s": null,
+          "actual_end_sim_s": null,
+          "progress": 0,
+          "phase": null,
+          "blocked_reason_codes": [],
+          "assigned_user_id": null,
+          "can_complete": false
+        },
+        {
+          "id": "op-T5-shunt-back",
+          "train_id": "T5",
+          "group_ids": [
+            "G5L"
+          ],
+          "kind": "shunt_transfer",
+          "status": "planned",
+          "execution_mode": "auto",
+          "predecessor_ids": [
+            "op-T5-cargo"
+          ],
+          "source_track_id": "C1",
+          "target_track_id": "R3",
+          "route_ids": [
+            "move-D1-H",
+            "move-H-C1",
+            "move-C1-H",
+            "move-H-R3",
+            "move-R3-H",
+            "move-H-D1"
+          ],
+          "resource_ids": [
+            "L1",
+            "SH1"
+          ],
+          "duration_sim_s": 420,
+          "start_sim_s": 5280,
+          "end_sim_s": 5700,
+          "actual_start_sim_s": null,
+          "actual_end_sim_s": null,
+          "progress": 0,
+          "phase": null,
+          "blocked_reason_codes": [],
+          "assigned_user_id": null,
+          "can_complete": false
+        },
+        {
+          "id": "op-T5-prep",
+          "train_id": "T5",
+          "group_ids": [
+            "G5L",
+            "G5K"
+          ],
+          "kind": "departure_prep",
+          "status": "planned",
+          "execution_mode": "auto",
+          "predecessor_ids": [
+            "op-T5-shunt-back"
+          ],
+          "source_track_id": "R3",
+          "target_track_id": "R3",
+          "route_ids": [],
+          "resource_ids": [
+            "I1",
+            "TL5",
+            "TC5"
+          ],
+          "duration_sim_s": 180,
+          "start_sim_s": 5700,
+          "end_sim_s": 5880,
+          "actual_start_sim_s": null,
+          "actual_end_sim_s": null,
+          "progress": 0,
+          "phase": null,
+          "blocked_reason_codes": [],
+          "assigned_user_id": null,
+          "can_complete": false
+        },
+        {
+          "id": "op-T5-departure",
+          "train_id": "T5",
+          "group_ids": [
+            "G5L",
+            "G5K"
+          ],
+          "kind": "departure",
+          "status": "planned",
+          "execution_mode": "auto",
+          "predecessor_ids": [
+            "op-T5-prep"
+          ],
+          "source_track_id": "R3",
+          "target_track_id": null,
+          "route_ids": [
+            "departure-E-R3"
+          ],
+          "resource_ids": [
+            "TL5",
+            "TC5"
+          ],
+          "duration_sim_s": 120,
+          "start_sim_s": 5880,
+          "end_sim_s": 6000,
+          "actual_start_sim_s": null,
+          "actual_end_sim_s": null,
+          "progress": 0,
+          "phase": null,
+          "blocked_reason_codes": [],
+          "assigned_user_id": null,
+          "can_complete": false
+        },
+        {
+          "id": "op-T6-arrival",
+          "train_id": "T6",
+          "group_ids": [
+            "G6"
+          ],
+          "kind": "arrival",
+          "status": "planned",
+          "execution_mode": "auto",
+          "predecessor_ids": [],
+          "source_track_id": null,
+          "target_track_id": "R1",
+          "route_ids": [
+            "arrival-E-R1"
+          ],
+          "resource_ids": [
+            "TL6",
+            "TC6"
+          ],
+          "duration_sim_s": 120,
+          "start_sim_s": 2700,
+          "end_sim_s": 2820,
+          "actual_start_sim_s": null,
+          "actual_end_sim_s": null,
+          "progress": 0,
+          "phase": null,
+          "blocked_reason_codes": [],
+          "assigned_user_id": null,
+          "can_complete": false
+        },
+        {
+          "id": "op-T6-inspection",
+          "train_id": "T6",
+          "group_ids": [
+            "G6"
+          ],
+          "kind": "inspection",
+          "status": "planned",
+          "execution_mode": "auto",
+          "predecessor_ids": [
+            "op-T6-arrival"
+          ],
+          "source_track_id": "R1",
+          "target_track_id": "R1",
+          "route_ids": [],
+          "resource_ids": [
+            "I1"
+          ],
+          "duration_sim_s": 240,
+          "start_sim_s": 2820,
+          "end_sim_s": 3060,
+          "actual_start_sim_s": null,
+          "actual_end_sim_s": null,
+          "progress": 0,
+          "phase": null,
+          "blocked_reason_codes": [],
+          "assigned_user_id": null,
+          "can_complete": false
+        },
+        {
+          "id": "op-T6-departure",
+          "train_id": "T6",
+          "group_ids": [
+            "G6"
+          ],
+          "kind": "departure",
+          "status": "planned",
+          "execution_mode": "auto",
+          "predecessor_ids": [
+            "op-T6-inspection"
+          ],
+          "source_track_id": "R1",
+          "target_track_id": null,
+          "route_ids": [
+            "departure-W-R1"
+          ],
+          "resource_ids": [
+            "TL6",
+            "TC6"
+          ],
+          "duration_sim_s": 120,
+          "start_sim_s": 3660,
+          "end_sim_s": 3780,
+          "actual_start_sim_s": null,
+          "actual_end_sim_s": null,
+          "progress": 0,
+          "phase": null,
+          "blocked_reason_codes": [],
+          "assigned_user_id": null,
+          "can_complete": false
+        },
+        {
+          "id": "op-P1-arrival",
+          "train_id": "P1",
+          "group_ids": [],
+          "kind": "arrival",
+          "status": "planned",
+          "execution_mode": "auto",
+          "predecessor_ids": [],
+          "source_track_id": null,
+          "target_track_id": "R1",
+          "route_ids": [
+            "arrival-W-R1"
+          ],
+          "resource_ids": [
+            "TP1",
+            "TCP1"
+          ],
+          "duration_sim_s": 120,
+          "start_sim_s": 1080,
+          "end_sim_s": 1200,
+          "actual_start_sim_s": null,
+          "actual_end_sim_s": null,
+          "progress": 0,
+          "phase": null,
+          "blocked_reason_codes": [],
+          "assigned_user_id": null,
+          "can_complete": false
+        },
+        {
+          "id": "op-P1-departure",
+          "train_id": "P1",
+          "group_ids": [],
+          "kind": "departure",
+          "status": "planned",
+          "execution_mode": "auto",
+          "predecessor_ids": [
+            "op-P1-arrival"
+          ],
+          "source_track_id": "R1",
+          "target_track_id": null,
+          "route_ids": [
+            "departure-E-R1"
+          ],
+          "resource_ids": [
+            "TP1",
+            "TCP1"
+          ],
+          "duration_sim_s": 120,
+          "start_sim_s": 1200,
+          "end_sim_s": 1320,
+          "actual_start_sim_s": null,
+          "actual_end_sim_s": null,
+          "progress": 0,
+          "phase": null,
+          "blocked_reason_codes": [],
+          "assigned_user_id": null,
+          "can_complete": false
+        }
+      ],
+      "validator": {
+        "passed": true,
+        "errors": []
+      }
+    },
+    {
+      "id": "plan-rp-c63ce861-bae7-4cb0-8176-6a34e438b12e-1",
+      "status": "proposed",
+      "validity": "feasible",
+      "optimization_run_id": "rp-c63ce861-bae7-4cb0-8176-6a34e438b12e",
+      "strategy": "urgency/ascending",
+      "base_input_revision": 9,
+      "base_state_version": 121,
+      "base_active_plan_id": "plan-rp-36ff73d8-7dce-4dcf-8117-df5080fa94ec-0",
+      "config_version": 3,
+      "created_at": "2026-10-02T00:09:29.651Z",
+      "cutover_sim_s": 737,
+      "forecast": {
+        "mode": "forecast",
+        "formula_version": "efficiency-v1",
+        "window_start_sim_s": 737,
+        "window_end_sim_s": 7937,
+        "score": 91.5,
+        "category": "normal",
+        "factors": [
+          {
+            "key": "throughput",
+            "raw": 1,
+            "unit": "ratio",
+            "norm_penalty": 0,
+            "weight": 0.3,
+            "contribution": 0,
+            "reason": "Прогноз по независимо проверенным transitions"
+          },
+          {
+            "key": "delay",
+            "raw": 290,
+            "unit": "sim_seconds",
+            "norm_penalty": 0.32222222222222224,
+            "weight": 0.25,
+            "contribution": 8.055555555555555,
+            "reason": "Прогноз по независимо проверенным transitions"
+          },
+          {
+            "key": "occupancy",
+            "raw": 0.18536111111111112,
+            "unit": "ratio",
+            "norm_penalty": 0,
+            "weight": 0.15,
+            "contribution": 0,
+            "reason": "Прогноз по независимо проверенным transitions"
+          },
+          {
+            "key": "conflicts",
+            "raw": 0,
+            "unit": "count",
+            "norm_penalty": 0,
+            "weight": 0.2,
+            "contribution": 0,
+            "reason": "Прогноз по независимо проверенным transitions"
+          },
+          {
+            "key": "resource_idle",
+            "raw": 0.04933703361085415,
+            "unit": "ratio",
+            "norm_penalty": 0.04933703361085415,
+            "weight": 0.1,
+            "contribution": 0.4933703361085415,
+            "reason": "Прогноз по независимо проверенным transitions"
+          }
+        ]
+      },
+      "objective_value": 0.27702289377289374,
+      "changed_operation_ids": [
+        "op-T2-shunt-back",
+        "op-T2-prep",
+        "op-T2-departure",
+        "op-T3-departure",
+        "op-T4-shunt-A-out",
+        "op-T4-shunt-B-out",
+        "op-T4-shunt-A-back",
+        "op-T4-shunt-B-back",
+        "op-T4-prep",
+        "op-T4-departure",
+        "op-T5-arrival",
+        "op-T5-inspection",
+        "op-T5-shunt-out",
+        "op-T5-cargo",
+        "op-T5-shunt-back",
+        "op-T5-prep",
+        "op-T5-departure",
+        "op-T6-inspection",
+        "op-T6-departure",
+        "op-P1-arrival",
+        "op-P1-departure"
+      ],
+      "explanation": [
+        "Допустимый urgency/ascending; J=0.277023; optimal не доказан.",
+        "inc-aa309c47-a3b4-4fe1-a0b8-75c3545f2dee: train_delay для P1",
+        "op-T2-shunt-back: 1980→1680 sim s; путь R3→R3; ресурсы L1,SH1",
+        "op-T2-prep: 2400→2100 sim s; путь R3→R3; ресурсы I1,TL2,TC2",
+        "op-T2-departure: 2580→2280 sim s; путь None→None; ресурсы TL2,TC2",
+        "op-T3-departure: 1080→960 sim s; путь None→None; ресурсы TL3,TC3",
+        "op-T4-shunt-A-out: 1560→2100 sim s; путь S1→S1; ресурсы L1,SH1",
+        "op-T4-shunt-B-out: 2400→2640 sim s; путь S2→S2; ресурсы L1,SH1",
+        "op-T4-shunt-A-back: 2820→3480 sim s; путь R4→R4; ресурсы L1,SH1",
+        "op-T4-shunt-B-back: 3240→3900 sim s; путь R4→R4; ресурсы L1,SH1",
+        "op-T4-prep: 3660→4320 sim s; путь R4→R4; ресурсы I1,TL4,TC4",
+        "op-T4-departure: 3840→4500 sim s; путь None→None; ресурсы TL4,TC4",
+        "op-T5-arrival: 3780→2520 sim s; путь R3→R3; ресурсы TL5,TC5",
+        "op-T5-inspection: 3900→2640 sim s; путь R3→R3; ресурсы I1",
+        "op-T5-shunt-out: 4140→3060 sim s; путь C1→C1; ресурсы L1,SH1",
+        "op-T5-cargo: 4560→3480 sim s; путь C1→C1; ресурсы CG1",
+        "op-T5-shunt-back: 5280→4320 sim s; путь R3→R3; ресурсы L1,SH1",
+        "op-T5-prep: 5700→4740 sim s; путь R3→R3; ресурсы I1,TL5,TC5",
+        "op-T5-departure: 5880→4920 sim s; путь None→None; ресурсы TL5,TC5",
+        "op-T6-inspection: 2820→2820 sim s; путь R1→R1; ресурсы I2",
+        "op-T6-departure: 3660→4740 sim s; путь None→None; ресурсы TL6,TC6",
+        "op-P1-arrival: 960→1080 sim s; путь R2→R1; ресурсы TP1,TCP1",
+        "op-P1-departure: 1080→1200 sim s; путь None→None; ресурсы TP1,TCP1"
+      ],
+      "can_apply": true,
+      "operations": [
+        {
+          "id": "op-T1-arrival",
+          "train_id": "T1",
+          "group_ids": [
+            "G1"
+          ],
+          "kind": "arrival",
+          "status": "completed",
+          "execution_mode": "auto",
+          "predecessor_ids": [],
+          "source_track_id": null,
+          "target_track_id": "R1",
+          "route_ids": [
+            "arrival-W-R1"
+          ],
+          "resource_ids": [
+            "TL1",
+            "TC1"
+          ],
+          "duration_sim_s": 120,
+          "start_sim_s": 0,
+          "end_sim_s": 120,
+          "actual_start_sim_s": 0,
+          "actual_end_sim_s": 120,
+          "progress": 1,
+          "phase": null,
+          "blocked_reason_codes": [],
+          "assigned_user_id": null,
+          "can_complete": false
+        },
+        {
+          "id": "op-T1-inspection",
+          "train_id": "T1",
+          "group_ids": [
+            "G1"
+          ],
+          "kind": "inspection",
+          "status": "completed",
+          "execution_mode": "auto",
+          "predecessor_ids": [
+            "op-T1-arrival"
+          ],
+          "source_track_id": "R1",
+          "target_track_id": "R1",
+          "route_ids": [],
+          "resource_ids": [
+            "I1"
+          ],
+          "duration_sim_s": 240,
+          "start_sim_s": 120,
+          "end_sim_s": 360,
+          "actual_start_sim_s": 120,
+          "actual_end_sim_s": 360,
+          "progress": 1,
+          "phase": null,
+          "blocked_reason_codes": [],
+          "assigned_user_id": null,
+          "can_complete": false
+        },
+        {
+          "id": "op-T1-departure",
+          "train_id": "T1",
+          "group_ids": [
+            "G1"
+          ],
+          "kind": "departure",
+          "status": "completed",
+          "execution_mode": "auto",
+          "predecessor_ids": [
+            "op-T1-inspection"
+          ],
+          "source_track_id": "R1",
+          "target_track_id": null,
+          "route_ids": [
+            "departure-E-R1"
+          ],
+          "resource_ids": [
+            "TL1",
+            "TC1"
+          ],
+          "duration_sim_s": 120,
+          "start_sim_s": 360,
+          "end_sim_s": 480,
+          "actual_start_sim_s": 360,
+          "actual_end_sim_s": 480,
+          "progress": 1,
+          "phase": null,
+          "blocked_reason_codes": [],
+          "assigned_user_id": null,
+          "can_complete": false
+        },
+        {
+          "id": "op-T2-arrival",
+          "train_id": "T2",
+          "group_ids": [
+            "G2L",
+            "G2K"
+          ],
+          "kind": "arrival",
+          "status": "completed",
+          "execution_mode": "auto",
+          "predecessor_ids": [],
+          "source_track_id": null,
+          "target_track_id": "R3",
+          "route_ids": [
+            "arrival-W-R3"
+          ],
+          "resource_ids": [
+            "TL2",
+            "TC2"
+          ],
+          "duration_sim_s": 120,
+          "start_sim_s": 180,
+          "end_sim_s": 300,
+          "actual_start_sim_s": 180,
+          "actual_end_sim_s": 300,
+          "progress": 1,
+          "phase": null,
+          "blocked_reason_codes": [],
+          "assigned_user_id": null,
+          "can_complete": false
+        },
+        {
+          "id": "op-T2-inspection",
+          "train_id": "T2",
+          "group_ids": [
+            "G2L",
+            "G2K"
+          ],
+          "kind": "inspection",
+          "status": "completed",
+          "execution_mode": "auto",
+          "predecessor_ids": [
+            "op-T2-arrival"
+          ],
+          "source_track_id": "R3",
+          "target_track_id": "R3",
+          "route_ids": [],
+          "resource_ids": [
+            "I2"
+          ],
+          "duration_sim_s": 240,
+          "start_sim_s": 300,
+          "end_sim_s": 540,
+          "actual_start_sim_s": 300,
+          "actual_end_sim_s": 540,
+          "progress": 1,
+          "phase": null,
+          "blocked_reason_codes": [],
+          "assigned_user_id": null,
+          "can_complete": false
+        },
+        {
+          "id": "op-T2-shunt-out",
+          "train_id": "T2",
+          "group_ids": [
+            "G2L"
+          ],
+          "kind": "shunt_transfer",
+          "status": "running",
+          "execution_mode": "auto",
+          "predecessor_ids": [
+            "op-T2-inspection"
+          ],
+          "source_track_id": "R3",
+          "target_track_id": "C1",
+          "route_ids": [
+            "move-D1-H",
+            "move-H-R3",
+            "move-R3-H",
+            "move-H-C1",
+            "move-C1-H",
+            "move-H-D1"
+          ],
+          "resource_ids": [
+            "L1",
+            "SH1"
+          ],
+          "duration_sim_s": 420,
+          "start_sim_s": 540,
+          "end_sim_s": 960,
+          "actual_start_sim_s": 540,
+          "actual_end_sim_s": null,
+          "progress": 0.46904761904761905,
+          "phase": "pull_to_lead",
+          "blocked_reason_codes": [],
+          "assigned_user_id": null,
+          "can_complete": false
+        },
+        {
+          "id": "op-T2-cargo",
+          "train_id": "T2",
+          "group_ids": [
+            "G2L"
+          ],
+          "kind": "cargo",
+          "status": "planned",
+          "execution_mode": "auto",
+          "predecessor_ids": [
+            "op-T2-shunt-out"
+          ],
+          "source_track_id": "C1",
+          "target_track_id": "C1",
+          "route_ids": [],
+          "resource_ids": [
+            "CG1"
+          ],
+          "duration_sim_s": 720,
+          "start_sim_s": 960,
+          "end_sim_s": 1680,
+          "actual_start_sim_s": null,
+          "actual_end_sim_s": null,
+          "progress": 0,
+          "phase": null,
+          "blocked_reason_codes": [],
+          "assigned_user_id": null,
+          "can_complete": false
+        },
+        {
+          "id": "op-T2-shunt-back",
+          "train_id": "T2",
+          "group_ids": [
+            "G2L"
+          ],
+          "kind": "shunt_transfer",
+          "status": "planned",
+          "execution_mode": "auto",
+          "predecessor_ids": [
+            "op-T2-cargo"
+          ],
+          "source_track_id": "C1",
+          "target_track_id": "R3",
+          "route_ids": [
+            "move-D1-H",
+            "move-H-C1",
+            "move-C1-H",
+            "move-H-R3",
+            "move-R3-H",
+            "move-H-D1"
+          ],
+          "resource_ids": [
+            "L1",
+            "SH1"
+          ],
+          "duration_sim_s": 420,
+          "start_sim_s": 1680,
+          "end_sim_s": 2100,
+          "actual_start_sim_s": null,
+          "actual_end_sim_s": null,
+          "progress": 0,
+          "phase": null,
+          "blocked_reason_codes": [],
+          "assigned_user_id": null,
+          "can_complete": false
+        },
+        {
+          "id": "op-T2-prep",
+          "train_id": "T2",
+          "group_ids": [
+            "G2L",
+            "G2K"
+          ],
+          "kind": "departure_prep",
+          "status": "planned",
+          "execution_mode": "auto",
+          "predecessor_ids": [
+            "op-T2-shunt-back"
+          ],
+          "source_track_id": "R3",
+          "target_track_id": "R3",
+          "route_ids": [],
+          "resource_ids": [
+            "I1",
+            "TL2",
+            "TC2"
+          ],
+          "duration_sim_s": 180,
+          "start_sim_s": 2100,
+          "end_sim_s": 2280,
+          "actual_start_sim_s": null,
+          "actual_end_sim_s": null,
+          "progress": 0,
+          "phase": null,
+          "blocked_reason_codes": [],
+          "assigned_user_id": null,
+          "can_complete": false
+        },
+        {
+          "id": "op-T2-departure",
+          "train_id": "T2",
+          "group_ids": [
+            "G2L",
+            "G2K"
+          ],
+          "kind": "departure",
+          "status": "planned",
+          "execution_mode": "auto",
+          "predecessor_ids": [
+            "op-T2-prep"
+          ],
+          "source_track_id": "R3",
+          "target_track_id": null,
+          "route_ids": [
+            "departure-E-R3"
+          ],
+          "resource_ids": [
+            "TL2",
+            "TC2"
+          ],
+          "duration_sim_s": 120,
+          "start_sim_s": 2280,
+          "end_sim_s": 2400,
+          "actual_start_sim_s": null,
+          "actual_end_sim_s": null,
+          "progress": 0,
+          "phase": null,
+          "blocked_reason_codes": [],
+          "assigned_user_id": null,
+          "can_complete": false
+        },
+        {
+          "id": "op-T3-arrival",
+          "train_id": "T3",
+          "group_ids": [
+            "G3"
+          ],
+          "kind": "arrival",
+          "status": "completed",
+          "execution_mode": "auto",
+          "predecessor_ids": [],
+          "source_track_id": null,
+          "target_track_id": "R1",
+          "route_ids": [
+            "arrival-E-R1"
+          ],
+          "resource_ids": [
+            "TL3",
+            "TC3"
+          ],
+          "duration_sim_s": 120,
+          "start_sim_s": 600,
+          "end_sim_s": 720,
+          "actual_start_sim_s": 600,
+          "actual_end_sim_s": 720,
+          "progress": 1,
+          "phase": null,
+          "blocked_reason_codes": [],
+          "assigned_user_id": null,
+          "can_complete": false
+        },
+        {
+          "id": "op-T3-inspection",
+          "train_id": "T3",
+          "group_ids": [
+            "G3"
+          ],
+          "kind": "inspection",
+          "status": "running",
+          "execution_mode": "auto",
+          "predecessor_ids": [
+            "op-T3-arrival"
+          ],
+          "source_track_id": "R1",
+          "target_track_id": "R1",
+          "route_ids": [],
+          "resource_ids": [
+            "I1"
+          ],
+          "duration_sim_s": 240,
+          "start_sim_s": 720,
+          "end_sim_s": 960,
+          "actual_start_sim_s": 720,
+          "actual_end_sim_s": null,
+          "progress": 0.07083333333333333,
+          "phase": null,
+          "blocked_reason_codes": [],
+          "assigned_user_id": null,
+          "can_complete": false
+        },
+        {
+          "id": "op-T3-departure",
+          "train_id": "T3",
+          "group_ids": [
+            "G3"
+          ],
+          "kind": "departure",
+          "status": "planned",
+          "execution_mode": "auto",
+          "predecessor_ids": [
+            "op-T3-inspection"
+          ],
+          "source_track_id": "R1",
+          "target_track_id": null,
+          "route_ids": [
+            "departure-W-R1"
+          ],
+          "resource_ids": [
+            "TL3",
+            "TC3"
+          ],
+          "duration_sim_s": 120,
+          "start_sim_s": 960,
+          "end_sim_s": 1080,
+          "actual_start_sim_s": null,
+          "actual_end_sim_s": null,
+          "progress": 0,
+          "phase": null,
+          "blocked_reason_codes": [],
+          "assigned_user_id": null,
+          "can_complete": false
+        },
+        {
+          "id": "op-T4-arrival",
+          "train_id": "T4",
+          "group_ids": [
+            "G4A",
+            "G4B",
+            "G4K"
+          ],
+          "kind": "arrival",
+          "status": "planned",
+          "execution_mode": "auto",
+          "predecessor_ids": [],
+          "source_track_id": null,
+          "target_track_id": "R4",
+          "route_ids": [
+            "arrival-W-R4"
+          ],
+          "resource_ids": [
+            "TL4",
+            "TC4"
+          ],
+          "duration_sim_s": 120,
+          "start_sim_s": 1200,
+          "end_sim_s": 1320,
+          "actual_start_sim_s": null,
+          "actual_end_sim_s": null,
+          "progress": 0,
+          "phase": null,
+          "blocked_reason_codes": [],
+          "assigned_user_id": null,
+          "can_complete": false
+        },
+        {
+          "id": "op-T4-inspection",
+          "train_id": "T4",
+          "group_ids": [
+            "G4A",
+            "G4B",
+            "G4K"
+          ],
+          "kind": "inspection",
+          "status": "planned",
+          "execution_mode": "auto",
+          "predecessor_ids": [
+            "op-T4-arrival"
+          ],
+          "source_track_id": "R4",
+          "target_track_id": "R4",
+          "route_ids": [],
+          "resource_ids": [
+            "I1"
+          ],
+          "duration_sim_s": 240,
+          "start_sim_s": 1320,
+          "end_sim_s": 1560,
+          "actual_start_sim_s": null,
+          "actual_end_sim_s": null,
+          "progress": 0,
+          "phase": null,
+          "blocked_reason_codes": [],
+          "assigned_user_id": null,
+          "can_complete": false
+        },
+        {
+          "id": "op-T4-shunt-A-out",
+          "train_id": "T4",
+          "group_ids": [
+            "G4A"
+          ],
+          "kind": "shunt_transfer",
+          "status": "planned",
+          "execution_mode": "auto",
+          "predecessor_ids": [
+            "op-T4-inspection"
+          ],
+          "source_track_id": "R4",
+          "target_track_id": "S1",
+          "route_ids": [
+            "move-D1-H",
+            "move-H-R4",
+            "move-R4-H",
+            "move-H-S1",
+            "move-S1-H",
+            "move-H-D1"
+          ],
+          "resource_ids": [
+            "L1",
+            "SH1"
+          ],
+          "duration_sim_s": 420,
+          "start_sim_s": 2100,
+          "end_sim_s": 2520,
+          "actual_start_sim_s": null,
+          "actual_end_sim_s": null,
+          "progress": 0,
+          "phase": null,
+          "blocked_reason_codes": [],
+          "assigned_user_id": null,
+          "can_complete": false
+        },
+        {
+          "id": "op-T4-shunt-B-out",
+          "train_id": "T4",
+          "group_ids": [
+            "G4B"
+          ],
+          "kind": "shunt_transfer",
+          "status": "planned",
+          "execution_mode": "auto",
+          "predecessor_ids": [
+            "op-T4-shunt-A-out"
+          ],
+          "source_track_id": "R4",
+          "target_track_id": "S2",
+          "route_ids": [
+            "move-D1-H",
+            "move-H-R4",
+            "move-R4-H",
+            "move-H-S2",
+            "move-S2-H",
+            "move-H-D1"
+          ],
+          "resource_ids": [
+            "L1",
+            "SH1"
+          ],
+          "duration_sim_s": 420,
+          "start_sim_s": 2640,
+          "end_sim_s": 3060,
+          "actual_start_sim_s": null,
+          "actual_end_sim_s": null,
+          "progress": 0,
+          "phase": null,
+          "blocked_reason_codes": [],
+          "assigned_user_id": null,
+          "can_complete": false
+        },
+        {
+          "id": "op-T4-shunt-A-back",
+          "train_id": "T4",
+          "group_ids": [
+            "G4A"
+          ],
+          "kind": "shunt_transfer",
+          "status": "planned",
+          "execution_mode": "auto",
+          "predecessor_ids": [
+            "op-T4-shunt-B-out"
+          ],
+          "source_track_id": "S1",
+          "target_track_id": "R4",
+          "route_ids": [
+            "move-D1-H",
+            "move-H-S1",
+            "move-S1-H",
+            "move-H-R4",
+            "move-R4-H",
+            "move-H-D1"
+          ],
+          "resource_ids": [
+            "L1",
+            "SH1"
+          ],
+          "duration_sim_s": 420,
+          "start_sim_s": 3480,
+          "end_sim_s": 3900,
+          "actual_start_sim_s": null,
+          "actual_end_sim_s": null,
+          "progress": 0,
+          "phase": null,
+          "blocked_reason_codes": [],
+          "assigned_user_id": null,
+          "can_complete": false
+        },
+        {
+          "id": "op-T4-shunt-B-back",
+          "train_id": "T4",
+          "group_ids": [
+            "G4B"
+          ],
+          "kind": "shunt_transfer",
+          "status": "planned",
+          "execution_mode": "auto",
+          "predecessor_ids": [
+            "op-T4-shunt-A-back"
+          ],
+          "source_track_id": "S2",
+          "target_track_id": "R4",
+          "route_ids": [
+            "move-D1-H",
+            "move-H-S2",
+            "move-S2-H",
+            "move-H-R4",
+            "move-R4-H",
+            "move-H-D1"
+          ],
+          "resource_ids": [
+            "L1",
+            "SH1"
+          ],
+          "duration_sim_s": 420,
+          "start_sim_s": 3900,
+          "end_sim_s": 4320,
+          "actual_start_sim_s": null,
+          "actual_end_sim_s": null,
+          "progress": 0,
+          "phase": null,
+          "blocked_reason_codes": [],
+          "assigned_user_id": null,
+          "can_complete": false
+        },
+        {
+          "id": "op-T4-prep",
+          "train_id": "T4",
+          "group_ids": [
+            "G4A",
+            "G4B",
+            "G4K"
+          ],
+          "kind": "departure_prep",
+          "status": "planned",
+          "execution_mode": "auto",
+          "predecessor_ids": [
+            "op-T4-shunt-B-back"
+          ],
+          "source_track_id": "R4",
+          "target_track_id": "R4",
+          "route_ids": [],
+          "resource_ids": [
+            "I1",
+            "TL4",
+            "TC4"
+          ],
+          "duration_sim_s": 180,
+          "start_sim_s": 4320,
+          "end_sim_s": 4500,
+          "actual_start_sim_s": null,
+          "actual_end_sim_s": null,
+          "progress": 0,
+          "phase": null,
+          "blocked_reason_codes": [],
+          "assigned_user_id": null,
+          "can_complete": false
+        },
+        {
+          "id": "op-T4-departure",
+          "train_id": "T4",
+          "group_ids": [
+            "G4B",
+            "G4A",
+            "G4K"
+          ],
+          "kind": "departure",
+          "status": "planned",
+          "execution_mode": "auto",
+          "predecessor_ids": [
+            "op-T4-prep"
+          ],
+          "source_track_id": "R4",
+          "target_track_id": null,
+          "route_ids": [
+            "departure-E-R4"
+          ],
+          "resource_ids": [
+            "TL4",
+            "TC4"
+          ],
+          "duration_sim_s": 120,
+          "start_sim_s": 4500,
+          "end_sim_s": 4620,
+          "actual_start_sim_s": null,
+          "actual_end_sim_s": null,
+          "progress": 0,
+          "phase": null,
+          "blocked_reason_codes": [],
+          "assigned_user_id": null,
+          "can_complete": false
+        },
+        {
+          "id": "op-T5-arrival",
+          "train_id": "T5",
+          "group_ids": [
+            "G5L",
+            "G5K"
+          ],
+          "kind": "arrival",
+          "status": "planned",
+          "execution_mode": "auto",
+          "predecessor_ids": [],
+          "source_track_id": null,
+          "target_track_id": "R3",
+          "route_ids": [
+            "arrival-W-R3"
+          ],
+          "resource_ids": [
+            "TL5",
+            "TC5"
+          ],
+          "duration_sim_s": 120,
+          "start_sim_s": 2520,
+          "end_sim_s": 2640,
+          "actual_start_sim_s": null,
+          "actual_end_sim_s": null,
+          "progress": 0,
+          "phase": null,
+          "blocked_reason_codes": [],
+          "assigned_user_id": null,
+          "can_complete": false
+        },
+        {
+          "id": "op-T5-inspection",
+          "train_id": "T5",
+          "group_ids": [
+            "G5L",
+            "G5K"
+          ],
+          "kind": "inspection",
+          "status": "planned",
+          "execution_mode": "auto",
+          "predecessor_ids": [
+            "op-T5-arrival"
+          ],
+          "source_track_id": "R3",
+          "target_track_id": "R3",
+          "route_ids": [],
+          "resource_ids": [
+            "I1"
+          ],
+          "duration_sim_s": 240,
+          "start_sim_s": 2640,
+          "end_sim_s": 2880,
+          "actual_start_sim_s": null,
+          "actual_end_sim_s": null,
+          "progress": 0,
+          "phase": null,
+          "blocked_reason_codes": [],
+          "assigned_user_id": null,
+          "can_complete": false
+        },
+        {
+          "id": "op-T5-shunt-out",
+          "train_id": "T5",
+          "group_ids": [
+            "G5L"
+          ],
+          "kind": "shunt_transfer",
+          "status": "planned",
+          "execution_mode": "auto",
+          "predecessor_ids": [
+            "op-T5-inspection"
+          ],
+          "source_track_id": "R3",
+          "target_track_id": "C1",
+          "route_ids": [
+            "move-D1-H",
+            "move-H-R3",
+            "move-R3-H",
+            "move-H-C1",
+            "move-C1-H",
+            "move-H-D1"
+          ],
+          "resource_ids": [
+            "L1",
+            "SH1"
+          ],
+          "duration_sim_s": 420,
+          "start_sim_s": 3060,
+          "end_sim_s": 3480,
+          "actual_start_sim_s": null,
+          "actual_end_sim_s": null,
+          "progress": 0,
+          "phase": null,
+          "blocked_reason_codes": [],
+          "assigned_user_id": null,
+          "can_complete": false
+        },
+        {
+          "id": "op-T5-cargo",
+          "train_id": "T5",
+          "group_ids": [
+            "G5L"
+          ],
+          "kind": "cargo",
+          "status": "planned",
+          "execution_mode": "auto",
+          "predecessor_ids": [
+            "op-T5-shunt-out"
+          ],
+          "source_track_id": "C1",
+          "target_track_id": "C1",
+          "route_ids": [],
+          "resource_ids": [
+            "CG1"
+          ],
+          "duration_sim_s": 720,
+          "start_sim_s": 3480,
+          "end_sim_s": 4200,
+          "actual_start_sim_s": null,
+          "actual_end_sim_s": null,
+          "progress": 0,
+          "phase": null,
+          "blocked_reason_codes": [],
+          "assigned_user_id": null,
+          "can_complete": false
+        },
+        {
+          "id": "op-T5-shunt-back",
+          "train_id": "T5",
+          "group_ids": [
+            "G5L"
+          ],
+          "kind": "shunt_transfer",
+          "status": "planned",
+          "execution_mode": "auto",
+          "predecessor_ids": [
+            "op-T5-cargo"
+          ],
+          "source_track_id": "C1",
+          "target_track_id": "R3",
+          "route_ids": [
+            "move-D1-H",
+            "move-H-C1",
+            "move-C1-H",
+            "move-H-R3",
+            "move-R3-H",
+            "move-H-D1"
+          ],
+          "resource_ids": [
+            "L1",
+            "SH1"
+          ],
+          "duration_sim_s": 420,
+          "start_sim_s": 4320,
+          "end_sim_s": 4740,
+          "actual_start_sim_s": null,
+          "actual_end_sim_s": null,
+          "progress": 0,
+          "phase": null,
+          "blocked_reason_codes": [],
+          "assigned_user_id": null,
+          "can_complete": false
+        },
+        {
+          "id": "op-T5-prep",
+          "train_id": "T5",
+          "group_ids": [
+            "G5L",
+            "G5K"
+          ],
+          "kind": "departure_prep",
+          "status": "planned",
+          "execution_mode": "auto",
+          "predecessor_ids": [
+            "op-T5-shunt-back"
+          ],
+          "source_track_id": "R3",
+          "target_track_id": "R3",
+          "route_ids": [],
+          "resource_ids": [
+            "I1",
+            "TL5",
+            "TC5"
+          ],
+          "duration_sim_s": 180,
+          "start_sim_s": 4740,
+          "end_sim_s": 4920,
+          "actual_start_sim_s": null,
+          "actual_end_sim_s": null,
+          "progress": 0,
+          "phase": null,
+          "blocked_reason_codes": [],
+          "assigned_user_id": null,
+          "can_complete": false
+        },
+        {
+          "id": "op-T5-departure",
+          "train_id": "T5",
+          "group_ids": [
+            "G5L",
+            "G5K"
+          ],
+          "kind": "departure",
+          "status": "planned",
+          "execution_mode": "auto",
+          "predecessor_ids": [
+            "op-T5-prep"
+          ],
+          "source_track_id": "R3",
+          "target_track_id": null,
+          "route_ids": [
+            "departure-E-R3"
+          ],
+          "resource_ids": [
+            "TL5",
+            "TC5"
+          ],
+          "duration_sim_s": 120,
+          "start_sim_s": 4920,
+          "end_sim_s": 5040,
+          "actual_start_sim_s": null,
+          "actual_end_sim_s": null,
+          "progress": 0,
+          "phase": null,
+          "blocked_reason_codes": [],
+          "assigned_user_id": null,
+          "can_complete": false
+        },
+        {
+          "id": "op-T6-arrival",
+          "train_id": "T6",
+          "group_ids": [
+            "G6"
+          ],
+          "kind": "arrival",
+          "status": "planned",
+          "execution_mode": "auto",
+          "predecessor_ids": [],
+          "source_track_id": null,
+          "target_track_id": "R1",
+          "route_ids": [
+            "arrival-E-R1"
+          ],
+          "resource_ids": [
+            "TL6",
+            "TC6"
+          ],
+          "duration_sim_s": 120,
+          "start_sim_s": 2700,
+          "end_sim_s": 2820,
+          "actual_start_sim_s": null,
+          "actual_end_sim_s": null,
+          "progress": 0,
+          "phase": null,
+          "blocked_reason_codes": [],
+          "assigned_user_id": null,
+          "can_complete": false
+        },
+        {
+          "id": "op-T6-inspection",
+          "train_id": "T6",
+          "group_ids": [
+            "G6"
+          ],
+          "kind": "inspection",
+          "status": "planned",
+          "execution_mode": "auto",
+          "predecessor_ids": [
+            "op-T6-arrival"
+          ],
+          "source_track_id": "R1",
+          "target_track_id": "R1",
+          "route_ids": [],
+          "resource_ids": [
+            "I2"
+          ],
+          "duration_sim_s": 240,
+          "start_sim_s": 2820,
+          "end_sim_s": 3060,
+          "actual_start_sim_s": null,
+          "actual_end_sim_s": null,
+          "progress": 0,
+          "phase": null,
+          "blocked_reason_codes": [],
+          "assigned_user_id": null,
+          "can_complete": false
+        },
+        {
+          "id": "op-T6-departure",
+          "train_id": "T6",
+          "group_ids": [
+            "G6"
+          ],
+          "kind": "departure",
+          "status": "planned",
+          "execution_mode": "auto",
+          "predecessor_ids": [
+            "op-T6-inspection"
+          ],
+          "source_track_id": "R1",
+          "target_track_id": null,
+          "route_ids": [
+            "departure-W-R1"
+          ],
+          "resource_ids": [
+            "TL6",
+            "TC6"
+          ],
+          "duration_sim_s": 120,
+          "start_sim_s": 4740,
+          "end_sim_s": 4860,
+          "actual_start_sim_s": null,
+          "actual_end_sim_s": null,
+          "progress": 0,
+          "phase": null,
+          "blocked_reason_codes": [],
+          "assigned_user_id": null,
+          "can_complete": false
+        },
+        {
+          "id": "op-P1-arrival",
+          "train_id": "P1",
+          "group_ids": [],
+          "kind": "arrival",
+          "status": "planned",
+          "execution_mode": "auto",
+          "predecessor_ids": [],
+          "source_track_id": null,
+          "target_track_id": "R1",
+          "route_ids": [
+            "arrival-W-R1"
+          ],
+          "resource_ids": [
+            "TP1",
+            "TCP1"
+          ],
+          "duration_sim_s": 120,
+          "start_sim_s": 1080,
+          "end_sim_s": 1200,
+          "actual_start_sim_s": null,
+          "actual_end_sim_s": null,
+          "progress": 0,
+          "phase": null,
+          "blocked_reason_codes": [],
+          "assigned_user_id": null,
+          "can_complete": false
+        },
+        {
+          "id": "op-P1-departure",
+          "train_id": "P1",
+          "group_ids": [],
+          "kind": "departure",
+          "status": "planned",
+          "execution_mode": "auto",
+          "predecessor_ids": [
+            "op-P1-arrival"
+          ],
+          "source_track_id": "R1",
+          "target_track_id": null,
+          "route_ids": [
+            "departure-E-R1"
+          ],
+          "resource_ids": [
+            "TP1",
+            "TCP1"
+          ],
+          "duration_sim_s": 120,
+          "start_sim_s": 1200,
+          "end_sim_s": 1320,
+          "actual_start_sim_s": null,
+          "actual_end_sim_s": null,
+          "progress": 0,
+          "phase": null,
+          "blocked_reason_codes": [],
+          "assigned_user_id": null,
+          "can_complete": false
+        }
+      ],
+      "validator": {
+        "passed": true,
+        "errors": []
+      }
+    }
+  ]
+}

@@ -288,3 +288,20 @@ Background-проверка сохранена отдельно: max≈2,09с, �
 frontend/материалы в выполненные требования. Это оценка работ, не сведения о
 реальном времени начала защиты. H18 закрывает ограниченный backend/reference
 scope; A16 на двух физических машинах и A18/paired quality/R23 остаются открытыми.
+
+## Backend freeze v1.0 — итог отдельного разрешённого задания
+
+По новому запросу пользователя завершены backend handoff/README, fair paired
+FCFS/heuristic six-scenario benchmark, clean-install/setup/restart proof,
+full browser E2E, OpenAPI/types/fixtures parity и freeze hashes. Детали:
+[BACKEND_V1_REPORT.md](BACKEND_V1_REPORT.md), [BACKEND_HANDOFF.md](BACKEND_HANDOFF.md),
+[benchmark](../artifacts/benchmark/summary.md). A18 backend comparison закрыт;
+никакого универсального превосходства heuristic не заявлено. Все новые backend
+features v1.0 запрещены после freeze. Planner/validator/topology/12tracks/7trains
+не перепроектированы; исправлен только обнаруженный fresh manual control barrier.
+
+Осталось вне backend: основной frontend друга/второй ноутбук,10–12слайдов,
+резервное видео/репетиция и smoke/SLA в сети защиты. При готовом UI ориентир2–4ч
+параллельно; если его ещё нет, срок UI неизвестен, reference позволяет резервное
+демо и подготовку материалов за1,5–2,5ч. Это оценка работ, не время защиты.
+Gemini/signals/P2/новые модели/production scaling не начинаются. После отчёта STOP.

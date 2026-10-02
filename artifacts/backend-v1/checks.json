@@ -1,0 +1,128 @@
+{
+  "checked_at": "2026-10-02",
+  "pytest": {
+    "cmd": "uv run pytest -q",
+    "exit_code": 0,
+    "passed": 244,
+    "failed": 0,
+    "skipped": 0,
+    "warnings": 1,
+    "duration_s": 208.21,
+    "output": "244 passed, 1 warning in 208.21s (0:03:28)",
+    "warning": "Starlette TestClient httpx deprecation"
+  },
+  "js_test_count": 13,
+  "checks": [
+    {
+      "name": "ruff",
+      "cmd": "uv run ruff check src tests scripts",
+      "chunk_id": "0eed0a",
+      "wall_time_seconds": 0.000013765,
+      "exit_code": 0,
+      "original_token_count": 5,
+      "output": "All checks passed!\n"
+    },
+    {
+      "name": "ruff_format",
+      "cmd": "uv run ruff format --check src tests scripts",
+      "chunk_id": "5d3488",
+      "wall_time_seconds": 0.000014637,
+      "exit_code": 0,
+      "original_token_count": 7,
+      "output": "69 files already formatted\n"
+    },
+    {
+      "name": "mypy",
+      "cmd": "uv run mypy src",
+      "chunk_id": "622960",
+      "wall_time_seconds": 0.203830303,
+      "exit_code": 0,
+      "original_token_count": 11,
+      "output": "Success: no issues found in 29 source files\n"
+    },
+    {
+      "name": "typescript_strict",
+      "cmd": "integration/lan-probe/node_modules/.bin/tsc --strict --noEmit --target ES2022 --moduleResolution bundler --module ESNext contracts/api-v1.ts contracts/http-v1.ts contracts/railway-display.ts",
+      "chunk_id": "f05a95",
+      "wall_time_seconds": 1.001675205,
+      "original_token_count": 0,
+      "output": "",
+      "exit_code": 0
+    },
+    {
+      "name": "js_railway",
+      "cmd": "node tests/test_railway.mjs",
+      "chunk_id": "f13dd8",
+      "wall_time_seconds": 0.079611356,
+      "exit_code": 0,
+      "original_token_count": 265,
+      "output": "✔ Russian railway labels do not turn the parking track into a depot or a role into railway authority (2.836183ms)\n✔ time uses scenario epoch plus sim seconds in Almaty, independent of wall time and speed (23.157222ms)\n✔ route points follow segment length and backend progress, not straight-line interpolation (2.480505ms)\n✔ fixed trains, attached groups and train traction are not duplicated; detached groups are separate (1.211734ms)\n✔ locations and affected IDs display only backend facts and their explicit relationships (1.682487ms)\n✔ SVG renders 12 real tracks, preserves selection, and never mutates State (8.673508ms)\n✔ only current locations highlight routes; zone locks come only from server zone state (5.181805ms)\n✔ closures, pending loss and untrusted names use safe text nodes, with no fake locations (1.988132ms)\n✔ assigned and reserved tracks never relocate trains or become actual occupied tracks (2.947172ms)\nℹ tests 9\nℹ suites 0\nℹ pass 9\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 60.227295\n"
+    },
+    {
+      "name": "js_render",
+      "cmd": "node tests/test_render_telemetry.mjs",
+      "chunk_id": "07bd41",
+      "wall_time_seconds": 0.034128313,
+      "exit_code": 0,
+      "original_token_count": 78,
+      "output": "✔ stop drains pending calibration; a logged-out generation cannot schedule more probes (3.297048ms)\n✔ real double-rAF report is deduplicated and drained before session revocation (1.306252ms)\nℹ tests 2\nℹ suites 0\nℹ pass 2\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 17.018972\n"
+    },
+    {
+      "name": "js_contract",
+      "cmd": "node tests/test_contract_ast.mjs",
+      "chunk_id": "e1a2f8",
+      "wall_time_seconds": 0.269956109,
+      "exit_code": 0,
+      "original_token_count": 78,
+      "output": "✔ frozen core domain interface fields match actual OpenAPI output models (1.670656ms)\n✔ all named domain enum sets match actual backend including type-independent train categories (0.613892ms)\nℹ tests 2\nℹ suites 0\nℹ pass 2\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 7.183703\n"
+    },
+    {
+      "name": "contract_audit",
+      "cmd": "uv run python scripts/verify_backend_contract.py",
+      "chunk_id": "d133ef",
+      "wall_time_seconds": 1.001175758,
+      "original_token_count": 0,
+      "output": "{\n  \"status\": \"passed\",\n  \"endpoint_count\": 25,\n  \"typed_http_responses\": true,\n  \"documented_paths_match\": true,\n  \"generated_http_types_match\": true,\n  \"state_schema_matches\": true,\n  \"captured_fixtures_checked\": [\n    \"auth.viewer.json\",\n    \"auth.operator.json\",\n    \"auth.dispatcher.json\",\n    \"auth.admin.json\",\n    \"snapshot.live.json\",\n    \"health.live.json\",\n    \"health.ready.json\",\n    \"config.json\",\n    \"scenarios.json\",\n    \"metrics.json\",\n    \"clock.json\",\n    \"history.json\",\n    \"snapshot.replay.json\",\n    \"replan.json\",\n    \"explanation.json\",\n    \"stream.json\",\n    \"snapshot.main.shunting.json\",\n    \"snapshot.main.incident.json\",\n    \"replan.main.incident.json\",\n    \"explanation.main.incident.json\",\n    \"snapshot.manual.before.json\",\n    \"snapshot.manual.after.json\"\n  ],\n  \"frozen_hashes_checked\": true\n}\n",
+      "exit_code": 0
+    },
+    {
+      "name": "alembic_current",
+      "cmd": "uv run alembic current",
+      "chunk_id": "019890",
+      "wall_time_seconds": 0.87737675,
+      "exit_code": 0,
+      "original_token_count": 9,
+      "output": "0006_telemetry_observation (head)\n"
+    },
+    {
+      "name": "alembic_check",
+      "cmd": "uv run alembic check",
+      "chunk_id": "021a24",
+      "wall_time_seconds": 0.872643886,
+      "exit_code": 0,
+      "original_token_count": 9,
+      "output": "No new upgrade operations detected.\n"
+    },
+    {
+      "name": "git_diff_check",
+      "cmd": "git diff --check",
+      "chunk_id": "f80e29",
+      "wall_time_seconds": 0.000030597,
+      "exit_code": 0,
+      "original_token_count": 0,
+      "output": ""
+    }
+  ],
+  "secrets_scan": {
+    "files_checked": 291,
+    "secret_file_hits": [],
+    "excluded": "ignored .env and dependency folders",
+    "status": "passed"
+  },
+  "clean_start_proof": "artifacts/backend-v1/clean-start.json",
+  "browser_proof": "artifacts/backend-v1/browser-proof.json",
+  "browser_execution": "Playwright MCP / system Chromium headless; no new visible GUI window",
+  "foreground_sla_source": "Accepted H18 raw foreground measurements explicitly reused, not headless paint proof",
+  "final_sla": "artifacts/backend-v1/final-sla.json",
+  "contract_freeze": "contracts/v1.0-freeze.json"
+}

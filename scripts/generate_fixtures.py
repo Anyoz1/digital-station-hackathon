@@ -21,15 +21,15 @@ def main():
     manifest = {
         "schema_version": "1.0",
         "spec_tag": "spec-v1.0",
-        "stage": "H0-H2",
+        "stage": "backend-v1-compatible-static",
         "seed": 42,
         "source": "synthetic_static_fixture",
-        "runtime_transitions_implemented": False,
+        "runtime_transitions_implemented": True,
         "solver_validated": False,
         "performance_measured": False,
-        "description": "Только образцы для автономного frontend. Live API читает PostgreSQL.",
+        "description": "Статические автономные образцы, не SLA/solver evidence. Backend v1.0 полностью реализован; live API читает PostgreSQL. Реальные captured responses — в live/.",
         "files": {name: hashlib.sha256((target / name).read_bytes()).hexdigest() for name in files},
-        "deferred": ["replan", "reconnect", "history", "manual-service", "measured-metrics", "SERVICE-P2"],
+        "deferred": ["SERVICE-P2"],
     }
     (target / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n")
     handoff = (ROOT / "docs/FRONTEND_HANDOFF.md").read_text()

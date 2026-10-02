@@ -32,14 +32,23 @@ from .contracts import (
     SimulationCommand,
     State,
 )
-from .db import AppUser, ConfigRevision, OptimizationRun, PlanRecord, RunState, database
+from .db import AppUser, ConfigRevision, OptimizationRun, PlanRecord, RunState, Scenario, database
 from .history import HistoryError
 from .history import page as history_page
 from .history import snapshot as history_snapshot
+from .http_contracts import (
+    ClockProbe,
+    ExplanationAvailable,
+    ExplanationUnavailable,
+    HealthLive,
+    HealthReady,
+    MetricsResponse,
+    ScenariosResponse,
+)
 from .presentation import explain_plans
 from .reporting import export_csv
 from .runtime import MIGRATION, ActorError, StationActor
-from .scenario import PROFILE_IDS, utc_now
+from .scenario import utc_now
 from .settings import Settings
 
 STATIC = Path(__file__).parent / "static"
@@ -196,11 +205,11 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             fail(403, "FORBIDDEN", "Требуется исполнитель или администратор")
         return user
 
-    @app.get("/health/live")
+    @app.get("/health/live", response_model=HealthLive)
     async def live():
         return {"status": "alive", "stage": "H18"}
 
-    @app.get("/health/ready")
+    @app.get("/health/ready", response_model=HealthReady)
     async def ready(session=Depends(db_session)):
         try:
             await session.execute(text("SELECT 1"))
@@ -434,7 +443,9 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         return {"job": job.payload["job"], "plans": plans}
 
     @app.get(
-        "/api/v1/replans/{job_id}/explanation", summary="Read-only railway display diff; no state mutation"
+        "/api/v1/replans/{job_id}/explanation",
+        summary="Read-only railway display diff; no state mutation",
+        response_model=ExplanationAvailable | ExplanationUnavailable,
     )
     async def replan_explanation(job_id: str, user=Depends(current_user), session=Depends(db_session)):
         job = await session.get(OptimizationRun, job_id)
@@ -450,7 +461,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         request.state.command_id = body.request_id
         return await app.state.actor.call("apply", (user.id, body, plan_id, utc_now()))
 
-    @app.get("/api/v1/time")
+    @app.get("/api/v1/time", response_model=ClockProbe)
     async def clock_probe(request: Request, user=Depends(current_user)):
         return {
             "server_received_ms": request.state.received_ms,
@@ -462,7 +473,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         app.state.actor.measurements.report(body)
         return Response(status_code=204)
 
-    @app.get("/api/v1/metrics")
+    @app.get("/api/v1/metrics", response_model=MetricsResponse)
     async def metrics(user=Depends(current_user)):
         return await app.state.actor.measurements.metrics(app.state.actor)
 
@@ -473,18 +484,22 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         app.state.run_id = app.state.actor.run_id
         return receipt
 
-    @app.get("/api/v1/scenarios")
-    async def scenarios(user=Depends(current_user)):
+    @app.get("/api/v1/scenarios", response_model=ScenariosResponse)
+    async def scenarios(user=Depends(current_user), session=Depends(db_session)):
+        rows = await session.scalars(select(Scenario).where(Scenario.version == 1).order_by(Scenario.id))
         return {
             "items": [
                 {
-                    "id": "demo_main_v1",
-                    "name": "Основное смешанное демо",
-                    "description": "12 путей; 6 грузовых и 1 пассажирский поезд; seed42",
-                    "train_count": 7,
-                    "horizon_sim_s": 7200,
-                    "enabled_service_profiles": PROFILE_IDS,
+                    "id": row.id,
+                    "name": "Контроль ручного осмотра"
+                    if row.id == "manual-control-v1"
+                    else "Основное смешанное демо",
+                    "description": "12 путей; 6 грузовых и 1 пассажирский поезд; учебный сценарий",
+                    "train_count": len(row.payload["initial_state"]["trains"]),
+                    "horizon_sim_s": row.payload["horizon_sim_s"],
+                    "enabled_service_profiles": row.payload["enabled_service_profiles"],
                 }
+                for row in rows
             ]
         }
 

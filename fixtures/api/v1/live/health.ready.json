@@ -1,0 +1,27 @@
+{
+  "status": "ready",
+  "stage": "H18",
+  "checks": {
+    "database": "ok",
+    "schema": "ok",
+    "initial_state": "ok",
+    "station_actor": "ok",
+    "scenario_topology": "ok",
+    "planner_worker": "ok"
+  },
+  "capabilities": {
+    "auth": true,
+    "snapshot": true,
+    "simulation": true,
+    "sse": true,
+    "optimization": true,
+    "actual_efficiency": true,
+    "config_patch": true,
+    "history": true,
+    "csv": true,
+    "manual_confirmation": true,
+    "new_run": true,
+    "render_telemetry": true,
+    "noisy_progress_normalization": true
+  }
+}

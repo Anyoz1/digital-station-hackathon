@@ -1,0 +1,325 @@
+{
+  "source_foreground": "artifacts/h18-acceptance.json + h18-live-{1,10}x-raw.json",
+  "measured_foreground_at": "2026-10-01T18:47:27.257Z",
+  "qualification": "Accepted H18 foreground120s each/2 headed clients/workspace9. Reused explicitly: final functional E2E is headless, NOT a new foreground SLA run. Main State/SSE/planner/validator/render steady path unchanged; fresh-manual runtime-control branch fixed and separately tested.",
+  "environment": {
+    "python": "3.12.13",
+    "platform": "Linux-7.1.8-arch1-3-x86_64-with-glibc2.44",
+    "logical_cpus": 16,
+    "cpu": "AMD Ryzen7 5700U",
+    "memory": "14GiB",
+    "chromium": "151.0.7922.137",
+    "postgres": "16-alpine",
+    "network": "backend/PG + two browser clients on ONE physical host; Vite loopback and LAN IP, not two laptops"
+  },
+  "foreground": [
+    {
+      "speed": 1,
+      "wall_ms": 120208,
+      "sse_hz": 1.2782222877720832,
+      "client_id": "ebb3d56d-b27c-460a-9ae5-04e6dfcd024f",
+      "latency_upper": {
+        "sample_count": 128,
+        "p50_ms": 149.02001953125,
+        "p95_ms": 231.02001953125,
+        "max_ms": 361.6131591796875
+      },
+      "receive_to_render": {
+        "sample_count": 128,
+        "p50_ms": 95,
+        "p95_ms": 120,
+        "max_ms": 169
+      },
+      "invalid_samples": 0,
+      "hidden_samples": 0,
+      "unreported_events": 0,
+      "latency_exceedances": 0
+    },
+    {
+      "speed": 1,
+      "wall_ms": 120208,
+      "sse_hz": 1.278237998082643,
+      "client_id": "7e5f97c3-3524-4f3e-8b76-fd638511cf0c",
+      "latency_upper": {
+        "sample_count": 128,
+        "p50_ms": 146.7139892578125,
+        "p95_ms": 228.5267333984375,
+        "max_ms": 367.510986328125
+      },
+      "receive_to_render": {
+        "sample_count": 128,
+        "p50_ms": 95,
+        "p95_ms": 121,
+        "max_ms": 179
+      },
+      "invalid_samples": 0,
+      "hidden_samples": 0,
+      "unreported_events": 0,
+      "latency_exceedances": 0
+    },
+    {
+      "speed": 10,
+      "wall_ms": 120178,
+      "sse_hz": 1.4486597442010818,
+      "client_id": "ebb3d56d-b27c-460a-9ae5-04e6dfcd024f",
+      "latency_upper": {
+        "sample_count": 177,
+        "p50_ms": 84.9420166015625,
+        "p95_ms": 166.6131591796875,
+        "max_ms": 289.6131591796875
+      },
+      "receive_to_render": {
+        "sample_count": 177,
+        "p50_ms": 49,
+        "p95_ms": 109,
+        "max_ms": 164
+      },
+      "invalid_samples": 0,
+      "hidden_samples": 0,
+      "unreported_events": 0,
+      "latency_exceedances": 0
+    },
+    {
+      "speed": 10,
+      "wall_ms": 120178,
+      "sse_hz": 1.4486490733556074,
+      "client_id": "7e5f97c3-3524-4f3e-8b76-fd638511cf0c",
+      "latency_upper": {
+        "sample_count": 177,
+        "p50_ms": 87.47314453125,
+        "p95_ms": 166.510986328125,
+        "max_ms": 268.510986328125
+      },
+      "receive_to_render": {
+        "sample_count": 177,
+        "p50_ms": 51,
+        "p95_ms": 116,
+        "max_ms": 163
+      },
+      "invalid_samples": 0,
+      "hidden_samples": 0,
+      "unreported_events": 0,
+      "latency_exceedances": 0
+    }
+  ],
+  "valid_render_samples": 610,
+  "replan_80": {
+    "elapsed": {
+      "sample_count": 80,
+      "p50_ms": 1248.354167000798,
+      "p95_ms": 1336.436744000821,
+      "max_ms": 1369.7168030048488
+    },
+    "compute": {
+      "sample_count": 80,
+      "p50_ms": 571.3014709981508,
+      "p95_ms": 610.884571011411,
+      "max_ms": 631.3205670085154
+    },
+    "cases": {
+      "delay": {
+        "sample_count": 20,
+        "p50_ms": 1248.354167000798,
+        "p95_ms": 1297.6088720024563,
+        "max_ms": 1313.0964350057184
+      },
+      "closure": {
+        "sample_count": 20,
+        "p50_ms": 1215.7286569999997,
+        "p95_ms": 1265.844075998757,
+        "max_ms": 1306.7766690001008
+      },
+      "resource_loss": {
+        "sample_count": 20,
+        "p50_ms": 1231.948287000705,
+        "p95_ms": 1284.77204599767,
+        "max_ms": 1288.0204890025198
+      },
+      "burst10": {
+        "sample_count": 20,
+        "p50_ms": 1308.8809039982152,
+        "p95_ms": 1366.9324940055958,
+        "max_ms": 1369.7168030048488
+      }
+    },
+    "deadline_exceedances": 0,
+    "source": "artifacts/h18-replan-timings-raw.json"
+  },
+  "batches": {
+    "5": {
+      "job": {
+        "id": "rp-af9a9355-0343-4d84-9dd8-95ed85c9e21b",
+        "status": "succeeded",
+        "reason": "incident_batch",
+        "created_at": "2026-10-01T18:41:16.302Z",
+        "started_at": "2026-10-01T18:41:16.658Z",
+        "finished_at": "2026-10-01T18:41:17.608Z",
+        "base_input_revision": 4,
+        "candidate_plan_ids": [
+          "plan-rp-af9a9355-0343-4d84-9dd8-95ed85c9e21b-0",
+          "plan-rp-af9a9355-0343-4d84-9dd8-95ed85c9e21b-1"
+        ],
+        "applied_plan_id": "plan-rp-af9a9355-0343-4d84-9dd8-95ed85c9e21b-0",
+        "elapsed_ms": 1306.8549549934687,
+        "compute_ms": 587.447820995294,
+        "validation_ms": 185.9774510085117,
+        "deadline_ms": 5000,
+        "outcome_reason_codes": []
+      },
+      "render": [
+        {
+          "client_id": "7e5f97c3-3524-4f3e-8b76-fd638511cf0c",
+          "latency_upper": {
+            "sample_count": 20,
+            "p50_ms": 77.5950927734375,
+            "p95_ms": 119.5950927734375,
+            "max_ms": 195.5950927734375
+          },
+          "receive_to_render": {
+            "sample_count": 20,
+            "p50_ms": 34,
+            "p95_ms": 46,
+            "max_ms": 70
+          },
+          "invalid_samples": 0,
+          "hidden_samples": 0,
+          "unreported_events": 0,
+          "latency_exceedances": 0
+        },
+        {
+          "client_id": "ebb3d56d-b27c-460a-9ae5-04e6dfcd024f",
+          "latency_upper": {
+            "sample_count": 20,
+            "p50_ms": 79.9420166015625,
+            "p95_ms": 167.9420166015625,
+            "max_ms": 194.9420166015625
+          },
+          "receive_to_render": {
+            "sample_count": 20,
+            "p50_ms": 40,
+            "p95_ms": 80,
+            "max_ms": 80
+          },
+          "invalid_samples": 0,
+          "hidden_samples": 0,
+          "unreported_events": 0,
+          "latency_exceedances": 0
+        }
+      ],
+      "source": "artifacts/h18-batch5-raw.json"
+    },
+    "10": {
+      "job": {
+        "id": "rp-5bdd4f9c-94e1-45c4-a4dc-74d485bf7b47",
+        "status": "succeeded",
+        "reason": "incident_batch",
+        "created_at": "2026-10-01T18:41:23.946Z",
+        "started_at": "2026-10-01T18:41:24.350Z",
+        "finished_at": "2026-10-01T18:41:25.302Z",
+        "base_input_revision": 4,
+        "candidate_plan_ids": [
+          "plan-rp-5bdd4f9c-94e1-45c4-a4dc-74d485bf7b47-0",
+          "plan-rp-5bdd4f9c-94e1-45c4-a4dc-74d485bf7b47-1"
+        ],
+        "applied_plan_id": "plan-rp-5bdd4f9c-94e1-45c4-a4dc-74d485bf7b47-0",
+        "elapsed_ms": 1356.102275000012,
+        "compute_ms": 584.9695279976004,
+        "validation_ms": 192.97167200420517,
+        "deadline_ms": 5000,
+        "outcome_reason_codes": []
+      },
+      "render": [
+        {
+          "client_id": "7e5f97c3-3524-4f3e-8b76-fd638511cf0c",
+          "latency_upper": {
+            "sample_count": 20,
+            "p50_ms": 79.5950927734375,
+            "p95_ms": 141.5950927734375,
+            "max_ms": 145.5950927734375
+          },
+          "receive_to_render": {
+            "sample_count": 20,
+            "p50_ms": 43,
+            "p95_ms": 74,
+            "max_ms": 76
+          },
+          "invalid_samples": 0,
+          "hidden_samples": 0,
+          "unreported_events": 0,
+          "latency_exceedances": 0
+        },
+        {
+          "client_id": "ebb3d56d-b27c-460a-9ae5-04e6dfcd024f",
+          "latency_upper": {
+            "sample_count": 20,
+            "p50_ms": 80.9420166015625,
+            "p95_ms": 141.9420166015625,
+            "max_ms": 146.9420166015625
+          },
+          "receive_to_render": {
+            "sample_count": 20,
+            "p50_ms": 38,
+            "p95_ms": 74,
+            "max_ms": 81
+          },
+          "invalid_samples": 0,
+          "hidden_samples": 0,
+          "unreported_events": 0,
+          "latency_exceedances": 0
+        }
+      ],
+      "source": "artifacts/h18-batch10-raw.json"
+    }
+  },
+  "fresh_clean_sse": {
+    "frames": [
+      {
+        "seq": 42,
+        "sim_time_s": 157
+      },
+      {
+        "seq": 43,
+        "sim_time_s": 161
+      },
+      {
+        "seq": 44,
+        "sim_time_s": 169
+      },
+      {
+        "seq": 45,
+        "sim_time_s": 177
+      },
+      {
+        "seq": 46,
+        "sim_time_s": 180
+      },
+      {
+        "seq": 47,
+        "sim_time_s": 185
+      },
+      {
+        "seq": 48,
+        "sim_time_s": 193
+      },
+      {
+        "seq": 49,
+        "sim_time_s": 201
+      }
+    ],
+    "elapsed_wall_s": 4.417743060999783,
+    "hz": 1.584519494082081
+  },
+  "fresh_functional_main_replan_ms": 966.2668140008464,
+  "browser": {
+    "steps": 18,
+    "console_page_errors": 0,
+    "nominal_console_errors": 0,
+    "nominal_http_errors": 0,
+    "source": "artifacts/backend-v1/browser-proof.json"
+  },
+  "paired_live_timing_source": "artifacts/benchmark/live-timings.json",
+  "negative_background_evidence": [
+    "artifacts/h18-background-1x-raw.json",
+    "artifacts/h18-background-10x-raw.json"
+  ]
+}

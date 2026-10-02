@@ -15,7 +15,9 @@
             "description": "Successful Response",
             "content": {
               "application/json": {
-                "schema": {}
+                "schema": {
+                  "$ref": "#/components/schemas/HealthLive"
+                }
               }
             }
           },
@@ -101,7 +103,9 @@
             "description": "Successful Response",
             "content": {
               "application/json": {
-                "schema": {}
+                "schema": {
+                  "$ref": "#/components/schemas/HealthReady"
+                }
               }
             }
           },
@@ -1763,7 +1767,17 @@
             "description": "Successful Response",
             "content": {
               "application/json": {
-                "schema": {}
+                "schema": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/components/schemas/ExplanationAvailable"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ExplanationUnavailable"
+                    }
+                  ],
+                  "title": "Response Replan Explanation Api V1 Replans  Job Id  Explanation Get"
+                }
               }
             }
           },
@@ -1958,7 +1972,9 @@
             "description": "Successful Response",
             "content": {
               "application/json": {
-                "schema": {}
+                "schema": {
+                  "$ref": "#/components/schemas/ClockProbe"
+                }
               }
             }
           },
@@ -2135,7 +2151,9 @@
             "description": "Successful Response",
             "content": {
               "application/json": {
-                "schema": {}
+                "schema": {
+                  "$ref": "#/components/schemas/MetricsResponse"
+                }
               }
             }
           },
@@ -2319,7 +2337,9 @@
             "description": "Successful Response",
             "content": {
               "application/json": {
-                "schema": {}
+                "schema": {
+                  "$ref": "#/components/schemas/ScenariosResponse"
+                }
               }
             }
           },
@@ -2522,6 +2542,67 @@
           "user"
         ],
         "title": "AuthResponse"
+      },
+      "ClientRenderMetrics": {
+        "properties": {
+          "client_id": {
+            "type": "string",
+            "title": "Client Id"
+          },
+          "latency_upper": {
+            "$ref": "#/components/schemas/DurationStats"
+          },
+          "receive_to_render": {
+            "$ref": "#/components/schemas/DurationStats"
+          },
+          "invalid_samples": {
+            "type": "integer",
+            "title": "Invalid Samples"
+          },
+          "hidden_samples": {
+            "type": "integer",
+            "title": "Hidden Samples"
+          },
+          "unreported_events": {
+            "type": "integer",
+            "title": "Unreported Events"
+          },
+          "latency_exceedances": {
+            "type": "integer",
+            "title": "Latency Exceedances"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "client_id",
+          "latency_upper",
+          "receive_to_render",
+          "invalid_samples",
+          "hidden_samples",
+          "unreported_events",
+          "latency_exceedances"
+        ],
+        "title": "ClientRenderMetrics"
+      },
+      "ClockProbe": {
+        "properties": {
+          "server_received_ms": {
+            "type": "number",
+            "title": "Server Received Ms"
+          },
+          "server_sent_ms": {
+            "type": "number",
+            "title": "Server Sent Ms"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "server_received_ms",
+          "server_sent_ms"
+        ],
+        "title": "ClockProbe"
       },
       "CommandEnvelope": {
         "properties": {
@@ -2834,6 +2915,103 @@
         ],
         "title": "Conflict"
       },
+      "DepartureExplanation": {
+        "properties": {
+          "train_id": {
+            "type": "string",
+            "title": "Train Id"
+          },
+          "departure_sim_s": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Departure Sim S"
+          },
+          "delay_sim_s": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Delay Sim S"
+          },
+          "basis": {
+            "type": "string",
+            "enum": [
+              "actual",
+              "forecast"
+            ],
+            "title": "Basis"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "train_id",
+          "departure_sim_s",
+          "delay_sim_s",
+          "basis"
+        ],
+        "title": "DepartureExplanation"
+      },
+      "DurationStats": {
+        "properties": {
+          "sample_count": {
+            "type": "integer",
+            "title": "Sample Count"
+          },
+          "p50_ms": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "P50 Ms"
+          },
+          "p95_ms": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "P95 Ms"
+          },
+          "max_ms": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Max Ms"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "sample_count",
+          "p50_ms",
+          "p95_ms",
+          "max_ms"
+        ],
+        "title": "DurationStats"
+      },
       "Edge": {
         "properties": {
           "id": {
@@ -2996,6 +3174,119 @@
         ],
         "title": "ErrorPayload"
       },
+      "ExplainedPlan": {
+        "properties": {
+          "plan_id": {
+            "type": "string",
+            "title": "Plan Id"
+          },
+          "changes": {
+            "items": {
+              "$ref": "#/components/schemas/OperationDiff"
+            },
+            "type": "array",
+            "title": "Changes"
+          },
+          "departures": {
+            "items": {
+              "$ref": "#/components/schemas/DepartureExplanation"
+            },
+            "type": "array",
+            "title": "Departures"
+          },
+          "reason": {
+            "type": "string",
+            "title": "Reason"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "plan_id",
+          "changes",
+          "departures",
+          "reason"
+        ],
+        "title": "ExplainedPlan"
+      },
+      "ExplanationAvailable": {
+        "properties": {
+          "available": {
+            "type": "boolean",
+            "const": true,
+            "title": "Available"
+          },
+          "run_id": {
+            "type": "string",
+            "title": "Run Id"
+          },
+          "replan_id": {
+            "type": "string",
+            "title": "Replan Id"
+          },
+          "base_event_seq": {
+            "type": "integer",
+            "title": "Base Event Seq"
+          },
+          "base_plan_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Base Plan Id"
+          },
+          "plans": {
+            "items": {
+              "$ref": "#/components/schemas/ExplainedPlan"
+            },
+            "type": "array",
+            "title": "Plans"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "available",
+          "run_id",
+          "replan_id",
+          "base_event_seq",
+          "base_plan_id",
+          "plans"
+        ],
+        "title": "ExplanationAvailable"
+      },
+      "ExplanationUnavailable": {
+        "properties": {
+          "available": {
+            "type": "boolean",
+            "const": false,
+            "title": "Available"
+          },
+          "reason": {
+            "type": "string",
+            "title": "Reason"
+          },
+          "plans": {
+            "items": {
+              "$ref": "#/components/schemas/ExplainedPlan"
+            },
+            "type": "array",
+            "title": "Plans"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "available",
+          "reason",
+          "plans"
+        ],
+        "title": "ExplanationUnavailable"
+      },
       "Factor": {
         "properties": {
           "key": {
@@ -3071,6 +3362,62 @@
           "reason"
         ],
         "title": "Factor"
+      },
+      "HealthLive": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "const": "alive",
+            "title": "Status"
+          },
+          "stage": {
+            "type": "string",
+            "title": "Stage"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "status",
+          "stage"
+        ],
+        "title": "HealthLive"
+      },
+      "HealthReady": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "const": "ready",
+            "title": "Status"
+          },
+          "stage": {
+            "type": "string",
+            "title": "Stage"
+          },
+          "checks": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "type": "object",
+            "title": "Checks"
+          },
+          "capabilities": {
+            "additionalProperties": {
+              "type": "boolean"
+            },
+            "type": "object",
+            "title": "Capabilities"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "status",
+          "stage",
+          "checks",
+          "capabilities"
+        ],
+        "title": "HealthReady"
       },
       "HistoryEvent": {
         "properties": {
@@ -3420,6 +3767,67 @@
         ],
         "title": "LoginInput"
       },
+      "MetricsResponse": {
+        "properties": {
+          "run_id": {
+            "type": "string",
+            "title": "Run Id"
+          },
+          "window_started_at": {
+            "type": "string",
+            "title": "Window Started At"
+          },
+          "measured_at": {
+            "type": "string",
+            "title": "Measured At"
+          },
+          "published_events": {
+            "type": "integer",
+            "title": "Published Events"
+          },
+          "connected_clients": {
+            "type": "integer",
+            "title": "Connected Clients"
+          },
+          "actor_queue_depth": {
+            "type": "integer",
+            "title": "Actor Queue Depth"
+          },
+          "planner_running_jobs": {
+            "type": "integer",
+            "title": "Planner Running Jobs"
+          },
+          "planner_pending_jobs": {
+            "type": "integer",
+            "title": "Planner Pending Jobs"
+          },
+          "ui_render": {
+            "items": {
+              "$ref": "#/components/schemas/ClientRenderMetrics"
+            },
+            "type": "array",
+            "title": "Ui Render"
+          },
+          "replans": {
+            "$ref": "#/components/schemas/ReplanMetrics"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "run_id",
+          "window_started_at",
+          "measured_at",
+          "published_events",
+          "connected_clients",
+          "actor_queue_depth",
+          "planner_running_jobs",
+          "planner_pending_jobs",
+          "ui_render",
+          "replans"
+        ],
+        "title": "MetricsResponse"
+      },
       "NewRunInput": {
         "properties": {
           "request_id": {
@@ -3716,6 +4124,106 @@
           "can_complete"
         ],
         "title": "Operation"
+      },
+      "OperationDiff": {
+        "properties": {
+          "operation_id": {
+            "type": "string",
+            "title": "Operation Id"
+          },
+          "train_id": {
+            "type": "string",
+            "title": "Train Id"
+          },
+          "label": {
+            "type": "string",
+            "title": "Label"
+          },
+          "before_start_sim_s": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Before Start Sim S"
+          },
+          "after_start_sim_s": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "After Start Sim S"
+          },
+          "shift_sim_s": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Shift Sim S"
+          },
+          "before_track_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Before Track Id"
+          },
+          "after_track_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "After Track Id"
+          },
+          "before_resource_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Before Resource Ids"
+          },
+          "after_resource_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "After Resource Ids"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "operation_id",
+          "train_id",
+          "label",
+          "before_start_sim_s",
+          "after_start_sim_s",
+          "shift_sim_s",
+          "before_track_id",
+          "after_track_id",
+          "before_resource_ids",
+          "after_resource_ids"
+        ],
+        "title": "OperationDiff"
       },
       "Park": {
         "properties": {
@@ -4335,6 +4843,53 @@
         ],
         "title": "ReplanJob"
       },
+      "ReplanMetrics": {
+        "properties": {
+          "elapsed": {
+            "$ref": "#/components/schemas/DurationStats"
+          },
+          "compute": {
+            "$ref": "#/components/schemas/DurationStats"
+          },
+          "succeeded": {
+            "type": "integer",
+            "title": "Succeeded"
+          },
+          "no_feasible_plan": {
+            "type": "integer",
+            "title": "No Feasible Plan"
+          },
+          "stale": {
+            "type": "integer",
+            "title": "Stale"
+          },
+          "timeout": {
+            "type": "integer",
+            "title": "Timeout"
+          },
+          "failed": {
+            "type": "integer",
+            "title": "Failed"
+          },
+          "deadline_exceedances": {
+            "type": "integer",
+            "title": "Deadline Exceedances"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "elapsed",
+          "compute",
+          "succeeded",
+          "no_feasible_plan",
+          "stale",
+          "timeout",
+          "failed",
+          "deadline_exceedances"
+        ],
+        "title": "ReplanMetrics"
+      },
       "Resource": {
         "properties": {
           "id": {
@@ -4484,6 +5039,72 @@
           "points"
         ],
         "title": "RouteGeometry"
+      },
+      "ScenarioSummary": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "description": {
+            "type": "string",
+            "title": "Description"
+          },
+          "train_count": {
+            "type": "integer",
+            "title": "Train Count"
+          },
+          "horizon_sim_s": {
+            "type": "integer",
+            "title": "Horizon Sim S"
+          },
+          "enabled_service_profiles": {
+            "items": {
+              "type": "string",
+              "enum": [
+                "freight_transit_v1",
+                "freight_local_v1",
+                "freight_reclassify_v1",
+                "passenger_transit_v1",
+                "service_transit_v1"
+              ]
+            },
+            "type": "array",
+            "title": "Enabled Service Profiles"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "description",
+          "train_count",
+          "horizon_sim_s",
+          "enabled_service_profiles"
+        ],
+        "title": "ScenarioSummary"
+      },
+      "ScenariosResponse": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/ScenarioSummary"
+            },
+            "type": "array",
+            "title": "Items"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "items"
+        ],
+        "title": "ScenariosResponse"
       },
       "SimulationCommand": {
         "properties": {

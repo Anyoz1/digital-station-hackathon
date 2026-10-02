@@ -1,0 +1,8 @@
+{
+  "user": {
+    "id": "u-viewer",
+    "display_name": "Наблюдатель",
+    "role": "viewer",
+    "resource_ids": []
+  }
+}

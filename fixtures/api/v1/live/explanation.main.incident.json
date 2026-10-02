@@ -1,0 +1,541 @@
+{
+  "available": true,
+  "run_id": "run-c5cd7856-e3aa-456e-871a-4d855cc63f0b",
+  "replan_id": "rp-c63ce861-bae7-4cb0-8176-6a34e438b12e",
+  "base_event_seq": 121,
+  "base_plan_id": "plan-rp-36ff73d8-7dce-4dcf-8117-df5080fa94ec-0",
+  "plans": [
+    {
+      "plan_id": "plan-rp-c63ce861-bae7-4cb0-8176-6a34e438b12e-0",
+      "changes": [
+        {
+          "operation_id": "op-T3-departure",
+          "train_id": "T3",
+          "label": "Отправление",
+          "before_start_sim_s": 1080,
+          "after_start_sim_s": 960,
+          "shift_sim_s": -120,
+          "before_track_id": "R1",
+          "after_track_id": "R1",
+          "before_resource_ids": [
+            "TL3",
+            "TC3"
+          ],
+          "after_resource_ids": [
+            "TL3",
+            "TC3"
+          ]
+        },
+        {
+          "operation_id": "op-P1-arrival",
+          "train_id": "P1",
+          "label": "Приём",
+          "before_start_sim_s": 960,
+          "after_start_sim_s": 1080,
+          "shift_sim_s": 120,
+          "before_track_id": "R2",
+          "after_track_id": "R1",
+          "before_resource_ids": [
+            "TP1",
+            "TCP1"
+          ],
+          "after_resource_ids": [
+            "TP1",
+            "TCP1"
+          ]
+        },
+        {
+          "operation_id": "op-P1-departure",
+          "train_id": "P1",
+          "label": "Отправление",
+          "before_start_sim_s": 1080,
+          "after_start_sim_s": 1200,
+          "shift_sim_s": 120,
+          "before_track_id": "R2",
+          "after_track_id": "R1",
+          "before_resource_ids": [
+            "TP1",
+            "TCP1"
+          ],
+          "after_resource_ids": [
+            "TP1",
+            "TCP1"
+          ]
+        }
+      ],
+      "departures": [
+        {
+          "train_id": "T1",
+          "departure_sim_s": 480,
+          "delay_sim_s": 0,
+          "basis": "actual"
+        },
+        {
+          "train_id": "T2",
+          "departure_sim_s": 2700,
+          "delay_sim_s": 0,
+          "basis": "forecast"
+        },
+        {
+          "train_id": "T3",
+          "departure_sim_s": 1080,
+          "delay_sim_s": 0,
+          "basis": "forecast"
+        },
+        {
+          "train_id": "T4",
+          "departure_sim_s": 3960,
+          "delay_sim_s": 60,
+          "basis": "forecast"
+        },
+        {
+          "train_id": "T5",
+          "departure_sim_s": 6000,
+          "delay_sim_s": 900,
+          "basis": "forecast"
+        },
+        {
+          "train_id": "T6",
+          "departure_sim_s": 3780,
+          "delay_sim_s": 0,
+          "basis": "forecast"
+        },
+        {
+          "train_id": "P1",
+          "departure_sim_s": 1320,
+          "delay_sim_s": 360,
+          "basis": "forecast"
+        }
+      ],
+      "reason": "Варианты ранжированы по общей цели: задержки, ожидание, маневровая работа и стабильность. Высокий приоритет не прерывает начатый манёвр и не гарантирует проход первым. Допустимость проверена отдельно; глобальная оптимальность не доказана."
+    },
+    {
+      "plan_id": "plan-rp-c63ce861-bae7-4cb0-8176-6a34e438b12e-1",
+      "changes": [
+        {
+          "operation_id": "op-T2-shunt-back",
+          "train_id": "T2",
+          "label": "Манёвр",
+          "before_start_sim_s": 1980,
+          "after_start_sim_s": 1680,
+          "shift_sim_s": -300,
+          "before_track_id": "R3",
+          "after_track_id": "R3",
+          "before_resource_ids": [
+            "L1",
+            "SH1"
+          ],
+          "after_resource_ids": [
+            "L1",
+            "SH1"
+          ]
+        },
+        {
+          "operation_id": "op-T2-prep",
+          "train_id": "T2",
+          "label": "Подготовка к отправлению",
+          "before_start_sim_s": 2400,
+          "after_start_sim_s": 2100,
+          "shift_sim_s": -300,
+          "before_track_id": "R3",
+          "after_track_id": "R3",
+          "before_resource_ids": [
+            "I1",
+            "TL2",
+            "TC2"
+          ],
+          "after_resource_ids": [
+            "I1",
+            "TL2",
+            "TC2"
+          ]
+        },
+        {
+          "operation_id": "op-T2-departure",
+          "train_id": "T2",
+          "label": "Отправление",
+          "before_start_sim_s": 2580,
+          "after_start_sim_s": 2280,
+          "shift_sim_s": -300,
+          "before_track_id": "R3",
+          "after_track_id": "R3",
+          "before_resource_ids": [
+            "TL2",
+            "TC2"
+          ],
+          "after_resource_ids": [
+            "TL2",
+            "TC2"
+          ]
+        },
+        {
+          "operation_id": "op-T3-departure",
+          "train_id": "T3",
+          "label": "Отправление",
+          "before_start_sim_s": 1080,
+          "after_start_sim_s": 960,
+          "shift_sim_s": -120,
+          "before_track_id": "R1",
+          "after_track_id": "R1",
+          "before_resource_ids": [
+            "TL3",
+            "TC3"
+          ],
+          "after_resource_ids": [
+            "TL3",
+            "TC3"
+          ]
+        },
+        {
+          "operation_id": "op-T4-shunt-A-out",
+          "train_id": "T4",
+          "label": "Манёвр",
+          "before_start_sim_s": 1560,
+          "after_start_sim_s": 2100,
+          "shift_sim_s": 540,
+          "before_track_id": "S1",
+          "after_track_id": "S1",
+          "before_resource_ids": [
+            "L1",
+            "SH1"
+          ],
+          "after_resource_ids": [
+            "L1",
+            "SH1"
+          ]
+        },
+        {
+          "operation_id": "op-T4-shunt-B-out",
+          "train_id": "T4",
+          "label": "Манёвр",
+          "before_start_sim_s": 2400,
+          "after_start_sim_s": 2640,
+          "shift_sim_s": 240,
+          "before_track_id": "S2",
+          "after_track_id": "S2",
+          "before_resource_ids": [
+            "L1",
+            "SH1"
+          ],
+          "after_resource_ids": [
+            "L1",
+            "SH1"
+          ]
+        },
+        {
+          "operation_id": "op-T4-shunt-A-back",
+          "train_id": "T4",
+          "label": "Манёвр",
+          "before_start_sim_s": 2820,
+          "after_start_sim_s": 3480,
+          "shift_sim_s": 660,
+          "before_track_id": "R4",
+          "after_track_id": "R4",
+          "before_resource_ids": [
+            "L1",
+            "SH1"
+          ],
+          "after_resource_ids": [
+            "L1",
+            "SH1"
+          ]
+        },
+        {
+          "operation_id": "op-T4-shunt-B-back",
+          "train_id": "T4",
+          "label": "Манёвр",
+          "before_start_sim_s": 3240,
+          "after_start_sim_s": 3900,
+          "shift_sim_s": 660,
+          "before_track_id": "R4",
+          "after_track_id": "R4",
+          "before_resource_ids": [
+            "L1",
+            "SH1"
+          ],
+          "after_resource_ids": [
+            "L1",
+            "SH1"
+          ]
+        },
+        {
+          "operation_id": "op-T4-prep",
+          "train_id": "T4",
+          "label": "Подготовка к отправлению",
+          "before_start_sim_s": 3660,
+          "after_start_sim_s": 4320,
+          "shift_sim_s": 660,
+          "before_track_id": "R4",
+          "after_track_id": "R4",
+          "before_resource_ids": [
+            "I1",
+            "TL4",
+            "TC4"
+          ],
+          "after_resource_ids": [
+            "I1",
+            "TL4",
+            "TC4"
+          ]
+        },
+        {
+          "operation_id": "op-T4-departure",
+          "train_id": "T4",
+          "label": "Отправление",
+          "before_start_sim_s": 3840,
+          "after_start_sim_s": 4500,
+          "shift_sim_s": 660,
+          "before_track_id": "R4",
+          "after_track_id": "R4",
+          "before_resource_ids": [
+            "TL4",
+            "TC4"
+          ],
+          "after_resource_ids": [
+            "TL4",
+            "TC4"
+          ]
+        },
+        {
+          "operation_id": "op-T5-arrival",
+          "train_id": "T5",
+          "label": "Приём",
+          "before_start_sim_s": 3780,
+          "after_start_sim_s": 2520,
+          "shift_sim_s": -1260,
+          "before_track_id": "R3",
+          "after_track_id": "R3",
+          "before_resource_ids": [
+            "TL5",
+            "TC5"
+          ],
+          "after_resource_ids": [
+            "TL5",
+            "TC5"
+          ]
+        },
+        {
+          "operation_id": "op-T5-inspection",
+          "train_id": "T5",
+          "label": "Осмотр",
+          "before_start_sim_s": 3900,
+          "after_start_sim_s": 2640,
+          "shift_sim_s": -1260,
+          "before_track_id": "R3",
+          "after_track_id": "R3",
+          "before_resource_ids": [
+            "I1"
+          ],
+          "after_resource_ids": [
+            "I1"
+          ]
+        },
+        {
+          "operation_id": "op-T5-shunt-out",
+          "train_id": "T5",
+          "label": "Манёвр",
+          "before_start_sim_s": 4140,
+          "after_start_sim_s": 3060,
+          "shift_sim_s": -1080,
+          "before_track_id": "C1",
+          "after_track_id": "C1",
+          "before_resource_ids": [
+            "L1",
+            "SH1"
+          ],
+          "after_resource_ids": [
+            "L1",
+            "SH1"
+          ]
+        },
+        {
+          "operation_id": "op-T5-cargo",
+          "train_id": "T5",
+          "label": "Погрузка",
+          "before_start_sim_s": 4560,
+          "after_start_sim_s": 3480,
+          "shift_sim_s": -1080,
+          "before_track_id": "C1",
+          "after_track_id": "C1",
+          "before_resource_ids": [
+            "CG1"
+          ],
+          "after_resource_ids": [
+            "CG1"
+          ]
+        },
+        {
+          "operation_id": "op-T5-shunt-back",
+          "train_id": "T5",
+          "label": "Манёвр",
+          "before_start_sim_s": 5280,
+          "after_start_sim_s": 4320,
+          "shift_sim_s": -960,
+          "before_track_id": "R3",
+          "after_track_id": "R3",
+          "before_resource_ids": [
+            "L1",
+            "SH1"
+          ],
+          "after_resource_ids": [
+            "L1",
+            "SH1"
+          ]
+        },
+        {
+          "operation_id": "op-T5-prep",
+          "train_id": "T5",
+          "label": "Подготовка к отправлению",
+          "before_start_sim_s": 5700,
+          "after_start_sim_s": 4740,
+          "shift_sim_s": -960,
+          "before_track_id": "R3",
+          "after_track_id": "R3",
+          "before_resource_ids": [
+            "I1",
+            "TL5",
+            "TC5"
+          ],
+          "after_resource_ids": [
+            "I1",
+            "TL5",
+            "TC5"
+          ]
+        },
+        {
+          "operation_id": "op-T5-departure",
+          "train_id": "T5",
+          "label": "Отправление",
+          "before_start_sim_s": 5880,
+          "after_start_sim_s": 4920,
+          "shift_sim_s": -960,
+          "before_track_id": "R3",
+          "after_track_id": "R3",
+          "before_resource_ids": [
+            "TL5",
+            "TC5"
+          ],
+          "after_resource_ids": [
+            "TL5",
+            "TC5"
+          ]
+        },
+        {
+          "operation_id": "op-T6-inspection",
+          "train_id": "T6",
+          "label": "Осмотр",
+          "before_start_sim_s": 2820,
+          "after_start_sim_s": 2820,
+          "shift_sim_s": 0,
+          "before_track_id": "R1",
+          "after_track_id": "R1",
+          "before_resource_ids": [
+            "I1"
+          ],
+          "after_resource_ids": [
+            "I2"
+          ]
+        },
+        {
+          "operation_id": "op-T6-departure",
+          "train_id": "T6",
+          "label": "Отправление",
+          "before_start_sim_s": 3660,
+          "after_start_sim_s": 4740,
+          "shift_sim_s": 1080,
+          "before_track_id": "R1",
+          "after_track_id": "R1",
+          "before_resource_ids": [
+            "TL6",
+            "TC6"
+          ],
+          "after_resource_ids": [
+            "TL6",
+            "TC6"
+          ]
+        },
+        {
+          "operation_id": "op-P1-arrival",
+          "train_id": "P1",
+          "label": "Приём",
+          "before_start_sim_s": 960,
+          "after_start_sim_s": 1080,
+          "shift_sim_s": 120,
+          "before_track_id": "R2",
+          "after_track_id": "R1",
+          "before_resource_ids": [
+            "TP1",
+            "TCP1"
+          ],
+          "after_resource_ids": [
+            "TP1",
+            "TCP1"
+          ]
+        },
+        {
+          "operation_id": "op-P1-departure",
+          "train_id": "P1",
+          "label": "Отправление",
+          "before_start_sim_s": 1080,
+          "after_start_sim_s": 1200,
+          "shift_sim_s": 120,
+          "before_track_id": "R2",
+          "after_track_id": "R1",
+          "before_resource_ids": [
+            "TP1",
+            "TCP1"
+          ],
+          "after_resource_ids": [
+            "TP1",
+            "TCP1"
+          ]
+        }
+      ],
+      "departures": [
+        {
+          "train_id": "T1",
+          "departure_sim_s": 480,
+          "delay_sim_s": 0,
+          "basis": "actual"
+        },
+        {
+          "train_id": "T2",
+          "departure_sim_s": 2400,
+          "delay_sim_s": 0,
+          "basis": "forecast"
+        },
+        {
+          "train_id": "T3",
+          "departure_sim_s": 1080,
+          "delay_sim_s": 0,
+          "basis": "forecast"
+        },
+        {
+          "train_id": "T4",
+          "departure_sim_s": 4620,
+          "delay_sim_s": 720,
+          "basis": "forecast"
+        },
+        {
+          "train_id": "T5",
+          "departure_sim_s": 5040,
+          "delay_sim_s": 0,
+          "basis": "forecast"
+        },
+        {
+          "train_id": "T6",
+          "departure_sim_s": 4860,
+          "delay_sim_s": 660,
+          "basis": "forecast"
+        },
+        {
+          "train_id": "P1",
+          "departure_sim_s": 1320,
+          "delay_sim_s": 360,
+          "basis": "forecast"
+        }
+      ],
+      "reason": "Варианты ранжированы по общей цели: задержки, ожидание, маневровая работа и стабильность. Высокий приоритет не прерывает начатый манёвр и не гарантирует проход первым. Допустимость проверена отдельно; глобальная оптимальность не доказана."
+    }
+  ]
+}

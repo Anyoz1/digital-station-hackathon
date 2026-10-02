@@ -1,0 +1,51 @@
+{
+  "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+  "window_started_at": "2026-10-02T00:11:53.125529+00:00",
+  "measured_at": "2026-10-02T00:15:34.719535+00:00",
+  "published_events": 77,
+  "connected_clients": 1,
+  "actor_queue_depth": 0,
+  "planner_running_jobs": 0,
+  "planner_pending_jobs": 0,
+  "ui_render": [
+    {
+      "client_id": "cc1c6fdf-4f31-4d34-b5a3-5c2f8f7b43e9",
+      "latency_upper": {
+        "sample_count": 76,
+        "p50_ms": 58.4581298828125,
+        "p95_ms": 130.4581298828125,
+        "max_ms": 154.5167236328125
+      },
+      "receive_to_render": {
+        "sample_count": 76,
+        "p50_ms": 31.0,
+        "p95_ms": 73.0,
+        "max_ms": 98.0
+      },
+      "invalid_samples": 0,
+      "hidden_samples": 0,
+      "unreported_events": 0,
+      "latency_exceedances": 0
+    }
+  ],
+  "replans": {
+    "elapsed": {
+      "sample_count": 3,
+      "p50_ms": 269.3214290047763,
+      "p95_ms": 937.6638739922782,
+      "max_ms": 937.6638739922782
+    },
+    "compute": {
+      "sample_count": 1,
+      "p50_ms": 487.332835997222,
+      "p95_ms": 487.332835997222,
+      "max_ms": 487.332835997222
+    },
+    "succeeded": 1,
+    "no_feasible_plan": 2,
+    "stale": 0,
+    "timeout": 0,
+    "failed": 0,
+    "deadline_exceedances": 0
+  }
+}

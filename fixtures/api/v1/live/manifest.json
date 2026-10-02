@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0",
+  "status": "FROZEN",
+  "source": "captured_real_API",
+  "captured_at": 1790900134724.834,
+  "base_url": "http://127.0.0.1:18000",
+  "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+  "description": "Read-only response samples, not a client simulator or independent SLA measurement",
+  "state_files": [
+    "snapshot.live.json",
+    "snapshot.replay.json",
+    "snapshot.main.shunting.json",
+    "snapshot.main.incident.json",
+    "snapshot.manual.before.json",
+    "snapshot.manual.after.json"
+  ],
+  "files": {
+    "auth.viewer.json": "7507216b8e4bc5ee078f473a79f69a9d86b32d9c552b5aee911f6b47e2f4ce53",
+    "auth.operator.json": "a9737068d7bdc44b98060e95855906f36d8e8905d1fc6f52d52fd187a84b50ad",
+    "auth.dispatcher.json": "8773d1eaf3032cc6153169375e9462820ee002ce0ebe8518efd01d53f3bd6c0b",
+    "auth.admin.json": "2e532da8f43a9f621db0eb9be4bf5a8bf2af4983df3037be93d3f6f3ed036876",
+    "snapshot.live.json": "470d13020e8bda478d4c6668914e13cb6f3bc094eb6187d24c4d883e5530114c",
+    "health.live.json": "0d7a8a375630ed695c5861c2b456391105ff8819409032474c907ceef61e89f6",
+    "health.ready.json": "9825da475b59236f9b22106a94773d50c5ed167bf0950bf64b677f33a6a12dd3",
+    "config.json": "0b10350a31df018f73312724f4bc90e4afc9bd19c977dcf70f2ceb23c93c6076",
+    "scenarios.json": "0af9e53a4ddcea7490302955816ecce3007b995bb90214558917105374eccc58",
+    "metrics.json": "5ff64e1580e446ea81bcea3ef1e1c9424a1c18dbb9e9b5b1e0f9b1c83674bd70",
+    "clock.json": "9c39c68065cdbe50d5ee8910dac838e5bab28f72479fd74c09072d6b98a5407c",
+    "history.json": "3a6e40aa58eb693a351e8684d49ee573989c345b36729aac6be90ee851c6db63",
+    "snapshot.replay.json": "1869704b5f80a63225ae1af4a7562de7244c8773d516b6557b2361592e465a59",
+    "replan.json": "aa80e38001bda8eaee8292ee113281faba55fbee471ada0781ac4c940cb4e462",
+    "explanation.json": "1b545802d5f5f16476d2a6831073f7b29fe46bfb1db55b047996df623c4ac426",
+    "stream.json": "142616ba8cd26b3c5f9120c50f2c2cca6b9383caecf10a926be3b41c75b1d72b",
+    "snapshot.main.shunting.json": "cc8c16047c8fe3880739960b45b2561b013e95a5ef2d212b8f01450832efdcd0",
+    "snapshot.main.incident.json": "b003d4c368320a78beca3e058f8591499a093a6d69c6fce0767e390979e9310e",
+    "replan.main.incident.json": "039aa5a7c5883ac78f202ac6436433ab575d4c1c05b3d7141fc0875054d38784",
+    "explanation.main.incident.json": "ba15f0b70a5fcef3c6aa2c6a00c1e2651cacf2314ed28f8b486404bcf745eb26",
+    "snapshot.manual.before.json": "b68ddf6b4c4a2a9708163913fab3443d14b5ab9c489307fc50be671f89f3c126",
+    "snapshot.manual.after.json": "cdd398f356f2b6d27930f125cef2d4c2b877b046bc9f19b858b82d7510eacc16"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "config_version": 4,
+  "weights": {
+    "delay": 0.25,
+    "conflicts": 0.2,
+    "occupancy": 0.15,
+    "throughput": 0.3,
+    "resource_idle": 0.1
+  },
+  "category_thresholds": {
+    "normal_min": 77.0,
+    "attention_min": 50.0
+  },
+  "planner": {
+    "max_rollouts": 12,
+    "time_limit_ms": 3000
+  },
+  "units": {
+    "length": "meters",
+    "real_time": "milliseconds",
+    "simulation_time": "seconds"
+  }
+}

@@ -899,3 +899,37 @@ in-flight диагностических запросов, затем отозв
 панели/роль/инциденты/KPI/replay/manual сохранены. Synthetic source observations
 не заменяют физический State: median3 применяется только к diagnostic progress,
 occupancy/incidents никогда не сглаживаются. Gemini/virtual signals не добавлены.
+
+## Backend v1.0 — завершение и freeze (2026-10-02)
+
+Все перечисленные ранее endpoints H0–H18 реализованы. Исторические статусы
+«не реализовано» выше описывают этапы, не текущую готовность. Один актуальный
+путь запуска и полный HTTP handoff: [BACKEND_HANDOFF.md](BACKEND_HANDOFF.md).
+Приёмка/ограничения: [BACKEND_V1_REPORT.md](BACKEND_V1_REPORT.md).
+Core domain/API v1.0 FROZEN; hashes — contracts/v1.0-freeze.json.
+
+Нормативный prefix до POST_H12_RAILWAY_UI и api-v1.ts не изменены. OpenAPI теперь
+типизирует также уже существующие health/time/metrics/scenarios/explanation
+ответы без изменения JSON keys/units/enum. contracts/http-v1.ts автоматически
+покрывает все HTTP DTO плюс StateEvent/ResetEvent; имена core/HTTP импортировать
+с aliases. Поля/enums проверены AST/regression, пути — real OpenAPI.
+
+Fresh install: migrations → setup_backend.py → API. Setup идемпотентно создаёт
+main и manual-control-v1 с прежними12/7. GET/scenarios читает реально seeded
+каталог; existing new-run dropdown показывает его. Историческая инструкция
+«сначала prepare_h15_manual.py, UI только main» заменена этим безопасным setup.
+Fresh manual prefix работает через Play/speed без redundant control-only
+search barrier; никаких изменений planner/validator и обхода runtime guards.
+До подтверждения manual используется явно smoke timetable, а не certified full plan.
+
+Live GET/snapshot server_time — wall-time ответа; replay server_time — исходное
+время commit. При сравнениях persistence не подменять одну семантику другой.
+После SSE reset нового run last_replan может кратко быть null, пока init queued:
+UI проверяет наличие job, не разыменовывает status без null guard.
+
+Static fixtures остаются synthetic/не SLA proof; manifest больше не утверждает,
+что backend H0–H2-only. fixtures/api/v1/live/ содержит реальные captured responses,
+main shunting/incident/validator/diff/KPI и manual before/after. Всё проходит State
+schema, manifest hashes и strict TypeScript. Frontend остаётся только визуальным
+клиентом: никакого расчёта business/safety/efficiency. Основной UI друга и второй
+физический ноутбук ещё требуют совместного smoke; reference `/tech/station` готов.

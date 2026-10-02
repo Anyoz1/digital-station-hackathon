@@ -212,7 +212,8 @@ function retryConnection(ownGeneration){
   stopStream();connection='RECONNECTING';status();
   retryTimer=setTimeout(async()=>{if(ownGeneration!==generation||!user)return;try{await api('/api/v1/auth/me');connect();}catch(error){if(error.status===401){clearSession();showError(error);}else connect();}},Math.min(10000,1000*2**retries++)*(.8+Math.random()*.4));
 }
-async function snapshot(){const ownGeneration=generation;const value=await api('/api/v1/snapshot');if(ownGeneration!==generation||!user)return;accept(value);fillTargets();await renderTelemetry.start();if(ownGeneration!==generation||!user)return;connect();loadConfig();}
+async function snapshot(){const ownGeneration=generation;const value=await api('/api/v1/snapshot');if(ownGeneration!==generation||!user)return;accept(value);fillTargets();await renderTelemetry.start();if(ownGeneration!==generation||!user)return;connect();loadConfig();loadScenarios();}
+async function loadScenarios(){const own=generation;try{const result=await api('/api/v1/scenarios');if(own!==generation||!user)return;const previous=$('run-scenario').value;$('run-scenario').replaceChildren(...result.items.map(item=>{const option=node('option',item.name);option.value=item.id;return option;}));if(result.items.some(item=>item.id===previous))$('run-scenario').value=previous;}catch(error){if(own===generation)showError(error);}}
 function uuid(){if(crypto.randomUUID)return crypto.randomUUID();const b=crypto.getRandomValues(new Uint8Array(16));b[6]=b[6]&15|64;b[8]=b[8]&63|128;const s=Array.from(b,x=>x.toString(16).padStart(2,'0')).join('');return `${s.slice(0,8)}-${s.slice(8,12)}-${s.slice(12,16)}-${s.slice(16,20)}-${s.slice(20)}`;}
 async function command(path,fields,method='POST',permission='dispatcher'){
   const allowed=permission==='complete'?connectedWrite()&&['operator','admin'].includes(user.role):permission==='admin'?connectedWrite()&&user.role==='admin':writable();

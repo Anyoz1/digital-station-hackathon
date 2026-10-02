@@ -1,0 +1,839 @@
+{
+  "items": [
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 1,
+      "server_time": "2026-10-02T00:11:53.098Z",
+      "sim_time_s": 0,
+      "kind": "run_initialized",
+      "entity_ids": [],
+      "message": "Создан учебный прогон",
+      "actor_user_id": null
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 2,
+      "server_time": "2026-10-02T00:11:53.138Z",
+      "sim_time_s": 0,
+      "kind": "smoke_schedule_loaded",
+      "entity_ids": [],
+      "message": "Изменение станции",
+      "actor_user_id": null
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 3,
+      "server_time": "2026-10-02T00:11:53.467Z",
+      "sim_time_s": 0,
+      "kind": "replan_queued",
+      "entity_ids": [
+        "rp-1f9658c1-91e0-4e25-bf54-8bfed59e00bf"
+      ],
+      "message": "Запрошен новый план",
+      "actor_user_id": null
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 4,
+      "server_time": "2026-10-02T00:11:53.636Z",
+      "sim_time_s": 0,
+      "kind": "replan_started",
+      "entity_ids": [
+        "rp-1f9658c1-91e0-4e25-bf54-8bfed59e00bf"
+      ],
+      "message": "Начат расчёт плана",
+      "actor_user_id": null
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 5,
+      "server_time": "2026-10-02T00:11:53.674Z",
+      "sim_time_s": 0,
+      "kind": "replan_finished",
+      "entity_ids": [
+        "rp-1f9658c1-91e0-4e25-bf54-8bfed59e00bf"
+      ],
+      "message": "Завершён расчёт плана",
+      "actor_user_id": null
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 6,
+      "server_time": "2026-10-02T00:11:53.705Z",
+      "sim_time_s": 0,
+      "kind": "replan_timing_recorded",
+      "entity_ids": [
+        "rp-1f9658c1-91e0-4e25-bf54-8bfed59e00bf"
+      ],
+      "message": "Изменение станции",
+      "actor_user_id": null
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 7,
+      "server_time": "2026-10-02T00:11:53.813Z",
+      "sim_time_s": 0,
+      "kind": "simulation_control",
+      "entity_ids": [],
+      "message": "Изменён режим симуляции",
+      "actor_user_id": "u-admin"
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 8,
+      "server_time": "2026-10-02T00:11:53.948Z",
+      "sim_time_s": 0,
+      "kind": "simulation_control",
+      "entity_ids": [],
+      "message": "Изменён режим симуляции",
+      "actor_user_id": "u-admin"
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 9,
+      "server_time": "2026-10-02T00:11:53.967Z",
+      "sim_time_s": 0,
+      "kind": "train_waiting_entry",
+      "entity_ids": [
+        "T1",
+        "op-T1-arrival"
+      ],
+      "message": "Изменение станции",
+      "actor_user_id": null
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 10,
+      "server_time": "2026-10-02T00:11:54.811Z",
+      "sim_time_s": 8,
+      "kind": "tick",
+      "entity_ids": [],
+      "message": "Ход исполнения",
+      "actor_user_id": null
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 11,
+      "server_time": "2026-10-02T00:11:55.614Z",
+      "sim_time_s": 16,
+      "kind": "tick",
+      "entity_ids": [],
+      "message": "Ход исполнения",
+      "actor_user_id": null
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 12,
+      "server_time": "2026-10-02T00:11:56.415Z",
+      "sim_time_s": 24,
+      "kind": "tick",
+      "entity_ids": [],
+      "message": "Ход исполнения",
+      "actor_user_id": null
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 13,
+      "server_time": "2026-10-02T00:11:57.215Z",
+      "sim_time_s": 32,
+      "kind": "tick",
+      "entity_ids": [],
+      "message": "Ход исполнения",
+      "actor_user_id": null
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 14,
+      "server_time": "2026-10-02T00:11:58.017Z",
+      "sim_time_s": 40,
+      "kind": "tick",
+      "entity_ids": [],
+      "message": "Ход исполнения",
+      "actor_user_id": null
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 15,
+      "server_time": "2026-10-02T00:11:58.816Z",
+      "sim_time_s": 48,
+      "kind": "tick",
+      "entity_ids": [],
+      "message": "Ход исполнения",
+      "actor_user_id": null
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 16,
+      "server_time": "2026-10-02T00:11:59.617Z",
+      "sim_time_s": 56,
+      "kind": "tick",
+      "entity_ids": [],
+      "message": "Ход исполнения",
+      "actor_user_id": null
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 17,
+      "server_time": "2026-10-02T00:12:00.419Z",
+      "sim_time_s": 64,
+      "kind": "tick",
+      "entity_ids": [],
+      "message": "Ход исполнения",
+      "actor_user_id": null
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 18,
+      "server_time": "2026-10-02T00:12:01.221Z",
+      "sim_time_s": 72,
+      "kind": "tick",
+      "entity_ids": [],
+      "message": "Ход исполнения",
+      "actor_user_id": null
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 19,
+      "server_time": "2026-10-02T00:12:02.021Z",
+      "sim_time_s": 80,
+      "kind": "tick",
+      "entity_ids": [],
+      "message": "Ход исполнения",
+      "actor_user_id": null
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 20,
+      "server_time": "2026-10-02T00:12:02.822Z",
+      "sim_time_s": 88,
+      "kind": "tick",
+      "entity_ids": [],
+      "message": "Ход исполнения",
+      "actor_user_id": null
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 21,
+      "server_time": "2026-10-02T00:12:03.622Z",
+      "sim_time_s": 96,
+      "kind": "tick",
+      "entity_ids": [],
+      "message": "Ход исполнения",
+      "actor_user_id": null
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 22,
+      "server_time": "2026-10-02T00:12:04.422Z",
+      "sim_time_s": 104,
+      "kind": "tick",
+      "entity_ids": [],
+      "message": "Ход исполнения",
+      "actor_user_id": null
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 23,
+      "server_time": "2026-10-02T00:12:05.223Z",
+      "sim_time_s": 112,
+      "kind": "tick",
+      "entity_ids": [],
+      "message": "Ход исполнения",
+      "actor_user_id": null
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 24,
+      "server_time": "2026-10-02T00:12:05.951Z",
+      "sim_time_s": 120,
+      "kind": "operation_completed",
+      "entity_ids": [
+        "T1",
+        "op-T1-arrival",
+        "op-T1-inspection"
+      ],
+      "message": "Завершена операция",
+      "actor_user_id": null
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 25,
+      "server_time": "2026-10-02T00:12:06.827Z",
+      "sim_time_s": 128,
+      "kind": "tick",
+      "entity_ids": [],
+      "message": "Ход исполнения",
+      "actor_user_id": null
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 26,
+      "server_time": "2026-10-02T00:12:07.628Z",
+      "sim_time_s": 136,
+      "kind": "tick",
+      "entity_ids": [],
+      "message": "Ход исполнения",
+      "actor_user_id": null
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 27,
+      "server_time": "2026-10-02T00:12:08.429Z",
+      "sim_time_s": 144,
+      "kind": "tick",
+      "entity_ids": [],
+      "message": "Ход исполнения",
+      "actor_user_id": null
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 28,
+      "server_time": "2026-10-02T00:12:09.232Z",
+      "sim_time_s": 152,
+      "kind": "tick",
+      "entity_ids": [],
+      "message": "Ход исполнения",
+      "actor_user_id": null
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 29,
+      "server_time": "2026-10-02T00:12:10.033Z",
+      "sim_time_s": 160,
+      "kind": "tick",
+      "entity_ids": [],
+      "message": "Ход исполнения",
+      "actor_user_id": null
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 30,
+      "server_time": "2026-10-02T00:12:10.833Z",
+      "sim_time_s": 168,
+      "kind": "tick",
+      "entity_ids": [],
+      "message": "Ход исполнения",
+      "actor_user_id": null
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 31,
+      "server_time": "2026-10-02T00:12:11.633Z",
+      "sim_time_s": 176,
+      "kind": "tick",
+      "entity_ids": [],
+      "message": "Ход исполнения",
+      "actor_user_id": null
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 32,
+      "server_time": "2026-10-02T00:12:11.734Z",
+      "sim_time_s": 177,
+      "kind": "tick",
+      "entity_ids": [],
+      "message": "Ход исполнения",
+      "actor_user_id": null
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 33,
+      "server_time": "2026-10-02T00:12:11.748Z",
+      "sim_time_s": 177,
+      "kind": "simulation_control",
+      "entity_ids": [],
+      "message": "Изменён режим симуляции",
+      "actor_user_id": "u-admin"
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 34,
+      "server_time": "2026-10-02T00:12:12.097Z",
+      "sim_time_s": 177,
+      "kind": "simulation_control",
+      "entity_ids": [],
+      "message": "Изменён режим симуляции",
+      "actor_user_id": "u-admin"
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 35,
+      "server_time": "2026-10-02T00:12:12.313Z",
+      "sim_time_s": 180,
+      "kind": "train_waiting_entry",
+      "entity_ids": [
+        "T2",
+        "op-T2-arrival"
+      ],
+      "message": "Изменение станции",
+      "actor_user_id": null
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 36,
+      "server_time": "2026-10-02T00:12:12.434Z",
+      "sim_time_s": 181,
+      "kind": "tick",
+      "entity_ids": [],
+      "message": "Ход исполнения",
+      "actor_user_id": null
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 37,
+      "server_time": "2026-10-02T00:12:13.238Z",
+      "sim_time_s": 189,
+      "kind": "tick",
+      "entity_ids": [],
+      "message": "Ход исполнения",
+      "actor_user_id": null
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 38,
+      "server_time": "2026-10-02T00:12:14.081Z",
+      "sim_time_s": 197,
+      "kind": "tick",
+      "entity_ids": [],
+      "message": "Ход исполнения",
+      "actor_user_id": null
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 39,
+      "server_time": "2026-10-02T00:12:14.839Z",
+      "sim_time_s": 205,
+      "kind": "tick",
+      "entity_ids": [],
+      "message": "Ход исполнения",
+      "actor_user_id": null
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 40,
+      "server_time": "2026-10-02T00:12:15.638Z",
+      "sim_time_s": 213,
+      "kind": "tick",
+      "entity_ids": [],
+      "message": "Ход исполнения",
+      "actor_user_id": null
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 41,
+      "server_time": "2026-10-02T00:12:16.438Z",
+      "sim_time_s": 221,
+      "kind": "tick",
+      "entity_ids": [],
+      "message": "Ход исполнения",
+      "actor_user_id": null
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 42,
+      "server_time": "2026-10-02T00:12:17.239Z",
+      "sim_time_s": 229,
+      "kind": "tick",
+      "entity_ids": [],
+      "message": "Ход исполнения",
+      "actor_user_id": null
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 43,
+      "server_time": "2026-10-02T00:12:18.042Z",
+      "sim_time_s": 237,
+      "kind": "tick",
+      "entity_ids": [],
+      "message": "Ход исполнения",
+      "actor_user_id": null
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 44,
+      "server_time": "2026-10-02T00:12:18.842Z",
+      "sim_time_s": 245,
+      "kind": "tick",
+      "entity_ids": [],
+      "message": "Ход исполнения",
+      "actor_user_id": null
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 45,
+      "server_time": "2026-10-02T00:12:19.641Z",
+      "sim_time_s": 253,
+      "kind": "tick",
+      "entity_ids": [],
+      "message": "Ход исполнения",
+      "actor_user_id": null
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 46,
+      "server_time": "2026-10-02T00:12:20.443Z",
+      "sim_time_s": 261,
+      "kind": "tick",
+      "entity_ids": [],
+      "message": "Ход исполнения",
+      "actor_user_id": null
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 47,
+      "server_time": "2026-10-02T00:12:21.242Z",
+      "sim_time_s": 269,
+      "kind": "tick",
+      "entity_ids": [],
+      "message": "Ход исполнения",
+      "actor_user_id": null
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 48,
+      "server_time": "2026-10-02T00:12:22.042Z",
+      "sim_time_s": 277,
+      "kind": "tick",
+      "entity_ids": [],
+      "message": "Ход исполнения",
+      "actor_user_id": null
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 49,
+      "server_time": "2026-10-02T00:12:22.845Z",
+      "sim_time_s": 285,
+      "kind": "tick",
+      "entity_ids": [],
+      "message": "Ход исполнения",
+      "actor_user_id": null
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 50,
+      "server_time": "2026-10-02T00:12:23.645Z",
+      "sim_time_s": 293,
+      "kind": "tick",
+      "entity_ids": [],
+      "message": "Ход исполнения",
+      "actor_user_id": null
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 51,
+      "server_time": "2026-10-02T00:12:24.316Z",
+      "sim_time_s": 300,
+      "kind": "operation_completed",
+      "entity_ids": [
+        "T2",
+        "op-T2-arrival",
+        "op-T2-inspection"
+      ],
+      "message": "Завершена операция",
+      "actor_user_id": null
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 52,
+      "server_time": "2026-10-02T00:12:24.446Z",
+      "sim_time_s": 301,
+      "kind": "tick",
+      "entity_ids": [],
+      "message": "Ход исполнения",
+      "actor_user_id": null
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 53,
+      "server_time": "2026-10-02T00:12:25.247Z",
+      "sim_time_s": 309,
+      "kind": "tick",
+      "entity_ids": [],
+      "message": "Ход исполнения",
+      "actor_user_id": null
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 54,
+      "server_time": "2026-10-02T00:12:26.048Z",
+      "sim_time_s": 317,
+      "kind": "tick",
+      "entity_ids": [],
+      "message": "Ход исполнения",
+      "actor_user_id": null
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 55,
+      "server_time": "2026-10-02T00:12:26.847Z",
+      "sim_time_s": 325,
+      "kind": "tick",
+      "entity_ids": [],
+      "message": "Ход исполнения",
+      "actor_user_id": null
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 56,
+      "server_time": "2026-10-02T00:12:27.650Z",
+      "sim_time_s": 333,
+      "kind": "tick",
+      "entity_ids": [],
+      "message": "Ход исполнения",
+      "actor_user_id": null
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 57,
+      "server_time": "2026-10-02T00:12:28.449Z",
+      "sim_time_s": 341,
+      "kind": "tick",
+      "entity_ids": [],
+      "message": "Ход исполнения",
+      "actor_user_id": null
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 58,
+      "server_time": "2026-10-02T00:12:29.251Z",
+      "sim_time_s": 349,
+      "kind": "tick",
+      "entity_ids": [],
+      "message": "Ход исполнения",
+      "actor_user_id": null
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 59,
+      "server_time": "2026-10-02T00:12:30.053Z",
+      "sim_time_s": 357,
+      "kind": "tick",
+      "entity_ids": [],
+      "message": "Ход исполнения",
+      "actor_user_id": null
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 60,
+      "server_time": "2026-10-02T00:12:30.316Z",
+      "sim_time_s": 360,
+      "kind": "operation_blocked",
+      "entity_ids": [
+        "T1",
+        "op-T1-departure"
+      ],
+      "message": "Изменение станции",
+      "actor_user_id": null
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 61,
+      "server_time": "2026-10-02T00:12:30.334Z",
+      "sim_time_s": 360,
+      "kind": "replan_queued",
+      "entity_ids": [
+        "rp-dac7e471-c182-4f2d-83d4-4a08af59bc6a"
+      ],
+      "message": "Запрошен новый план",
+      "actor_user_id": null
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 62,
+      "server_time": "2026-10-02T00:12:30.432Z",
+      "sim_time_s": 361,
+      "kind": "tick",
+      "entity_ids": [],
+      "message": "Ход исполнения",
+      "actor_user_id": null
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 63,
+      "server_time": "2026-10-02T00:12:30.447Z",
+      "sim_time_s": 361,
+      "kind": "simulation_control",
+      "entity_ids": [],
+      "message": "Изменён режим симуляции",
+      "actor_user_id": "u-admin"
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 64,
+      "server_time": "2026-10-02T00:12:30.466Z",
+      "sim_time_s": 361,
+      "kind": "replan_queued",
+      "entity_ids": [
+        "rp-dac7e471-c182-4f2d-83d4-4a08af59bc6a"
+      ],
+      "message": "Запрошен новый план",
+      "actor_user_id": null
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 65,
+      "server_time": "2026-10-02T00:12:30.505Z",
+      "sim_time_s": 361,
+      "kind": "replan_started",
+      "entity_ids": [
+        "rp-dac7e471-c182-4f2d-83d4-4a08af59bc6a"
+      ],
+      "message": "Начат расчёт плана",
+      "actor_user_id": null
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 66,
+      "server_time": "2026-10-02T00:12:30.545Z",
+      "sim_time_s": 361,
+      "kind": "replan_finished",
+      "entity_ids": [
+        "rp-dac7e471-c182-4f2d-83d4-4a08af59bc6a"
+      ],
+      "message": "Завершён расчёт плана",
+      "actor_user_id": null
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 67,
+      "server_time": "2026-10-02T00:12:30.580Z",
+      "sim_time_s": 361,
+      "kind": "replan_timing_recorded",
+      "entity_ids": [
+        "rp-dac7e471-c182-4f2d-83d4-4a08af59bc6a"
+      ],
+      "message": "Изменение станции",
+      "actor_user_id": null
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 68,
+      "server_time": "2026-10-02T00:13:49.502Z",
+      "sim_time_s": 361,
+      "kind": "manual_operation_completed",
+      "entity_ids": [
+        "T1",
+        "op-T1-inspection",
+        "rp-7e8ecde1-6d92-43f5-a79a-a253382d5b62"
+      ],
+      "message": "Исполнитель подтвердил операцию",
+      "actor_user_id": "u-operator"
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 69,
+      "server_time": "2026-10-02T00:13:49.683Z",
+      "sim_time_s": 361,
+      "kind": "replan_started",
+      "entity_ids": [
+        "rp-7e8ecde1-6d92-43f5-a79a-a253382d5b62"
+      ],
+      "message": "Начат расчёт плана",
+      "actor_user_id": null
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 70,
+      "server_time": "2026-10-02T00:13:50.382Z",
+      "sim_time_s": 361,
+      "kind": "plan_applied",
+      "entity_ids": [
+        "plan-rp-7e8ecde1-6d92-43f5-a79a-a253382d5b62-0",
+        "plan-rp-7e8ecde1-6d92-43f5-a79a-a253382d5b62-1",
+        "rp-7e8ecde1-6d92-43f5-a79a-a253382d5b62"
+      ],
+      "message": "Применён проверенный план",
+      "actor_user_id": null
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 71,
+      "server_time": "2026-10-02T00:13:50.425Z",
+      "sim_time_s": 361,
+      "kind": "replan_timing_recorded",
+      "entity_ids": [
+        "rp-7e8ecde1-6d92-43f5-a79a-a253382d5b62"
+      ],
+      "message": "Изменение станции",
+      "actor_user_id": null
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 72,
+      "server_time": "2026-10-02T00:15:27.841Z",
+      "sim_time_s": 361,
+      "kind": "simulation_control",
+      "entity_ids": [],
+      "message": "Изменён режим симуляции",
+      "actor_user_id": "u-admin"
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 73,
+      "server_time": "2026-10-02T00:15:27.867Z",
+      "sim_time_s": 361,
+      "kind": "operation_started",
+      "entity_ids": [
+        "T1",
+        "op-T1-departure"
+      ],
+      "message": "Начата операция",
+      "actor_user_id": null
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 74,
+      "server_time": "2026-10-02T00:15:28.717Z",
+      "sim_time_s": 369,
+      "kind": "tick",
+      "entity_ids": [],
+      "message": "Ход исполнения",
+      "actor_user_id": null
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 75,
+      "server_time": "2026-10-02T00:15:29.517Z",
+      "sim_time_s": 377,
+      "kind": "tick",
+      "entity_ids": [],
+      "message": "Ход исполнения",
+      "actor_user_id": null
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 76,
+      "server_time": "2026-10-02T00:15:30.318Z",
+      "sim_time_s": 385,
+      "kind": "tick",
+      "entity_ids": [],
+      "message": "Ход исполнения",
+      "actor_user_id": null
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 77,
+      "server_time": "2026-10-02T00:15:30.425Z",
+      "sim_time_s": 387,
+      "kind": "tick",
+      "entity_ids": [],
+      "message": "Ход исполнения",
+      "actor_user_id": null
+    },
+    {
+      "run_id": "run-35c91bb2-7780-456c-9deb-ebe0a24f21b5",
+      "seq": 78,
+      "server_time": "2026-10-02T00:15:30.467Z",
+      "sim_time_s": 387,
+      "kind": "simulation_control",
+      "entity_ids": [],
+      "message": "Изменён режим симуляции",
+      "actor_user_id": "u-admin"
+    }
+  ],
+  "next_from_seq": 78,
+  "has_more": false,
+  "anchor_seq": 1,
+  "available_from_wall_time": "2026-10-02T00:11:53.098Z",
+  "available_to_wall_time": "2026-10-02T00:15:34.753Z"
+}

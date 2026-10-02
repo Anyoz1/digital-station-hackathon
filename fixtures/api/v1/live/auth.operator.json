@@ -1,0 +1,10 @@
+{
+  "user": {
+    "id": "u-operator",
+    "display_name": "Исполнитель",
+    "role": "operator",
+    "resource_ids": [
+      "I1"
+    ]
+  }
+}
